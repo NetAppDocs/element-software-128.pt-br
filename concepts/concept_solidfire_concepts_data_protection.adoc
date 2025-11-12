@@ -1,0 +1,203 @@
+---
+permalink: concepts/concept_solidfire_concepts_data_protection.html 
+sidebar: sidebar 
+keywords: what is, element, solidfire, replication, clone, snapshot, protection domain, double helix 
+summary: Os recursos de proteção de dados incluem replicação remota, snapshots de volume, clonagem de volume, Domínios de Proteção e alta disponibilidade com a tecnologia Double Helix. 
+---
+= Proteção de dados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os recursos de proteção de dados incluem replicação remota, snapshots de volume, clonagem de volume, Domínios de Proteção e alta disponibilidade com a tecnologia Double Helix.
+
+A proteção de dados de armazenamento de elementos inclui os seguintes conceitos:
+
+* <<Tipos de replicação remota>>
+* <<Instantâneos de volume para proteção de dados>>
+* <<Clones de volume>>
+* <<Visão geral do processo de backup e restauração para o armazenamento Element.>>
+* <<Domínios de proteção>>
+* <<custom_pd,Domínios de proteção personalizados>>
+* <<Alta disponibilidade da dupla hélice>>
+
+
+
+
+== Tipos de replicação remota
+
+A replicação remota de dados pode assumir as seguintes formas:
+
+* <<Replicação síncrona e assíncrona entre clusters>>
+* <<Replicação somente de instantâneo>>
+* <<Replicação entre clusters Element e ONTAP usando SnapMirror>>
+
+
+Para obter mais informações, consulte https://www.netapp.com/pdf.html?item=/media/10607-tr4741pdf.pdf["TR-4741: Replicação Remota do Software NetApp Element"^] .
+
+
+
+=== Replicação síncrona e assíncrona entre clusters
+
+Para clusters que executam o software NetApp Element , a replicação em tempo real permite a criação rápida de cópias remotas de dados de volume.
+
+Você pode emparelhar um cluster de armazenamento com até quatro outros clusters de armazenamento.  Você pode replicar dados de volume de forma síncrona ou assíncrona de qualquer um dos clusters em um par de clusters para cenários de failover e failback.
+
+
+
+==== Replicação síncrona
+
+A replicação síncrona replica continuamente os dados do cluster de origem para o cluster de destino e é afetada por latência, perda de pacotes, jitter e largura de banda.
+
+A replicação síncrona é apropriada para as seguintes situações:
+
+* Replicação de vários sistemas em uma curta distância.
+* Um local de recuperação de desastres que esteja geograficamente próximo da fonte.
+* Aplicações sensíveis ao tempo e a proteção de bancos de dados
+* Aplicações de continuidade de negócios que exigem que o site secundário atue como site primário quando o site primário estiver inativo.
+
+
+
+
+==== Replicação assíncrona
+
+A replicação assíncrona replica continuamente os dados de um cluster de origem para um cluster de destino sem esperar pelas confirmações do cluster de destino.  Durante a replicação assíncrona, as gravações são confirmadas ao cliente (aplicação) após serem confirmadas no cluster de origem.
+
+A replicação assíncrona é apropriada para as seguintes situações:
+
+* O local de recuperação de desastres fica longe da origem do problema e o aplicativo não tolera latências induzidas pela rede.
+* Existem limitações de largura de banda na rede que conecta os clusters de origem e destino.
+
+
+
+
+=== Replicação somente de instantâneo
+
+A proteção de dados somente com snapshots replica os dados alterados em pontos específicos no tempo para um cluster remoto.  Somente os snapshots criados no cluster de origem são replicados.  As gravações ativas do volume de origem não são.
+
+Você pode definir a frequência das replicações de snapshots.
+
+A replicação de instantâneos não afeta a replicação assíncrona ou síncrona.
+
+
+
+=== Replicação entre clusters Element e ONTAP usando SnapMirror
+
+Com a tecnologia NetApp SnapMirror , você pode replicar snapshots criados com o software NetApp Element para o ONTAP para fins de recuperação de desastres.  Em um relacionamento SnapMirror , o Element é um endpoint e o ONTAP é o outro.
+
+O SnapMirror é uma tecnologia de replicação de snapshots da NetApp que facilita a recuperação de desastres, projetada para failover do armazenamento primário para o armazenamento secundário em um local geograficamente remoto.  A tecnologia SnapMirror cria uma réplica, ou espelho, dos dados em funcionamento em um armazenamento secundário, a partir do qual você pode continuar a fornecer dados caso ocorra uma interrupção no site principal.  Os dados são replicados no nível de volume.
+
+A relação entre o volume de origem no armazenamento primário e o volume de destino no armazenamento secundário é chamada de relação de proteção de dados.  Os clusters são chamados de endpoints, nos quais os volumes residem, e os volumes que contêm os dados replicados devem ser interconectados.  Uma relação ponto a ponto permite que clusters e volumes troquem dados com segurança.
+
+O SnapMirror é executado nativamente nos controladores NetApp ONTAP e está integrado ao Element, que é executado em clusters NetApp HCI e SolidFire .  A lógica para controlar o SnapMirror reside no software ONTAP ; portanto, todos os relacionamentos do SnapMirror devem envolver pelo menos um sistema ONTAP para realizar o trabalho de coordenação.  Os usuários gerenciam os relacionamentos entre os clusters Element e ONTAP principalmente por meio da interface do usuário do Element; no entanto, algumas tarefas de gerenciamento residem no NetApp ONTAP System Manager.  Os usuários também podem gerenciar o SnapMirror por meio da CLI e da API, ambas disponíveis no ONTAP e no Element.
+
+Ver https://fieldportal.netapp.com/content/616239["TR-4651: Arquitetura e configuração do NetApp SolidFire SnapMirror"^] (login necessário)
+
+Você deve habilitar manualmente a funcionalidade SnapMirror no nível do cluster usando o software Element.  A funcionalidade SnapMirror está desativada por padrão e não é ativada automaticamente como parte de uma nova instalação ou atualização.
+
+Após ativar o SnapMirror, você pode criar relacionamentos SnapMirror na guia Proteção de Dados do software Element.
+
+O software NetApp Element versão 10.1 e superior suporta a funcionalidade SnapMirror para copiar e restaurar snapshots com sistemas ONTAP .
+
+Sistemas que executam o Element 10.1 e versões superiores incluem código que pode se comunicar diretamente com o SnapMirror em sistemas ONTAP que executam a versão 9.3 ou superior.  A API Element fornece métodos para habilitar a funcionalidade SnapMirror em clusters, volumes e snapshots.  Além disso, a interface do usuário do Element inclui funcionalidades para gerenciar relacionamentos SnapMirror entre o software Element e os sistemas ONTAP .
+
+A partir dos sistemas Element 10.3 e ONTAP 9.4, é possível replicar volumes originados no ONTAP para volumes do Element em casos de uso específicos, com funcionalidade limitada.
+
+Para mais informações, consulte link:../storage/element-replication-index.html["Replicação entre o software NetApp Element e o ONTAP (CLI do ONTAP )"].
+
+
+
+== Instantâneos de volume para proteção de dados
+
+Um instantâneo de volume é uma cópia de um volume em um determinado momento, que você pode usar posteriormente para restaurar o volume para aquele momento específico.
+
+Embora os snapshots sejam semelhantes aos clones de volume, eles são simplesmente réplicas dos metadados do volume, portanto, você não pode montá-los ou gravar neles.  A criação de um snapshot de volume também requer apenas uma pequena quantidade de recursos e espaço do sistema, o que torna a criação de snapshots mais rápida do que a clonagem.
+
+Você pode replicar snapshots para um cluster remoto e usá-los como uma cópia de backup do volume.  Isso permite reverter um volume para um ponto específico no tempo usando o snapshot replicado; você também pode criar um clone de um volume a partir de um snapshot replicado.
+
+Você pode fazer backup de snapshots de um cluster Element para um armazenamento de objetos externo ou para outro cluster Element.  Ao fazer backup de um snapshot para um armazenamento de objetos externo, você precisa ter uma conexão com esse armazenamento que permita operações de leitura/gravação.
+
+Você pode tirar um instantâneo de um volume individual ou de vários volumes para proteção de dados.
+
+
+
+== Clones de volume
+
+Um clone de um único volume ou de múltiplos volumes é uma cópia dos dados em um determinado momento.  Ao clonar um volume, o sistema cria um instantâneo do volume e, em seguida, cria uma cópia dos dados referenciados por esse instantâneo.
+
+Este é um processo assíncrono, e o tempo necessário para sua conclusão depende do tamanho do volume que você está clonando e da carga atual do cluster.
+
+O cluster suporta até duas solicitações de clonagem em execução por volume simultaneamente e até oito operações de clonagem de volume ativas ao mesmo tempo.  Solicitações que excedam esses limites são enfileiradas para processamento posterior.
+
+
+
+== Visão geral do processo de backup e restauração para o armazenamento Element.
+
+Você pode fazer backup e restaurar volumes em outros armazenamentos SolidFire , bem como em armazenamentos de objetos secundários compatíveis com Amazon S3 ou OpenStack Swift.
+
+Você pode fazer backup de um volume nos seguintes locais:
+
+* Um cluster de armazenamento SolidFire
+* Um armazenamento de objetos Amazon S3
+* Um armazenamento de objetos OpenStack Swift
+
+
+Ao restaurar volumes do OpenStack Swift ou do Amazon S3, você precisa das informações do manifesto do processo de backup original.  Se você estiver restaurando um volume que foi salvo em um sistema de armazenamento SolidFire , nenhuma informação de manifesto será necessária.
+
+
+
+== Domínios de proteção
+
+Um Domínio de Proteção é um nó ou um conjunto de nós agrupados de forma que qualquer parte dele, ou mesmo a sua totalidade, possa falhar, mantendo a disponibilidade dos dados.  Os Domínios de Proteção permitem que um cluster de armazenamento se recupere automaticamente da perda de um chassi (afinidade de chassi) ou de um domínio inteiro (grupo de chassis).
+
+Você pode habilitar manualmente o monitoramento do Domínio de Proteção usando o ponto de extensão de Configuração de NetApp Element no ​​plug-in de NetApp Element para vCenter Server.  Você pode selecionar um limite de Domínio de Proteção com base em domínios de nó ou chassi.  Você também pode ativar o monitoramento do Domínio de Proteção usando a API do Element ou a interface web.
+
+Um layout de Domínio de Proteção atribui cada nó a um Domínio de Proteção específico.
+
+São suportados dois layouts diferentes de Domínio de Proteção, chamados níveis de Domínio de Proteção.
+
+* No nível do nó, cada nó está em seu próprio Domínio de Proteção.
+* No nível do chassi, apenas os nós que compartilham um chassi estão no mesmo Domínio de Proteção.
++
+** O layout em nível de chassi é determinado automaticamente a partir do hardware quando o nó é adicionado ao cluster.
+** Em um cluster onde cada nó está em um chassi separado, esses dois níveis são funcionalmente idênticos.
+
+
+
+
+Ao criar um novo cluster, se você estiver usando nós de armazenamento que residem em um chassi compartilhado, considere projetar a proteção contra falhas em nível de chassi usando o recurso Domínios de Proteção.
+
+
+
+== [[custom_pd]]Domínios de Proteção Personalizados
+
+Você pode definir um layout de Domínio de Proteção personalizado que corresponda ao layout específico do seu chassi e nó, e onde cada nó esteja associado a um e apenas um Domínio de Proteção personalizado.  Por padrão, cada nó é atribuído ao mesmo Domínio de Proteção personalizado padrão.
+
+Caso não haja domínios de proteção personalizados atribuídos:
+
+* O funcionamento do cluster não é afetado.
+* O nível personalizado não é tolerante nem resiliente.
+
+
+Ao configurar Domínios de Proteção personalizados para um cluster, existem três níveis de proteção possíveis, que podem ser visualizados no painel da interface web do Element:
+
+* Sem proteção: O cluster de armazenamento não está protegido contra falhas em um de seus Domínios de Proteção personalizados.  Para corrigir isso, adicione capacidade de armazenamento adicional ao cluster ou reconfigure os Domínios de Proteção personalizados do cluster para protegê-lo contra possível perda de dados.
+* Tolerante a falhas: O cluster de armazenamento possui capacidade livre suficiente para evitar a perda de dados após a falha de um de seus Domínios de Proteção personalizados.
+* Resistente a falhas: O cluster de armazenamento possui capacidade livre suficiente para se autorrecuperar após a falha de um de seus Domínios de Proteção personalizados.  Após a conclusão do processo de recuperação, o cluster estará protegido contra perda de dados caso outros domínios apresentem falhas.
+
+
+Se mais de um Domínio de Proteção personalizado for atribuído, cada subsistema atribuirá duplicatas a Domínios de Proteção personalizados separados.  Caso isso não seja possível, o sistema recorre à atribuição de duplicados a nós separados.  Cada subsistema (por exemplo, bins, slices, provedores de endpoints de protocolo e ensemble) faz isso de forma independente.
+
+Você pode usar a interface do usuário do Element paralink:../storage/task_data_protection_configure_custom_protection_domains.html["Configurar domínios de proteção personalizados"] Ou você pode usar os seguintes métodos da API:
+
+* link:../api/reference_element_api_getprotectiondomainlayout.html["Layout do domínio de proteção"]- Mostra em qual chassi e em qual Domínio de Proteção personalizado cada nó está localizado.
+* link:../api/reference_element_api_setprotectiondomainlayout.html["Layout de domínio de proteção definido"]- Permite que um Domínio de Proteção personalizado seja atribuído a cada nó.
+
+
+
+
+== Alta disponibilidade da dupla hélice
+
+A proteção de dados Double Helix é um método de replicação que distribui pelo menos duas cópias redundantes dos dados por todas as unidades de um sistema.  A abordagem "sem RAID" permite que um sistema absorva múltiplas falhas simultâneas em todos os níveis do sistema de armazenamento e se recupere rapidamente.

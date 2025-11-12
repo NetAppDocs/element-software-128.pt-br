@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemeresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeResiliency 
+summary: 'O objeto protectionSchemeResiliency contém informações sobre se um cluster de armazenamento, para um esquema de proteção específico, pode se recuperar automaticamente de uma ou mais falhas dentro do seu protectionDomainType associado.  Um cluster de armazenamento é considerado recuperado quando consegue continuar lendo e gravando dados mesmo após a falha de um único nó de armazenamento (um estado conhecido como tolerância de nó).' 
+---
+= Resiliência do esquema de proteção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto protectionSchemeResiliency contém informações sobre se um cluster de armazenamento, para um esquema de proteção específico, pode se recuperar automaticamente de uma ou mais falhas dentro do seu protectionDomainType associado.  Um cluster de armazenamento é considerado recuperado quando consegue continuar lendo e gravando dados mesmo após a falha de um único nó de armazenamento (um estado conhecido como tolerância de nó).
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+esquema de proteção
+ a| 
+O esquema de proteção atual deste cluster de armazenamento.  O único valor possível é dupla hélice.
+ a| 
+corda
+
+
+
+ a| 
+Falhas sustentáveis para dados em bloco
+ a| 
+O número previsto de falhas simultâneas que podem ocorrer sem perder a capacidade de recuperação automática para um estado de tolerância do nó em relação aos dados.
+ a| 
+inteiro
+
+
+
+ a| 
+Falhas sustentáveis para metadados
+ a| 
+O número previsto de falhas simultâneas que podem ocorrer sem perder a capacidade de recuperação automática para um estado de tolerância do nó em relação aos metadados.
+ a| 
+inteiro
+
+|===

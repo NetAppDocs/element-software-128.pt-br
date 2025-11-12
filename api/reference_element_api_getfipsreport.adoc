@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_getfipsreport.html 
+sidebar: sidebar 
+keywords: fips,report,get,getting,getfipsreport,feature,support 
+summary: Você pode usar o método GetFipsReport para verificar o status de suporte ao recurso de criptografia FIPS 140-2 de todos os nós no cluster de armazenamento. 
+---
+= Relatório GetFips
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetFipsReport` Método para verificar o status de suporte ao recurso de criptografia FIPS 140-2 em todos os nós do cluster de armazenamento.
+
+
+
+== Parâmetro
+
+Este método não possui parâmetro de entrada.
+
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+resultado
+ a| 
+Um objeto JSON contendo o status de suporte ao recurso FIPS 140-2 para cada nó e informações de erro para cada nó que não respondeu à consulta.
+ a| 
+xref:reference_element_api_fipsreport.adoc[Relatório fips]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "GetFipsReport",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+    "nodes": [
+        {
+           "nodeID": 1,
+		   "fipsDrives": "None",
+           "httpsEnabled": true
+        },
+        {
+           "nodeID": 3,
+		   "fipsDrives": "None",
+           "httpsEnabled": true
+        }
+    ],
+    "errorNodes": [
+        {
+           "nodeID": 2,
+           "error": {
+               "message": "The RPC timed out.",
+               "name": "xRpcTimeout"
+               }
+        }
+    ]
+    }
+}
+----
+
+
+== Novidade desde a versão
+
+10,3

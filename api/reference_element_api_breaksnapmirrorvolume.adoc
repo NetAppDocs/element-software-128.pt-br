@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_breaksnapmirrorvolume.html 
+sidebar: sidebar 
+keywords: SnapMirror,volume,volumes,break,breaking,relationship,ONTAP,source,snapshot 
+summary: A interface web do Element utiliza o método BreakSnapMirrorVolume para quebrar a relação SnapMirror entre um contêiner de origem ONTAP e um volume de destino do Element.  Interromper um volume SnapMirror do Element é útil caso um sistema ONTAP fique indisponível durante a replicação de dados para um volume do Element.  Este recurso permite que um administrador de armazenamento assuma o controle de um volume Element SnapMirror , interrompa sua relação com o sistema ONTAP remoto e reverta o volume para um snapshot anterior. 
+---
+= QuebraSnapMirrorVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A interface web do Element utiliza o `BreakSnapMirrorVolume` Método para quebrar a relação SnapMirror entre um contêiner de origem ONTAP e um volume de destino Element.  Interromper um volume SnapMirror do Element é útil caso um sistema ONTAP fique indisponível durante a replicação de dados para um volume do Element.  Este recurso permite que um administrador de armazenamento assuma o controle de um volume Element SnapMirror , interrompa sua relação com o sistema ONTAP remoto e reverta o volume para um snapshot anterior.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID do volume
+ a| 
+O volume no qual a operação de ruptura será realizada.  O modo de acesso ao volume deve ser snapMirrorTarget.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+ID do instantâneo
+ a| 
+Reverter o volume para o snapshot identificado por este ID.  O comportamento padrão é reverter para o snapshot mais recente.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+preservar
+ a| 
+Preserve quaisquer snapshots mais recentes que o snapshot identificado por snapshotID. Valores possíveis:
+
+* verdadeiro: Preservar snapshots mais recentes que snapshotID.
+* falso: Não preservar snapshots mais recentes que snapshotID.
+
+
+Se falso, quaisquer snapshots mais recentes que o snapshotID serão excluídos.
+ a| 
+booleano
+ a| 
+falso
+ a| 
+Não
+
+
+
+ a| 
+acesso
+ a| 
+Modo de acesso ao volume resultante. Valores possíveis:
+
+* lerEscrever
+* somente leitura
+* trancado
+
+ a| 
+corda
+ a| 
+lerEscrever
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método não possui valores de retorno.
+
+
+
+== Novidade desde a versão
+
+10,0
+
+
+
+== Encontre mais informações
+
+xref:reference_element_api_breaksnapmirrorrelationship.adoc[BreakSnapMirrorRelationship]

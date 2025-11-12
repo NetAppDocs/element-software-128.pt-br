@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-collectlogs.html 
+summary: Você pode usar o NetApp Hybrid Cloud Control para coletar logs da sua instalação do Element para auxiliar na resolução de problemas. 
+keywords: netapp, element, logs, collection, troubleshooting, monitor 
+---
+= Colete registros para solucionar problemas.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você tiver problemas com a instalação do seu armazenamento all-flash SolidFire , poderá coletar registros para enviar ao Suporte da NetApp para auxiliar no diagnóstico.  Você pode usar o NetApp Hybrid Cloud Control ou a API REST para coletar logs em um sistema Element.
+
+.O que você vai precisar
+* Certifique-se de que a versão do seu cluster de armazenamento esteja executando o software NetApp Element 11.3 ou posterior.
+* Certifique-se de ter implantado um nó de gerenciamento executando a versão 11.3 ou posterior.
+
+
+.Opções de coleta de logs
+Escolha uma das seguintes opções:
+
+* <<Utilize o NetApp Hybrid Cloud Control para coletar logs.>>
+* <<Utilize a API REST para coletar registros.>>
+
+
+
+
+== Utilize o NetApp Hybrid Cloud Control para coletar logs.
+
+Você pode acessar a área de coleta de logs a partir do Painel de Controle do NetApp Hybrid Cloud.
+
+.Passos
+. Abra o endereço IP do nó de gerenciamento em um navegador da web. Por exemplo:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador do cluster de armazenamento Element.
+. No painel de controle, selecione o menu no canto superior direito.
+. Selecione *Coletar Logs*.
++
+Se você já coletou registros anteriormente, pode baixar o pacote de registros existente ou iniciar uma nova coleta.
+
+. Selecione um intervalo de datas no menu suspenso *Intervalo de Datas* para especificar quais datas os registros devem incluir.
++
+Se você especificar uma data de início personalizada, poderá selecionar a data de início do intervalo de datas.  Os registros serão coletados a partir dessa data até o presente momento.
+
+. Na seção *Coleta de Logs*, selecione os tipos de arquivos de log que o pacote de logs deve incluir.
++
+Para obter os registros de armazenamento, você pode expandir a lista de nós de armazenamento e selecionar nós individuais dos quais deseja coletar os registros (ou todos os nós da lista).
+
+. Selecione *Coletar Logs* para iniciar a coleta de logs.
++
+A coleta de logs é executada em segundo plano e a página exibe o progresso.
+
++
+
+NOTE: Dependendo dos registros coletados, a barra de progresso pode permanecer em uma determinada porcentagem por vários minutos ou progredir muito lentamente em alguns pontos.
+
+. Selecione *Baixar registros* para baixar o pacote de registros.
++
+O pacote de logs está em um arquivo compactado no formato .tgz do UNIX.
+
+
+
+
+
+== Utilize a API REST para coletar registros.
+
+Você pode usar a API REST para coletar registros do Element.
+
+.Passos
+. Localize o ID do cluster de armazenamento:
++
+.. Abra a interface de usuário da API REST do nó de gerenciamento no nó de gerenciamento:
++
+[listing]
+----
+https://[management node IP]/logs/1/
+----
+.. Selecione *Autorizar* e complete o seguinte:
++
+... Insira o nome de usuário e a senha do cluster.
+... Insira o ID do cliente como `mnode-client` se o valor ainda não estiver preenchido.
+... Selecione *Autorizar* para iniciar uma sessão.
+
+
+
+
+. Coletar registros do Element:
++
+.. Selecione *POST /bundle*.
+.. Selecione *Experimentar*.
+.. Altere os valores dos seguintes parâmetros no campo *Corpo da solicitação*, dependendo do tipo de logs que você precisa coletar e do intervalo de tempo:
++
+|===
+| Parâmetro | Tipo | Descrição 
+
+
+| `modifiedSince` | String de data | Incluir apenas os registros modificados após esta data e hora.  Por exemplo, o valor "2020-07-14T20:19:00.000Z" define uma data de início de 14 de julho de 2020 às 20:19 UTC. 
+
+
+| `mnodeLogs` | Booleano | Defina este parâmetro para `true` Incluir os registros do nó de gerenciamento. 
+
+
+| `storageCrashDumps` | Booleano | Defina este parâmetro para `true` Incluir registros de depuração de falhas do nó de armazenamento. 
+
+
+| `storageLogs` | Booleano | Defina este parâmetro para `true` Incluir registros de nós de armazenamento. 
+
+
+| `storageNodeIds` | matriz UUID | Se `storageLogs` está definido para `true` Preencha este parâmetro com os IDs dos nós do cluster de armazenamento para limitar a coleta de logs a esses nós de armazenamento específicos.  Use o `GET https://[management node IP]/logs/1/bundle/options` endpoint para visualizar todos os IDs de nó possíveis que você pode usar. 
+|===
+.. Selecione *Executar* para iniciar a coleta de logs.  A resposta deverá ser semelhante à seguinte:
++
+[listing]
+----
+{
+  "_links": {
+    "self": "https://10.1.1.5/logs/1/bundle"
+  },
+  "taskId": "4157881b-z889-45ce-adb4-92b1843c53ee",
+  "taskLink": "https://10.1.1.5/logs/1/bundle"
+}
+----
+
+
+. Verifique o status da tarefa de coleta de logs:
++
+.. Selecione *GET /bundle*.
+.. Selecione *Experimentar*.
+.. Selecione *Executar* para retornar o status da tarefa de coleta.
+.. Deslize a tela até o final do corpo da resposta.
++
+Você deveria ver um `percentComplete` Atributo que detalha o progresso da coleta.  Se a coleção estiver completa, o `downloadLink` O atributo contém o link completo para download, incluindo o nome do arquivo do pacote de logs.
+
+.. Copie o nome do arquivo no final do `downloadLink` atributo.
+
+
+. Baixe o pacote de logs coletados:
++
+.. Selecione *GET /bundle/{filename}*.
+.. Selecione *Experimentar*.
+.. Cole o nome do arquivo que você copiou anteriormente no `filename` campo de texto do parâmetro.
+.. Selecione *Executar*.
++
+Após a execução, um link para download aparece no corpo da resposta.
+
+.. Selecione *Baixar arquivo* e salve o arquivo resultante em seu computador.
++
+O pacote de logs está em um arquivo compactado no formato .tgz do UNIX.
+
+
+
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

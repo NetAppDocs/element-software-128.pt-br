@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_session_fibre_channel.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: O objeto de sessão contém informações sobre cada sessão Fibre Channel visível para o cluster e em quais portas de destino ela está visível.  Você pode recuperar essas informações com o método de API ListFibreChannelSessions. 
+---
+= sessão (Fibre Channel)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de sessão contém informações sobre cada sessão Fibre Channel visível para o cluster e em quais portas de destino ela está visível.  Você pode recuperar essas informações com o `ListFibreChannelSessions` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+iniciador WWPN
+ a| 
+O nome WWPN (World Wide Port Name) do iniciador que está conectado à porta de destino.
+ a| 
+corda
+
+
+
+ a| 
+ID do nó
+ a| 
+O nó que detém a sessão Fibre Channel.
+ a| 
+inteiro
+
+
+
+ a| 
+iniciador
+ a| 
+Informações sobre o servidor iniciador desta sessão Fibre Channel.  Membros:
+
+* Alias: O nome amigável atribuído ao iniciador.
+* Atributos: Os atributos deste iniciador.
+* initiatorID: O ID deste iniciador.
+* initiatorName: O nome deste iniciador.
+* volumeAccessGroups: Uma lista de grupos de acesso a volumes associados a este iniciador.
+
+ a| 
+objeto JSON
+
+
+
+ a| 
+ID do serviço
+ a| 
+O ID do serviço da porta de destino envolvida nesta sessão.
+ a| 
+inteiro
+
+
+
+ a| 
+alvoWWPN
+ a| 
+O WWPN da porta de destino envolvida nesta sessão.
+ a| 
+corda
+
+
+
+ a| 
+ID do grupo de acesso ao volume
+ a| 
+O ID do grupo de acesso ao volume ao qual o initiatorWWPN pertence.  Se não estiver em um grupo de acesso a volume, esse valor será nulo.
+ a| 
+inteiro
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listfibrechannelsessions.adoc[ListFibreChannelSessions]

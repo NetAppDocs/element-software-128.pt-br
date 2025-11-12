@@ -1,0 +1,351 @@
+---
+permalink: api/reference_element_api_modifyschedule.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,schedule,scheduled,delete,pause,modifyschedule 
+summary: Você pode usar o ModifySchedule para alterar os intervalos em que um instantâneo agendado ocorre.  Você também pode excluir ou pausar um agendamento usando este método. 
+---
+= ModificarAgenda
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar `ModifySchedule` Alterar os intervalos em que ocorre um instantâneo agendado.  Você também pode excluir ou pausar um agendamento usando este método.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+atributos
+ a| 
+Utilize para alterar a frequência com que a captura de tela é realizada. Valores possíveis:
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+objeto JSON
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+horas
+ a| 
+Número de horas entre as capturas de tela ou hora em que a captura de tela ocorrerá no modo Dias da Semana ou Dias do Mês. Os valores válidos são de 0 a 24.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+nome
+ a| 
+O nome da imagem.  Caso nenhum nome seja inserido, a data e a hora em que a foto do grupo foi tirada serão utilizadas.  O comprimento máximo permitido para o nome é de 244 caracteres.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+minutos
+ a| 
+Número de minutos entre as capturas de tela ou minuto em que a captura de tela ocorrerá no modo Dias da Semana ou Dias do Mês. Os valores válidos são de 0 a 59.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+| últimoStatusDeExecução | O resultado ou status da última criação de instantâneo agendada. | corda | Nenhum | Não 
+
+
+ a| 
+pausado
+ a| 
+Indica se a programação deve ser pausada ou não.  Valores válidos:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+recorrente
+ a| 
+Indica se a programação será recorrente ou não.  Os valores válidos são:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+executarPróximoIntervalo
+ a| 
+Use esta opção para escolher se o snapshot deve ou não ser executado na próxima vez que o agendador estiver ativo.  Valores válidos:
+
+* `true`
+* `false`
+
+
+Quando definido como verdadeiro, o snapshot agendado é executado na próxima vez que o agendador estiver ativo e, em seguida, é redefinido para falso.
+ a| 
+booleano
+ a| 
+falso
+ a| 
+Não
+
+
+
+ a| 
+ID do agendamento
+ a| 
+Identificador único da programação.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+nomeDoAgenda
+ a| 
+Nome único para a programação.  O comprimento máximo permitido para o nome da programação é de 244 caracteres.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+tipo de agendamento
+ a| 
+Indica o tipo de cronograma a ser criado.  O único valor suportado é `snapshot` .
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+O nome exclusivo atribuído ao agendamento, o período de retenção do instantâneo criado e o ID do volume a partir do qual o instantâneo foi criado.  Valores válidos:
+
+* `enableRemoteReplication`Indica se o snapshot deve ser incluído na replicação remota.  (booleano)
+* `ensureSerialCreation`Especifica se a criação de um novo snapshot deve ser permitida caso a replicação de um snapshot anterior esteja em andamento.  (booleano)
+* `name`: O nome da captura de tela a ser usada.  (corda)
+* `retention`: O período de tempo em que o instantâneo é mantido.  Dependendo da hora, ele é exibido em um dos seguintes formatos:
++
+** `fifo`O instantâneo é mantido com base no princípio FIFO (primeiro a entrar, primeiro a sair).  Se estiver vazio, o instantâneo será mantido para sempre.  (corda)
+** HH:mm:ss
+
+
+* `volumeID`: O ID do volume a ser incluído no snapshot.  (inteiro)
+* `volumes`: Uma lista de IDs de volume a serem incluídos no snapshot do grupo.  (matriz de inteiros)
+
+ a| 
+link:reference_element_api_schedule.html["agendar"^]
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+O rótulo usado pelo software SnapMirror para especificar a política de retenção de snapshots em um endpoint SnapMirror .
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+para ser excluído
+ a| 
+Indica se o agendamento está marcado para eliminação.  Valores válidos:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+data de início
+ a| 
+Indica a data em que o agendamento começou ou começará pela primeira vez.
+ a| 
+string de data ISO 8601
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+dias do mês
+ a| 
+Os dias do mês em que será tirada uma fotografia. Os valores válidos são de 1 a 31.
+ a| 
+matriz de inteiros
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+dias da semana
+ a| 
+Dia da semana em que a captura de tela deve ser feita.  O dia da semana começa no domingo com o valor 0 e um deslocamento de 1.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+agendar
+ a| 
+Um objeto contendo os atributos de agendamento modificados.
+ a| 
+xref:reference_element_api_schedule.adoc[agendar]
+
+|===
+
+
+== Exemplo de solicitação
+
+[listing]
+----
+{
+  "method": "ModifySchedule",
+  "params": {
+    "scheduleName" : "Chicago",
+    "scheduleID" : 3
+    },
+  "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+            },
+      "hasError": false,
+      "hours": 5,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 3,
+      "scheduleInfo": {
+        "volumeID": "2"
+            },
+      "scheduleName": "Chicago",
+      "scheduleType": "Snapshot",
+      "startingDate": null,
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 2,
+          "offset": 1
+      }
+      ]
+    }
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

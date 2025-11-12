@@ -1,0 +1,48 @@
+---
+permalink: storage/task_system_manage_mfa_set_up_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: idp, json, mfa, cluster, metadata, saml 
+summary: Você pode usar essas etapas básicas por meio da API Element para configurar seu cluster para usar a autenticação multifator.  Os detalhes de cada método da API podem ser encontrados na documentação de referência da API do Element. 
+---
+= Configure a autenticação multifator
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A autenticação multifator (MFA) utiliza um provedor de identidade (IdP) de terceiros por meio da linguagem de marcação de asserção de segurança (SAML) para gerenciar as sessões do usuário.  A MFA permite que os administradores configurem fatores adicionais de autenticação conforme necessário, como senha e mensagem de texto, ou senha e mensagem de e-mail.
+
+Você pode usar essas etapas básicas por meio da API Element para configurar seu cluster para usar a autenticação multifator.
+
+Os detalhes de cada método da API podem ser encontrados no link:../api/concept_element_api_about_the_api.html["Referência da API de Elementos"].
+
+. Crie uma nova configuração de provedor de identidade (IdP) de terceiros para o cluster chamando o seguinte método da API e passando os metadados do IdP em formato JSON: `CreateIdpConfiguration`
++
+Os metadados do IdP, em formato de texto simples, são obtidos do IdP de terceiros.  Esses metadados precisam ser validados para garantir que estejam formatados corretamente em JSON.  Existem inúmeros aplicativos de formatação JSON disponíveis que você pode usar, por exemplo: https://freeformatter.com/json-escape.html.
+
+. Recupere os metadados do cluster, por meio do spMetadataUrl, para copiar para o IdP de terceiros, chamando o seguinte método da API: `ListIdpConfigurations`
++
+spMetadataUrl é uma URL usada para recuperar metadados do provedor de serviços do cluster para o IdP, a fim de estabelecer uma relação de confiança.
+
+. Configure as declarações SAML no IdP de terceiros para incluir o atributo "`NameID`" para identificar exclusivamente um usuário para fins de registro de auditoria e para que o Single Logout funcione corretamente.
+. Crie uma ou mais contas de usuário administrador de cluster autenticadas por um IdP de terceiros para autorização, chamando o seguinte método de API:``AddIdpClusterAdmin``
++
+
+NOTE: O nome de usuário do administrador do cluster IdP deve corresponder ao mapeamento de nome/valor do atributo SAML para obter o efeito desejado, conforme mostrado nos exemplos a seguir:
+
++
+** email=bob@company.com -- onde o IdP está configurado para liberar um endereço de e-mail nos atributos SAML.
+** group=cluster-administrator - onde o IdP está configurado para liberar uma propriedade de grupo à qual todos os usuários devem ter acesso.  Note que a correspondência entre o nome e o valor do atributo SAML diferencia maiúsculas de minúsculas por motivos de segurança.
+
+
+. Habilite a MFA para o cluster chamando o seguinte método da API: `EnableIdpAuthentication`
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

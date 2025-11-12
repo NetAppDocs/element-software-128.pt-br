@@ -1,0 +1,38 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html 
+sidebar: sidebar 
+keywords: ntp, broadcasts, server, config, server list, broadcast client 
+summary: 'Ao usar o modo de transmissão, você pode instruir cada nó em um cluster a escutar na rede as mensagens de transmissão do Protocolo de Tempo de Rede (NTP) de um servidor específico.' 
+---
+= Configure o cluster para escutar transmissões NTP.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao usar o modo de transmissão, você pode instruir cada nó em um cluster a escutar na rede as mensagens de transmissão do Protocolo de Tempo de Rede (NTP) provenientes de um servidor específico.
+
+O NTP é usado para sincronizar relógios em uma rede.  A conexão a um servidor NTP interno ou externo deve fazer parte da configuração inicial do cluster.
+
+.O que você vai precisar
+* Você precisa ter privilégios de administrador de cluster para configurar essa opção.
+* Você precisa configurar um servidor NTP em sua rede como um servidor de transmissão (broadcast).
+
+
+.Passos
+. Clique em *Cluster* > *Configurações*.
+. Insira na lista de servidores o(s) servidor(es) NTP que estão usando o modo de transmissão.
+. Em Configurações do Protocolo de Tempo de Rede, selecione *Sim* para usar um cliente de transmissão.
+. Para configurar o cliente de transmissão, no campo *Servidor*, insira o servidor NTP que você configurou no modo de transmissão.
+. Clique em *Salvar alterações*.
+
+
+
+
+== Encontre mais informações
+
+* link:../storage/task_system_manage_cluster_ntp_configure.html["Configure os servidores Network Time Protocol (NTP) para que o cluster possa realizar consultas."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

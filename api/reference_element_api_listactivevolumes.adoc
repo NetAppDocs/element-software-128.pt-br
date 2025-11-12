@@ -1,0 +1,111 @@
+---
+permalink: api/reference_element_api_listactivevolumes.html 
+sidebar: sidebar 
+keywords: active,volume,volumes,list,listing,listactivevolumes,cluster 
+summary: 'Você pode usar o método ListActiveVolumes para obter a lista de volumes ativos atualmente no sistema.  A lista de volumes é ordenada por VolumeID e pode ser retornada em várias partes (páginas).' 
+---
+= ListarVolumesAtivos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ListActiveVolumes` Método para obter a lista de volumes ativos atualmente no sistema.  A lista de volumes é ordenada por VolumeID e pode ser retornada em várias partes (páginas).
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+incluirVolumesVirtuais
+ a| 
+Por padrão, os volumes virtuais estão incluídos na resposta.  Para excluir volumes virtuais, defina como falso.
+ a| 
+booleano
+ a| 
+verdadeiro
+ a| 
+Não
+
+
+
+ a| 
+startVolumeID
+ a| 
+Iniciando o retorno do VolumeID.  Caso não exista nenhum volume com esse VolumeID, o próximo volume na ordem de VolumeID será usado como início da lista.  Para navegar pela lista, passe o VolumeID do último volume na resposta anterior + 1.
+ a| 
+inteiro
+ a| 
+0
+ a| 
+Não
+
+
+
+ a| 
+limite
+ a| 
+Número máximo de objetos de informação de volume a serem retornados.  0 (zero) retorna todos os volumes (ilimitados).
+ a| 
+inteiro
+ a| 
+(ilimitado)
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+volumes
+ a| 
+Lista de volumes ativos.
+ a| 
+xref:reference_element_api_volume.adoc[volume]variedade
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "ListActiveVolumes",
+   "params": {
+      "startVolumeID"  : 0,
+      "limit" : 1000
+   },
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Devido à extensão deste exemplo de resposta, ele está documentado em um tópico suplementar.
+
+
+
+== Novidade desde a versão
+
+9,6

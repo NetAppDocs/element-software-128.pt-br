@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_fips_enable_fips_140_2_for_https.html 
+sidebar: sidebar 
+keywords: FIPS 140-2, enable fips, federal information processing standards, ncsm 
+summary: Você pode usar o método de API EnableFeature para habilitar o modo de operação FIPS 140-2 para comunicações HTTPS. 
+---
+= Habilite o padrão FIPS 140-2 para HTTPS no seu cluster.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o método de API EnableFeature para habilitar o modo de operação FIPS 140-2 para comunicações HTTPS.
+
+Com o software NetApp Element , você pode optar por ativar o modo de operação FIPS 140-2 (Federal Information Processing Standards) em seu cluster.  Habilitar este modo ativa o Módulo de Segurança Criptográfica da NetApp (NCSM) e utiliza criptografia certificada FIPS 140-2 Nível 1 para toda a comunicação via HTTPS com a interface do usuário e a API do NetApp Element .
+
+
+IMPORTANT: Depois de ativar o modo FIPS 140-2, ele não poderá ser desativado.  Quando o modo FIPS 140-2 está ativado, cada nó do cluster reinicia e executa um autoteste para garantir que o NCSM esteja corretamente habilitado e operando no modo certificado FIPS 140-2.  Isso causa uma interrupção nas conexões de gerenciamento e armazenamento no cluster.  Você deve planejar cuidadosamente e habilitar esse modo somente se o seu ambiente precisar do mecanismo de criptografia que ele oferece.
+
+Para obter mais informações, consulte as informações da API Element.
+
+Segue abaixo um exemplo de solicitação à API para habilitar o FIPS:
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "fips"
+    },
+    "id": 1
+}
+----
+Após a ativação desse modo de operação, toda a comunicação HTTPS utiliza as cifras aprovadas pelo padrão FIPS 140-2.
+
+
+
+== Encontre mais informações
+
+* xref:reference_system_manage_fips_ssl_cipher_changes.adoc[Cifras SSL]
+* link:../api/concept_element_api_about_the_api.html["Gerencie o armazenamento com a API Element."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

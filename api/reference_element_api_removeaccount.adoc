@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_removeaccount.html 
+sidebar: sidebar 
+keywords: account,accounts,remove,removing,deleting,delete,purge,volume,volumes,removeaccount 
+summary: Você pode usar o método RemoveAccount para remover uma conta existente.  Você deve excluir e remover completamente todos os volumes associados à conta usando o comando DeleteVolume antes de poder remover a conta.  Se ainda houver volumes pendentes de exclusão na conta, você não poderá usar o comando RemoveAccount para remover a conta. 
+---
+= Remover conta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `RemoveAccount` Método para remover uma conta existente.  Você deve excluir e limpar todos os volumes associados à conta usando `DeleteVolume` antes de poder excluir a conta.  Se ainda houver volumes pendentes de exclusão na conta, você não poderá usar. `RemoveAccount` Para remover a conta.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID da conta
+ a| 
+O ID da conta a ser removida.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valor de retorno
+
+Este método não possui valor de retorno.
+
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao exemplo a seguir.
+
+[listing]
+----
+{
+   "method": "RemoveAccount",
+   "params": {
+     "accountID"  : 25
+   },
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+
+{
+ "id" : 1,
+ "result" : { }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+xref:reference_element_api_deletevolume.adoc[ExcluirVolume]

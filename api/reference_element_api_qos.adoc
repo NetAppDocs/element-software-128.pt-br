@@ -1,0 +1,74 @@
+---
+permalink: api/reference_element_api_qos.html 
+sidebar: sidebar 
+keywords: object,objects,QoS 
+summary: 'O objeto QoS contém informações sobre as configurações de Qualidade de Serviço (QoS) para volumes.  Volumes criados sem valores de QoS especificados são criados usando os valores padrão.  Você pode encontrar os valores padrão usando o método GetDefaultQoS.' 
+---
+= Qualidade de Serviço
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto QoS contém informações sobre as configurações de Qualidade de Serviço (QoS) para volumes.  Volumes criados sem valores de QoS especificados são criados usando os valores padrão.  Você pode encontrar os valores padrão usando o `GetDefaultQoS` método.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+burstIOPS
+ a| 
+O pico máximo de IOPS de 4 KB permitido é de apenas alguns instantes de tempo.  Permite picos de atividade de E/S acima do valor normal de maxIOPS.
+ a| 
+inteiro
+
+
+
+ a| 
+tempo de rajada
+ a| 
+O período de tempo permitido para burstIOPS.  O valor retornado é representado em segundos.  Esse valor é calculado pelo sistema com base no IOPS definido para QoS.
+ a| 
+inteiro
+
+
+
+ a| 
+curva
+ a| 
+A curva é um conjunto de pares chave-valor.  As chaves representam os tamanhos de entrada/saída em bytes.  Os valores representam o custo de realizar uma IOP em um tamanho de E/S específico.  A curva é calculada em relação a uma operação de 4096 bytes configurada para 100 IOPS.
+ a| 
+objeto JSON
+
+
+
+ a| 
+maxIOPS
+ a| 
+O valor máximo desejado de 4 KB de IOPS permitido durante um período prolongado.
+ a| 
+inteiro
+
+
+
+ a| 
+minIOPS
+ a| 
+O mínimo desejado de 4 KB de IOPS para garantir.  O número de IOPS permitidos só cairá abaixo desse nível se todos os volumes tiverem sido limitados ao seu valor mínimo de IOPS e ainda assim não houver capacidade de desempenho suficiente.
+ a| 
+inteiro
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_getdefaultqos.adoc[Obter QoS padrão]

@@ -1,0 +1,126 @@
+---
+permalink: api/reference_element_api_adddrives.html 
+sidebar: sidebar 
+keywords: drives,adding,cluster,drive,add,adddrives 
+summary: Você pode usar o método AddDrives para adicionar uma ou mais unidades disponíveis ao cluster, permitindo que as unidades hospedem uma parte dos dados do cluster. 
+---
+= AdicionarUnidades
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `AddDrives` Método para adicionar uma ou mais unidades disponíveis ao cluster, permitindo que as unidades hospedem uma parte dos dados do cluster.
+
+Ao adicionar um nó de armazenamento ao cluster ou instalar novas unidades em um nó existente, as novas unidades são marcadas como disponíveis e devem ser adicionadas por meio do comando AddDrives antes de poderem ser utilizadas.  Use oxref:reference_element_api_listdrives.adoc[ListDrives] Método para exibir as unidades que estão disponíveis para serem adicionadas.  Ao adicionar uma unidade, o sistema determina automaticamente o tipo de unidade que deve ser utilizada.
+
+O método é assíncrono e retorna assim que os processos para rebalancear as unidades no cluster forem iniciados.  No entanto, pode levar mais tempo para que os dados no cluster sejam reequilibrados usando as unidades recém-adicionadas; o reequilíbrio continua mesmo após a conclusão da chamada do método AddDrives.  Você pode usar oxref:reference_element_api_getasyncresult.adoc[ObterResultadoAssíncrono] Método para consultar o asyncHandle retornado pelo método.  Após o método AddDrives retornar, você pode usar oxref:reference_element_api_listsyncjobs.adoc[ListSyncJobs] Método para acompanhar o progresso do rebalanceamento de dados com as novas unidades.
+
+
+NOTE: Ao adicionar várias unidades, é mais eficiente adicioná-las em uma única chamada do método AddDrives, em vez de vários métodos individuais, cada um para uma única unidade.  Isso reduz a quantidade de balanceamento de dados necessário para estabilizar a carga de armazenamento no cluster.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+dirige
+ a| 
+Informações sobre cada unidade a ser adicionada ao cluster. Valores possíveis:
+
+* driveID: O ID da unidade a ser adicionada (número inteiro).
+* tipo: O tipo de unidade a ser adicionada (string).  Os valores válidos são "slice", "block" ou "volume".  Caso seja omitido, o sistema atribui o tipo correto.
+
+ a| 
+matriz de objetos JSON
+ a| 
+Nenhum
+ a| 
+Sim (o tipo é opcional)
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+manipulador assíncrono
+ a| 
+Identifica o valor utilizado para obter o resultado da operação.
+ a| 
+inteiro
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "AddDrives",
+  "params": {
+    "drives": [
+      {
+        "driveID": 1,
+        "type": "slice"
+      },
+      {
+        "driveID": 2,
+        "type": "block"
+      },
+      {
+        "driveID": 3,
+        "type": "block"
+      }
+    ]
+  }
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result" : {
+    "asyncHandle": 1
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_getasyncresult.adoc[ObterResultadoAssíncrono]
+* xref:reference_element_api_listdrives.adoc[ListDrives]
+* xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]
+

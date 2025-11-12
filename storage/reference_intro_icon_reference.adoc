@@ -1,0 +1,106 @@
+---
+permalink: storage/reference_intro_icon_reference.html 
+sidebar: sidebar 
+keywords: icons, element interface, actions, system resources, quick reference 
+summary: A interface do software NetApp Element exibe ícones para representar as ações que você pode realizar nos recursos do sistema. 
+---
+= Ícones na interface do Elemento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A interface do software NetApp Element exibe ícones para representar as ações que você pode realizar nos recursos do sistema.
+
+A tabela a seguir fornece uma referência rápida:
+
+|===
+
+
+| Ícone | Descrição 
+
+
+ a| 
+image:../media/element_icon_action.gif["Ícone de ações na interface web do Element OS"]
+ a| 
+Ações
+
+
+
+ a| 
+image:../media/element_icon_backupto.gif["Ícone de backup na interface web do Element OS"]
+ a| 
+Fazer backup para
+
+
+
+ a| 
+image:../media/element_icon_clone.gif["Ícone de clonagem na interface web do Element OS"]
+ a| 
+Clonar ou copiar
+
+
+
+ a| 
+image:../media/element_icon_delete.gif["Ícone de exclusão na interface web do Element OS"]
+ a| 
+Excluir ou limpar
+
+
+
+ a| 
+image:../media/element_icon_edit.gif["Editar ícone na interface web do Element OS"]
+ a| 
+Editar
+
+
+
+ a| 
+image:../media/element_icon_filter.gif["Ícone de filtro na interface web do Element OS"]
+ a| 
+Filtro
+
+
+
+ a| 
+image:../media/element_icon_pair.gif["Ícone de par na interface web do Element OS"]
+ a| 
+Par
+
+
+
+ a| 
+image:../media/element_icon_refresh.gif["Ícone de atualização na interface web do Element OS"]
+ a| 
+Atualizar
+
+
+
+ a| 
+image:../media/element_icon_restore.gif["Ícone de restauração na interface web do Element OS"]
+ a| 
+Restaurar
+
+
+
+ a| 
+image:../media/element_icon_restorefrom.gif["Restaurar a partir do ícone na interface web do Element OS"]
+ a| 
+Restaurar de
+
+
+
+ a| 
+image:../media/element_icon_rollback.gif["Ícone de reversão na interface web do Element OS"]
+ a| 
+Reverter
+
+
+
+ a| 
+image:../media/element_icon_snapshot.gif["Ícone de captura de tela na interface web do Element OS"]
+ a| 
+Instantâneo
+
+|===

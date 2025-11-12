@@ -1,0 +1,61 @@
+---
+permalink: api/reference_element_api_deleteallsupportbundles.html 
+sidebar: sidebar 
+keywords: support,bundle,delete,deleting,DeleteAllSupportBundles 
+summary: Você pode usar o método DeleteAllSupportBundles para excluir todos os pacotes de suporte gerados com o método de API CreateSupportBundle. 
+---
+= ExcluirTodosOsPacotesDeSuporte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `DeleteAllSupportBundles` método para excluir todos os pacotes de suporte gerados com o `CreateSupportBundle` Método da API.
+
+
+
+== Parâmetros
+
+Este método não possui parâmetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método não possui valores de retorno.
+
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "DeleteAllSupportBundles",
+   "params": {}
+  },
+  "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+ }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

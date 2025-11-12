@@ -1,0 +1,23 @@
+---
+permalink: storage/task_system_manage_cluster_terms_disable_the_terms_of_use_banner.html 
+sidebar: sidebar 
+keywords: terms of use banner, disable 
+summary: Você pode desativar o banner dos Termos de Uso.  Com o banner desativado, o usuário não precisa mais aceitar os termos de uso ao utilizar a interface do Element. 
+---
+= Desative o banner dos Termos de Uso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode desativar o banner dos Termos de Uso.  Com o banner desativado, o usuário não precisa mais aceitar os termos de uso ao utilizar a interface do Element.
+
+* Você precisa ter privilégios de administrador de cluster para configurar os Termos de Uso.
+* Certifique-se de que os Termos de Uso estejam ativados.
++
+.. Clique em *Usuários* > *Termos de Uso*.
+.. Clique em *Desativar*.
+
+
+

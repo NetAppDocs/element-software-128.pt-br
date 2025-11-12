@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_getclusterinfo.html 
+sidebar: sidebar 
+keywords: cluster,get,info,getting,getclusterinfo 
+summary: Você pode usar o método GetClusterInfo para retornar informações de configuração sobre o cluster. 
+---
+= Obter informações do cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetClusterInfo` Método para retornar informações de configuração sobre o cluster.
+
+
+
+== Parâmetros
+
+Este método não possui parâmetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+clusterInfo
+ a| 
+Informações do cluster.
+ a| 
+xref:reference_element_api_clusterinfo.adoc[clusterInfo]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "GetClusterInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+    "id": null,
+    "result": {
+        "clusterInfo": {
+            "attributes": {},
+            "defaultProtectionScheme": "doubleHelix",
+            "enabledProtectionSchemes": [
+                "doubleHelix"
+            ],
+            "encryptionAtRestState": "disabled",
+            "ensemble": [
+                "10.10.10.32",
+                "10.10.10.33",
+                "10.10.10.34",
+                "10.10.10.35",
+                "10.10.10.36"
+            ],
+            "mvip": "10.10.11.225",
+            "mvipInterface": "Bond1G",
+            "mvipNodeID": 1,
+            "mvipVlanTag": "0",
+            "name": "ClusterName",
+            "repCount": 2,
+            "softwareEncryptionAtRestState": "disabled",
+            "supportedProtectionSchemes": [
+                "doubleHelix"
+            ],
+            "svip": "10.10.10.111",
+            "svipInterface": "Bond10G",
+            "svipNodeID": 1,
+            "svipVlanTag": "0",
+            "uniqueID": "ahf7",
+            "uuid": "bcfd04b6-9151-4b3a-a6fa-bca22dd145cd",
+            "volumeLoadBalanceOnActualIopsState": "enabled"
+        }
+    }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

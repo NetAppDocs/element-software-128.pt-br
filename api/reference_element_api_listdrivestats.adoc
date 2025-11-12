@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_listdrivestats.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,drive,drives,stats,statistics,listdrivestats 
+summary: Você pode usar o método ListDriveStats para listar as medições de atividade de alto nível para várias unidades no cluster.  Por padrão, esse método retorna estatísticas para todas as unidades no cluster, e essas medições são cumulativas desde a adição da unidade ao cluster.  Alguns valores retornados por este método são específicos para unidades de bloco, e outros são específicos para unidades de metadados. 
+---
+= ListDriveStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ListDriveStats` Método para listar medições de atividade de alto nível para várias unidades no cluster.  Por padrão, esse método retorna estatísticas para todas as unidades no cluster, e essas medições são cumulativas desde a adição da unidade ao cluster.  Alguns valores retornados por este método são específicos para unidades de bloco, e outros são específicos para unidades de metadados.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+dirige
+ a| 
+Lista de IDs de unidades (driveID) para as quais retornar estatísticas de unidade.  Se você omitir esse parâmetro, as medições de todas as unidades serão retornadas.
+ a| 
+matriz de inteiros
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+Estatísticas do drive
+ a| 
+Lista de informações sobre a atividade de cada unidade.
+ a| 
+xref:reference_element_api_drivestats.adoc[Estatísticas do drive]variedade
+
+
+
+ a| 
+erros
+ a| 
+Esta lista contém o ID da unidade e a mensagem de erro associada.  Está sempre presente e fica vazio se não houver erros.
+ a| 
+matriz de objetos JSON
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "ListDriveStats",
+  "params": {
+    "drives":[22,23]
+  }
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveStats": [
+      {
+        "driveID": 22,
+        "failedDieCount": 0,
+        "lifeRemainingPercent": 84,
+        "lifetimeReadBytes": 30171004403712,
+        "lifetimeWriteBytes": 103464755527680,
+        "powerOnHours": 17736,
+        "readBytes": 14656542,
+         "readOps": 3624,
+        "reallocatedSectors": 0,
+        "reserveCapacityPercent": 100,
+        "timestamp": "2016-03-01T00:19:24.782735Z",
+        "totalCapacity": 300069052416,
+        "usedCapacity": 1783735635,
+        "usedMemory": 879165440,
+        "writeBytes": 2462169894,
+        "writeOps": 608802
+      }
+    ],
+    "errors": [
+      {
+        "driveID": 23,
+        "exception": {
+          "message": "xStatCheckpointDoesNotExist",
+          "name": "xStatCheckpointDoesNotExist"
+        }
+      }
+    ]
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+xref:reference_element_api_getdrivestats.adoc[GetDriveStats]

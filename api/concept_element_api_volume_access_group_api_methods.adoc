@@ -1,0 +1,33 @@
+---
+permalink: api/concept_element_api_volume_access_group_api_methods.html 
+sidebar: sidebar 
+keywords: volume,access,group,method,methods,API,managing,manage 
+summary: Os métodos de grupo de acesso a volumes permitem adicionar, remover, visualizar e modificar grupos de acesso a volumes, que são coleções de volumes aos quais os usuários podem acessar usando iniciadores iSCSI ou Fibre Channel. 
+---
+= Métodos da API de grupo de acesso a volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os métodos de grupo de acesso a volumes permitem adicionar, remover, visualizar e modificar grupos de acesso a volumes, que são coleções de volumes aos quais os usuários podem acessar usando iniciadores iSCSI ou Fibre Channel.
+
+* xref:reference_element_api_addinitiatorstovolumeaccessgroup.adoc[AdicionarIniciadoresAoGrupoDeAcessoAoVolume]
+* xref:reference_element_api_addvolumestovolumeaccessgroup.adoc[Adicionar volumes ao grupo de acesso a volumes]
+* xref:reference_element_api_createvolumeaccessgroup.adoc[CriarGrupoDeAcessoAoVolume]
+* xref:reference_element_api_deletevolumeaccessgroup.adoc[ExcluirGrupoDeAcessoAoVolume]
+* xref:reference_element_api_listvolumeaccessgroups.adoc[Listar grupos de acesso ao volume]
+* xref:reference_element_api_removevolumesfromvolumeaccessgroup.adoc[Remover volumes do grupo de acesso a volumes]
+* xref:reference_element_api_removeinitiatorsfromvolumeaccessgroup.adoc[RemoverIniciadoresDoGrupoDeAcessoPorVolume]
+* xref:reference_element_api_modifyvolumeaccessgroup.adoc[Modificar grupo de acesso ao volume]
+* xref:reference_element_api_getvolumeaccessgroupefficiency.adoc[Obtenha a eficiência do grupo de acesso por volume]
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

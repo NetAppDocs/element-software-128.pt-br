@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_virtualnetwork.html 
+sidebar: sidebar 
+keywords: object,objects,virtualNetwork 
+summary: O objeto virtualNetwork contém informações sobre uma rede virtual específica.  Você pode usar o método de API ListVirtualNetworks para recuperar uma lista dessas informações para todas as redes virtuais no sistema. 
+---
+= Rede virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto virtualNetwork contém informações sobre uma rede virtual específica.  Você pode usar o `ListVirtualNetworks` Método da API para recuperar uma lista dessas informações para todas as redes virtuais do sistema.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+blocos de endereço
+ a| 
+O intervalo de blocos de endereços atualmente atribuídos à rede virtual.  Membros:
+
+* Disponível: Sequência binária de "1s" e "0s". "1" indica que o endereço IP está disponível e "0" indica que o IP não está disponível.  A sequência é lida da direita para a esquerda, sendo o dígito mais à direita o primeiro endereço IP na lista de blocos de endereços.
+* Tamanho: O tamanho deste bloco de endereços.
+* Início: O primeiro endereço IP do bloco.
+
+ a| 
+matriz de objetos JSON
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+
+
+
+ a| 
+nome
+ a| 
+O nome atribuído à rede virtual.
+ a| 
+corda
+
+
+
+ a| 
+máscara de rede
+ a| 
+O endereço IP da máscara de rede para a rede virtual.
+ a| 
+corda
+
+
+
+ a| 
+svip
+ a| 
+O endereço IP de armazenamento para a rede virtual.
+ a| 
+corda
+
+
+
+ a| 
+portal
+ a| 
+O gateway utilizado para a rede virtual.
+ a| 
+corda
+
+
+
+ a| 
+ID de rede virtual
+ a| 
+O identificador único para uma rede virtual.
+ a| 
+inteiro
+
+
+
+ a| 
+virtualNetworkTag
+ a| 
+O identificador da tag VLAN.
+ a| 
+inteiro
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listvirtualnetworks.adoc[Lista de redes virtuais]

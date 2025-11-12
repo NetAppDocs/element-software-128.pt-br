@@ -1,0 +1,47 @@
+---
+permalink: storage/task_data_protection_create_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, create, volumes, recurring schedule 
+summary: Você pode agendar a criação de um instantâneo de um ou mais volumes para ocorrer automaticamente em intervalos especificados. 
+---
+= Criar um cronograma instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode agendar a criação de um instantâneo de um ou mais volumes para ocorrer automaticamente em intervalos especificados.
+
+Ao configurar um agendamento de capturas instantâneas, você pode escolher intervalos de tempo com base nos dias da semana ou nos dias do mês.  Você também pode criar uma programação recorrente e especificar os dias, horas e minutos antes da próxima captura de tela.
+
+Se você agendar a captura de um instantâneo para um período que não seja divisível por 5 minutos, a captura será executada no próximo período divisível por 5 minutos.  Por exemplo, se você agendar a captura de um instantâneo para ser executada às 12:42:00 UTC, ela será executada às 12:45:00 UTC.  Não é possível agendar a captura de um instantâneo em intervalos inferiores a 5 minutos.
+
+A partir do Element 12.5, você pode habilitar a criação serial e selecionar a opção para manter os snapshots com base no princípio FIFO (First-In-First-Out) na interface do usuário.
+
+* A opção *Habilitar Criação Serial* especifica que apenas um snapshot é replicado por vez.  A criação de um novo snapshot falha quando a replicação de um snapshot anterior ainda está em andamento.  Se a caixa de seleção não estiver marcada, a criação de um snapshot será permitida mesmo quando outra replicação de snapshot ainda estiver em andamento.
+* A opção *FIFO* adiciona a capacidade de manter um número consistente dos snapshots mais recentes.  Quando a caixa de seleção estiver marcada, os instantâneos serão mantidos em ordem de chegada (FIFO).  Após a fila de snapshots FIFO atingir sua profundidade máxima, o snapshot FIFO mais antigo é descartado quando um novo snapshot FIFO é inserido.
+
+
+.Passos
+. Selecione *Proteção de Dados* > *Agendamentos*.
+. Selecione *Criar agendamento*.
+. No campo *CSV de IDs de Volume*, insira um único ID de volume ou uma lista de IDs de volume separados por vírgula para incluir na operação de snapshot.
+. Insira um novo nome para o cronograma.
+. Selecione um tipo de horário e configure-o a partir das opções fornecidas.
+. *Opcional:* Selecione *Agendamento Recorrente* para repetir o agendamento de capturas instantâneas indefinidamente.
+. *Opcional:* Insira um nome para o novo instantâneo no campo *Nome do Novo Instantâneo*.
++
+Se você deixar o campo em branco, o sistema usará a data e a hora da criação do instantâneo como nome.
+
+. *Opcional:* Selecione a caixa de seleção *Incluir snapshots na replicação quando emparelhados* para garantir que os snapshots sejam capturados na replicação quando o volume pai estiver emparelhado.
+. *Opcional:* Selecione a caixa de seleção *Habilitar Criação de Serial* para garantir que apenas um snapshot seja replicado por vez.
+. Para definir o período de retenção do instantâneo, selecione uma das seguintes opções:
++
+** *Opcional:* Selecione a caixa de seleção *FIFO (First In First Out)* para manter um número consistente dos snapshots mais recentes.
+** Selecione *Manter para sempre* para reter o instantâneo no sistema indefinidamente.
+** Selecione *Definir período de retenção* e use as caixas de seleção de data para escolher o período de tempo durante o qual o sistema manterá o instantâneo.
+
+
+. Selecione *Criar agendamento*.
+

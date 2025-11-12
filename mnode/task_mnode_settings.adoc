@@ -1,0 +1,115 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_settings.html 
+summary: Você pode modificar e testar as configurações de rede, cluster e sistema do nó de gerenciamento. 
+keywords: netapp, management node ui, mnode ui, network settings, test network, cluster settings 
+---
+= Modifique e teste as configurações de rede, cluster e sistema do nó de gerenciamento.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode modificar e testar as configurações de rede, cluster e sistema do nó de gerenciamento.
+
+* <<Atualizar configurações de rede do nó de gerenciamento>>
+* <<Atualizar configurações do cluster de nós de gerenciamento>>
+* <<Teste as configurações do nó de gerenciamento.>>
+
+
+
+
+== Atualizar configurações de rede do nó de gerenciamento
+
+Na guia Configurações de Rede da interface de usuário do nó de gerenciamento por nó, você pode modificar os campos da interface de rede do nó de gerenciamento.
+
+. Abra a interface de gerenciamento de nós por nó.
+. Selecione a aba *Configurações de Rede*.
+. Visualize ou insira as seguintes informações:
++
+.. *Método*: Escolha um dos seguintes métodos para configurar a interface:
++
+*** `loopback`Utilizado para definir a interface de loopback IPv4.
+*** `manual`Utilizado para definir interfaces para as quais nenhuma configuração é feita por padrão.
+*** `dhop`Utilizado para obter um endereço IP via DHCP.
+*** `static`Utilizado para definir interfaces Ethernet com endereços IPv4 alocados estaticamente.
+
+
+.. *Velocidade de conexão*: A velocidade negociada pela placa de rede virtual.
+.. *Endereço IPv4*: O endereço IPv4 da rede eth0.
+.. *Máscara de sub-rede IPv4*: Subdivisões de endereços da rede IPv4.
+.. *Endereço de gateway IPv4*: Endereço de rede do roteador para enviar pacotes para fora da rede local.
+.. *Endereço IPv6*: O endereço IPv6 da rede eth0.
+.. *Endereço de gateway IPv6*: Endereço de rede do roteador para enviar pacotes para fora da rede local.
++
+
+IMPORTANT: As opções IPv6 não são suportadas para a versão 11.3 ou posterior do nó de gerenciamento.
+
+.. *MTU*: Tamanho máximo de pacote que um protocolo de rede pode transmitir.  Deve ser maior ou igual a 1500.  Se você adicionar uma segunda placa de rede de armazenamento, o valor deverá ser 9000.
+.. *Servidores DNS*: Interface de rede usada para comunicação em cluster.
+.. *Domínios de pesquisa*: Pesquise endereços MAC adicionais disponíveis para o sistema.
+.. *Estado*: Valores possíveis:
++
+*** `UpAndRunning`
+*** `Down`
+*** `Up`
+
+
+.. *Rotas*: Rotas estáticas para hosts ou redes específicas através da interface associada que as rotas estão configuradas para usar.
+
+
+
+
+
+
+== Atualizar configurações do cluster de nós de gerenciamento
+
+Na guia Configurações do Cluster da interface do usuário por nó do nó de gerenciamento, você pode modificar os campos da interface do cluster quando um nó estiver nos estados Disponível, Pendente, Pendente Ativo e Ativo.
+
+. Abra a interface de gerenciamento de nós por nó.
+. Selecione a aba *Configurações do Cluster*.
+. Visualize ou insira as seguintes informações:
++
+** *Função*: Função que o nó de gerenciamento desempenha no cluster.  Valor possível: `Management` .
+** *Versão*: Versão do software Element em execução no cluster.
+** *Interface padrão*: Interface de rede padrão usada para comunicação do nó de gerenciamento com o cluster que executa o software Element.
+
+
+
+
+
+
+== Teste as configurações do nó de gerenciamento.
+
+Após alterar as configurações de gerenciamento e de rede do nó de gerenciamento e confirmar as alterações, você pode executar testes para validar as alterações realizadas.
+
+. Abra a interface de gerenciamento de nós por nó.
+. Na interface de usuário do nó de gerenciamento, selecione *Testes do sistema*.
+. Complete qualquer uma das seguintes opções:
++
+.. Para verificar se as configurações de rede que você configurou são válidas para o sistema, selecione *Testar Configuração de Rede*.
+.. Para testar a conectividade de rede com todos os nós do cluster nas interfaces de 1G e 10G usando pacotes ICMP, selecione *Testar Ping*.
+
+
+. Veja ou insira o seguinte:
++
+** *Hosts*: Especifique uma lista de endereços ou nomes de host de dispositivos a serem pingados, separados por vírgulas.
+** *Tentativas*: Especifique o número de vezes que o sistema deve repetir o ping de teste.  Padrão: 5.
+** *Tamanho do Pacote*: Especifique o número de bytes a serem enviados no pacote ICMP que é enviado para cada endereço IP.  O número de bytes deve ser menor que o MTU máximo especificado na configuração de rede.
+** *Tempo limite em ms*: Especifique o número de milissegundos a aguardar por cada resposta de ping individual.  Valor padrão: 500 ms.
+** *Tempo limite total em segundos*: Especifique o tempo em segundos que o ping deve aguardar uma resposta do sistema antes de emitir a próxima tentativa de ping ou encerrar o processo.  Padrão: 5.
+** *Proibir fragmentação*: Habilite o sinalizador DF (não fragmentar) para os pacotes ICMP.
+
+
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

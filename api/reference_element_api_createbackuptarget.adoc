@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_createbackuptarget.html 
+sidebar: sidebar 
+keywords: create,creating,backup,target,CreateBackupTarget 
+summary: Você pode usar o CreateBackupTarget para criar e armazenar informações de destino de backup, de forma que não precise digitá-las novamente a cada vez que um backup for criado. 
+---
+= CriarAlvo de Backup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar `CreateBackupTarget` Para criar e armazenar informações de destino de backup, de forma que você não precise digitá-las novamente cada vez que um backup for criado.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+nome
+ a| 
+Nome para o destino do backup.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+ a| 
+Nenhum
+ a| 
+Sim (mas pode estar vazio)
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+backupTargetID
+ a| 
+Identificador único atribuído ao novo destino de backup.
+ a| 
+inteiro
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "CreateBackupTarget",
+   "params": {
+      "name": "mytargetbackup"
+   },
+"id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+      "backupTargetID": 1
+   }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

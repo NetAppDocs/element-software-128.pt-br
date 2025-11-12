@@ -1,0 +1,30 @@
+---
+permalink: storage/task_replication_pair_clusters_using_mvip_or_a_pairing_key.html 
+sidebar: sidebar 
+keywords: pair cluster, mvip, pairing key, cluster pairing 
+summary: É possível emparelhar um cluster de origem e um cluster de destino usando o MVIP do cluster de destino, desde que haja acesso de administrador de cluster a ambos os clusters.  Se o acesso de administrador de cluster estiver disponível apenas em um dos clusters de um par, uma chave de emparelhamento poderá ser usada no cluster de destino para concluir o emparelhamento. 
+---
+= Emparelhe clusters usando MVIP ou uma chave de emparelhamento.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É possível emparelhar um cluster de origem e um cluster de destino usando o MVIP do cluster de destino, desde que haja acesso de administrador de cluster a ambos os clusters.  Se o acesso de administrador de cluster estiver disponível apenas em um dos clusters de um par, uma chave de emparelhamento poderá ser usada no cluster de destino para concluir o emparelhamento.
+
+. Selecione um dos seguintes métodos para emparelhar clusters:
++
+** Emparelhar clusters usando MVIP: Use este método se houver acesso de administrador de cluster a ambos os clusters. Este método utiliza o MVIP do cluster remoto para emparelhar dois clusters.
+** Emparelhe clusters usando uma chave de emparelhamento: Use este método se o administrador do cluster tiver acesso a apenas um dos clusters. Este método gera uma chave de emparelhamento que pode ser usada no cluster de destino para concluir o emparelhamento do cluster.
+
+
+
+
+
+
+== Encontre mais informações
+
+* xref:task_replication_pair_cluster_using_mvip.adoc[Emparelhe clusters usando MVIP]
+* xref:task_replication_pair_cluster_using_pairing_key.adoc[Emparelhe clusters usando uma chave de emparelhamento.]
+

@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_networkinterfacestats.html 
+sidebar: sidebar 
+keywords: object,objects,stats,statistics,networkInterfacestats 
+summary: O objeto networkInterfaceStats contém estatísticas de rede e informações de erro para interfaces de rede individuais em um nó de armazenamento. 
+---
+= Estatísticas da interface de rede
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto networkInterfaceStats contém estatísticas de rede, o número total de pacotes transmitidos e recebidos, e informações de erro para interfaces de rede individuais em um nó de armazenamento.  Você pode usar o `ListNetworkInterfaceStats` Método da API para listar essas informações para as interfaces de rede em um nó de armazenamento.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+| colisões | Número de colisões detectadas. | inteiro 
+
+
+| nome | Nome da interface de rede. | corda 
+
+
+| rxBytes | O número total de bytes recebidos. | inteiro 
+
+
+| rxCrcErrors | Número de pacotes recebidos que continham erro de CRC. | inteiro 
+
+
+| rxDropped | O número de pacotes recebidos que foram descartados. | inteiro 
+
+
+| rxErrors | O número de pacotes inválidos ou malformados recebidos. | inteiro 
+
+
+| rxFifoErrors | O número de erros de estouro de FIFO nos dados recebidos. | inteiro 
+
+
+| rxFrameErrors | Número de pacotes recebidos com erros de alinhamento de quadros. | inteiro 
+
+
+| rxLengthErrors | Número de pacotes recebidos com erro de comprimento. | inteiro 
+
+
+| rxErrosMissados | O número de pacotes perdidos pelo receptor. | inteiro 
+
+
+| rxOverErrors | Número de erros de estouro do buffer circular do receptor para esta interface. | inteiro 
+
+
+| rxPackets | Número total de pacotes recebidos. | inteiro 
+
+
+| txBytes | O número total de bytes transmitidos. | inteiro 
+
+
+| txCarrierErrors | Número de erros de portadora no lado transmissor. | inteiro 
+
+
+| txErrors | O número de erros de transmissão de pacotes. | inteiro 
+
+
+| txFifoErrors | O número de erros de estouro de FIFO no lado da transmissão. | inteiro 
+
+
+| txPackets | O número total de pacotes transmitidos. | inteiro 
+|===

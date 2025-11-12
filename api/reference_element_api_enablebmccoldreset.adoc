@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_enablebmccoldreset.html 
+sidebar: sidebar 
+keywords: BMC cold reset,BMC reset,enable BMC 
+summary: 'Você pode usar o método EnableBmcColdReset para habilitar uma tarefa em segundo plano que reinicia periodicamente o Controlador de Gerenciamento da Placa-Mãe (BMC) para todos os nós do cluster.' 
+---
+= Habilitar reinicialização a frio do BMC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `EnableBmcColdReset` Método para habilitar uma tarefa em segundo plano que reinicia periodicamente o Controlador de Gerenciamento da Placa-Mãe (BMC) para todos os nós do cluster.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+tempo esgotado
+ a| 
+O intervalo de tempo entre as operações de reinicialização do BMC , em minutos.
+ a| 
+inteiro
+ a| 
+20160 minutos
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+cBmcResetDurationMinutes
+ a| 
+Retorna o tempo entre os intervalos de reinicialização.  O intervalo deve ser sempre 0 após a conclusão do comando.
+ a| 
+inteiro
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+    "method": "EnableBmcColdReset",
+    "params": {
+                "timeout": 36000
+    },
+    "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "cBmcResetDurationMinutes": 36000
+    }
+}
+----
+
+
+== Novidade desde a versão
+
+12,0

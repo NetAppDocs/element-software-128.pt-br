@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_access_ui.html 
+summary: Você pode acessar a interface de gerenciamento ou a interface da API REST. 
+keywords: netapp, mnode, management node, api, Element 
+---
+= Acesse o nó de gerenciamento
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir da versão 11.3 do software NetApp Element , o nó de gerenciamento contém duas interfaces de usuário: uma interface para gerenciar serviços baseados em REST e uma interface por nó para gerenciar configurações de rede e cluster, além de testes e utilitários do sistema operacional.
+
+Para clusters que executam o software Element versão 11.3 ou posterior, você pode usar uma das duas interfaces:
+
+* Ao usar a interface de usuário do nó de gerenciamento(`https:// [mNode IP}:442` ), você pode fazer alterações nas configurações de rede e cluster, executar testes de sistema ou usar utilitários do sistema.
+* Utilizando a interface de usuário da API REST integrada.(`https://[mNode IP}/mnode` ), você pode executar ou entender APIs relacionadas aos serviços do nó de gerenciamento, incluindo configuração do servidor proxy, atualizações de nível de serviço ou gerenciamento de ativos.
+
+
+
+
+== Acesse a interface de usuário de gerenciamento de cada nó.
+
+A partir da interface de usuário de cada nó, você pode acessar as configurações de rede e de cluster, além de utilizar testes e utilitários do sistema.
+
+.Passos
+. Acesse a interface de usuário específica do nó de gerenciamento inserindo o endereço IP do nó de gerenciamento seguido por :442.
++
+[listing]
+----
+https://[IP address]:442
+----
++
+image::mnode_per_node_442_ui.png[interface de usuário por nó de gerenciamento]
+
+. Insira o nome de usuário e a senha do nó de gerenciamento quando solicitado.
+
+
+
+
+== Acesse a interface de usuário da API REST do nó de gerenciamento.
+
+A partir da interface de usuário da API REST, você pode acessar um menu de APIs relacionadas a serviços que controlam os serviços de gerenciamento no nó de gerenciamento.
+
+.Passos
+. Para acessar a interface de usuário da API REST para serviços de gerenciamento, insira o endereço IP do nó de gerenciamento seguido por `/mnode` :
++
+[listing]
+----
+https://[IP address]/mnode
+----
++
+image::mnode_swagger_ui.png[Interface de usuário da API REST do nó de gerenciamento]
+
+. Selecione *Autorizar* ou qualquer ícone de cadeado e insira as credenciais de administrador do cluster para obter permissões de uso das APIs.
+
+
+[discrete]
+== Encontre mais informações
+
+* link:task_mnode_enable_activeIQ.html["Ative o Active IQ e o monitoramento NetApp."]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

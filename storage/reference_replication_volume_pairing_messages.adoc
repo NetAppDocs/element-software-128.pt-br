@@ -1,0 +1,44 @@
+---
+permalink: storage/reference_replication_volume_pairing_messages.html 
+sidebar: sidebar 
+keywords: volume pairing, messages, replication, data protection 
+summary: 'Você pode visualizar as mensagens de emparelhamento de volumes durante o processo inicial de emparelhamento na página "Pares de Volumes", na guia "Proteção de Dados".  Essas mensagens podem ser exibidas tanto na origem quanto no destino do par na lista de volumes replicados.' 
+---
+= mensagens de emparelhamento de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar as mensagens de emparelhamento de volumes durante o processo inicial de emparelhamento na página "Pares de Volumes", na guia "Proteção de Dados".  Essas mensagens podem ser exibidas tanto na origem quanto no destino do par na lista de volumes replicados.
+
+* *PausadoDesconectado*
++
+A replicação da origem ou as chamadas RPC de sincronização expiraram.  A conexão com o cluster remoto foi perdida.  Verifique as conexões de rede com o cluster.
+
+* *Retomando a conexão*
++
+A sincronização de replicação remota agora está ativa.  Iniciando o processo de sincronização e aguardando os dados.
+
+* *Retomando a sincronização RR*
++
+Uma única cópia em hélice dos metadados do volume está sendo feita para o cluster emparelhado.
+
+* *Retomando a Sincronização Local*
++
+Uma cópia em dupla hélice dos metadados do volume está sendo feita para o cluster emparelhado.
+
+* *Retomando a transferência de dados*
++
+A transferência de dados foi retomada.
+
+* *Ativo*
++
+Os volumes estão emparelhados e os dados estão sendo enviados da origem para o volume de destino, estando sincronizados.
+
+* *Parado*
++
+Não está ocorrendo nenhuma atividade de replicação.
+
+

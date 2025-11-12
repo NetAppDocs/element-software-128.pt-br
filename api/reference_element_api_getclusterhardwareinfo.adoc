@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_getclusterhardwareinfo.html 
+sidebar: sidebar 
+keywords: get,getting,cluster,hardware,getclusterhardwareinfo 
+summary: Você pode usar o método GetClusterHardwareInfo para recuperar o status e as informações de hardware de todos os nós Fibre Channel, nós iSCSI e unidades no cluster.  Isso geralmente inclui fabricantes, fornecedores, versões e outras informações de identificação de hardware associadas. 
+---
+= GetClusterHardwareInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetClusterHardwareInfo` Método para recuperar o status e as informações de hardware de todos os nós Fibre Channel, nós iSCSI e unidades no cluster.  Isso geralmente inclui fabricantes, fornecedores, versões e outras informações de identificação de hardware associadas.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+tipo
+ a| 
+Inclua apenas um dos seguintes tipos de informações de hardware na resposta. Valores possíveis:
+
+* unidades:
++
+As listas apenas fornecem informações na resposta.
+
+* nodes: Lista apenas as informações dos nós na resposta.
+* tudo: Inclui informações tanto da unidade quanto do nó na resposta.
+
+
+Caso esse parâmetro seja omitido, assume-se o tipo "todos".
+ a| 
+corda
+ a| 
+todos
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+clusterHardwareInfo
+ a| 
+Informações de hardware para todos os nós e unidades no cluster.  Cada objeto nesta saída é identificado com o ID do nó correspondente.
+ a| 
+xref:reference_element_api_hardwareinfo.adoc[informações de hardware]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "GetClusterHardwareInfo",
+    "params": {
+        "type": "all"
+    },
+    "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Devido à extensão deste exemplo de resposta, ele está documentado em um tópico suplementar.
+
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+xref:reference_element_api_response_example_getclusterhardwareinfo.adoc[GetClusterHardwareInfo]

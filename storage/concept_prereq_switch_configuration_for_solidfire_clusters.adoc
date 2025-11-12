@@ -1,0 +1,76 @@
+---
+permalink: storage/concept_prereq_switch_configuration_for_solidfire_clusters.html 
+sidebar: sidebar 
+keywords: cluster switch configuration, best practices for switch configuration, optimal storage performance, node hardware, traffic, cluster, Element software, best practices, switches, switch requirements, storage, performance, storage performance 
+summary: O sistema de software NetApp Element possui certos requisitos de comutação e práticas recomendadas para um desempenho de armazenamento ideal. 
+---
+= Configuração de switches para clusters que executam o software Element.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O sistema de software NetApp Element possui certos requisitos de comutação e práticas recomendadas para um desempenho de armazenamento ideal.
+
+Os nós de armazenamento requerem switches Ethernet de 10 ou 25 GbE, dependendo do hardware específico do nó, para serviços de armazenamento iSCSI e comunicação de serviços intra-cluster do nó.  Os switches 1GbE podem ser usados para estes tipos de tráfego:
+
+* Gerenciamento do cluster e dos nós
+* Tráfego de gerenciamento intra-cluster entre os nós
+* Tráfego entre os nós do cluster e a máquina virtual do nó de gerenciamento
+
+
+|===
+
+
+ a| 
+*Melhores Práticas:* Ao configurar switches Ethernet para tráfego de cluster, você deve implementar as seguintes melhores práticas:
+
+* Para tráfego que não seja de armazenamento no cluster, implemente um par de switches 1GbE para fornecer alta disponibilidade e balanceamento de carga.
+* Nos switches da rede de armazenamento, implante-os em pares e configure e utilize jumbo frames (tamanho MTU de 9216 bytes).  Isso garante uma instalação bem-sucedida e elimina erros de rede de armazenamento devido a pacotes fragmentados.
+
+
+|===
+A implantação do Element requer pelo menos dois segmentos de rede, um para cada um dos seguintes tipos de tráfego:
+
+* Gerenciamento
+* Armazenamento/Dados
+
+
+Dependendo dos modelos de nós de armazenamento da série H da NetApp e da configuração de cabeamento planejada, você pode separar fisicamente essas redes usando switches separados ou separá-las logicamente usando VLANs.  No entanto, na maioria das implementações, é necessário separar logicamente essas redes usando VLANs.
+
+Os nós de armazenamento precisam ser capazes de se comunicar antes, durante e depois da implantação.
+
+Se você estiver implementando redes de gerenciamento separadas para nós de armazenamento, certifique-se de que essas redes de gerenciamento possuam rotas de rede entre si.  Essas redes devem ter gateways atribuídos e deve haver uma rota entre os gateways.  Garanta que cada novo nó tenha um gateway atribuído para facilitar a comunicação entre os nós e as redes de gerenciamento.
+
+O NetApp Element requer o seguinte:
+
+* Todas as portas de switch conectadas aos nós de armazenamento NetApp da série H devem ser configuradas como portas de borda de spanning tree.
++
+** Em switches Cisco , dependendo do modelo do switch, da versão do software e do tipo de porta, você pode fazer isso com um dos seguintes comandos:
++
+*** `spanning-tree port type edge`
+*** `spanning-tree port type edge trunk`
+*** `spanning-tree portfast`
+*** `spanning-tree portfast trunk`
+
+
+** Nos switches Mellanox, você pode fazer isso com o `spanning-tree port type edge` comando.
+
+
+* Os switches que lidam com tráfego de armazenamento devem suportar velocidades de pelo menos 10GbE por porta (até 25GbE por porta é suportado).
+* Os switches que lidam com o tráfego de gerenciamento devem suportar velocidades de pelo menos 1GbE por porta.
+* Você deve configurar jumbo frames nas portas do switch que lidam com o tráfego de armazenamento.  Para que a instalação seja bem-sucedida, os servidores host devem ser capazes de enviar pacotes de 9000 bytes de ponta a ponta.
+* A latência de ida e volta da rede entre todos os nós de armazenamento não deve exceder 2 ms.
+
+
+Alguns nós oferecem recursos adicionais de gerenciamento fora da banda por meio de uma porta de gerenciamento dedicada.  Os nós NetApp H300S, H500S e H700S também permitem acesso IPMI pela porta A. Como prática recomendada, você deve facilitar o gerenciamento remoto configurando o gerenciamento fora de banda para todos os nós em seu ambiente.
+
+
+
+== Para maiores informações
+
+* https://docs.netapp.com/us-en/hci/docs/hci_prereqs_network_switch.html["Requisitos de rede e switch NetApp HCI"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

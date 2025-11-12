@@ -1,0 +1,18 @@
+---
+permalink: try/task_try_overview.html 
+sidebar: sidebar 
+keywords: solidfire, element, lab on demand, demo node, element demo node 
+summary: Conheça os recursos e ferramentas que podem ajudá-lo a começar a usar o software Element. 
+---
+= Experimente!
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Conheça os recursos e ferramentas que podem ajudá-lo a começar a usar o software Element.
+
+* https://handsonlabs.netapp.com/lab/elementsw["Laboratório sob demanda para flexibilidade de armazenamento em nuvem privada com Element (login necessário)"^]Este laboratório apresenta conceitos de escalabilidade horizontal sem limitações, desempenho garantido da carga de trabalho e automação da infraestrutura de armazenamento que se aplicam a sistemas de armazenamento que executam o software Element.
+* link:task_use_demonode.html["Experimente os recursos de armazenamento usando o nó de demonstração Element."^]O Element Demo Node é uma versão em máquina virtual VMware do software Element, que oferece uma maneira fácil de demonstrar muitos dos principais recursos de armazenamento dos produtos NetApp HCI e SolidFire .
+

@@ -1,0 +1,20 @@
+---
+permalink: storage/task_data_protection_delete_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, delete 
+summary: Você pode excluir um agendamento de instantâneo.  Depois de excluir o agendamento, nenhum snapshot agendado será executado no futuro.  Quaisquer instantâneos criados pelo agendamento permanecem no sistema de armazenamento. 
+---
+= Excluir um agendamento de instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode excluir um agendamento de instantâneo.  Depois de excluir o agendamento, nenhum snapshot agendado será executado no futuro.  Quaisquer instantâneos criados pelo agendamento permanecem no sistema de armazenamento.
+
+. Clique em *Proteção de Dados* > *Agendamentos*.
+. Clique no ícone *Ações* da programação que deseja excluir.
+. No menu que aparecer, clique em *Excluir*.
+. Confirme a ação.
+

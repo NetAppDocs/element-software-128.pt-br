@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_drive_api_methods.html 
+sidebar: sidebar 
+keywords: drive,API,methods,method 
+summary: Você pode usar os métodos da API de unidades para adicionar e gerenciar unidades disponíveis em um cluster de armazenamento.  Ao adicionar um nó de armazenamento ao cluster de armazenamento ou instalar novas unidades em um nó de armazenamento existente, as unidades ficam disponíveis para serem adicionadas ao cluster de armazenamento. 
+---
+= Métodos da API Drive
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar os métodos da API de unidades para adicionar e gerenciar unidades disponíveis em um cluster de armazenamento.  Ao adicionar um nó de armazenamento ao cluster de armazenamento ou instalar novas unidades em um nó de armazenamento existente, as unidades ficam disponíveis para serem adicionadas ao cluster de armazenamento.
+
+* xref:reference_element_api_adddrives.adoc[AdicionarUnidades]
+* xref:reference_element_api_getdrivehardwareinfo.adoc[GetDriveHardwareInfo]
+* xref:reference_element_api_getdrivestats.adoc[GetDriveStats]
+* xref:reference_element_api_listdrives.adoc[ListDrives]
+* xref:reference_element_api_listdrivestats.adoc[ListDriveStats]
+* xref:reference_element_api_removedrives.adoc[Remover unidades]
+* xref:reference_element_api_secureerasedrives.adoc[Unidades SecureErase]
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

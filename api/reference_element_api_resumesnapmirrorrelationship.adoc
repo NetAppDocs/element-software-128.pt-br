@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_resumesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: ResumeSnapMirrorRelationship,resume,SnapMirror,relationship,resuming 
+summary: A interface web do software Element utiliza o método ResumeSnapMirrorRelationship para permitir futuras transferências de um relacionamento SnapMirror inativo. 
+---
+= ResumoSnapMirrorRelacionamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A interface web do software Element utiliza o `ResumeSnapMirrorRelationship` Método para habilitar futuras transferências para um relacionamento SnapMirror inativo.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+O ID do ponto de extremidade do sistema de armazenamento ONTAP remoto que se comunica com o cluster de armazenamento Element.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+volume de destino
+ a| 
+O volume de destino no relacionamento SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+snapMirrorRelationship
+ a| 
+Um objeto contendo informações sobre a relação SnapMirror retomada.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]
+
+|===
+
+
+== Novidade desde a versão
+
+10,1

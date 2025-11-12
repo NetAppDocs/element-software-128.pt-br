@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectiondomainresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainResiliency 
+summary: 'O objeto protectionDomainResiliency contém o status de resiliência deste cluster de armazenamento.  Resiliência indica a capacidade do cluster de armazenamento de se recuperar automaticamente de uma ou mais falhas, todas dentro de um único domínio de proteção do seu tipo de domínio de proteção associado.  Um cluster de armazenamento é considerado recuperado quando consegue continuar lendo e gravando dados mesmo após a falha de um único nó de armazenamento (um estado conhecido como tolerância de nó).' 
+---
+= Resiliência do Domínio de Proteção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto protectionDomainResiliency contém o status de resiliência deste cluster de armazenamento.  Resiliência indica a capacidade do cluster de armazenamento de se recuperar automaticamente de uma ou mais falhas, todas dentro de um único domínio de proteção do seu tipo de domínio de proteção associado.  Um cluster de armazenamento é considerado recuperado quando consegue continuar lendo e gravando dados mesmo após a falha de um único nó de armazenamento (um estado conhecido como tolerância de nó).
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+Resiliências do esquema de proteção
+ a| 
+Uma lista de objetos (um para cada esquema de proteção) contendo informações sobre a resiliência a falhas para o tipo de domínio de proteção associado.
+ a| 
+xref:reference_element_api_protectionschemeresiliency.adoc[Resiliência do esquema de proteção]variedade
+
+
+
+ a| 
+singleFailureThresholdBytesForBlockData
+ a| 
+O número máximo de bytes que podem ser armazenados no cluster de armazenamento antes de perder a capacidade de se recuperar automaticamente para um estado de tolerância do nó.
+ a| 
+inteiro
+
+
+
+ a| 
+falhas sustentáveis para o conjunto
+ a| 
+O número previsto de falhas simultâneas que podem ocorrer sem que o conjunto de nós perca a capacidade de se recuperar automaticamente para um estado de tolerância.
+ a| 
+inteiro
+
+|===

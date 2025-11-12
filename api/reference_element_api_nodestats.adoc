@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: O objeto nodeStats contém medições de atividade de alto nível para um nó.  Você pode usar os métodos de API GetNodeStats e ListNodeStats para obter alguns ou todos os objetos nodeStats. 
+---
+= Estatísticas do nó
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto nodeStats contém medições de atividade de alto nível para um nó.  Você pode usar o `GetNodeStats` e `ListNodeStats` Métodos da API para obter alguns ou todos os objetos nodeStats.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+contar
+ a| 
+O número total de amostras no objeto nodeStats.
+ a| 
+inteiro
+
+
+
+ a| 
+CPU
+ a| 
+Utilização da CPU, em %.
+ a| 
+inteiro
+
+
+
+ a| 
+cpuTotal
+ a| 
+Valor crescente monotônico da utilização da CPU.
+ a| 
+inteiro
+
+
+
+ a| 
+cBytesIn
+ a| 
+Bytes na interface do cluster.
+ a| 
+inteiro
+
+
+
+ a| 
+cBytesOut
+ a| 
+Bytes transmitidos pela interface do cluster.
+ a| 
+inteiro
+
+
+
+ a| 
+sBytesIn
+ a| 
+Bytes na interface de armazenamento.
+ a| 
+inteiro
+
+
+
+ a| 
+sBytesOut
+ a| 
+Bytes enviados para a interface de armazenamento.
+ a| 
+inteiro
+
+
+
+ a| 
+mBytesIn
+ a| 
+Bytes na interface de gerenciamento.
+ a| 
+inteiro
+
+
+
+ a| 
+mBytesOut
+ a| 
+Bytes enviados para a interface de gerenciamento.
+ a| 
+inteiro
+
+
+
+ a| 
+cluster de utilização de rede
+ a| 
+Utilização da interface de rede (em %) para a interface de rede do cluster.
+ a| 
+inteiro
+
+
+
+ a| 
+Utilização da redeArmazenamento
+ a| 
+Utilização da interface de rede (em %) para a interface de rede de armazenamento.
+ a| 
+inteiro
+
+
+
+ a| 
+nó de calor
+ a| 
+Informações sobre a utilização dos nós.  Disponível a partir do Elemento 12.8.  Membros:
+
+* primaryTotalHeat: IOPS total primário do nó / IOPS configurados do nó, em média, ao longo de 24 horas.
+* recentPrimaryTotalHeat: IOPS primário total do nó / IOPS configurado do nó, em média, ao longo de uma hora.
+* recentTotalHeat: IOPS total do nó / IOPS configurado do nó, em média, ao longo de uma hora.
+* totalHeat: IOPS total do nó / IOPS configurado do nó, em média, ao longo de 24 horas.
+
+ a| 
+objeto JSON
+
+
+
+ a| 
+readLatencyUSecTotal
+ a| 
+Valor crescente monotônico do tempo total gasto na execução de operações de leitura no nó.
+ a| 
+inteiro
+
+
+
+ a| 
+readOps
+ a| 
+Valor crescente monotônico do total de operações de leitura em um nó.
+ a| 
+inteiro
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+Dados de histograma ilustrando a carga do serviço de fatias ao longo do tempo.
+ a| 
+objeto JSON
+
+
+
+ a| 
+carimbo de data/hora
+ a| 
+A hora atual no formato UTC+0.
+ a| 
+string de data ISO 8601
+
+
+
+ a| 
+memória usada
+ a| 
+Utilização total de memória em bytes.
+ a| 
+inteiro
+
+
+
+ a| 
+writeLatencyUSecTotal
+ a| 
+Valor crescente monotônico do tempo total gasto na execução de operações de escrita no nó.
+ a| 
+inteiro
+
+
+
+ a| 
+writeOps
+ a| 
+Valor crescente monotônico do total de operações de escrita em um nó.
+ a| 
+inteiro
+
+|===
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_getnodestats.adoc[ObterEstatísticasDoNó]
+* xref:reference_element_api_listnodestats.adoc[ListNodeStats]
+

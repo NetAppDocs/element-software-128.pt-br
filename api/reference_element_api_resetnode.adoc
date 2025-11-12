@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_resetnode.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode usar o método ResetNode para redefinir um nó para as configurações de fábrica.  Todos os dados, pacotes (atualizações de software, etc.), configurações e arquivos de log são excluídos do nó quando você chama este método.  No entanto, as configurações de rede do nó são preservadas durante essa operação.  Os nós que participam de um cluster não podem ser redefinidos para as configurações de fábrica.' 
+---
+= Redefinir nó
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ResetNode` Método para restaurar um nó às configurações de fábrica.  Todos os dados, pacotes (atualizações de software, etc.), configurações e arquivos de log são excluídos do nó quando você chama esse método.  No entanto, as configurações de rede do nó são preservadas durante essa operação.  Os nós que participam de um cluster não podem ser redefinidos para as configurações de fábrica.
+
+
+
+== Parâmetros
+
+A API ResetNode só pode ser usada em nós que estejam no estado "Disponível".  Não pode ser usado em nós que estejam "Ativos" em um cluster ou em estado "Pendente".
+
+CUIDADO:
+
+Este método apaga todos os dados do cliente que estejam no nó.
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+construir
+ a| 
+Utilizado para especificar o URL de uma imagem de software Element remota para a qual o nó será redefinido.
+ a| 
+URL
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+vigor
+ a| 
+Defina como verdadeiro para reiniciar o nó.
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+opções
+ a| 
+Utilizado para inserir as especificações para a execução das operações de reinicialização.  Os detalhes serão fornecidos pelo Suporte da NetApp , se necessário.
+ a| 
+objeto JSON
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método não possui valores de retorno.
+
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "ResetNode",
+   "params": {
+      "build" : "file:///sf/rtfi/image/filesystem.squashfs",
+      "force" : true
+              },
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "rtfiInfo": {
+      "build": "file:///sf/rtfi/image/filesystem.squashfs",
+      "generation": "9",
+      "options": {
+        "edebug": "",
+        "sf_auto": "0",
+        "sf_bond_mode": "ActivePassive",
+        "sf_check_hardware": "0",
+        "sf_disable_otpw": "0",
+        "sf_fa_host": "",
+        "sf_hostname": "SF-FA18",
+        "sf_inplace": "1",
+        "sf_inplace_die_action": "kexec",
+        "sf_inplace_safe": "0",
+        "sf_keep_cluster_config": "0",
+        "sf_keep_data": "0",
+        "sf_keep_hostname": "0",
+        "sf_keep_network_config": "0",
+        "sf_keep_paths": "\"/var/log/hardware.xml\"",
+        "sf_max_archives": "5",
+        "sf_nvram_size": "",
+        "sf_oldroot": "",
+        "sf_postinst_erase_root_drive": "0",
+        "sf_root_drive": "",
+        "sf_rtfi_cleanup_state": "",
+        "sf_secure_erase": "1",
+        "sf_secure_erase_retries": "5",
+        "sf_slice_size": "",
+        "sf_ssh_key": "1",
+        "sf_ssh_root": "1",
+        "sf_start_rtfi": "1",
+        "sf_status_httpserver": "1",
+        "sf_status_httpserver_stop_delay": "5m",
+        "sf_status_inject_failure": "",
+        "sf_status_json": "0",
+        "sf_support_host": "sfsupport.solidfire.com",
+        "sf_test_hardware": "0",
+        "sf_upgrade": "0",
+        "sf_upgrade_firmware": "0",
+        "sf_upload_logs_url": ""
+     },
+      "statusUrlAll": "http://192.168.130.20/status/all.json",
+      "statusUrlCurrent": "http://192.168.130.20/status/current.json"
+    }
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

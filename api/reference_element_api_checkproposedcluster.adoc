@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_checkproposedcluster.html 
+sidebar: sidebar 
+keywords: cluster,creation,check,proposed,checking,nodes,node,before,CheckProposedCluster 
+summary: Você pode usar o método CheckProposedCluster para testar um conjunto de nós de armazenamento antes de criar um cluster de armazenamento com eles, a fim de identificar possíveis erros ou falhas que possam ocorrer durante a tentativa, como capacidades desbalanceadas de nós mistos ou tipos de nós que não são suportados para clusters de armazenamento de dois nós. 
+---
+= VerificarClusterProposto
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `CheckProposedCluster` Método para testar um conjunto de nós de armazenamento antes de criar um cluster de armazenamento com eles, a fim de identificar possíveis erros ou falhas que possam ocorrer durante a tentativa, como capacidades desbalanceadas entre os nós ou tipos de nós que não são suportados para clusters de armazenamento de dois nós.
+
+
+
+== Parâmetros
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+nós
+ a| 
+Uma lista dos endereços IP de armazenamento do conjunto inicial de nós de armazenamento que compõem o cluster de armazenamento.
+ a| 
+matriz de strings
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+vigor
+ a| 
+Defina como verdadeiro para executar em todos os nós de armazenamento no cluster de armazenamento.
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+cluster proposto válido
+ a| 
+Indica se os nós de armazenamento propostos formariam ou não um cluster de armazenamento válido. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+erros de cluster propostos
+ a| 
+Erros que ocorreriam se um cluster de armazenamento fosse criado usando os nós de armazenamento propostos.
+ a| 
+matriz de strings
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+	"method": "CheckProposedCluster",
+	"params": {
+	"nodes": [
+		"192.168.1.11",
+		"192.168.1.12",
+		"192.168.1.13",
+		"192.168.1.14"
+	]
+},
+	"id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"proposedClusterValid": true,
+		"proposedClusterErrors": [ ]
+	}
+}
+----
+
+
+== Novidade desde a versão
+
+11,0

@@ -1,0 +1,30 @@
+---
+permalink: storage/concept_intro_drives.html 
+sidebar: sidebar 
+keywords: drives, physical drives, cluster data, storage node, volume metadata, block drives, clusters 
+summary: Um nó de armazenamento contém uma ou mais unidades físicas que são usadas para armazenar uma parte dos dados do cluster.  O cluster utiliza a capacidade e o desempenho da unidade depois que esta for adicionada com sucesso ao cluster. 
+---
+= Unidades
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um nó de armazenamento contém uma ou mais unidades físicas que são usadas para armazenar uma parte dos dados do cluster.  O cluster utiliza a capacidade e o desempenho da unidade depois que esta for adicionada com sucesso ao cluster.
+
+Um nó de armazenamento contém dois tipos de unidades:
+
+* *Unidades de metadados de volume*
++
+Essas unidades armazenam informações compactadas que definem cada volume, clone ou snapshot dentro de um cluster.  A capacidade total de armazenamento de metadados no sistema determina a quantidade máxima de armazenamento que pode ser provisionada como volumes.  A quantidade máxima de armazenamento que pode ser provisionada é independente da quantidade de dados realmente armazenados nas unidades de bloco do cluster.  Os metadados de volume armazenam dados de forma redundante em um cluster usando a proteção de dados Double Helix.
+
++
+
+NOTE: Algumas mensagens de eventos e erros do sistema se referem a unidades de metadados de volume como unidades de partição.
+
+* *Unidades de bloco*
++
+Essas unidades armazenam os blocos de dados compactados e desduplicados para volumes de aplicativos de servidor.  Os discos rígidos (blocos de memória) constituem a maior parte da capacidade de armazenamento do sistema.  A maioria das solicitações de leitura de dados já armazenados no cluster SolidFire , assim como as solicitações de gravação de dados, ocorre nas unidades de bloco.  A capacidade total de blocos de dados no sistema determina a quantidade máxima de dados que podem ser armazenados, levando em consideração os efeitos da compressão, do provisionamento dinâmico e da deduplicação.
+
+

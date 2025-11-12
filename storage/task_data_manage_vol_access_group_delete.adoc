@@ -1,0 +1,21 @@
+---
+permalink: storage/task_data_manage_vol_access_group_delete.html 
+sidebar: sidebar 
+keywords: access group, delete 
+summary: Você pode excluir um grupo de acesso quando ele não for mais necessário.  Não é necessário excluir os IDs de iniciador e os IDs de volume do grupo de acesso ao volume antes de excluir o grupo.  Após excluir o grupo de acesso, o acesso do grupo aos volumes é descontinuado. 
+---
+= Excluir um grupo de acesso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode excluir um grupo de acesso quando ele não for mais necessário.  Não é necessário excluir os IDs de iniciador e os IDs de volume do grupo de acesso ao volume antes de excluir o grupo.  Após excluir o grupo de acesso, o acesso do grupo aos volumes é descontinuado.
+
+. Clique em *Gerenciamento* > *Grupos de Acesso*.
+. Clique no ícone *Ações* do grupo de acesso que deseja excluir.
+. No menu que aparecer, clique em *Excluir*.
+. Para excluir também os iniciadores associados a este grupo de acesso, selecione a caixa de seleção *Excluir iniciadores neste grupo de acesso*.
+. Confirme a ação.
+

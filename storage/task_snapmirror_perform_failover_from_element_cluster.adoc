@@ -1,0 +1,32 @@
+---
+permalink: storage/task_snapmirror_perform_failover_from_element_cluster.html 
+sidebar: sidebar 
+keywords: element, ui, failover, cluster, perform a failover, snapmirror 
+summary: Você pode realizar um failover do cluster Element para tornar o volume de destino legível/gravável e acessível aos hosts no lado de destino.  Antes de realizar um failover do cluster Element, você deve quebrar a relação SnapMirror . 
+---
+= Realizar um failover a partir de um cluster Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode realizar um failover do cluster Element para tornar o volume de destino legível/gravável e acessível aos hosts no lado de destino.  Antes de realizar um failover do cluster Element, você deve quebrar a relação SnapMirror .
+
+Utilize a interface de usuário do NetApp Element para realizar o failover.  Caso a interface de usuário do Element não esteja disponível, você também pode usar o ONTAP System Manager ou a CLI do ONTAP para executar o comando de interrupção de relacionamento.
+
+.O que você vai precisar
+* Existe uma relação SnapMirror com pelo menos um snapshot válido no volume de destino.
+* Você precisa realizar um failover para o volume de destino devido a uma interrupção não planejada ou a um evento planejado no site primário.
+
+
+.Passos
+. Na interface do usuário do Element, clique em *Proteção de Dados* > *Relacionamentos SnapMirror *.
+. Encontre a relação com o volume de origem para o qual você deseja realizar o failover.
+. Clique no ícone *Ações*.
+. Clique em *Interromper*.
+. Confirme a ação.
++
+O volume no cluster de destino agora possui acesso de leitura e gravação e pode ser montado nos hosts da aplicação para retomar as cargas de trabalho de produção.  Toda a replicação do SnapMirror será interrompida como resultado dessa ação.  O relacionamento demonstra estar rompido.
+
+

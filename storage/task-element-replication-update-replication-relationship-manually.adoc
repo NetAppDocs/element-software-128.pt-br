@@ -1,0 +1,41 @@
+---
+permalink: storage/task-element-replication-update-replication-relationship-manually.html 
+sidebar: sidebar 
+keywords: update, replication, relationship, manually 
+summary: Pode ser necessário atualizar manualmente uma relação de replicação se uma atualização falhar devido a um erro de rede. 
+---
+= Atualizar manualmente uma relação de replicação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pode ser necessário atualizar manualmente uma relação de replicação se uma atualização falhar devido a um erro de rede.
+
+.Sobre esta tarefa
+Você deve especificar o caminho de origem do elemento no formato `<hostip:>/lun/<name>` , onde "`lun`" é a string real "`lun`" e `name` é o nome do volume do Elemento.
+
+.Passos
+. Atualizar manualmente uma relação de replicação:
++
+`snapmirror update -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Para obter a sintaxe completa dos comandos, consulte a página do manual.
+
++
+[NOTE]
+====
+O comando falha se não existir uma cópia instantânea comum na origem e no destino.  Usar `snapmirror initialize` para reinicializar o relacionamento.
+
+====
++
+O exemplo a seguir atualiza a relação entre o volume de origem `0005` no endereço IP 10.0.0.11 e o volume de destino `volA_dst` sobre `svm_backup` :
+
++
+[listing]
+----
+cluster_src::> snapmirror update -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

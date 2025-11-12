@@ -1,0 +1,47 @@
+---
+permalink: storage/task_replication_pair_clusters.html 
+sidebar: sidebar 
+keywords: pair clusters, replication, connect clusters, data protection 
+summary: 'Para usar a funcionalidade de replicação em tempo real, você precisa primeiro emparelhar dois clusters.  Após emparelhar e conectar dois clusters, você pode configurar volumes ativos em um cluster para serem replicados continuamente para um segundo cluster, fornecendo proteção contínua de dados (CDP).' 
+---
+= Emparelhe clusters para replicação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para usar a funcionalidade de replicação em tempo real, você precisa primeiro emparelhar dois clusters.  Após emparelhar e conectar dois clusters, você pode configurar volumes ativos em um cluster para serem replicados continuamente para um segundo cluster, fornecendo proteção contínua de dados (CDP).
+
+.O que você vai precisar
+* Você precisa ter privilégios de administrador de cluster em um ou ambos os clusters que estão sendo emparelhados.
+* Todos os MIPs e SIPs dos nós são roteados uns para os outros.
+* Latência de ida e volta entre clusters inferior a 2000 ms.
+* Ambos os clusters de armazenamento devem ter nomes de cluster, MVIPs, SVIPs e endereços IP de todos os nós exclusivos.
+* A diferença entre as versões do software Element nos clusters não é maior do que uma versão principal.  Se a diferença for maior, um dos clusters deverá ser atualizado para realizar a replicação de dados.
+
+
+
+NOTE: O emparelhamento de clusters requer conectividade total entre os nós na rede de gerenciamento.  A replicação requer conectividade entre os nós individuais na rede do cluster de armazenamento.
+
+Você pode emparelhar um cluster com até quatro outros clusters para replicar volumes.  Você também pode emparelhar clusters dentro do mesmo grupo de clusters.
+
+
+
+== Emparelhe clusters usando MVIP ou uma chave de emparelhamento.
+
+É possível emparelhar um cluster de origem e um cluster de destino usando o MVIP do cluster de destino, desde que haja acesso de administrador de cluster a ambos os clusters.  Se o acesso de administrador de cluster estiver disponível apenas em um dos clusters de um par, uma chave de emparelhamento poderá ser usada no cluster de destino para concluir o emparelhamento.
+
+. Selecione um dos seguintes métodos para emparelhar clusters:
++
+** link:task_replication_pair_cluster_using_mvip.html["Emparelhe clusters usando MVIP"]Utilize este método se houver acesso de administrador de cluster a ambos os clusters. Este método utiliza o MVIP do cluster remoto para emparelhar dois clusters.
+** link:task_replication_pair_cluster_using_pairing_key.html["Emparelhe clusters usando uma chave de emparelhamento."]Utilize este método se o administrador do cluster tiver acesso a apenas um dos clusters. Este método gera uma chave de emparelhamento que pode ser usada no cluster de destino para concluir o emparelhamento do cluster.
+
+
+
+
+
+
+== Encontre mais informações
+
+xref:reference_prereq_network_port_requirements.adoc[Requisitos de porta de rede]

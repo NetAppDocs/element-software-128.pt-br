@@ -1,0 +1,31 @@
+---
+permalink: storage/task_data_manage_volumes_work_with_volumes_task.html 
+sidebar: sidebar 
+keywords: volumes, work, storage, iscsi, fc, cluster data management, overview of functions 
+summary: O sistema SolidFire provisiona armazenamento usando volumes.  Os volumes são dispositivos de bloco acessados ​​pela rede por clientes iSCSI ou Fibre Channel.  Na página Volumes da guia Gerenciamento, você pode criar, modificar, clonar e excluir volumes em um nó.  Você também pode visualizar estatísticas sobre largura de banda e uso de E/S. 
+---
+= Trabalhar com volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O sistema SolidFire provisiona armazenamento usando volumes.  Os volumes são dispositivos de bloco acessados ​​pela rede por clientes iSCSI ou Fibre Channel.  Na página Volumes da guia Gerenciamento, você pode criar, modificar, clonar e excluir volumes em um nó.  Você também pode visualizar estatísticas sobre largura de banda e uso de E/S.
+
+
+
+== Encontre mais informações
+
+* link:concept_data_manage_volumes_quality_of_service_policies.html["Gerenciar políticas de Qualidade de Serviço"]
+* link:task_data_manage_volumes.html#create-a-volume["Criar um volume"]
+* link:task_data_manage_volumes.html#view-volume-details["Veja os detalhes de desempenho de volume individuais."]
+* link:task_data_manage_volumes.html#edit-active-volumes["Editar volumes ativos"]
+* link:task_data_manage_volumes.html#delete-a-volume["Excluir um volume"]
+* link:task_data_manage_volumes.html#restore-a-deleted-volume["Restaurar um volume excluído"]
+* link:task_data_manage_volumes.html#purge-a-volume["Eliminar um volume"]
+* link:task_data_manage_volumes.html#clone-a-volume["Clonar um volume"]
+* link:task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html["Atribua LUNs a volumes Fibre Channel"]
+* link:task_data_manage_volumes_apply_a_qos_policy.html["Aplicar uma política de QoS aos volumes"]
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["Remover a associação da política de QoS de um volume"]
+

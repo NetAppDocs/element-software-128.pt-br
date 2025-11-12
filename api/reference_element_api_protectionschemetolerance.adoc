@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemetolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeTolerance 
+summary: O objeto protectionSchemeTolerance contém informações sobre se um cluster de armazenamento, para um esquema de proteção específico, pode continuar lendo e gravando dados após falhas. 
+---
+= Tolerância do esquema de proteção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto protectionSchemeTolerance contém informações sobre se um cluster de armazenamento, para um esquema de proteção específico, pode continuar lendo e gravando dados após falhas.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+esquema de proteção
+ a| 
+O esquema de proteção atual deste cluster de armazenamento.  O único valor possível é dupla hélice.
+ a| 
+corda
+
+
+
+ a| 
+Falhas sustentáveis para dados em bloco
+ a| 
+O número atual de falhas simultâneas que podem ocorrer sem perda da disponibilidade de dados em bloco para o esquema de proteção associado.
+ a| 
+inteiro
+
+
+
+ a| 
+Falhas sustentáveis para metadados
+ a| 
+O número atual de falhas simultâneas que podem ocorrer sem perda de disponibilidade de metadados para o esquema de proteção associado.
+ a| 
+inteiro
+
+|===

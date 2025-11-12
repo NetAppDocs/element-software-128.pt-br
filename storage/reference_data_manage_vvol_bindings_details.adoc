@@ -1,0 +1,46 @@
+---
+permalink: storage/reference_data_manage_vvol_bindings_details.html 
+sidebar: sidebar 
+keywords: bindings details, vvols, for each virtual volume, endpoints, 
+summary: 'A página "Bindings" (Encadernações) na aba "VVols" (Volumes Virtuais) fornece informações sobre a encadernação de cada volume virtual.' 
+---
+= Detalhes das encadernações
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página "Bindings" (Encadernações) na aba "VVols" (Volumes Virtuais) fornece informações sobre a encadernação de cada volume virtual.
+
+As seguintes informações são exibidas:
+
+* *ID do host*
++
+O UUID do host ESXi que hospeda volumes virtuais e é conhecido pelo cluster.
+
+* *ID do ponto de extremidade do protocolo*
++
+IDs de endpoint do protocolo que correspondem a cada nó no cluster SolidFire .
+
+* *Ponto final do protocolo no ID da banda*
++
+O ID do dispositivo SCSI NAA do ponto de extremidade do protocolo.
+
+* *Tipo de ponto final do protocolo*
++
+O tipo de ponto de extremidade do protocolo.
+
+* *ID de vinculação VVol*
++
+O UUID de vinculação do volume virtual.
+
+* *ID do Volume V*
++
+O identificador único universal (UUID) do volume virtual.
+
+* *ID secundário do VVol*
++
+O ID secundário do volume virtual que é um ID LUN de segundo nível SCSI.
+
+

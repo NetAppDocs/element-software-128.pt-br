@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_storagecontainer.html 
+sidebar: sidebar 
+keywords: object,objects,storagecontainer 
+summary: O objeto storageContainer contém os atributos de um contêiner de armazenamento de volume virtual.  Você pode recuperar essas informações para cada contêiner de armazenamento no cluster usando o método de API ListStorageContainers. 
+---
+= contêiner de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto storageContainer contém os atributos de um contêiner de armazenamento de volume virtual.  Você pode recuperar essas informações para cada contêiner de armazenamento no cluster usando o `ListStorageContainers` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+ID da conta
+ a| 
+O ID da conta do sistema de armazenamento associada ao contêiner de armazenamento.
+ a| 
+inteiro
+
+
+
+ a| 
+iniciadorSecreto
+ a| 
+O segredo de autenticação CHAP para o iniciador associado ao contêiner de armazenamento.
+ a| 
+corda
+
+
+
+ a| 
+nome
+ a| 
+O nome do recipiente de armazenamento.
+ a| 
+corda
+
+
+
+ a| 
+protocolEndpointType
+ a| 
+O tipo de ponto de extremidade do protocolo do contêiner de armazenamento.  SCSI é o único valor válido.
+ a| 
+corda
+
+
+
+ a| 
+status
+ a| 
+O estado do contêiner de armazenamento. Valores possíveis:
+
+* Ativo: O contêiner de armazenamento está em uso.
+* Trancado: O contêiner de armazenamento está trancado.
+
+ a| 
+corda
+
+
+
+ a| 
+ID do contêiner de armazenamento
+ a| 
+O ID exclusivo do contêiner de armazenamento.
+ a| 
+UUID
+
+
+
+ a| 
+alvoSecreto
+ a| 
+O segredo de autenticação CHAP para o alvo associado ao contêiner de armazenamento.
+ a| 
+corda
+
+
+
+ a| 
+volumes virtuais
+ a| 
+Uma lista dos IDs dos volumes virtuais associados ao contêiner de armazenamento.
+ a| 
+matriz UUID
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_liststoragecontainers.adoc[Listar contêineres de armazenamento]

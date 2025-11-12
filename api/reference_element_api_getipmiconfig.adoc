@@ -1,0 +1,243 @@
+---
+permalink: api/reference_element_api_getipmiconfig.html 
+sidebar: sidebar 
+keywords: hardware,sensor,config,configuration,get,getting,getipmiconfig 
+summary: Você pode usar o método GetIpmiConfig para recuperar informações de sensores de hardware presentes em seu nó. 
+---
+= GetIpmiConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetIpmiConfig` Método para recuperar informações de sensores de hardware presentes em seu nó.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+tipo de chassi
+ a| 
+Utilizado para exibir informações para cada tipo de chassi de nó. Valores possíveis:
+
+* todos: retorna informações do sensor para cada tipo de chassi.
+* {tipo de chassi}: retorna informações do sensor para um tipo de chassi especificado.
+
+ a| 
+corda
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+nomeDoSensor
+ a| 
+Nome do sensor encontrado.
+ a| 
+corda
+
+
+
+ a| 
+ID único do sensor
+ a| 
+Identificador único para o sensor.
+ a| 
+corda
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "GetIpmiConfig",
+  "params": {
+     "chassisType"; "all"
+     },
+  "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+ "id": 1,
+   "result": {
+     "nodes": [
+         {
+           "nodeID": 1,
+           "result": {
+             "ipmiConfig": {
+                "C220M4": [
+                    {
+                     "sensorName": "Fan1A RPM",
+                     "uniqueSensorID": "29.1:0xf"
+                    },
+                    {
+                      "sensorName": "Fan1B RPM",
+                      "uniqueSensorID": "29.1:0x10"
+                    },
+                    {
+                      "sensorName": "Fan2A RPM",
+                      "uniqueSensorID": "29.2:0x11"
+                    },
+                    {
+                      "sensorName": "Fan2B RPM",
+                      "uniqueSensorID": "29.2:0x12"
+                    },
+                    {
+                      "sensorName": "Fan3A RPM",
+                      "uniqueSensorID": "29.3:0x13"
+                    },
+                    {
+                      "sensorName": "Fan3B RPM",
+                      "uniqueSensorID": "29.3:0x14"
+                    },
+                    {
+                      "sensorName": "Fan4A RPM",
+                      "uniqueSensorID": "29.4:0x15"
+                    },
+                    {
+                      "sensorName": "Fan4B RPM",
+                      "uniqueSensorID": "29.4:0x16"
+                    },
+                    {
+                      "sensorName": "Fan5A RPM",
+                      "uniqueSensorID": "29.5:0x17"
+                    },
+                    {
+                      "sensorName": "Fan5B RPM",
+                      "uniqueSensorID": "29.5:0x18"
+                    },
+                    {
+                      "sensorName": "Fan6A RPM",
+                      "uniqueSensorID": "29.6:0x19"
+                    },
+                    {
+                      "sensorName": "Fan6B RPM",
+                      "uniqueSensorID": "29.6:0x1a"
+                    },
+                    {
+                      "sensorName": "Exhaust Temp",
+                      "uniqueSensorID": "7.1:0x1"
+                    },
+                    {
+                      "sensorName": "Inlet Temp",
+                      "uniqueSensorID": "7.1:0x4"
+                    },
+                    {
+                      "sensorName": "PS1",
+                      "uniqueSensorID": "10.1:0x26"
+                    },
+                    {
+                      "sensorName": "PS2",
+                      "uniqueSensorID": "10.2:0x2c"
+                    }
+                ],
+                "R620": [
+                    {
+                      "sensorName": "Fan1A RPM",
+                      "uniqueSensorID": "7.1:0x30"
+                    },
+                    {
+                      "sensorName": "Fan1B RPM",
+                      "uniqueSensorID": "7.1:0x31"
+                    },
+                    {
+                      "sensorName": "Fan2A RPM",
+                      "uniqueSensorID": "7.1:0x32"
+                    },
+                    {
+                      "sensorName": "Fan2B RPM",
+                      "uniqueSensorID": "7.1:0x33"
+                    },
+                    {
+                      "sensorName": "Fan3A RPM",
+                      "uniqueSensorID": "7.1:0x34"
+                    },
+                    {
+                      "sensorName": "Fan3B RPM",
+                      "uniqueSensorID": "7.1:0x35"
+                    },
+                    {
+                      "sensorName": "Fan4A RPM",
+                      "uniqueSensorID": "7.1:0x36"
+                    },
+                    {
+                      "sensorName": "Fan4B RPM",
+                      "uniqueSensorID": "7.1:0x37"
+                    },
+                    {
+                      "sensorName": "Fan5A RPM",
+                      "uniqueSensorID": "7.1:0x38"
+                    },
+                    {
+                      "sensorName": "Fan5B RPM",
+                      "uniqueSensorID": "7.1:0x39"
+                    },
+                    {
+                      "sensorName": "Fan6A RPM",
+                      "uniqueSensorID": "7.1:0x3a"
+                    },
+                    {
+                      "sensorName": "Fan6B RPM",
+                      "uniqueSensorID": "7.1:0x3b"
+                    },
+                    {
+                      "sensorName": "Fan7A RPM",
+                      "uniqueSensorID": "7.1:0x3c"
+                    },
+                    {
+                      "sensorName": "Fan7B RPM",
+                      "uniqueSensorID": "7.1:0x3d"
+                    },
+                    {
+                      "sensorName": "Exhaust Temp",
+                      "uniqueSensorID": "7.1:0x1"
+                    },
+                    {
+                      "sensorName": "Inlet Temp",
+                      "uniqueSensorID": "7.1:0x4"
+                    },
+                    {
+                      "sensorName": "PS1",
+                      "uniqueSensorID": "10.1:0x62"
+                    },
+                    {
+                      "sensorName": "PS2",
+                      "uniqueSensorID": "10.2:0x63"
+                    }
+               ],
+          }
+----
+
+
+== Novidade desde a versão
+
+9,6

@@ -1,0 +1,178 @@
+---
+permalink: api/reference_element_api_createvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,groups,group,create,creating,CreateVolumeAccessGroup 
+summary: Você pode usar o CreateVolumeAccessGroup para criar um novo grupo de acesso a volumes.  Ao criar o grupo de acesso ao volume, você precisa dar um nome a ele e, opcionalmente, pode inserir iniciadores e volumes. 
+---
+= CriarGrupoDeAcessoAoVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar `CreateVolumeAccessGroup` Para criar um novo grupo de acesso a volumes.  Ao criar o grupo de acesso ao volume, você precisa dar um nome a ele e, opcionalmente, pode inserir iniciadores e volumes.
+
+Qualquer IQN de iniciador que você adicionar ao grupo de acesso ao volume poderá acessar qualquer volume no grupo sem autenticação CHAP.
+
+
+NOTE: Os volumes clonados não herdam a associação ao grupo de acesso ao volume do volume de origem.
+
+Ao criar grupos de acesso por volume, considere o seguinte:
+
+* Um grupo de acesso por volume pode conter até 64 IQNs de iniciadores.
+* Um iniciador só pode pertencer a um grupo de acesso a volumes.
+* Um grupo de acesso a volumes pode conter até 2000 volumes.
+* Cada grupo de acesso a volume pode pertencer a, no máximo, quatro grupos de acesso a volume.
+
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+iniciadores
+ a| 
+Lista de IDs ou nomes de iniciadores (IQNs e WWPNs) a serem incluídos no grupo de acesso ao volume.  Se você passar uma lista de nomes de iniciadores, os iniciadores serão criados caso ainda não existam.  Se você passar uma lista de IDs de iniciadores, o método retornará um erro caso algum dos iniciadores ainda não exista.  Passar nomes de iniciadores está obsoleto; você deve usar IDs de iniciadores sempre que possível.
+ a| 
+matriz de inteiros ou matriz de strings (obsoleto)
+ a| 
+ a| 
+Não
+
+
+
+ a| 
+nome
+ a| 
+Nome do grupo de acesso ao volume.  Não precisa ser original, mas é recomendável.  Deve ter entre 1 e 64 caracteres.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+volumes
+ a| 
+Lista de IDs de volume a serem incluídos no grupo de acesso ao volume.
+ a| 
+matriz de inteiros
+ a| 
+ a| 
+Não
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+ a| 
+{}
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+grupoDeAcessoDeVolume
+ a| 
+Um objeto contendo informações sobre o grupo de acesso a volumes recém-criado.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[grupoDeAcessoDeVolume]
+
+
+
+ a| 
+ID do grupo de acesso ao volume
+ a| 
+O ID do grupo de acesso ao volume recém-criado.
+ a| 
+inteiro
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "CreateVolumeAccessGroup",
+   "params": {
+      "name": "myaccessgroup",
+      "initiators": ["iqn.1993-08.org.debian: 01: a31b1d799d5c"],
+      "volumes": [327],
+      "attributes": {}
+   }
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [],
+      "initiatorIDs": [
+        95
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian: 01: a31b1d799d5c"
+      ],
+      "name": "myaccessgroup",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        327
+      ]
+    },
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_getasyncresult.adoc[ObterResultadoAssíncrono]
+* xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]
+* xref:reference_element_api_modifyvolume.adoc[Modificar Volume]
+

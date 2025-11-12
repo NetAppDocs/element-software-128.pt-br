@@ -1,0 +1,120 @@
+---
+permalink: storage/concept_data_manage_vvol_manage_storage_containers.html 
+sidebar: sidebar 
+keywords: storage container, storage containers, about storage containers, cluster, vvols, create, view details, chap, edit, delete 
+summary: Um contêiner de armazenamento é uma representação de um datastore vSphere criada em um cluster que executa o software Element. 
+---
+= Gerenciar contêineres de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um contêiner de armazenamento é uma representação de um datastore vSphere criada em um cluster que executa o software Element.
+
+Os contêineres de armazenamento são criados e vinculados a contas do NetApp Element .  Um contêiner de armazenamento criado no Element Storage aparece como um datastore vSphere no vCenter e no ESXi.  Os contêineres de armazenamento não alocam nenhum espaço no armazenamento de elementos.  Eles são usados ​​simplesmente para associar volumes virtuais de forma lógica.
+
+É suportado um máximo de quatro contêineres de armazenamento por cluster.  É necessário, no mínimo, um contêiner de armazenamento para habilitar a funcionalidade VVols.
+
+
+
+== Crie um contêiner de armazenamento
+
+Você pode criar contêineres de armazenamento na interface do usuário do Element e descobri-los no vCenter.  Você precisa criar pelo menos um contêiner de armazenamento para começar a provisionar máquinas virtuais com suporte a VVol.
+
+Antes de começar, habilite a funcionalidade VVols na interface do usuário do Element para o cluster.
+
+.Passos
+. Selecione *VVols* > *Contêineres de armazenamento*.
+. Clique no botão *Criar contêineres de armazenamento*.
+. Insira as informações do contêiner de armazenamento na caixa de diálogo *Criar um novo contêiner de armazenamento*:
++
+.. Insira um nome para o recipiente de armazenamento.
+.. Configure os segredos do iniciador e do alvo para CHAP.
++
+
+TIP: Deixe os campos de Configurações CHAP em branco para gerar segredos automaticamente.
+
+.. Clique no botão *Criar Contêiner de Armazenamento*.
+
+
+. Verifique se o novo contêiner de armazenamento aparece na lista na subguia *Contêineres de Armazenamento*.
++
+
+NOTE: Como um ID de conta do NetApp Element é criado automaticamente e atribuído ao contêiner de armazenamento, não é necessário criar uma conta manualmente.
+
+
+
+
+
+== Veja os detalhes do contêiner de armazenamento.
+
+Na página "Contêineres de armazenamento" da guia "VVols", você pode visualizar informações sobre todos os contêineres de armazenamento ativos no cluster.
+
+* *ID da conta*: O ID da conta NetApp Element associada ao contêiner de armazenamento.
+* *Nome*: O nome do recipiente de armazenamento.
+* *Status*: O status do contêiner de armazenamento. Valores possíveis:
++
+** Ativo: O contêiner de armazenamento está em uso.
+** Trancado: O contêiner de armazenamento está trancado.
+
+
+* *Tipo PE*: O tipo de endpoint do protocolo (SCSI é o único protocolo disponível para o software Element).
+* *ID do contêiner de armazenamento*: O UUID do contêiner de armazenamento do volume virtual.
+* *Volumes Virtuais Ativos*: O número de volumes virtuais ativos associados ao contêiner de armazenamento.
+
+
+
+
+== Veja os detalhes de cada contêiner de armazenamento.
+
+Você pode visualizar as informações de um contêiner de armazenamento específico selecionando-o na página Contêineres de Armazenamento, na guia VVols.
+
+* *ID da conta*: O ID da conta NetApp Element associada ao contêiner de armazenamento.
+* *Nome*: O nome do recipiente de armazenamento.
+* *Status*: O status do contêiner de armazenamento. Valores possíveis:
++
+** Ativo: O contêiner de armazenamento está em uso.
+** Trancado: O contêiner de armazenamento está trancado.
+
+
+* *Segredo do Iniciador CHAP*: O segredo exclusivo do iniciador CHAP.
+* *Segredo do Alvo CHAP*: O segredo exclusivo do alvo CHAP.
+* *ID do contêiner de armazenamento*: O UUID do contêiner de armazenamento do volume virtual.
+* *Tipo de endpoint do protocolo*: Indica o tipo de endpoint do protocolo (SCSI é o único protocolo disponível).
+
+
+
+
+== Editar um contêiner de armazenamento
+
+Você pode modificar a autenticação CHAP do contêiner de armazenamento na interface do usuário do Element.
+
+. Selecione *VVols* > *Contêineres de armazenamento*.
+. Clique no ícone *Ações* do contêiner de armazenamento que você deseja editar.
+. No menu que aparecer, selecione *Editar*.
+. Em Configurações CHAP, edite as credenciais Segredo do Iniciador e Segredo do Destino usadas para autenticação.
++
+
+TIP: Se você não alterar as credenciais de configuração do CHAP, elas permanecerão as mesmas.  Se você deixar os campos de credenciais em branco, o sistema gera automaticamente novos segredos.
+
+. Clique em *Salvar alterações*.
+
+
+
+
+== Excluir contêiner de armazenamento
+
+Você pode excluir contêineres de armazenamento na interface do usuário do Element.
+
+.O que você vai precisar
+Certifique-se de que todas as máquinas virtuais foram removidas do armazenamento de dados VVol.
+
+.Passos
+. Selecione *VVols* > *Contêineres de armazenamento*.
+. Clique no ícone *Ações* do contêiner de armazenamento que deseja excluir.
+. No menu que aparecer, selecione *Excluir*.
+. Confirme a ação.
+. Atualize a lista de contêineres de armazenamento na subguia *Contêineres de Armazenamento* para confirmar se o contêiner de armazenamento foi removido.
+

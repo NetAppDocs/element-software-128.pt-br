@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_ldapconfiguration.html 
+sidebar: sidebar 
+keywords: object,objects,ldapConfiguration 
+summary: O objeto ldapConfiguration contém informações sobre a configuração LDAP no sistema de armazenamento.  Você pode recuperar informações LDAP com o método de API GetLdapConfiguration. 
+---
+= Configuração LDAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto ldapConfiguration contém informações sobre a configuração LDAP no sistema de armazenamento.  Você pode recuperar informações LDAP com o `GetLdapConfiguration` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+tipo de autenticação
+ a| 
+Identifica qual método de autenticação de usuário deve ser usado. Valores possíveis:
+
+* Vinculação direta
+* Pesquisar e Vincular
+
+ a| 
+corda
+
+
+
+ a| 
+habilitado
+ a| 
+Identifica se o sistema está configurado para LDAP ou não. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+groupSearchBaseDN
+ a| 
+O DN base da árvore para iniciar a busca em grupo (o sistema realizará uma busca em subárvore a partir daqui).
+ a| 
+corda
+
+
+
+ a| 
+groupSearchCustomFilter
+ a| 
+O filtro de pesquisa personalizado utilizado.
+ a| 
+corda
+
+
+
+ a| 
+tipoDePesquisaDeGrupo
+ a| 
+Controla o filtro de pesquisa de grupo padrão utilizado. Valores possíveis:
+
+* NoGroups: Sem suporte para grupos.
+* Active Directory: Associação aninhada de todos os grupos do Active Directory de um usuário.
+* MemberDN: Grupos no estilo MemberDN (nível único).
+
+ a| 
+corda
+
+
+
+ a| 
+pesquisarBindDN
+ a| 
+Um DN totalmente qualificado para fazer login e realizar uma busca LDAP pelo usuário (requer acesso de leitura ao diretório LDAP).
+ a| 
+corda
+
+
+
+ a| 
+URIs do servidor
+ a| 
+Uma lista de URIs de servidores LDAP separados por vírgula (por exemplo, `ldap://1.2.3.4` e `ldaps://1.2.3.4:123` .)
+ a| 
+corda
+
+
+
+ a| 
+modelo de DN do usuário
+ a| 
+Uma sequência de caracteres usada para formar um DN de usuário totalmente qualificado.
+ a| 
+corda
+
+
+
+ a| 
+userSearchBaseDN
+ a| 
+O DN base da árvore usada para iniciar a pesquisa (a partir daqui será feita uma pesquisa em subárvore).
+ a| 
+corda
+
+
+
+ a| 
+filtroDePesquisaDoUsuário
+ a| 
+O filtro LDAP utilizado.
+ a| 
+corda
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_getldapconfiguration.adoc[Obter configuração LDAP]

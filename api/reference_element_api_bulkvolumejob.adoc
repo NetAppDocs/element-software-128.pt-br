@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: O objeto bulkVolumeJob contém informações sobre operações de leitura ou gravação em massa de volumes, como clonagem ou criação de snapshots. 
+---
+= Trabalho em massa
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O `bulkVolumeJob` O objeto contém informações sobre operações de leitura ou gravação em massa de volumes, como clonagem ou criação de snapshots.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+`attributes`
+ a| 
+Atributo JSON da tarefa de volume em lote.
+ a| 
+objeto JSON
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+O ID da tarefa de volume a granel interno.
+ a| 
+inteiro
+
+
+
+ a| 
+`createTime`
+ a| 
+Carimbo de data/hora criado para o trabalho de processamento em lote no formato UTC+0.
+ a| 
+string de data ISO 8601
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+O número de segundos desde o início da tarefa.
+ a| 
+corda
+
+
+
+ a| 
+`format`
+ a| 
+O formato da operação de volume a granel. Valores possíveis:
+
+* nativo
+* não comprimido
+
+ a| 
+corda
+
+
+
+ a| 
+`key`
+ a| 
+A chave exclusiva criada pela sessão de volume em massa.
+ a| 
+corda
+
+
+
+ a| 
+`percentComplete`
+ a| 
+A porcentagem de conclusão relatada pela operação.
+ a| 
+inteiro
+
+
+
+ a| 
+`remainingTime`
+ a| 
+Tempo estimado restante em segundos.
+ a| 
+inteiro
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+O ID do volume de origem.
+ a| 
+inteiro
+
+
+
+ a| 
+`status`
+ a| 
+O estado da operação. Valores possíveis:
+
+* preparando
+* correndo
+* completo
+* fracassado
+
+ a| 
+corda
+
+
+
+ a| 
+`script`
+ a| 
+O nome do roteiro, caso haja um.
+ a| 
+corda
+
+
+
+ a| 
+`snapshotID`
+ a| 
+O ID do snapshot, caso exista um snapshot na origem do job de volume em massa.
+ a| 
+inteiro
+
+
+
+ a| 
+`type`
+ a| 
+O tipo de operação em massa. Valores possíveis:
+
+* ler
+* escrever
+
+ a| 
+corda
+
+|===

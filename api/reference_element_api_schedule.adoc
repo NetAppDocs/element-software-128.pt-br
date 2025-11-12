@@ -1,0 +1,233 @@
+---
+permalink: api/reference_element_api_schedule.html 
+sidebar: sidebar 
+keywords: object,objects,schedule 
+summary: O objeto de agendamento contém informações sobre um agendamento criado para gerar automaticamente um instantâneo de um volume.  Você pode obter informações sobre todos os horários usando o método de API ListSchedules. 
+---
+= agendar
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de agendamento contém informações sobre um agendamento criado para gerar automaticamente um instantâneo de um volume.  Você pode obter informações sobre todos os horários com o `ListSchedules` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+atributos
+ a| 
+Indica a frequência com que o evento ocorre durante o cronograma. Valores possíveis:
+
+* Dia da semana
+* Dia do mês
+* Intervalo de tempo
+
+ a| 
+objeto JSON
+
+
+
+ a| 
+temErro
+ a| 
+Indica se a programação contém erros ou não. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+horas
+ a| 
+Mostra as horas que se passarão antes da criação da próxima captura de tela.  Os valores possíveis são de 0 a 24.
+ a| 
+inteiro
+
+
+
+ a| 
+últimoStatusDeExecução
+ a| 
+Indica o status do último instantâneo agendado. Valores possíveis:
+
+* Sucesso
+* Fracassado
+
+ a| 
+corda
+
+
+
+ a| 
+último início de tempo de execução
+ a| 
+Indica a última vez em que a programação foi iniciada.
+ a| 
+string de data ISO 8601
+
+
+
+ a| 
+minutos
+ a| 
+Mostra os minutos que se passarão antes da criação da próxima captura de tela.  Os valores possíveis são de 0 a 59.
+ a| 
+inteiro
+
+
+
+ a| 
+dias do mês
+ a| 
+Indica os dias do mês em que uma fotografia será tirada.
+ a| 
+variedade
+
+
+
+ a| 
+pausado
+ a| 
+Indica se a programação está pausada ou não. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+recorrente
+ a| 
+Indica se a programação é recorrente ou não. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+executarPróximoIntervalo
+ a| 
+Indica se a programação será executada na próxima vez que o agendador estiver ativo.  Quando verdadeiro, o agendamento será executado na próxima vez que o agendador estiver ativo e, em seguida, esse valor será redefinido para falso. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+ID do agendamento
+ a| 
+O ID único da programação.
+ a| 
+inteiro
+
+
+
+ a| 
+informações de agendamento
+ a| 
+Inclui o nome exclusivo atribuído ao agendamento, o período de retenção do instantâneo criado e o ID do volume a partir do qual o instantâneo foi criado.  Valores válidos:
+
+* `enableRemoteReplication`Indica se o snapshot deve ser incluído na replicação remota.  (booleano)
+* `ensureSerialCreation`Especifica se a criação de um novo snapshot deve ser permitida caso a replicação de um snapshot anterior esteja em andamento.  (booleano)
+* `name`: O nome da captura de tela a ser usada.  (corda)
+* `retention`: O período de tempo em que o instantâneo é mantido.  Dependendo da hora, ele é exibido em um dos seguintes formatos:
++
+** `fifo`O instantâneo é mantido com base no princípio FIFO (primeiro a entrar, primeiro a sair).  Se estiver vazio, o instantâneo será mantido para sempre.  (corda)
+** HH:mm:ss
+
+
+* `volumeID`: O ID do volume a ser incluído no snapshot.  (inteiro)
+* `volumes`: Uma lista de IDs de volume a serem incluídos no snapshot do grupo.  (matriz de inteiros)
+
+ a| 
+objeto JSON
+
+
+
+ a| 
+nomeDoAgenda
+ a| 
+O nome único atribuído à programação.
+ a| 
+corda
+
+
+
+ a| 
+tipo de agendamento
+ a| 
+No momento, apenas os tipos de agendamento de instantâneo são suportados.
+ a| 
+corda
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+O snapMirrorLabel a ser aplicado ao Snapshot ou ao Snapshot de Grupo criado, contido no scheduleInfo.  Se não for definido, esse valor será nulo.
+ a| 
+corda
+
+
+
+ a| 
+data de início
+ a| 
+Indica a data em que a programação começou ou começará pela primeira vez; formatada em horário UTC.
+ a| 
+string de data ISO 8601
+
+
+
+ a| 
+para ser excluído
+ a| 
+Indica se o agendamento está marcado para eliminação. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+dias da semana
+ a| 
+Indica os dias da semana em que uma fotografia será tirada.
+ a| 
+variedade
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listschedules.adoc[Lista de horários]

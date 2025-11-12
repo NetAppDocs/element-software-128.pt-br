@@ -1,0 +1,96 @@
+---
+permalink: api/reference_element_api_keyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,keys 
+summary: 'O objeto keyServerKmip descreve um servidor de chaves do Protocolo de Interoperabilidade de Gerenciamento de Chaves (KMIP), que é um local para recuperar chaves de autenticação para uso com recursos de cluster, como Criptografia em Repouso.' 
+---
+= keyServerKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto keyServerKmip descreve um servidor de chaves do Protocolo de Interoperabilidade de Gerenciamento de Chaves (KMIP), que é um local para recuperar chaves de autenticação para uso com recursos de cluster, como Criptografia em Repouso.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+ID do provedor de chave
+ a| 
+Se este servidor de chaves KMIP estiver atribuído a um provedor, este membro conterá o ID do provedor de chaves KMIP ao qual está atribuído.  Caso contrário, este membro é nulo.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do servidor de chaves
+ a| 
+O ID do servidor de chaves KMIP.  Este é um valor único atribuído pelo cluster durante a criação do servidor de chaves.  Este valor não pode ser alterado.
+ a| 
+inteiro
+
+
+
+ a| 
+kmipProvedorAtribuídoEstáAtivo
+ a| 
+Se este servidor de chaves KMIP estiver atribuído a um provedor (keyProviderID não é nulo), este membro indica se esse provedor está ativo (fornecendo chaves que estão atualmente em uso).  Caso contrário, este membro é nulo.
+ a| 
+booleano
+
+
+
+ a| 
+kmipCaCertificado
+ a| 
+O certificado de chave pública da autoridade certificadora raiz do servidor de chaves externo.  Isso é usado para verificar o certificado apresentado pelo servidor de chaves externo na comunicação TLS.  Para clusters de servidores principais onde servidores individuais usam diferentes CAs, este membro contém uma string concatenada dos certificados raiz de todas as CAs.
+ a| 
+corda
+
+
+
+ a| 
+kmipClientCertificate
+ a| 
+Um certificado PKCS#10 X.509 codificado em Base64 no formato PEM, usado pelo cliente KMIP do Element Storage.
+ a| 
+corda
+
+
+
+ a| 
+kmipKeyServerHostnames
+ a| 
+Os nomes de host ou endereços IP associados a este servidor de chaves KMIP.
+ a| 
+matriz de strings
+
+
+
+ a| 
+kmipKeyServerName
+ a| 
+O nome do servidor de chaves KMIP.  Este nome é usado apenas para fins de exibição e não precisa ser único.
+ a| 
+corda
+
+
+
+ a| 
+kmipKeyServerPort
+ a| 
+O número da porta associada a este servidor de chaves KMIP (normalmente 5696).
+ a| 
+inteiro
+
+|===

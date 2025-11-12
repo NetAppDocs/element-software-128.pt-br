@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_delete_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot, delete 
+summary: Você pode excluir um instantâneo de grupo do sistema.  Ao excluir o instantâneo do grupo, você pode escolher se todos os instantâneos associados ao grupo serão excluídos ou mantidos como instantâneos individuais. 
+---
+= Excluindo um instantâneo de grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode excluir um instantâneo de grupo do sistema.  Ao excluir o instantâneo do grupo, você pode escolher se todos os instantâneos associados ao grupo serão excluídos ou mantidos como instantâneos individuais.
+
+Se você excluir um volume ou snapshot que seja membro de um snapshot de grupo, não será mais possível reverter para o snapshot de grupo.  No entanto, você pode reverter cada volume individualmente.
+
+. Clique em *Proteção de Dados* > *Instantâneos de Grupo*.
+. Clique no ícone Ações da captura de tela que deseja excluir.
+. No menu que aparecer, clique em *Excluir*.
+. Selecione uma das seguintes opções na caixa de diálogo de confirmação:
++
+** Clique em *Excluir instantâneo do grupo E todos os membros do instantâneo do grupo* para excluir o instantâneo do grupo e todos os instantâneos dos membros.
+** Clique em *Manter membros do snapshot do grupo como snapshots individuais* para excluir o snapshot do grupo, mas manter todos os snapshots dos membros.
+
+
+. Confirme a ação.
+

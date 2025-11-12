@@ -1,0 +1,57 @@
+---
+permalink: storage/concept_monitor_understand_cluster_fullness_levels.html 
+sidebar: sidebar 
+keywords: cluster fullness levels, understanding, fullness levels 
+summary: 'O cluster que executa o software Element gera falhas de cluster para alertar o administrador de armazenamento quando o cluster estiver ficando sem capacidade.  Existem três níveis de preenchimento do cluster, todos exibidos na interface do usuário do NetApp Element : aviso, erro e crítico.' 
+---
+= Compreender os níveis de preenchimento dos cachos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O cluster que executa o software Element gera falhas de cluster para alertar o administrador de armazenamento quando o cluster estiver ficando sem capacidade.  Existem três níveis de preenchimento do cluster, todos exibidos na interface do usuário do NetApp Element : aviso, erro e crítico.
+
+O sistema utiliza o código de erro BlockClusterFull para alertar sobre o preenchimento completo do armazenamento de blocos do cluster.  Você pode visualizar os níveis de severidade de preenchimento do cluster na guia Alertas da interface do usuário do Element.
+
+A lista a seguir inclui informações sobre os níveis de gravidade do BlockClusterFull:
+
+* *Aviso*
++
+Este é um aviso configurável pelo cliente que aparece quando a capacidade de blocos do cluster está se aproximando do nível de gravidade do erro.  Por padrão, esse nível é definido em três por cento abaixo do nível de erro e pode ser ajustado por meio da interface do usuário e da API do Element.  Você precisa adicionar mais capacidade ou liberar capacidade o mais rápido possível.
+
+* *Erro*
++
+Quando o cluster está nesse estado, se um nó for perdido, não haverá capacidade suficiente no cluster para reconstruir a proteção de dados Double Helix.  A criação de novos volumes, clones e snapshots fica bloqueada enquanto o cluster estiver nesse estado.  Este não é um estado seguro ou recomendado para nenhum cluster. Você deve adicionar mais capacidade ou liberar capacidade imediatamente.
+
+* *Crítico*
++
+Esse erro crítico ocorreu porque o cluster está 100% consumido.  Está em modo somente leitura e nenhuma nova conexão iSCSI pode ser feita com o cluster.  Ao atingir esse estágio, você deve liberar ou adicionar mais capacidade imediatamente.
+
+
+
+O sistema utiliza o código de erro MetadataClusterFull para alertar sobre o preenchimento completo do armazenamento de metadados do cluster.  Você pode visualizar o nível de armazenamento de metadados do cluster na seção Capacidade do Cluster, na página Visão Geral da guia Relatórios da interface do usuário do Element.
+
+A lista a seguir inclui informações sobre os níveis de gravidade do MetadataClusterFull:
+
+* *Aviso*
++
+Este é um aviso configurável pelo cliente que aparece quando a capacidade de metadados do cluster está se aproximando do nível de gravidade do erro.  Por padrão, esse nível é definido em três por cento abaixo do nível de erro e pode ser ajustado por meio da API do Elemento.  Você precisa adicionar mais capacidade ou liberar capacidade o mais rápido possível.
+
+* *Erro*
++
+Quando o cluster está nesse estado, se um nó for perdido, não haverá capacidade suficiente no cluster para reconstruir a proteção de dados Double Helix.  A criação de novos volumes, clones e snapshots fica bloqueada enquanto o cluster estiver nesse estado.  Este não é um estado seguro ou recomendado para nenhum cluster. Você deve adicionar mais capacidade ou liberar capacidade imediatamente.
+
+* *Crítico*
++
+Esse erro crítico ocorreu porque o cluster está 100% consumido.  Está em modo somente leitura e nenhuma nova conexão iSCSI pode ser feita com o cluster.  Ao atingir esse estágio, você deve liberar ou adicionar mais capacidade imediatamente.
+
+
+
+
+NOTE: O seguinte aplica-se aos limites de cluster de dois nós:
+
+* O erro de integridade dos metadados está 20% abaixo do nível crítico.
+* O erro de preenchimento de bloco ocorre quando a capacidade de um bloco (incluindo a capacidade ociosa) está abaixo do nível crítico; ou seja, a capacidade está equivalente a dois blocos abaixo do nível crítico.
+

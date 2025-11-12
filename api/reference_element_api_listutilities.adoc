@@ -1,0 +1,81 @@
+---
+permalink: api/reference_element_api_listutilities.html 
+sidebar: sidebar 
+keywords: utilities,list,listing,listutilities 
+summary: Você pode usar o método ListUtilities para listar as operações que podem ser executadas em um nó. 
+---
+= Lista de utilitários
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ListUtilities` Método para listar as operações que podem ser executadas em um nó.
+
+
+
+== Parâmetros
+
+Este método não possui parâmetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+serviços públicos
+ a| 
+Lista de utilitários atualmente disponíveis para execução no nó.
+ a| 
+matriz de strings
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "ListUtilities",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "utilities": [
+      "ResetDrives",
+      "ResetNode",
+      "RestartNetworking",
+      "RestartServices",
+      "CreateSupportBundle",
+      "DeleteAllSupportBundles",
+      "CreateClusterSupportBundle"
+    ]
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

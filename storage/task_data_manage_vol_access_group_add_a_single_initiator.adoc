@@ -1,0 +1,66 @@
+---
+permalink: storage/task_data_manage_vol_access_group_add_a_single_initiator.html 
+sidebar: sidebar 
+keywords: initiator, add to volume access group, access groups, add single initiator, create initiator 
+summary: Você pode adicionar um iniciador a um grupo de acesso a volumes existente. 
+---
+= Adicionar um único iniciador a um grupo de acesso a volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar um iniciador a um grupo de acesso a volumes existente.
+
+Ao adicionar um iniciador a um grupo de acesso a volumes, o iniciador terá acesso a todos os volumes desse grupo de acesso a volumes.
+
+
+TIP: Você pode encontrar o iniciador de cada volume clicando no ícone Ações e, em seguida, selecionando *Exibir detalhes* para o volume na lista de volumes ativos.
+
+Se você usar o CHAP baseado em iniciador, poderá adicionar credenciais CHAP para um único iniciador em um grupo de acesso por volume, proporcionando mais segurança.  Isso permite que você aplique essa opção a grupos de acesso por volume que já existem.
+
+.Passos
+. Clique em *Gerenciamento* > *Grupos de Acesso*.
+. Clique no ícone *Ações* do grupo de acesso que deseja editar.
+. Clique em *Editar*.
+. Para adicionar um iniciador Fibre Channel ao grupo de acesso por volume, execute os seguintes passos:
++
+.. Em Adicionar Iniciadores, selecione um iniciador Fibre Channel existente na lista *Iniciadores Fibre Channel não vinculados*.
+.. Clique em *Adicionar iniciador FC*.
++
+
+NOTE: Você pode criar um iniciador durante esta etapa clicando no link *Criar Iniciador*, inserindo um nome para o iniciador e clicando em *Criar*.  O sistema adiciona automaticamente o iniciador à lista *Iniciadores* após a sua criação.
+
++
+Segue um exemplo do formato:
+
+
+
++
+[listing]
+----
+5f:47:ac:c0:5c:74:d4:02
+----
+. Para adicionar um iniciador iSCSI ao grupo de acesso ao volume, em Adicionar Iniciadores, selecione um iniciador existente na lista *Iniciadores*.
++
+
+NOTE: Você pode criar um iniciador durante esta etapa clicando no link *Criar Iniciador*, inserindo um nome para o iniciador e clicando em *Criar*.  O sistema adiciona automaticamente o iniciador à lista *Iniciadores* após a sua criação.
+
++
+O formato aceito de um IQN de iniciador é o seguinte: iqn.aaaa-mm, em que y e m são dígitos, seguidos de texto que deve conter apenas dígitos, caracteres alfabéticos minúsculos, um ponto (.), dois pontos (:) ou hífen (-).
+
++
+Segue um exemplo do formato:
+
++
+[listing]
+----
+iqn.2010-01.com.solidfire:c2r9.fc0.2100000e1e09bb8b
+----
++
+
+TIP: Você pode encontrar o IQN do iniciador para cada volume na página *Gerenciamento* > *Volumes* > Volumes Ativos, clicando no ícone Ações e selecionando *Exibir Detalhes* para o volume.
+
+. Clique em *Salvar alterações*.
+

@@ -1,0 +1,37 @@
+---
+permalink: storage/concept_intro_solidfire_system_overview.html 
+sidebar: sidebar 
+keywords: drives, nodes, unified cluster, nodes, storage nodes, Fibre Channel nodes, FC, cluster, management, Active IQ, system components, components, hardware, storage resources, storage, Element UI, Element software, Element 
+summary: 'Um sistema de armazenamento all-flash SolidFire é composto por componentes de hardware discretos (unidades e nós) que são combinados em um único conjunto de recursos de armazenamento por meio do software NetApp Element, executado independentemente em cada nó.  Este cluster unificado se apresenta como um sistema de armazenamento único para uso por clientes externos e é gerenciado como uma única entidade por meio da interface de usuário do software Element, API e outras ferramentas de gerenciamento.' 
+---
+= Sistema de armazenamento SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um sistema de armazenamento all-flash SolidFire é composto por componentes de hardware discretos (unidades e nós) que são combinados em um único conjunto de recursos de armazenamento por meio do software NetApp Element, executado independentemente em cada nó.  Este cluster unificado se apresenta como um sistema de armazenamento único para uso por clientes externos e é gerenciado como uma única entidade por meio da interface de usuário do software Element, API e outras ferramentas de gerenciamento.
+
+Utilizando a interface de usuário do software NetApp Element , você pode configurar e monitorar a capacidade e o desempenho do armazenamento do cluster SolidFire , além de gerenciar a atividade de armazenamento em uma infraestrutura multi-inquilino.
+
+image::../media/solidfire_concepts_architecture_image.gif[Diagrama arquitetônico do Element Software]
+
+Um sistema de armazenamento totalmente em flash SolidFire inclui os seguintes componentes:
+
+* Nós: Hardware físico que fornece os recursos de armazenamento para um cluster.  Existem dois tipos de nós:
++
+** Nós de armazenamento: Servidores que contêm uma coleção de unidades de disco.
+** Nós Fibre Channel (FC): Utilizados para conectar clientes FC através de um switch Fibre Channel.
+
+
+* Cluster: O núcleo do sistema de armazenamento SolidFire , composto por pelo menos quatro nós.
+* Nó de gerenciamento: Permite atualizar e fornecer serviços de sistema, incluindo monitoramento e telemetria, gerenciar ativos e configurações do cluster, executar testes e utilitários do sistema e fornecer acesso ao Suporte da NetApp para solução de problemas.  O nó de gerenciamento (mNode) é uma máquina virtual que funciona em conjunto com um cluster de armazenamento baseado no software Element.
+* Active IQ: Uma ferramenta online que fornece visualizações históricas continuamente atualizadas de dados de todo o cluster.  Você pode configurar alertas para eventos, limites ou métricas específicos.  O Active IQ permite monitorar o desempenho e a capacidade do sistema, além de manter-se informado sobre a integridade do cluster.
+* Os discos rígidos são usados em nós de armazenamento e armazenam dados para o cluster.  Um nó de armazenamento contém dois tipos de unidades:
++
+** Os metadados de volume fornecem informações de armazenamento que definem os volumes e outros objetos dentro de um cluster.
+** Unidades de bloco armazenam blocos de dados para volumes de aplicativos.
+
+
+

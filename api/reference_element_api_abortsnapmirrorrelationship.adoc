@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_abortsnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords:  
+summary: A interface web do software Element utiliza o método AbortSnapMirrorRelationship para interromper transferências SnapMirror que foram iniciadas, mas ainda não foram concluídas. 
+---
+= AbortarRelacionamentoSnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A interface web do software Element utiliza o `AbortSnapMirrorRelationship` Método para interromper transferências do SnapMirror que foram iniciadas, mas ainda não foram concluídas.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+O ID do ponto de extremidade do sistema de armazenamento ONTAP remoto que se comunica com o cluster de armazenamento Element.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+volume de destino
+ a| 
+O volume de destino no relacionamento SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+clearCheckpoint
+ a| 
+Determina se o ponto de verificação de reinicialização deve ser apagado ou não. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+snapMirrorRelationship
+ a| 
+Um objeto contendo informações sobre o relacionamento SnapMirror interrompido.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]
+
+|===
+
+
+== Novidade desde a versão
+
+10,1

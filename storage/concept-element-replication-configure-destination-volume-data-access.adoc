@@ -1,0 +1,19 @@
+---
+permalink: storage/concept-element-replication-configure-destination-volume-data-access.html 
+sidebar: sidebar 
+keywords: ontap, cli, configure, destination, volume, data access 
+summary: Após tornar o volume de destino gravável, você deve configurá-lo para acesso aos dados.  Os hosts SAN podem acessar os dados do volume de destino até que o volume de origem seja reativado. 
+---
+= Configure o volume de destino para acesso aos dados.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após tornar o volume de destino gravável, você deve configurá-lo para acesso aos dados.  Os hosts SAN podem acessar os dados do volume de destino até que o volume de origem seja reativado.
+
+. Mapeie o LUN do elemento para o grupo iniciador apropriado.
+. Crie sessões iSCSI dos iniciadores do host SAN para as LIFs SAN.
+. No cliente SAN, execute uma nova verificação de armazenamento para detectar o LUN conectado.
+

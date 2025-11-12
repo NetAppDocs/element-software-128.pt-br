@@ -1,0 +1,169 @@
+---
+permalink: api/reference_element_api_modifysnapshot.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,attributes,attribute 
+summary: 'Você pode usar o ModifySnapshot para alterar os atributos atualmente atribuídos a um snapshot.  Você também pode usar esse método para permitir que snapshots criados no volume de leitura/gravação (origem) sejam replicados remotamente para um cluster de armazenamento de destino que execute o software Element.' 
+---
+= ModificarInstantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar `ModifySnapshot` Alterar os atributos atualmente atribuídos a um instantâneo.  Você também pode usar esse método para permitir que snapshots criados no volume de leitura/gravação (origem) sejam replicados remotamente para um cluster de armazenamento de destino que execute o software Element.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+
+
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+habilitarReplicaçãoRemota
+ a| 
+Utilize esta opção para permitir que o snapshot criado seja replicado para um cluster de armazenamento remoto. Valores possíveis:
+
+* `true`O instantâneo será replicado para o armazenamento remoto.
+* `false`O instantâneo não será replicado para o armazenamento remoto.
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+Não
+
+
+
+ a| 
+tempo de expiração
+ a| 
+Especifique o tempo após o qual a captura de tela pode ser removida.  Não pode ser usado com retenção.  Se nem o tempo de expiração (expirationTime) nem o tempo de retenção (retention) do snapshot original forem especificados, o snapshot não expirará.  O formato de hora é uma string de data ISO 8601 para expiração baseada em tempo; caso contrário, não expirará.  Um valor nulo faz com que o instantâneo seja retido permanentemente.  O valor "fifo" faz com que o snapshot seja preservado com base no princípio FIFO (First-In-First-Out), em relação a outros snapshots FIFO no volume.  A API falhará se não houver espaço FIFO disponível.
+ a| 
+string de data ISO 8601
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+nome
+ a| 
+O nome da imagem.  Caso nenhum nome seja inserido, a data e a hora em que a foto foi tirada serão utilizadas.  O comprimento máximo permitido para o nome é de 255 caracteres.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+O rótulo usado pelo software SnapMirror para especificar a política de retenção de snapshots em um endpoint SnapMirror .
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+ID do instantâneo
+ a| 
+Identificador da captura de tela.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+instantâneo
+ a| 
+Um objeto contendo informações sobre o instantâneo recém-modificado.
+ a| 
+xref:reference_element_api_snapshot.adoc[instantâneo]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "ModifySnapshot",
+  "params": {
+    "snapshotID": 3114,
+    "enableRemoteReplication": "true",
+    "name" : "Chicago"
+  },
+  "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:26:20Z",
+      "enableRemoteReplication": true,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1",
+      "snapshotID": 3114,
+      "snapshotUUID": "5809a671-4ad0-4a76-9bf6-01cccf1e65eb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    }
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

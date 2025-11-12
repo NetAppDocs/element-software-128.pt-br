@@ -1,0 +1,172 @@
+---
+permalink: concepts/concept_rn_whats_new_element.html 
+sidebar: sidebar 
+keywords: netapp, solidfire, element, storage, solidfire enterprise sds 
+summary: A NetApp atualiza periodicamente os softwares SolidFire e Element para oferecer novos recursos, melhorias e correções de bugs. 
+---
+= Novidades no software Element
+:allow-uri-read: 
+:url-peak: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/Element_Software_-_Apache_Log4j_Vulnerability_-_Workaround
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A NetApp atualiza periodicamente os softwares SolidFire e Element para oferecer novos recursos, melhorias e correções de bugs.  O Element 12.8 é a versão mais recente e inclui atualizações de segurança e de componentes do sistema, melhorias operacionais e resolução de problemas.
+
+
+NOTE: As atualizações cumulativas de software e firmware são instaladas como parte de uma atualização do Element 12.8, com base na versão atual do Element em execução em um cluster de armazenamento.  Por exemplo, se um cluster estiver executando o Element 12.5, você pode atualizar diretamente para o Element 12.8 para obter as atualizações cumulativas das versões 12.7 e 12.8.  Para obter informações sobre os caminhos de atualização suportados, consulte o artigo da Base de Conhecimento. https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_upgrade_matrix_for_storage_clusters_running_NetApp_Element_software["Qual é a matriz de atualização para clusters de armazenamento que executam o software NetApp Element?"^] .
+
+
+
+== Elemento 12.8
+
+Saiba mais sobre as novidades do Element 12.8.
+
+
+
+=== Balanceamento de carga de volume
+
+O Element 12.8 introduz a funcionalidade de Balanceamento de Carga por Volume.  Você pode usar esse recurso para balancear os volumes entre os nós com base no nível real de IOPS de cada volume, em vez do IOPS mínimo configurado na política de QoS.  Você só pode usar o recurso de balanceamento de carga de volume para equilibrar volumes.  Não é possível utilizá-lo para balancear volumes virtuais.  O recurso de balanceamento de carga por volume está desativado por padrão.  Você pode ativá-lo e desativá-lo usando o `VolumeLoadBalanceOnActualIOPS` Parâmetro da API com olink:../api/reference_element_api_enablefeature.html["Ativar recurso"] elink:../api/reference_element_api_disablefeature.html["Desativar recurso"] métodos de API ou usando olink:../storage/task_system_manage_cluster_volume_load_balancing.html["Balanceamento de carga de volume"] opção na interface do usuário do Elemento.
+
+
+
+=== Visualizar informações de utilização do nó
+
+Com o Element 12.8, você pode visualizar informações de utilização de nós como `nodeHeat` usando o `GetNodeStats` e `ListNodeStats` Métodos da API.  O `nodeHeat` O objeto é um membro do `nodeStats` O objeto exibe informações sobre a utilização do nó com base na proporção entre o total de IOPS primários ou o total de IOPS e o total de IOPS configurados, calculados em média ao longo do tempo.
+
+Além disso, você pode visualizar a utilização do nó como uma porcentagem de `recentPrimaryTotalHeat` na visualização Detalhes de um nó na interface do usuário do elemento.
+
+
+
+=== Visualizar estatísticas de E/S para um volume
+
+Com o Element 12.8, você pode visualizar as estatísticas de uso de E/S para um volume da seguinte forma: `sliceIopsStats` usando o `GetVolumeStats` e `ListVolumeStatsByVolume` Métodos da API.  As estatísticas de E/S são calculadas usando as informações de IOPS de leitura e gravação do volume e medidas em dois períodos: as últimas 24 horas e a última hora. link:../api/reference_element_api_volumestats.html#object-members["Saber mais"].
+
+
+
+=== Algoritmo CHAP para sessão iSCSI
+
+Um iniciador iSCSI de host solicita uma lista de algoritmos do Protocolo de Autenticação por Desafio e Aperto de Mão (CHAP) a serem usados ao criar uma sessão iSCSI com um alvo iSCSI Element.  A partir da versão 12.8 do Element, você pode visualizar o algoritmo CHAP compatível que o alvo iSCSI do Element escolhe usar para uma sessão iSCSI.
+
+
+
+=== Atualizar versão do hardware da VM
+
+Se você estiver realizando uma atualização in-place de um nó de gerenciamento existente para o Element 12.8, antes de atualizar, certifique-se de que a versão do hardware da máquina virtual no nó de gerenciamento seja compatível com o ESXi 6.7 (versão de hardware da máquina virtual 14) ou posterior, dependendo do seu ambiente. link:../upgrade/task_hcc_upgrade_management_node.html#step-1-upgrade-vm-hardware-version-on-a-management-node["Saber mais"].
+
+
+
+== Elemento 12.7
+
+Saiba mais sobre as novidades do Element 12.7.
+
+
+
+=== Algoritmos CHAP seguros
+
+O Element 12.7 inclui suporte para algoritmos de autenticação CHAP (Challenge-Handshake Authentication Protocol) seguros e compatíveis com FIPS: SHA1, SHA-256 e SHA3-256. link:../storage/task_data_manage_accounts_work_with_accounts_task.html["Saber mais"].
+
+
+
+=== Taxa de sincronização de bloco dinâmico (bin)
+
+Operações de cluster, como adições, atualizações ou manutenção de nós, ou adição de unidades, etc., acionam a sincronização de blocos (bins) para distribuir os dados dos blocos para os nós novos ou atualizados em um layout de cluster.  Utilizar uma única velocidade lenta como taxa de sincronização padrão faz com que essas operações demorem muito e não aproveita o maior poder de processamento de nós maiores.  A partir da versão 12.7 do Element, a taxa de sincronização de entrada é ajustada dinamicamente com base no número de núcleos no nó de armazenamento, permitindo que essas operações sejam executadas significativamente mais rápido.
+
+Por exemplo, ao adicionar nós de armazenamento grandes de 28 núcleos (H610S, SF19210 e SF38410) executando o Element 12.7 a um cluster existente, a taxa de sincronização de dados é ajustada automaticamente para 110 Mbps em vez de 60 Mbps.  Além disso, ao retirar esses grandes nós de armazenamento do modo de manutenção, por exemplo, durante uma atualização do Element 12.3.x ou posterior para o Element 12.7 usando o NetApp Hybrid Cloud Control, a taxa de sincronização para dados de bloco alterados é ajustada automaticamente para 110 Mbps em vez de 20 Mbps.
+
+Ao adicionar nós de armazenamento médios de 16 núcleos (H410S) e nós de armazenamento pequenos de 12 núcleos (SF4805) a um cluster Element 12.7, a taxa de sincronização de dados permanece em 60 Mbps; no entanto, para sincronizar blocos alterados quando você os retira do modo de manutenção do nó durante atualizações do Element 12.3.x para o Element 12.7, a taxa de sincronização é ajustada automaticamente de 20 Mbps para 60 Mbps para nós de armazenamento médios e 40 Mbps para nós de armazenamento menores.
+
+Ao remover nós de armazenamento, não há impacto na taxa de sincronização de blocos, o que evita impactos no desempenho de E/S do cliente.
+
+
+
+=== Melhoria na coleta de lixo
+
+Para clusters com nós de armazenamento maiores, por exemplo, um H610S-4, que possuem 1 PB de espaço usado, executam cargas de trabalho muito altas com sobrescritas e têm alta deduplicação e compressão, a operação de Coleta de Lixo agora consegue acompanhar, pois o tamanho padrão do filtro de Bloom foi aumentado para os nós maiores de 700 GB ou mais de memória para 1048576 bits.  Essa alteração entra em vigor automaticamente após a atualização dos seus nós de armazenamento para o Element 12.7 e não afeta nós menores.
+
+
+
+=== Melhoria de escala
+
+Com o Element 12.7, você não precisa mais seguir uma sequência específica ao adicionar vários nós de armazenamento com unidades de bloco e metadados a um cluster existente.  Usando a interface do usuário ou a API do Element, você pode simplesmente selecionar todas as unidades disponíveis e adicioná-las em massa simultaneamente.  O Element 12.7 gerencia automaticamente a sincronização de dados, de forma que todos os serviços de bloco sejam sincronizados simultaneamente.  Assim que os serviços de bloco de cada nó concluírem a sincronização, a unidade de metadados desse nó poderá ser atribuída a volumes do host.  Essa melhoria de escala reduz significativamente a latência de resposta de leitura e evita a degradação do desempenho durante a sincronização de dados entre os nós de armazenamento recém-adicionados.
+
+
+
+=== atualizações de firmware do nó de armazenamento
+
+O Element 12.7 inclui o pacote de firmware de armazenamento versão 2.164.0, que oferece suporte a novos componentes do sistema. link:https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.164.0.html["Saber mais"].
+
+
+NOTE: Não há novas atualizações de firmware na versão 12.7 do Element.  No entanto, com base no pacote de firmware atual em execução nos nós de armazenamento, as atualizações cumulativas são instaladas quando você atualiza para o Element 12.7.
+
+
+
+=== Documentação do SolidFire Active IQ
+
+Na interface do usuário do SolidFire Active IQ , agora você pode navegar até a página de Gerenciamento de QoS para visualizar recomendações e informações sobre limitação de nós para o seu cluster.  Além disso, o painel de controle do cluster agora exibe a contagem total de snapshots.  Outras melhorias recentes incluem a adição de informações sobre os nós primário e secundário para volumes ativos, bem como a taxa de transferência média, IOPS e latência média dos últimos 30 minutos nos volumes primários de um nó.
+
+Agora você pode acessar a documentação do SolidFire Active IQ na documentação do software Element. link:https://docs.netapp.com/us-en/element-software/monitor-storage-active-iq.html["Saber mais"].
+
+
+
+=== O NetApp Bugs Online contém problemas resolvidos e conhecidos.
+
+Os problemas resolvidos e os problemas conhecidos estão listados na ferramenta NetApp Bugs Online.  Você pode consultar esses problemas relacionados ao software Element e outros produtos em https://mysupport.netapp.com/site/products/all/details/element-software/bugsonline-tab["Bugs da NetApp online"^] .
+
+
+
+== Elemento 12.5
+
+Saiba mais sobre as novidades do Element 12.5.
+
+
+
+=== Acesso aprimorado ao nó de armazenamento
+
+O Element 12.5 traz acesso remoto aprimorado a nós individuais usando certificados SSH assinados.  Para fornecer acesso remoto seguro aos nós de armazenamento, foi criada uma nova conta de usuário local com privilégios limitados chamada `sfreadonly` Agora é criado durante o RTFI de um nó de armazenamento.  O `sfreadonly` A conta permite o acesso ao backend do nó de armazenamento para fins de manutenção básica ou resolução de problemas.  Agora você pode configurar o `supportAdmin` Tipo de acesso para um usuário administrador de cluster que permite ao suporte da NetApp acessar o cluster conforme necessário.
+
+
+
+=== Gerenciamento aprimorado de Domínios de Proteção personalizados
+
+O Element 12.5 apresenta uma nova interface de usuário que permite visualizar de forma rápida e fácil os Domínios de Proteção personalizados existentes e configurar novos Domínios de Proteção personalizados.
+
+
+
+=== Falhas, eventos e alertas de cluster novos e aprimorados.
+
+O Element 12.5 aprimora a solução de problemas do sistema com a introdução dos novos códigos de falha do painel de instrumentos. `BmcSelfTestFailed` e `CpuThermalEventThreshold` .  O Element 12.5 também contém melhorias de robustez para eventos e alertas de cluster existentes, como: `nodeOffline` , `volumeOffline` , `driveHealthFault` , `networkEvent` , e	`cSumEvent` .
+
+
+
+=== Ative a criptografia de software em repouso na interface do usuário de criação de cluster.
+
+Com a adição de uma nova caixa de seleção na interface de usuário de criação de cluster, o Element 12.5 oferece a opção de habilitar a criptografia de software em repouso (SECR) em todo o cluster para clusters de armazenamento all-flash SolidFire durante a criação do cluster.
+
+
+
+=== atualizações de firmware do nó de armazenamento
+
+O Element 12.5 inclui atualizações de firmware para nós de armazenamento. link:../concepts/concept_rn_relatedrn_element.html#storage-firmware["Saber mais"].
+
+
+
+=== Segurança reforçada
+
+O Elemento 12.5 contém a mitigação que elimina a exposição do software Element à vulnerabilidade do Apache Log4j.  Os clusters de armazenamento NetApp SolidFire com o recurso de Volumes Virtuais (VVols) ativado estão expostos à vulnerabilidade do Apache Log4j.  Para obter informações sobre a solução alternativa para a vulnerabilidade do Apache Log4j no software NetApp Element , consulte o artigo da Base de Conhecimento (KB article^).
+
+Se você estiver executando o Element 11.x, 12.0 ou 12.2, ou se o seu cluster de armazenamento já estiver na versão 12.3 ou 12.3.1 com o recurso VVols ativado, você deverá atualizar para a versão 12.5.
+
+O Element 12.5 também inclui mais de 120 correções de vulnerabilidades de segurança CVE.
+
+
+
+== Encontre mais informações
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["Notas de versão dos serviços de controle e gerenciamento de nuvem híbrida da NetApp"^]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* http://docs.netapp.com/sfe-122/index.jsp["Central de Documentação do SolidFire e do Element Software para versões anteriores"^]
+* https://docs.netapp.com/us-en/hci/index.html["Documentação NetApp HCI"^]
+* link:../hardware/fw_storage_nodes.html["Versões de firmware de armazenamento suportadas para nós de armazenamento SolidFire"]
+

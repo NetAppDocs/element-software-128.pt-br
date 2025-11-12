@@ -1,0 +1,52 @@
+---
+permalink: storage/reference_data_manage_vvol_protocol_endpoints_details.html 
+sidebar: sidebar 
+keywords: protocol endpoints, details, vvols, state, type, id 
+summary: 'A página "Pontos de extremidade do protocolo" na guia "VVols" fornece informações sobre os pontos de extremidade do protocolo.' 
+---
+= Detalhes dos endpoints do protocolo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página "Pontos de extremidade do protocolo" na guia "VVols" fornece informações sobre os pontos de extremidade do protocolo.
+
+* *ID do provedor principal*
++
+O ID do provedor do ponto de extremidade do protocolo primário.
+
+* *ID do provedor secundário*
++
+O ID do provedor do ponto de extremidade do protocolo secundário.
+
+* *ID do ponto de extremidade do protocolo*
++
+O UUID do ponto de extremidade do protocolo.
+
+* *Estado do ponto final do protocolo*
++
+O status do ponto final do protocolo.  Os valores possíveis são os seguintes:
+
++
+** Ativo: O ponto de extremidade do protocolo está em uso.
+** Início: O ponto final do protocolo está sendo iniciado.
+** Falha: O ponto de extremidade do protocolo falhou.
+** Reservado: O ponto final do protocolo está reservado.
+
+
+* *Tipo de Fornecedor*
++
+O tipo de provedor do ponto de extremidade do protocolo.  Os valores possíveis são os seguintes:
+
++
+** Primário
+** Secundário
+
+
+* *ID do dispositivo SCSI NAA*
++
+O identificador de dispositivo SCSI globalmente único para o ponto de extremidade do protocolo no formato NAA IEEE Registered Extended Format.
+
+

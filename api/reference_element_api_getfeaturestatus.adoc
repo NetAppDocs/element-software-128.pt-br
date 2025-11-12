@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getfeaturestatus.html 
+sidebar: sidebar 
+keywords: feature,status,cluster,get,getting,getfeaturestatus 
+summary: Você pode usar o método GetFeatureStatus para recuperar o status de um recurso de cluster. 
+---
+= ObterStatusDoRecurso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetFeatureStatus` Método para recuperar o estado de um recurso de cluster.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+recurso
+ a| 
+O estado de um recurso de cluster.  Caso nenhum valor seja fornecido, o sistema retorna o status de todas as funcionalidades. Valores possíveis:
+
+* `Vvols`Recuperar o status do recurso de cluster VVols.
+* `SnapMirror`Recuperar o status do recurso de cluster de replicação do SnapMirror .
+* `Fips`Recuperar o status da criptografia FIPS 140-2 para o recurso de comunicação HTTPS.
+* `FipsDrives`Recuperar o status do recurso de criptografia de unidade FIPS 140-2.
+* `VolumeLoadBalanceOnActualIOPS`Recuperar o status do balanceamento de fatias com base no IOPS real, em vez do IOPS mínimo.  Disponível a partir do Elemento 12.8.
+
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+características
+ a| 
+Uma matriz de objetos de recursos indicando o nome do recurso e seu status.  Membros do objeto:
+
+* Recurso: (string) O nome do recurso.
+* ativado: (booleano) Indica se o recurso está ativado ou não.
+
+ a| 
+matriz de objetos JSON
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "GetFeatureStatus",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "features": [
+            {
+                "enabled": true,
+                "feature": "Vvols"
+            },
+            {
+                "enabled": true,
+                "feature": "SnapMirror"
+            },
+            {
+                "enabled": true,
+                "feature": "Fips"
+            },
+            {
+                "enabled": true,
+                "feature": "FipsDrives"
+            },
+            {
+                "enabled": true,
+                "feature": "VolumeLoadBalanceOnActualIOPS"
+            }
+        ]
+    }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

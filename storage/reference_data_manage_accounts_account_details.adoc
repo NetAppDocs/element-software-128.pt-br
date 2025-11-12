@@ -1,0 +1,54 @@
+---
+permalink: storage/reference_data_manage_accounts_account_details.html 
+sidebar: sidebar 
+keywords: account, volumes 
+summary: A página Contas na guia Gerenciamento fornece informações sobre cada conta no sistema, como ID, nome de usuário e detalhes de eficiência para os volumes atribuídos a cada conta. 
+---
+= Detalhes da conta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página Contas na guia Gerenciamento fornece informações sobre cada conta no sistema, como ID, nome de usuário e detalhes de eficiência para os volumes atribuídos a cada conta.
+
+* *EU IA*
++
+O ID da conta gerado pelo sistema.
+
+* *Nome de usuário*
++
+O nome atribuído à conta quando ela foi criada.
+
+* *Status*
++
+O status da conta. Valores possíveis:
+
++
+** Ativo: Uma conta ativa.
+** bloqueado: Uma conta bloqueada.
+** Removido: Uma conta que foi excluída e removida permanentemente.
+
+
+* *Volumes Ativos*
++
+O número de volumes ativos atribuídos à conta.
+
+* *Compressão*
++
+A pontuação de eficiência de compressão para os volumes atribuídos à conta.
+
+* *Desduplicação*
++
+A pontuação de eficiência de deduplicação para os volumes atribuídos à conta.
+
+* *Provisionamento Dinâmico*
++
+A pontuação de eficiência do provisionamento dinâmico (thin provisioning) para os volumes atribuídos à conta.
+
+* *Eficiência geral*
++
+A pontuação geral de eficiência para os volumes atribuídos à conta.
+
+

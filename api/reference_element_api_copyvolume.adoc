@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_copyvolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,CopyVolume,overwrite,overwriting,data 
+summary: 'Você pode usar o método CopyVolume para sobrescrever o conteúdo de dados de um volume existente com o conteúdo de dados de outro volume (ou snapshot).  Os atributos do volume de destino, como IQN, configurações de QoS, tamanho, conta e associação ao grupo de acesso ao volume, não são alterados.  O volume de destino já deve existir e ter o mesmo tamanho que o volume de origem.' 
+---
+= Copiar Volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `CopyVolume` Método para sobrescrever o conteúdo de dados de um volume existente com o conteúdo de dados de outro volume (ou snapshot).  Os atributos do volume de destino, como IQN, configurações de QoS, tamanho, conta e associação ao grupo de acesso ao volume, não são alterados.  O volume de destino já deve existir e ter o mesmo tamanho que o volume de origem.
+
+É recomendável que os clientes desmontem o volume de destino antes do início da operação.  Se o volume de destino for modificado durante a operação, as alterações serão perdidas.  Essa operação pode levar um tempo variável para ser concluída.  Você pode usar oxref:reference_element_api_getasyncresult.adoc[ObterResultadoAssíncrono] método para determinar quando o processo terminou, exref:reference_element_api_listsyncjobs.adoc[ListSyncJobs] para ver o progresso da cópia.
+
+
+
+== Parâmetros
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID do volume de destino
+ a| 
+ID do volume a ser sobrescrito.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+ID do volume
+ a| 
+ID do volume a ser lido.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+ID do instantâneo
+ a| 
+ID do snapshot que é usado como fonte do clone.  Caso nenhum ID seja fornecido, o volume ativo atual será utilizado.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+manipulador assíncrono
+ a| 
+Identifica o valor utilizado para obter o resultado da operação.
+ a| 
+inteiro
+
+
+
+ a| 
+cloneID
+ a| 
+ID do clone para o volume recém-clonado.
+ a| 
+inteiro
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "CopyVolume",
+   "params": {
+      "volumeID" : 3,
+      "dstVolumeID" : 2
+   },
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "asyncHandle": 9,
+    "cloneID": 5
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_getasyncresult.adoc[ObterResultadoAssíncrono]
+* xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]
+

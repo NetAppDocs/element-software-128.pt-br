@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_drive.html 
+sidebar: sidebar 
+keywords: objects,object,drive 
+summary: O objeto de unidade contém informações sobre as unidades individuais nos nós ativos do cluster.  Este objeto contém detalhes sobre unidades que foram adicionadas como metadados de volume ou unidades de bloco, bem como unidades que ainda não foram adicionadas e estão disponíveis.  Você pode obter essas informações com o método da API ListDrives. 
+---
+= dirigir
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de unidade contém informações sobre as unidades individuais nos nós ativos do cluster.  Este objeto contém detalhes sobre unidades que foram adicionadas como metadados de volume ou unidades de bloco, bem como unidades que ainda não foram adicionadas e estão disponíveis.  Você pode recuperar essas informações com o `ListDrives` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.  Este objeto é sempre nulo e não pode ser modificado.
+ a| 
+objeto JSON
+
+
+
+ a| 
+capacidade
+ a| 
+A capacidade total da unidade, em bytes.
+ a| 
+inteiro
+
+
+
+ a| 
+chassiSlot
+ a| 
+Para plataformas HCI, esse valor corresponde à letra do nó e ao número do slot no chassi do servidor onde a unidade está localizada.  Para plataformas de armazenamento, o número do slot é uma representação em formato de string do número inteiro "slot".
+ a| 
+corda
+
+
+
+ a| 
+Detalhes da falha de unidade
+ a| 
+Se o status de uma unidade for "Falha", este campo fornece mais detalhes sobre o motivo pelo qual a unidade foi marcada como falha.
+ a| 
+corda
+
+
+
+ a| 
+driveID
+ a| 
+O ID desta unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+motivo da falha de segurança da unidade
+ a| 
+Caso a ativação ou desativação da segurança da unidade tenha falhado, indique o motivo da falha.  Se o valor for "nenhum", não houve falha.
+ a| 
+corda
+
+
+
+ a| 
+ID da chave
+ a| 
+O ID da chave usado pelo provedor da chave para obter a chave de autenticação para desbloquear esta unidade.
+ a| 
+UUID
+
+
+
+ a| 
+ID do provedor de chave
+ a| 
+Identifica o fornecedor da chave de autenticação para desbloquear esta unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do nó
+ a| 
+O ID do nó que contém esta unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+tamanhoDoArquivoDoSegmento
+ a| 
+O tamanho do arquivo de segmento da unidade, em bytes.
+ a| 
+inteiro
+
+
+
+ a| 
+serial
+ a| 
+O número de série da unidade.
+ a| 
+corda
+
+
+
+ a| 
+slot
+ a| 
+O número do slot no chassi do servidor onde esta unidade está localizada, ou -1 se um dispositivo SATADimm for usado para a unidade de metadados interna.
+ a| 
+inteiro
+
+
+
+ a| 
+status
+ a| 
+O estado da unidade. Valores possíveis:
+
+* Disponível: Uma unidade de disco disponível.
+* ativo: Uma unidade ativa.
+* Apagando: O disco está em processo de apagamento seguro.  Todos os dados presentes nessa unidade serão apagados permanentemente.
+* falha: Uma unidade que apresentou defeito.  Todos os dados que estavam anteriormente na unidade foram migrados para outras unidades no cluster.
+* Remoção: Um disco rígido está sendo removido.  Todos os dados anteriormente presentes na unidade estão sendo migrados para outras unidades no cluster.
+
+ a| 
+corda
+
+
+
+ a| 
+tipo
+ a| 
+O tipo de acionamento. Valores possíveis:
+
+* volume: Armazena metadados do volume.
+* bloco: Armazena dados de bloco.
+* Desconhecido: Tipo de unidade ainda não ativo e a ser determinado.
+
+ a| 
+corda
+
+
+
+ a| 
+Capacidade utilizável
+ a| 
+A capacidade utilizável da unidade, em bytes.
+ a| 
+inteiro
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listdrives.adoc[ListDrives]

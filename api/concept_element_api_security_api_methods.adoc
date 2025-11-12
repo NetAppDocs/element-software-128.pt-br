@@ -1,0 +1,42 @@
+---
+permalink: api/concept_element_api_security_api_methods.html 
+sidebar: sidebar 
+keywords: security,key management,encryption 
+summary: Você pode integrar o software Element com serviços externos relacionados à segurança, como um servidor externo de gerenciamento de chaves.  Esses métodos relacionados à segurança permitem configurar recursos de segurança do Element, como o gerenciamento de chaves externas para criptografia em repouso. 
+---
+= Métodos da API de segurança
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode integrar o software Element com serviços externos relacionados à segurança, como um servidor externo de gerenciamento de chaves.  Esses métodos relacionados à segurança permitem configurar recursos de segurança do Element, como o gerenciamento de chaves externas para criptografia em repouso.
+
+* xref:reference_element_api_addkeyservertoproviderkmip.adoc[AddKeyServerToProviderKmip]
+* xref:reference_element_api_createkeyproviderkmip.adoc[CriarProvedorDeChavesKmip]
+* xref:reference_element_api_createkeyserverkmip.adoc[CriarKeyServerKmip]
+* xref:reference_element_api_createpublicprivatekeypair.adoc[CriarParDeChavesPúblicasPrivadas]
+* xref:reference_element_api_deletekeyproviderkmip.adoc[DeleteKeyProviderKmip]
+* xref:reference_element_api_deletekeyserverkmip.adoc[DeleteKeyServerKmip]
+* xref:reference_element_api_disableencryptionatrest.adoc[Desativar a criptografia em repouso]
+* xref:reference_element_api_enableencryptionatrest.adoc[Habilitar criptografia em repouso]
+* xref:reference_element_api_getclientcertificatesignrequest.adoc[Solicitação de assinatura de certificado de cliente]
+* xref:reference_element_api_getkeyproviderkmip.adoc[GetKeyProviderKmip]
+* xref:reference_element_api_getkeyserverkmip.adoc[GetKeyServerKmip]
+* xref:reference_element_api_listkeyproviderskmip.adoc[ListKeyProvidersKmip]
+* xref:reference_element_api_listkeyserverskmip.adoc[ListKeyServersKmip]
+* xref:reference_element_api_modifykeyserverkmip.adoc[ModifyKeyServerKmip]
+* xref:reference_element_api_removekeyserverfromproviderkmip.adoc[RemoverKeyServerFromProviderKmip]
+* xref:reference_element_api_signsshkeys.adoc[Assinar chaves Ssh]
+* xref:reference_element_api_testkeyproviderkmip.adoc[TestKeyProviderKmip]
+* xref:reference_element_api_testkeyserverkmip.adoc[TestKeyServerKmip]
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

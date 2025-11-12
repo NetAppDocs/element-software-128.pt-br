@@ -1,0 +1,59 @@
+---
+permalink: storage/reference_data_protection_group_snapshot_details.html 
+sidebar: sidebar 
+keywords: snapshots, group snapshots, volumes, replication 
+summary: 'A página "Instantâneos de Grupo" na aba "Proteção de Dados" fornece informações sobre os instantâneos de grupo.' 
+---
+= Detalhes do resumo do grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página "Instantâneos de Grupo" na aba "Proteção de Dados" fornece informações sobre os instantâneos de grupo.
+
+* *EU IA*
++
+O ID gerado pelo sistema para o instantâneo do grupo.
+
+* *UUID*
++
+O ID exclusivo da captura de tela do grupo.
+
+* *Nome*
++
+Nome definido pelo usuário para o instantâneo do grupo.
+
+* *Tempo para Criar*
++
+O momento em que a captura de tela do grupo foi criada.
+
+* *Status*
++
+O estado atual do instantâneo. Valores possíveis:
+
++
+** Preparando: O instantâneo está sendo preparado para uso e ainda não pode ser gravado.
+** Concluído: Este instantâneo terminou a preparação e agora está pronto para uso.
+** Ativo: O snapshot representa a ramificação ativa.
+
+
+* *# Volumes*
++
+O número de volumes no grupo.
+
+* *Reter até*
++
+O dia e a hora em que a captura de tela será excluída.
+
+* *Replicação Remota*
++
+Indica se o snapshot está habilitado ou não para replicação em um cluster SolidFire remoto. Valores possíveis:
+
++
+** Ativado: O recurso de snapshot está ativado para replicação remota.
+** Desativado: O recurso de snapshot não está habilitado para replicação remota.
+
+
+

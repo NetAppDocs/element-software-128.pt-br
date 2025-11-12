@@ -1,0 +1,46 @@
+---
+permalink: storage/task_replication_pair_cluster_using_pairing_key.html 
+sidebar: sidebar 
+keywords: remote replication, pairing key, pairing clusters 
+summary: Se você tiver acesso de administrador de cluster a um cluster local, mas não ao cluster remoto, poderá emparelhar os clusters usando uma chave de emparelhamento.  Uma chave de emparelhamento é gerada em um cluster local e, em seguida, enviada de forma segura para um administrador de cluster em um local remoto para estabelecer uma conexão e concluir o emparelhamento do cluster para replicação em tempo real. 
+---
+= Emparelhe clusters usando uma chave de emparelhamento.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você tiver acesso de administrador de cluster a um cluster local, mas não ao cluster remoto, poderá emparelhar os clusters usando uma chave de emparelhamento.  Uma chave de emparelhamento é gerada em um cluster local e, em seguida, enviada de forma segura para um administrador de cluster em um local remoto para estabelecer uma conexão e concluir o emparelhamento do cluster para replicação em tempo real.
+
+. No cluster local, selecione *Proteção de Dados* > *Pares de Cluster*.
+. Clique em *Emparelhar Cluster*.
+. Clique em *Iniciar Emparelhamento* e clique em *Não* para indicar que você não tem acesso ao cluster remoto.
+. Clique em *Gerar chave*.
++
+
+NOTE: Essa ação gera uma chave de texto para emparelhamento e cria um par de clusters não configurado no cluster local.  Caso não conclua o procedimento, será necessário excluir manualmente o par de clusters.
+
+. Copie a chave de emparelhamento do cluster para a sua área de transferência.
+. Disponibilize a chave de emparelhamento ao administrador do cluster no site remoto do cluster.
++
+
+NOTE: A chave de emparelhamento do cluster contém uma versão do MVIP, nome de usuário, senha e informações do banco de dados para permitir conexões de volume para replicação remota.  Essa chave deve ser tratada de forma segura e não deve ser armazenada de maneira que permita acesso acidental ou não seguro ao nome de usuário ou à senha.
+
++
+
+IMPORTANT: Não modifique nenhum dos caracteres na chave de emparelhamento.  A chave torna-se inválida se for modificada.
+
+. No cluster remoto, selecione *Proteção de Dados* > *Pares de Cluster*.
+. Clique em *Emparelhar Cluster*.
+. Clique em *Concluir Emparelhamento* e insira a chave de emparelhamento no campo *Chave de Emparelhamento* (colar é o método recomendado).
+. Clique em *Concluir Emparelhamento*.
+
+
+
+
+== Encontre mais informações
+
+* xref:task_replication_pair_cluster_using_mvip.adoc[Emparelhe clusters usando MVIP]
+* https://www.youtube.com/watch?v=1ljHAd1byC8&feature=youtu.be["Emparelhamento de clusters usando uma chave de emparelhamento de clusters (vídeo)"]
+

@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-volumes.html 
+summary: Você pode monitorar os volumes do seu sistema usando a página Volumes de Controle da Nuvem Híbrida. 
+keywords: netapp, element, volumes, storage, access groups, initiators, capacity, data protection, QoS 
+---
+= Monitore os volumes em seu cluster de armazenamento.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+O sistema SolidFire provisiona armazenamento usando volumes.  Os volumes são dispositivos de bloco acessados ​​pela rede por clientes iSCSI ou Fibre Channel.  Você pode monitorar detalhes sobre grupos de acesso, contas, iniciadores, capacidade utilizada, status de proteção de dados do Snapshot, número de sessões iSCSI e a política de Qualidade de Serviço (QoS) associada ao volume.
+
+Você também pode visualizar detalhes sobre volumes ativos e excluídos.
+
+Com essa visualização, você pode começar monitorando a coluna Capacidade utilizada.
+
+Você só poderá acessar essas informações se tiver privilégios administrativos no NetApp Hybrid Cloud Control.
+
+.Passos
+. Abra o endereço IP do nó de gerenciamento em um navegador da web. Por exemplo:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador do cluster de armazenamento all-flash SolidFire .
+. Na caixa de navegação azul à esquerda, selecione a instalação de armazenamento totalmente em flash SolidFire .
+. Na navegação à esquerda, selecione o cluster e selecione *Armazenamento* > *Volumes*.
++
+image::hcc_volumes_overview_active.png[Página de volumes do HCC > Imagem da guia Visão geral]
+
+. Na página Volumes, utilize as seguintes opções:
++
+image::hcc_volumes_icons.png[Ícones da página de volumes do HCC]
+
++
+.. Filtre os resultados selecionando o ícone *Filtrar*.
+.. Oculte ou mostre colunas selecionando o ícone *Ocultar/Mostrar*.
+.. Atualize os dados selecionando o ícone *Atualizar*.
+.. Faça o download de um arquivo CSV selecionando o ícone *Download*.
+
+
+. Monitore a coluna Capacidade utilizada.  Se os limites de Aviso, Erro ou Crítico forem atingidos, a cor representa o status da capacidade utilizada:
++
+.. Aviso - Amarelo
+.. Erro - Laranja
+.. Crítico - Vermelho
+
+
+. Na visualização Volumes, selecione as abas para ver detalhes adicionais sobre os volumes:
++
+.. *Grupos de Acesso*: Você pode visualizar os grupos de acesso a volumes que são mapeados de iniciadores para uma coleção de volumes para acesso seguro.
++
+Veja informações sobre link:../concepts/concept_solidfire_concepts_volume_access_groups.html["grupos de acesso a volume"].
+
+.. *Contas*: Você pode visualizar as contas de usuário, que permitem que os clientes se conectem aos volumes em um nó.  Ao criar um volume, ele é atribuído a uma conta de usuário específica.
++
+Veja informações sobre link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#user-accounts["contas de usuário do sistema de armazenamento all-flash SolidFire"].
+
+.. *Iniciadores*: Você pode ver o IQN do iniciador iSCSI ou os WWPNs do Fibre Channel para o volume.  Cada IQN adicionado a um grupo de acesso pode acessar todos os volumes do grupo sem a necessidade de autenticação CHAP.  Cada WWPN adicionado a um grupo de acesso permite o acesso à rede Fibre Channel aos volumes presentes no grupo de acesso.
+.. *Políticas de QoS*: Você pode ver a política de QoS aplicada ao volume.  Uma política de QoS aplica configurações padronizadas de IOPS mínimo, IOPS máximo e IOPS de rajada a múltiplos volumes.
++
+Veja informações sobre link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-performance["políticas de desempenho e QoS"].
+
+
+
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element"^]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

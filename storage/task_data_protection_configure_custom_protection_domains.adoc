@@ -1,0 +1,63 @@
+---
+permalink: storage/task_data_protection_configure_custom_protection_domains.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode configurar Domínios de Proteção personalizados para melhorar a resiliência do cluster. 
+---
+= Configurar domínios de proteção personalizados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para clusters Element que contenham mais de dois nós de armazenamento, você pode configurar Domínios de Proteção personalizados para cada nó.  Ao configurar Domínios de Proteção personalizados, você deve atribuir todos os nós do cluster a um domínio.
+
+
+TIP: Ao atribuir Domínios de Proteção, inicia-se uma sincronização de dados entre os nós, e algumas operações do cluster ficam indisponíveis até que a sincronização seja concluída.  Após a configuração de um Domínio de Proteção personalizado para um cluster, ao adicionar um novo nó de armazenamento, você não poderá adicionar unidades para esse novo nó até que atribua um Domínio de Proteção a ele e permita que a sincronização de dados seja concluída.  Visite olink:../concepts/concept_solidfire_concepts_data_protection.html#protection-domains["Documentação de Domínios de Proteção"] Para saber mais sobre Domínios de Proteção.
+
+
+NOTE: Para que um esquema de Domínio de Proteção personalizado seja útil para um cluster, todos os nós de armazenamento em cada chassi devem ser atribuídos ao mesmo Domínio de Proteção personalizado.  Você precisa criar tantos Domínios de Proteção personalizados quanto forem necessários para que isso aconteça (o esquema mínimo possível de Domínio de Proteção personalizado é de três domínios).  Como prática recomendada, configure um número igual de nós por domínio e tente garantir que cada nó atribuído a um determinado domínio seja do mesmo tipo.
+
+.Passos
+. Clique em *Cluster* > *Nós*.
+. Clique em *Configurar Domínios de Proteção*.
++
+Na janela *Configurar Domínios de Proteção Personalizados*, você pode ver os Domínios de Proteção atualmente configurados (se houver), bem como as atribuições de Domínio de Proteção para nós individuais.
+
+. Insira um nome para o novo Domínio de Proteção personalizado e clique em *Criar*.
++
+Repita este passo para todos os novos Domínios de Proteção que você precisar criar.
+
+. Para cada nó na lista *Atribuir Nós*, clique na lista suspensa na coluna *Domínio de Proteção* e selecione um Domínio de Proteção para atribuir a esse nó.
++
+
+CAUTION: Antes de aplicar as alterações, certifique-se de compreender o layout do seu nó e chassi, o esquema de Domínio de Proteção personalizado que você configurou e os efeitos desse esquema na proteção de dados.  Se você aplicar um esquema de Domínio de Proteção e precisar fazer alterações imediatamente, poderá levar algum tempo até que isso seja possível devido à sincronização de dados que ocorre após a aplicação de uma configuração.
+
+. Clique em *Configurar Domínios de Proteção*.
+
+
+.Resultado
+Dependendo do tamanho do seu cluster, a sincronização de dados entre domínios pode levar algum tempo.  Após a sincronização de dados ser concluída, você pode visualizar as atribuições personalizadas do Domínio de Proteção na página *Cluster* > *Nós*, e o painel da interface web do Element mostra o status de proteção do cluster no painel *Integridade do Domínio de Proteção Personalizado*.
+
+.Possíveis erros
+Aqui estão alguns erros que você pode encontrar após aplicar uma configuração personalizada de Domínio de Proteção:
+
+|===
+
+
+| Erro | Descrição | Resolução 
+
+
+| Falha ao definir o layout do domínio de proteção: o layout do domínio de proteção deixaria o NodeID {9} inutilizável.  Nomes padrão e nomes não padrão não podem ser usados simultaneamente. | Um nó não possui um Domínio de Proteção atribuído. | Atribua um domínio de proteção ao nó. 
+
+
+| Falha ao definir o layout do domínio de proteção: o tipo de domínio de proteção 'custom' divide o tipo de domínio de proteção 'chassis'. | Em um chassi com vários nós, um nó recebe um Domínio de Proteção diferente dos demais nós do chassi. | Certifique-se de que todos os nós no chassi estejam atribuídos ao mesmo Domínio de Proteção. 
+|===
+
+
+== Encontre mais informações
+
+* link:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["Domínios de proteção personalizados"^]
+* link:../api/concept_element_api_about_the_api.html["Gerencie o armazenamento com a API Element."^]
+

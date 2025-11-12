@@ -1,0 +1,195 @@
+---
+permalink: api/reference_element_api_network_ethernet_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'O objeto de rede (interfaces Ethernet) contém informações de configuração para interfaces Ethernet individuais.  Você pode usar os métodos GetConfig e GetNetworkConfig para obter essas informações para um nó de armazenamento.' 
+---
+= rede (interfaces Ethernet)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de rede (interfaces Ethernet) contém informações de configuração para interfaces Ethernet individuais.  Você pode usar o `GetConfig` e `GetNetworkConfig` Métodos para obter essas informações para um nó de armazenamento.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+mestre de títulos
+ a| 
+Especifica a qual interface vinculada esta interface física se conectou como escrava vinculada.
+ a| 
+corda
+
+
+
+ a| 
+família
+ a| 
+Família de endereços que a interface está configurada para usar.  Atualmente, o protocolo "inet" para IPv4 é suportado.
+ a| 
+corda
+
+
+
+ a| 
+endereço MAC
+ a| 
+O endereço MAC real atribuído à interface e observado pela rede.
+ a| 
+corda
+
+
+
+ a| 
+endereçoMacPermanente
+ a| 
+O endereço MAC imutável atribuído pelo fabricante à interface.
+ a| 
+corda
+
+
+
+ a| 
+método
+ a| 
+O método utilizado para configurar a interface. Valores possíveis:
+
+* loopback: Usado para definir a interface de loopback IPv4.
+* Manual: Usado para definir interfaces que não são configuradas automaticamente.
+* DHCP: Pode ser usado para obter um endereço IP via DHCP.
+* Estático: Usado para definir interfaces Ethernet com endereços IPv4 alocados estaticamente.
+
+ a| 
+corda
+
+
+
+ a| 
+status
+ a| 
+O estado da interface. Valores possíveis:
+
+* Para baixo: A interface está inativa.
+* Acima: A interface está pronta, mas não possui link.
+* Em funcionamento: A interface está pronta e a conexão foi estabelecida.
+
+ a| 
+corda
+
+
+
+ a| 
+em funcionamento
+ a| 
+Indica se a interface está pronta e possui uma conexão.
+ a| 
+booleano
+
+|===
+
+
+== Modificabilidade dos membros e estados dos nós
+
+Esta tabela indica se os parâmetros do objeto podem ou não ser modificados em cada estado possível do nó.
+
+|===
+
+
+| Nome do parâmetro | Estado disponível | Estado pendente | Estado ativo 
+
+
+ a| 
+mestre de títulos
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+família
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+endereço MAC
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+endereçoMacPermanente
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+método
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+status
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+em funcionamento
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+|===
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_getconfig.adoc[GetConfig]
+* xref:reference_element_api_getnetworkconfig.adoc[GetNetworkConfig]
+

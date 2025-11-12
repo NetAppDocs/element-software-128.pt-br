@@ -1,0 +1,107 @@
+---
+permalink: concepts/concept_data_manage_volumes_solidfire_quality_of_service.html 
+sidebar: sidebar 
+keywords: solidfire, element, qos, performance, iops 
+summary: 'Um cluster de armazenamento SolidFire tem a capacidade de fornecer parâmetros de Qualidade de Serviço (QoS) por volume.  Você pode garantir o desempenho do cluster, medido em entradas e saídas por segundo (IOPS), usando três parâmetros configuráveis ​​que definem a QoS: IOPS mínimo, IOPS máximo e IOPS de rajada.' 
+---
+= Desempenho e qualidade do serviço
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um cluster de armazenamento SolidFire tem a capacidade de fornecer parâmetros de Qualidade de Serviço (QoS) por volume.  Você pode garantir o desempenho do cluster medido em entradas e saídas por segundo (IOPS) usando três parâmetros configuráveis ​​que definem a QoS: IOPS mínimo, IOPS máximo e IOPS de rajada.
+
+
+NOTE: O SolidFire Active IQ possui uma página de recomendações de QoS que fornece orientações sobre a configuração ideal e a definição das opções de QoS.
+
+
+
+== Parâmetros de Qualidade de Serviço
+
+Os parâmetros IOPS são definidos das seguintes maneiras:
+
+* *IOPS mínimo* - O número mínimo de entradas e saídas sustentadas por segundo (IOPS) que o cluster de armazenamento fornece a um volume.  O IOPS mínimo configurado para um volume é o nível de desempenho garantido para esse volume.  O desempenho não cai abaixo desse nível.
+* *IOPS máximo* - O número máximo de IOPS sustentados que o cluster de armazenamento fornece a um volume.  Quando os níveis de IOPS do cluster estão criticamente altos, esse nível de desempenho de IOPS não é excedido.
+* *IOPS de rajada* - O número máximo de IOPS permitido em um cenário de rajada curta.  Se um volume estiver operando abaixo do IOPS máximo, os créditos de burst serão acumulados.  Quando os níveis de desempenho se tornam muito altos e são levados ao máximo, breves rajadas de IOPS são permitidas no volume.
++
+O software Element utiliza Burst IOPS quando um cluster está em execução em um estado de baixa utilização de IOPS do cluster.
+
++
+Um único volume pode acumular IOPS de pico e usar os créditos para ultrapassar seu IOPS máximo até o nível de IOPS de pico durante um "período de pico" definido.  Um volume pode operar em modo burst por até 60 segundos, caso o cluster tenha capacidade para suportar o burst.  Um volume acumula um segundo de crédito de burst (até um máximo de 60 segundos) para cada segundo em que o volume opera abaixo do seu limite máximo de IOPS.
+
++
+Os IOPS em rajadas são limitados de duas maneiras:
+
++
+** Um volume pode ultrapassar seu IOPS máximo por um número de segundos igual ao número de créditos de burst que o volume acumulou.
+** Quando um volume de operações ultrapassa sua configuração de IOPS máximo, ele é limitado pela configuração de IOPS de pico.  Portanto, o IOPS de rajada nunca excede a configuração de IOPS de rajada para o volume.
+
+
+* *Largura de banda máxima efetiva* - A largura de banda máxima é calculada multiplicando-se o número de IOPS (com base na curva de QoS) pelo tamanho da E/S.
++
+Exemplo: As configurações de parâmetros de QoS de 100 IOPS mínimos, 1000 IOPS máximos e 1500 IOPS de rajada têm os seguintes efeitos na qualidade do desempenho:
+
++
+** As cargas de trabalho conseguem atingir e manter um máximo de 1000 IOPS até que a condição de disputa por IOPS se torne evidente no cluster.  Em seguida, as IOPS são reduzidas gradualmente até que as IOPS em todos os volumes estejam dentro dos intervalos de QoS designados e a disputa por desempenho seja aliviada.
+** O desempenho em todos os volumes é otimizado para atingir o mínimo de 100 IOPS.  Os níveis não caem abaixo da configuração de IOPS mínima, mas podem permanecer acima de 100 IOPS quando a disputa de carga de trabalho é aliviada.
+** O desempenho nunca é superior a 1000 IOPS, nem inferior a 100 IOPS por um período prolongado.  É permitido um desempenho de 1500 IOPS (IOPS de pico), mas apenas para os volumes que acumularam créditos de pico por operarem abaixo do IOPS máximo e somente por curtos períodos de tempo.  Os níveis de pico nunca são sustentados.
+
+
+
+
+
+
+== limites de valor de QoS
+
+Aqui estão os possíveis valores mínimos e máximos para QoS.
+
+[cols="7*"]
+|===
+| Parâmetros | Valor mínimo | Padrão | 4 4KB | 5 8KB | 6 16 KB | 262 KB 
+
+
+| IOPS mínimo | 50 | 50 | 15.000 | 9.375* | 5556* | 385* 
+
+
+| IOPS máximo | 100 | 15.000 | 200.000** | 125.000 | 74.074 | 5128 
+
+
+| IOPS de rajada | 100 | 15.000 | 200.000** | 125.000 | 74,074 | 5128 
+|===
+*Essas estimativas são aproximadas.  **O IOPS máximo e o IOPS de rajada podem ser configurados para até 200.000; no entanto, essa configuração só é permitida para liberar efetivamente o desempenho de um volume.  O desempenho máximo real de um volume é limitado pelo uso do cluster e pelo desempenho de cada nó.
+
+
+
+== desempenho de QoS
+
+A curva de desempenho de QoS mostra a relação entre o tamanho do bloco e a porcentagem de IOPS.
+
+O tamanho do bloco e a largura de banda têm um impacto direto no número de IOPS que um aplicativo pode obter.  O software Element leva em consideração os tamanhos dos blocos recebidos, normalizando-os para 4k.  Dependendo da carga de trabalho, o sistema poderá aumentar o tamanho dos blocos. À medida que o tamanho dos blocos aumenta, o sistema aumenta a largura de banda para um nível necessário para processar os blocos maiores.  À medida que a largura de banda aumenta, o número de IOPS que o sistema consegue atingir diminui.
+
+A curva de desempenho de QoS mostra a relação entre o aumento do tamanho dos blocos e a diminuição da porcentagem de IOPS:
+
+image::../media/solidfire_qos_performance_curve.png[Descreve, em termos de QoS, a relação entre o aumento do tamanho do bloco e as IOPS.]
+
+Por exemplo, se os tamanhos dos blocos forem de 4k e a largura de banda for de 4000 KBps, o IOPS será de 1000.  Se o tamanho dos blocos aumentar para 8k, a largura de banda aumenta para 5000 KBps e o IOPS diminui para 625.  Ao levar em consideração o tamanho do bloco, o sistema garante que cargas de trabalho de menor prioridade que utilizam tamanhos de bloco maiores, como backups e atividades do hipervisor, não consumam grande parte do desempenho necessário para o tráfego de maior prioridade que utiliza tamanhos de bloco menores.
+
+
+
+== Políticas de QoS
+
+Uma política de QoS permite criar e salvar uma configuração padronizada de qualidade de serviço que pode ser aplicada a vários volumes.
+
+As políticas de QoS são mais adequadas para ambientes de serviço, por exemplo, com servidores de banco de dados, aplicativos ou infraestrutura que raramente são reinicializados e precisam de acesso constante e igualitário ao armazenamento.  O QoS de volume individual é mais adequado para VMs de uso leve, como desktops virtuais ou VMs especializadas do tipo quiosque, que podem ser reinicializadas, ligadas ou desligadas diariamente ou várias vezes ao dia.
+
+QoS e políticas de QoS não devem ser usadas em conjunto.  Se você estiver usando políticas de QoS, não use QoS personalizado em um volume.  A QoS personalizada substituirá e ajustará os valores da política de QoS para as configurações de QoS de volume.
+
+
+NOTE: O cluster selecionado deve ser Element 10.0 ou posterior para usar políticas de QoS; caso contrário, as funções de política de QoS não estarão disponíveis.
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

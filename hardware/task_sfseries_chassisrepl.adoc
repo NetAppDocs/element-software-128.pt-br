@@ -1,0 +1,128 @@
+---
+permalink: hardware/task_sfseries_chassisrepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, chassis replacement, sf-series nodes 
+summary: 'Você pode precisar substituir o chassi se o ventilador, a unidade central de processamento (CPU) ou o módulo de memória dual in-line (DIMM) falharem, ou para corrigir problemas de superaquecimento ou problemas com o processo de inicialização.  Falhas no cluster na interface de usuário (UI) do software NetApp Element e a luz âmbar piscando na parte frontal do chassi indicam uma possível necessidade de substituição do chassi.  Você deve entrar em contato com o suporte da NetApp antes de prosseguir.' 
+---
+= Substituir um chassi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode precisar substituir o chassi se o ventilador, a unidade central de processamento (CPU) ou o módulo de memória dual in-line (DIMM) falharem, ou para corrigir problemas de superaquecimento ou problemas com o processo de inicialização.  Falhas no cluster na interface de usuário (UI) do software NetApp Element e a luz âmbar piscando na parte frontal do chassi indicam uma possível necessidade de substituição do chassi.  Você deve entrar em contato com o suporte da NetApp antes de prosseguir.
+
+.O que você vai precisar
+* Você entrou em contato com o suporte da NetApp .
++
+Se você estiver solicitando uma peça de reposição, deverá abrir um chamado com o Suporte da NetApp .
+
+* Você obteve o chassi de substituição.
+* Você possui uma pulseira antiestática (ESD) ou adotou outras medidas de proteção antiestática.
+* Caso precise realizar o processo de Restauração da Imagem de Fábrica (RTFI), você já possui a chave USB.
++
+O suporte da NetApp ajudará você a decidir se o RTFI (Relatório de Informações do Usuário) é necessário. Ver https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["Este artigo da Base de Conhecimento (login necessário)"] .
+
+* Você tem um teclado e um monitor.
+
+
+.Sobre esta tarefa
+As instruções neste documento aplicam-se se você tiver um chassi de uma unidade de rack (1U) com qualquer um dos seguintes nós:
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+Dependendo da versão do seu software Element, os seguintes nós não são suportados:
+
+* A partir dos nós de armazenamento Element 12.8, SF4805, SF9605, SF19210 e SF38410.
+* A partir do Elemento 12.7, nós de armazenamento SF2405 e SF9608 e nós FC FC0025 e SF-FCN-01.
+* A partir do Element 12.0, os nós de armazenamento SF3010, SF6010 e SF9010.
+
+
+====
+.Passos
+. Localize a etiqueta de serviço do chassi com defeito e verifique se o número de série corresponde ao número no protocolo que você abriu junto ao Suporte da NetApp ao solicitar a substituição.
++
+Você pode localizar a etiqueta de serviço na parte frontal do chassi.
+
++
+A figura a seguir é um exemplo da etiqueta de serviço:
+
++
+image::../media/sf_series_chassis_service_tag.gif[Esta figura mostra a etiqueta de serviço em um chassi SolidFire .]
+
++
+
+NOTE: A figura acima é um exemplo.  A localização exata da etiqueta de serviço pode variar dependendo do modelo do seu hardware.
+
+. Conecte o teclado e o monitor na parte traseira do gabinete com defeito.
+. Verifique as informações do chassi com o suporte da NetApp .
+. Desligue o chassi.
+. Identifique as unidades de disco na parte frontal do chassi e os cabos na parte traseira.
++
+
+NOTE: Os nós Fibre Channel não possuem unidades de disco na parte frontal.
+
+. Remova as fontes de alimentação e os cabos.
+. Remova os discos rígidos com cuidado e coloque-os sobre uma superfície nivelada e antiestática.
++
+
+NOTE: Se você tiver um nó Fibre Channel, pode pular esta etapa.
+
+. Remova o chassi pressionando a trava ou desaparafusando o parafuso de aperto manual, dependendo do modelo do seu hardware.
++
+Você deve embalar e devolver o chassi com defeito à NetApp.
+
+. *Opcional*: Remova os trilhos e instale os novos trilhos que foram enviados com o seu chassi de substituição.
++
+Você pode optar por reutilizar os trilhos existentes.  Se você estiver reutilizando os trilhos existentes, pode pular esta etapa.
+
+. Deslize o chassi de substituição sobre os trilhos.
+. Para os nós de armazenamento, insira as unidades do chassi com falha no chassi de substituição.
++
+
+NOTE: Você deve inserir as unidades nos mesmos slots em que estavam no chassi com defeito.
+
+. Instale as fontes de alimentação.
+. Insira os cabos de alimentação e os cabos 1GbE e 10GbE em suas portas originais.
++
+Transceptores SFP (Small Form-factor Pluggable) podem ser inseridos nas portas 10GbE do chassi de substituição.  Você deve removê-los antes de conectar os cabos às portas 10GbE.
+
+. Se você determinou que não precisa executar o processo RTFI no nó, inicialize o nó e aguarde até que a interface de usuário do terminal (TUI) apareça.  Prossiga para a etapa 16 e permita que o cluster reinstale a imagem do nó automaticamente quando você o adicionar usando a interface do usuário.
+. *Opcional*: Se o Suporte da NetApp recomendar a reinstalação do sistema operacional no nó usando uma chave USB, execute as seguintes etapas:
++
+.. Alimentação no chassi.  Ele inicializa com a imagem da chave RTFI.
+.. Na primeira solicitação, digite *Y* para criar uma imagem do nó de armazenamento.
+.. Na segunda solicitação, digite *N* para verificar a integridade do hardware.
++
+Se o script RTFI detectar um problema com um componente de hardware, ele exibirá um erro no console.  Se você encontrar algum erro, entre em contato com o Suporte da NetApp .  Após a conclusão do processo RTFI, o nó é desligado.
+
+.. Remova a chave USB da entrada USB.
+.. Inicialize o nó recém-criado e aguarde o aparecimento da interface de usuário em tempo real (TUI).
+
+
+. Configure as informações de rede e cluster a partir da interface de usuário de texto (TUI).
++
+Você pode entrar em contato com o suporte da NetApp para obter assistência.
+
+. Adicione o novo nó ao cluster usando a interface de usuário TUI do cluster.
+. Embale e devolva o chassi com defeito.
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

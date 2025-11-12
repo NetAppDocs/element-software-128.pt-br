@@ -1,0 +1,35 @@
+---
+permalink: api/concept_element_api_vvols_api_methods.html 
+sidebar: sidebar 
+keywords: virtual,volume,vvol,API,method 
+summary: 'Os métodos da API de volumes virtuais do software Element permitem gerenciar volumes virtuais (VVols).  Você pode visualizar os VVols existentes com esses métodos de API, bem como criar, modificar e excluir contêineres de armazenamento de volume virtual.  Embora não seja possível usar esses métodos para operar em volumes normais, você pode usar os métodos da API de volume normal para listar informações sobre VVols.' 
+---
+= Métodos da API de volume virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os métodos da API de volumes virtuais do software Element permitem gerenciar volumes virtuais (VVols).  Você pode visualizar os VVols existentes com esses métodos de API, bem como criar, modificar e excluir contêineres de armazenamento de volume virtual.  Embora não seja possível usar esses métodos para operar em volumes normais, você pode usar os métodos da API de volume normal para listar informações sobre VVols.
+
+* xref:reference_element_api_createstoragecontainer.adoc[CriarContêinerDeArmazenamento]
+* xref:reference_element_api_deletestoragecontainers.adoc[ExcluirContêineresDeArmazenamento]
+* xref:reference_element_api_getstoragecontainerefficiency.adoc[Obtenha a eficiência do contêiner de armazenamento]
+* xref:reference_element_api_getvirtualvolumecount.adoc[Obter contagem de volume virtual]
+* xref:reference_element_api_listprotocolendpoints.adoc[ListProtocolEndpoints]
+* xref:reference_element_api_liststoragecontainers.adoc[Listar contêineres de armazenamento]
+* xref:reference_element_api_listvirtualvolumebindings.adoc[ListarVinculaçõesDeVolumeVirtual]
+* xref:reference_element_api_listvirtualvolumehosts.adoc[Listar hosts de volume virtual]
+* xref:reference_element_api_listvirtualvolumes.adoc[ListarVolumesVirtuais]
+* xref:reference_element_api_listvirtualvolumetasks.adoc[ListarTarefas do Volume Virtual]
+* xref:reference_element_api_modifystoragecontainer.adoc[ModificarContêinerDeArmazenamento]
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

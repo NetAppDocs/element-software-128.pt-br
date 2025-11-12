@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_syncjob.html 
+sidebar: sidebar 
+keywords: object,objects,syncjob 
+summary: O objeto syncJob contém informações sobre tarefas de clonagem, replicação remota ou sincronização de fatias que estão sendo executadas em um cluster. 
+---
+= sincronizarTarefa
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto syncJob contém informações sobre tarefas de clonagem, replicação remota ou sincronização de fatias que estão sendo executadas em um cluster.
+
+Você pode recuperar informações de sincronização com o `ListSyncJobs` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+blocosPorSegundo
+ a| 
+Número de blocos de dados transferidos por segundo do cluster de origem para o cluster de destino.  Presente somente se o membro do tipo estiver definido como remoto.
+ a| 
+inteiro
+
+
+
+ a| 
+tipoDeRamo
+ a| 
+Retornado apenas para tarefas de sincronização de replicação remota. Valores possíveis:
+
+* instantâneo
+* volume
+
+ a| 
+corda
+
+
+
+ a| 
+bytesPorSegundo
+ a| 
+O número de bytes que o clone está processando por segundo.  Presente somente se o membro do tipo estiver definido como clone ou slice.
+ a| 
+flutuador
+
+
+
+ a| 
+cloneID
+ a| 
+O identificador da operação de clonagem que está em andamento.  Presente somente se o membro do tipo estiver definido como clone.
+ a| 
+inteiro
+
+
+
+ a| 
+bytes atuais
+ a| 
+O número de bytes que o clone processou no volume de origem.  Presente somente se o membro do tipo estiver definido como clone ou slice.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do serviço de destino
+ a| 
+O identificador do serviço que hospeda a réplica primária do volume.  Presente somente se o membro do tipo estiver definido como remoto.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do volume de destino
+ a| 
+O ID do volume de destino.  Presente somente se o membro do tipo estiver definido como clone ou remoto.
+ a| 
+inteiro
+
+
+
+ a| 
+tempo decorrido
+ a| 
+O tempo decorrido, em segundos, desde o início da tarefa de sincronização.
+ a| 
+float ou inteiro, dependendo do tipo de operação de sincronização.
+
+
+
+ a| 
+ID de clone do grupo
+ a| 
+O ID da operação de clonagem de grupo que está em andamento.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do nó
+ a| 
+Especifica o nó em que a clonagem está ocorrendo.  Presente somente se o membro do tipo estiver definido como clone.
+ a| 
+inteiro
+
+
+
+ a| 
+porcentagemConcluída
+ a| 
+A porcentagem de conclusão da tarefa de sincronização.
+ a| 
+float ou inteiro, dependendo do tipo de operação de sincronização.
+
+
+
+ a| 
+tempo restante
+ a| 
+Tempo estimado, em segundos, para concluir a operação.
+ a| 
+flutuador
+
+
+
+ a| 
+ID da fatia
+ a| 
+O ID da unidade de disco que está sendo sincronizada.
+ a| 
+inteiro
+
+
+
+ a| 
+estágio
+ a| 
+Presente somente se o membro do tipo estiver definido como remoto ou clone. Valores possíveis:
+
+* Metadados: A replicação está em processo de determinar quais dados precisam ser transferidos para o cluster remoto.  O status não é informado para esta etapa do processo de replicação.
+* Dados: A replicação está em processo de transferência da maior parte dos dados para o cluster remoto.
+* "whole": Indica a compatibilidade retroativa da fatia para tarefas de sincronização de fatias.
+
+ a| 
+corda
+
+
+
+ a| 
+ID do instantâneo
+ a| 
+O ID do snapshot a partir do qual o clone foi criado.  Presente somente se o membro do tipo estiver definido como clone.
+ a| 
+inteiro
+
+
+
+ a| 
+srcServiceID
+ a| 
+O ID do serviço de origem.
+ a| 
+inteiro
+
+
+
+ a| 
+srcVolumeID
+ a| 
+O ID do volume de origem.
+ a| 
+inteiro
+
+
+
+ a| 
+totalBytes
+ a| 
+O número total de bytes do clone.  Presente somente se o membro do tipo estiver definido como clone ou slice.
+ a| 
+inteiro
+
+
+
+ a| 
+tipo
+ a| 
+O tipo de operação de sincronização. Valores possíveis:
+
+* clone
+* fatiar
+* bloquear
+* remoto
+
+ a| 
+corda
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]

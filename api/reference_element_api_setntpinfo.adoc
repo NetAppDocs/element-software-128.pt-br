@@ -1,0 +1,98 @@
+---
+permalink: api/reference_element_api_setntpinfo.html 
+sidebar: sidebar 
+keywords: ntp,info,set,setting,setntpinfo 
+summary: Você pode usar o método SetNtpInfo para configurar o NTP nos nós do cluster.  Os valores definidos por meio desta interface aplicam-se a todos os nós do cluster.  Se um servidor de transmissão NTP transmitir periodicamente informações de tempo em sua rede, você poderá configurar opcionalmente os nós como clientes de transmissão. 
+---
+= SetNtpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `SetNtpInfo` Método para configurar o NTP em nós de cluster.  Os valores definidos por meio dessa interface se aplicam a todos os nós do cluster.  Se um servidor de transmissão NTP transmitir periodicamente informações de tempo em sua rede, você poderá configurar opcionalmente os nós como clientes de transmissão.
+
+
+
+== Parâmetros
+
+
+NOTE: Certifique-se de usar servidores NTP internos à sua rede, em vez dos servidores padrão de instalação.
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+servidores
+ a| 
+Lista de servidores NTP a serem adicionados à configuração NTP de cada nó.
+ a| 
+matriz de strings
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+cliente de transmissão
+ a| 
+Habilita todos os nós do cluster como clientes de transmissão.
+ a| 
+booleano
+ a| 
+falso
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método não possui valores de retorno.
+
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "SetNtpInfo",
+   "params": {
+     "servers"  : [
+       "ntpserver1.example.org",
+       "ntpserver2.example.org",
+       "ntpserver3.example.org"
+     ],
+     "broadcastclient" : false
+   },
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

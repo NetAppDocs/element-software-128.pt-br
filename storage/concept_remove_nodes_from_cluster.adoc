@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_remove_nodes_from_cluster.html 
+sidebar: sidebar 
+keywords: troubleshoot, nodes removing 
+summary: Você pode remover nós de um cluster para manutenção ou substituição.  Você deve usar a interface de usuário ou a API do NetApp Element para remover nós antes de desligá-los. 
+---
+= Remover nós de um cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode remover nós de um cluster para manutenção ou substituição.  Você deve usar a interface de usuário ou a API do NetApp Element para remover nós antes de desligá-los.
+
+Segue abaixo uma visão geral do procedimento para remover nós de armazenamento:
+
+* Certifique-se de que haja capacidade suficiente no cluster para criar uma cópia dos dados no nó.
+* Remova unidades do cluster usando a interface do usuário ou o método da API RemoveDrives.
++
+Isso resulta na migração de dados do sistema das unidades do nó para outras unidades no cluster.  O tempo necessário para esse processo depende da quantidade de dados que precisa ser migrada.
+
+* Remova o nó do cluster.
+
+
+Leve em consideração os seguintes pontos antes de desligar ou ligar um nó:
+
+* Desligar nós e clusters envolve riscos se não for feito corretamente.
++
+O desligamento de um nó deve ser feito sob a orientação do Suporte da NetApp .
+
+* Se um nó ficar inativo por mais de 5,5 minutos sob qualquer tipo de condição de desligamento, a proteção de dados Double Helix inicia a tarefa de gravar blocos replicados individuais em outro nó para replicar os dados.  Nesse caso, entre em contato com o Suporte da NetApp para obter ajuda na análise do nó com falha.
+* Para reiniciar ou desligar um nó com segurança, você pode usar o comando da API Shutdown.
+* Se um nó estiver inativo ou desligado, você deve entrar em contato com o Suporte da NetApp antes de colocá-lo novamente online.
+* Após um nó voltar a ficar online, você deve adicionar as unidades de volta ao cluster, dependendo de quanto tempo elas ficaram fora de serviço.
+
+
+
+
+== Para maiores informações
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2844772["Substituição de um chassi SolidFire com defeito"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2846861["Substituição de um nó da série H600S com defeito"]

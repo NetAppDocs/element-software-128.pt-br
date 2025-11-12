@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_modifybackuptarget.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,backup,target,modifybackuptarget 
+summary: Você pode usar o método ModifyBackupTarget para alterar os atributos de um destino de backup. 
+---
+= Modificar destino de backup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ModifyBackupTarget` Método para alterar os atributos de um destino de backup.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+backupTargetID
+ a| 
+Identificador de destino exclusivo para o alvo a ser modificado.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+nome
+ a| 
+Novo nome para o destino do backup.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método não possui valores de retorno.
+
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "ModifyBackupTarget",
+   "params": {
+      "backupTargetID" : 1,
+      "name": "yourtargetS3"
+      "attributes" : {
+          "size" : 500,
+      }
+   },
+  "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {}
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

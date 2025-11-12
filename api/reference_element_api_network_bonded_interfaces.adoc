@@ -1,0 +1,609 @@
+---
+permalink: api/reference_element_api_network_bonded_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'O objeto de rede \(interfaces agregadas\) contém informações de configuração para interfaces de rede agregadas em um nó de armazenamento.  Você pode usar os métodos GetConfig e GetNetworkConfig para obter essas informações para um nó de armazenamento.' 
+---
+= rede (interfaces agregadas)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de rede (interfaces agregadas) contém informações de configuração para interfaces de rede agregadas em um nó de armazenamento.  Você pode usar o `GetConfig` e `GetNetworkConfig` Métodos para obter essas informações para um nó de armazenamento.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+endereço
+ a| 
+O endereço IPv4 atribuído a esta interface no nó.
+ a| 
+corda
+
+
+
+ a| 
+addressV6
+ a| 
+O endereço de gerenciamento IPv6 atribuído à interface Bond1G no nó.
+ a| 
+corda
+
+
+
+ a| 
+atraso na desvalorização do título
+ a| 
+Tempo de espera, em milissegundos, antes de desativar um dispositivo escravo após a detecção de uma falha de conexão.
+ a| 
+corda
+
+
+
+ a| 
+bond-fail_over_mac
+ a| 
+Configuração do endereço MAC da interface de rede.
+ a| 
+corda
+
+
+
+ a| 
+vínculo-miimon
+ a| 
+A frequência, em milissegundos, com que o estado do enlace MII é inspecionado em busca de falhas de enlace.
+ a| 
+corda
+
+
+
+ a| 
+modo de ligação
+ a| 
+O modo de ligação. Valores possíveis:
+
+* Ativo/Passivo (Padrão)
+* ALVA
+* LACP (Recomendado)
+
+ a| 
+corda
+
+
+
+ a| 
+selecionar_primário
+ a| 
+Especifica quando o escravo de ligação primário é escolhido como o escravo ativo. Valores possíveis:
+
+* Sempre
+* Melhorar
+* Falha
+
+ a| 
+corda
+
+
+
+ a| 
+escravos
+ a| 
+Lista de interfaces escravas para a ligação.
+ a| 
+corda
+
+
+
+ a| 
+taxa de ligação-lacp
+ a| 
+Quando o Modo de Ligação é LACP, a taxa pode mudar para uma das seguintes:
+
+* LACP Rápido (Padrão)
+* LACP Lento
+
+ a| 
+corda
+
+
+
+ a| 
+atraso na atualização do título
+ a| 
+O tempo, em milissegundos, de espera antes de habilitar um dispositivo escravo após a detecção de uma conexão.
+ a| 
+corda
+
+
+
+ a| 
+servidores de nomes dns
+ a| 
+Uma lista de endereços usados para serviços de nomes de domínio, separados por vírgula ou espaço.
+ a| 
+corda
+
+
+
+ a| 
+pesquisa dns
+ a| 
+Uma lista de domínios de pesquisa DNS separados por espaço ou vírgula.
+ a| 
+corda
+
+
+
+ a| 
+família
+ a| 
+Família de endereços que a interface está configurada para usar.  Atualmente, o protocolo "inet" para IPv4 é suportado.
+ a| 
+corda
+
+
+
+ a| 
+portal
+ a| 
+O endereço de rede IPv4 do roteador usado para enviar tráfego da rede local.
+ a| 
+corda
+
+
+
+ a| 
+gatewayV6
+ a| 
+O endereço de rede do roteador IPv6 usado para enviar tráfego da rede local Bond1G.
+ a| 
+corda
+
+
+
+ a| 
+ipV6PrefixLength
+ a| 
+O comprimento do prefixo de sub-rede para rotas estáticas do tipo "net" para tráfego IPv6 na rede Bond1G.
+ a| 
+corda
+
+
+
+ a| 
+endereço MAC
+ a| 
+O endereço MAC real atribuído à interface e observado pela rede.
+ a| 
+corda
+
+
+
+ a| 
+endereçoMacPermanente
+ a| 
+O endereço MAC imutável atribuído pelo fabricante à interface.
+ a| 
+corda
+
+
+
+ a| 
+método
+ a| 
+O método utilizado para configurar a interface. Valores possíveis:
+
+* Loopback: Usado para definir a interface de loopback IPv4.
+* Manual: Usado para definir interfaces que não são configuradas automaticamente.
+* DHCP: Pode ser usado para obter um endereço IP via DHCP.
+* Estático: Usado para definir interfaces Ethernet com endereços IPv4 alocados estaticamente.
+
+ a| 
+corda
+
+
+
+ a| 
+mtu
+ a| 
+O maior tamanho de pacote (em bytes) que a interface pode transmitir.  Deve ser maior ou igual a 1500; valores até 9000 são suportados.
+ a| 
+corda
+
+
+
+ a| 
+máscara de rede
+ a| 
+A máscara de bits que especifica a sub-rede da interface.
+ a| 
+corda
+
+
+
+ a| 
+rede
+ a| 
+Indica onde começa o intervalo de endereços IP com base na máscara de rede.
+ a| 
+corda
+
+
+
+ a| 
+rotas
+ a| 
+Matriz de strings de rotas separadas por vírgulas para aplicar à tabela de roteamento.
+ a| 
+matriz de strings
+
+
+
+ a| 
+status
+ a| 
+O estado da interface. Valores possíveis:
+
+* Para baixo: A interface está inativa.
+* Acima: A interface está pronta, mas não possui link.
+* Em funcionamento: A interface está pronta e a conexão foi estabelecida.
+
+ a| 
+corda
+
+
+
+ a| 
+Regras de Rota Simétricas
+ a| 
+As regras de roteamento simétrico configuradas no nó.
+ a| 
+matriz de strings
+
+
+
+ a| 
+em funcionamento
+ a| 
+Indica se a interface está pronta e possui uma conexão.
+ a| 
+booleano
+
+
+
+ a| 
+virtualNetworkTag
+ a| 
+O identificador de rede virtual da interface (etiqueta VLAN).
+ a| 
+corda
+
+|===
+
+
+== Modificabilidade dos membros e estados dos nós
+
+Esta tabela indica se os parâmetros do objeto podem ou não ser modificados em cada estado possível do nó.
+
+|===
+
+
+| Nome do membro | Estado disponível | Estado pendente | Estado ativo 
+
+
+ a| 
+endereço
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Não
+
+
+
+ a| 
+addressV6
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Não
+
+
+
+ a| 
+atraso na desvalorização do título
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+bond-fail_over_mac
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+vínculo-miimon
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+modo de ligação
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+selecionar_primário
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+escravos
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+taxa de ligação-lacp
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+atraso na atualização do título
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+servidores de nomes dns
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+pesquisa dns
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+família
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+portal
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+gatewayV6
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+ipV6PrefixLength
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+endereço MAC
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+endereçoMacPermanente
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+método
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+mtu
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+máscara de rede
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+rede
+ a| 
+Não
+ a| 
+Não
+ a| 
+Não
+
+
+
+ a| 
+rotas
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+status
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+
+
+ a| 
+Regras de Rota Simétricas
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+em funcionamento
+ a| 
+Configurado pelo sistema
+ a| 
+N / D
+ a| 
+N / D
+
+
+
+ a| 
+virtualNetworkTag
+ a| 
+Sim
+ a| 
+Sim
+ a| 
+Sim
+
+|===
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_getconfig.adoc[GetConfig]
+* xref:reference_element_api_getnetworkconfig.adoc[GetNetworkConfig]
+

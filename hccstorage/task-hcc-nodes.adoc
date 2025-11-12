@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-nodes.html 
+summary: Você pode visualizar seus ativos de armazenamento em seu sistema usando a página Nós de Controle da Nuvem Híbrida. 
+keywords: netapp, element, cluster, inventory, nodes, storage 
+---
+= Veja seu inventário na página de Nós.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar seus ativos de armazenamento em seu sistema e determinar seus endereços IP, nomes e versões de software.
+
+Você pode visualizar informações de armazenamento para seus sistemas com múltiplos nós.  Selink:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["domínios de proteção personalizados"] Após a atribuição, você pode ver quais domínios de proteção estão atribuídos a nós específicos.
+
+.Passos
+. Abra o endereço IP do nó de gerenciamento em um navegador da web. Por exemplo:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador do cluster de armazenamento all-flash SolidFire .
+. Na navegação à esquerda, selecione *Nós*.
++
+image::hcc_nodes_storage_2nodes.png[Imagem da página de nós de controle de nuvem híbrida]
+
++
+
+NOTE: Ao iniciar uma nova sessão do NetApp Hybrid Cloud Control pela primeira vez, pode haver um atraso no carregamento da página de nós do NetApp Hybrid Cloud Control quando o nó de gerenciamento estiver gerenciando muitos clusters.  O tempo de carregamento varia dependendo do número de clusters que estão sendo gerenciados ativamente pelo nó de gerenciamento.  Em inicializações subsequentes, você notará tempos de carregamento mais rápidos.
+
+. Na aba *Armazenamento* da página Nós, revise as seguintes informações:
++
+.. Clusters de dois nós: Uma etiqueta "dois nós" aparece na guia Armazenamento e os nós de testemunha associados são listados.
+.. Clusters de três nós: Os nós de armazenamento e os nós testemunhas associados estão listados.  Clusters de três nós possuem um Nó Testemunha implantado em modo de espera para manter alta disponibilidade em caso de falha de um nó.
+.. Clusters com quatro ou mais nós: Aparecem informações para clusters com quatro ou mais nós.  Os nós de testemunha não se aplicam.  Se você começou com dois ou três nós de armazenamento e adicionou mais nós, os nós de testemunha ainda aparecerão.  Caso contrário, a tabela de Nós de Testemunha não aparece.
+.. Versão do pacote de firmware: A partir da versão 2.14 dos serviços de gerenciamento, se você tiver clusters executando o Element 12.0 ou posterior, poderá visualizar a versão do pacote de firmware desses clusters.  Se os nós em um cluster tiverem versões de firmware diferentes, você poderá ver *Múltiplas* na coluna *Versão do Pacote de Firmware*.
+.. Domínios de proteção personalizados: Se domínios de proteção personalizados estiverem em uso no cluster, você poderá ver as atribuições de domínio de proteção personalizado para cada nó do cluster.  Se os domínios de proteção personalizados não estiverem ativados, esta coluna não aparecerá.
+
+
+. Você pode manipular as informações nessas páginas de diversas maneiras:
++
+.. Para filtrar a lista de itens nos resultados, selecione o ícone *Filtrar* e escolha os filtros.  Você também pode inserir texto para o filtro.
+.. Para mostrar ou ocultar colunas, selecione o ícone *Mostrar/Ocultar Colunas*.
+.. Para baixar a tabela, selecione o ícone *Download*.
+
+
+
+
+
+TIP: Para visualizar a quantidade de armazenamento, consulte o painel de controle do NetApp Hybrid Cloud Control (HCC). Verlink:task-hcc-dashboard.html["Monitore os recursos de armazenamento com o painel de controle do HCC."] .
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

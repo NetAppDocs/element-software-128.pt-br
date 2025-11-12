@@ -1,0 +1,36 @@
+---
+permalink: storage/concept_system_monitoring_and_troubleshooting.html 
+sidebar: sidebar 
+keywords: trouble, troubleshoot, monitor, element, alert, event 
+summary: Você deve monitorar o sistema para fins de diagnóstico e para obter informações sobre tendências de desempenho e status de várias operações do sistema.  Pode ser necessário substituir nós ou SSDs para fins de manutenção. 
+---
+= Solucione problemas do seu sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve monitorar o sistema para fins de diagnóstico e para obter informações sobre tendências de desempenho e status de várias operações do sistema.  Pode ser necessário substituir nós ou SSDs para fins de manutenção.
+
+* link:task_monitor_information_about_system_events.html["Veja informações sobre eventos do sistema"]
+* link:reference_monitor_status_of_running_tasks.html["Visualizar o estado das tarefas em execução"]
+* link:task_monitor_system_alerts.html["Visualizar alertas do sistema"]
+* link:task_monitor_node_performance_activity.html["Visualizar atividade de desempenho do nó"]
+* link:task_monitor_volume_performance.html["Desempenho do volume de visualização"]
+* link:task_monitor_iscsi_sessions.html["Visualizar sessões iSCSI"]
+* link:task_monitor_fibre_channel_sessions.html["Veja as sessões do Fibre Channel"]
+* link:concept_troubleshoot_drives.html["Solucionar problemas de unidades de disco"]
+* link:concept_remove_nodes_from_cluster.html["Solução de problemas em nós"]
+* link:concept_per_node_work_with_utilities.html["Trabalhe com utilitários por nó para nós de armazenamento."]
+* link:concept_mnode_work_with_the_management_node.html["Trabalhe com o nó de gerenciamento"]
+* link:concept_monitor_understand_cluster_fullness_levels.html["Compreender os níveis de preenchimento dos cachos"]
+
+
+
+
+== Para maiores informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

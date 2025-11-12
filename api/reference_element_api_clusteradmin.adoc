@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_clusteradmin.html 
+sidebar: sidebar 
+keywords: objects,object,clusterAdmin 
+summary: O objeto clusterAdmin contém informações sobre o usuário administrador atual do cluster.  Você pode recuperar informações do usuário administrador com o método de API GetCurrentClusterAdmin. 
+---
+= Administrador do cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto clusterAdmin contém informações sobre o usuário administrador atual do cluster.  Você pode recuperar informações do usuário administrador com o método de API GetCurrentClusterAdmin.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+acesso
+ a| 
+Os métodos que este administrador de cluster pode usar.
+ a| 
+matriz de strings
+
+
+
+ a| 
+método de autenticação
+ a| 
+O tipo de autorização que o usuário administrador do cluster possui. Valores possíveis:
+
+* LDAP
+* Conjunto
+* Local
+
+ a| 
+corda
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+
+
+
+ a| 
+ID do administrador do cluster
+ a| 
+O ID do administrador do cluster para este usuário administrador do cluster.
+ a| 
+inteiro
+
+
+
+ a| 
+nome de usuário
+ a| 
+Nome de usuário para este administrador de cluster.
+ a| 
+corda
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_getcurrentclusteradmin.adoc[GetClusterAdmin]

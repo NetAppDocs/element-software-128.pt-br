@@ -1,0 +1,114 @@
+---
+permalink: api/reference_element_api_listsnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: snapmirror,endpoints,endpoint,list,listing,listsnapmirrorrelationships 
+summary: A interface web do software Element utiliza o método ListSnapMirrorRelationships para listar um ou todos os relacionamentos SnapMirror em um cluster de armazenamento Element. 
+---
+= ListSnapMirrorRelacionamentos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A interface web do software Element utiliza o `ListSnapMirrorRelationships` Método para listar um ou todos os relacionamentos SnapMirror em um cluster de armazenamento Element.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Liste apenas os relacionamentos associados ao ID do ponto de extremidade especificado.  Caso nenhum ID de endpoint seja fornecido, o sistema listará os relacionamentos de todos os endpoints conhecidos do SnapMirror .
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+volume de destino
+ a| 
+Liste as relações associadas ao volume de destino especificado.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+volume de origem
+ a| 
+Liste os relacionamentos associados ao volume de origem especificado.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+vserver
+ a| 
+Liste os relacionamentos no Vserver especificado.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+ID do relacionamento
+ a| 
+Liste os relacionamentos associados ao ID de relacionamento especificado.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+snapMirrorRelacionamentos
+ a| 
+Uma lista de objetos contendo informações sobre relacionamentos SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]variedade
+
+|===
+
+
+== Novidade desde a versão
+
+10,1

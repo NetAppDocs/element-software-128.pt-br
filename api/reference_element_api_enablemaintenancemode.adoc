@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_enablemaintenancemode.html 
+sidebar: sidebar 
+keywords: maintenance,enable,mode 
+summary: Você pode usar o método EnableMaintenanceMode para preparar um nó de armazenamento para manutenção.  Os cenários de manutenção incluem qualquer tarefa que exija que o nó seja desligado ou reiniciado. 
+---
+= Ativar o modo de manutenção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `EnableMaintenanceMode` Método para preparar um nó de armazenamento para manutenção.  Os cenários de manutenção incluem qualquer tarefa que exija que o nó seja desligado ou reiniciado.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+forçaComFalhasNãoResolvidas
+ a| 
+Forçar a ativação do modo de manutenção para este nó, mesmo com falhas de cluster bloqueantes presentes.
+ a| 
+booleano
+ a| 
+Falso
+ a| 
+Não
+
+
+
+ a| 
+nós
+ a| 
+Lista de IDs de nós a serem colocados em modo de manutenção.  Apenas um nó por vez é suportado.
+ a| 
+matriz de inteiros
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+limite de swap primário por minuto
+ a| 
+Número de fatias primárias a serem trocadas por minuto.  Caso não seja especificado, todas as fatias primárias serão trocadas de uma só vez.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+tempo esgotado
+ a| 
+Especifica por quanto tempo o modo de manutenção deve permanecer ativado antes de ser desativado automaticamente.  Formatado como uma sequência de tempo (por exemplo, HH:mm:ss).  Caso não seja especificado, o modo de manutenção permanecerá ativado até ser explicitamente desativado.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+manipulador assíncrono
+ a| 
+Você pode usar o método GetAsyncResult para recuperar esse asyncHandle e determinar quando a transição para o modo de manutenção estiver concluída.
+ a| 
+inteiro
+
+
+
+ a| 
+modoatual
+ a| 
+O estado atual do nó em modo de manutenção. Valores possíveis:
+
+* Desativado: Nenhuma manutenção foi solicitada.
+* Falha na recuperação: O nó não conseguiu se recuperar do modo de manutenção.
+* Recuperando da manutenção: O nó está em processo de recuperação do modo de manutenção.
+* PreparandoParaManutenção: Estão sendo tomadas medidas para preparar um nó para a realização de manutenção.
+* ProntoParaManutenção: O nó está pronto para que a manutenção seja realizada.
+
+ a| 
+Modo de manutenção (string)
+
+
+
+ a| 
+modo solicitado
+ a| 
+O estado do modo de manutenção solicitado para o nó. Valores possíveis:
+
+* Desativado: Nenhuma manutenção foi solicitada.
+* Falha na recuperação: O nó não conseguiu se recuperar do modo de manutenção.
+* Recuperando da manutenção: O nó está em processo de recuperação do modo de manutenção.
+* PreparandoParaManutenção: Estão sendo tomadas medidas para preparar um nó para a realização de manutenção.
+* ProntoParaManutenção: O nó está pronto para que a manutenção seja realizada.
+
+ a| 
+Modo de manutenção (string)
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "EnableMaintenanceMode",
+  "params": {
+    "forceWithUnresolvedFaults": False,
+    "nodes": [6],
+    "perMinutePrimarySwapLimit" : 40,
+    "timeout" : "01:00:05"
+  },
+"id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "ReadyForMaintenance",
+        "asyncHandle": 1,
+        "currentMode": "Disabled"
+    }
+}
+----
+
+
+== Novidade desde a versão
+
+12,2
+
+
+
+== Encontre mais informações
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["Conceitos do modo de manutenção de armazenamento NetApp HCI"^]

@@ -1,0 +1,67 @@
+---
+permalink: api/concept_element_api_volume_api_methods.html 
+sidebar: sidebar 
+keywords: volume,API,method,methods 
+summary: Os métodos da API de volume do software Element permitem gerenciar volumes que residem em um nó de armazenamento.  Você pode criar, modificar, clonar e excluir volumes com esses métodos.  Você também pode usar os métodos da API de volume para coletar e exibir medições de dados para um volume. 
+---
+= Métodos da API de Volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os métodos da API de volume do software Element permitem gerenciar volumes que residem em um nó de armazenamento.  Você pode criar, modificar, clonar e excluir volumes com esses métodos.  Você também pode usar os métodos da API de volume para coletar e exibir medições de dados para um volume.
+
+* xref:reference_element_api_cancelclone.adoc[CancelarClonagem]
+* xref:reference_element_api_cancelgroupclone.adoc[CancelarClonagemDeGrupo]
+* xref:reference_element_api_clonemultiplevolumes.adoc[Clonar múltiplos volumes]
+* xref:reference_element_api_clonevolume.adoc[Volume de clonagem]
+* xref:reference_element_api_copyvolume.adoc[Copiar Volume]
+* xref:reference_element_api_createqospolicy.adoc[CriarPolítica de QoS]
+* xref:reference_element_api_createvolume.adoc[CriarVolume]
+* xref:reference_element_api_createbackuptarget.adoc[CriarAlvo de Backup]
+* xref:reference_element_api_deleteqospolicy.adoc[ExcluirPolíticaQoS]
+* xref:reference_element_api_deletevolume.adoc[ExcluirVolume]
+* xref:reference_element_api_deletevolumes.adoc[Excluir volumes]
+* xref:reference_element_api_getbackuptarget.adoc[ObterAlvoDeBackup]
+* xref:reference_element_api_getvolumestats.adoc[ObterEstatísticasDeVolume]
+* xref:reference_element_api_getdefaultqos.adoc[Obter QoS padrão]
+* xref:reference_element_api_getqospolicy.adoc[Política GetQoSPolicy]
+* xref:reference_element_api_getvolumecount.adoc[ObterContagemDeVolumes]
+* xref:reference_element_api_getvolumeefficiency.adoc[Obtenha eficiência de volume]
+* xref:reference_element_api_listactivevolumes.adoc[ListarVolumesAtivos]
+* xref:reference_element_api_listbackuptargets.adoc[Listar destinos de backup]
+* xref:reference_element_api_listbulkvolumejobs.adoc[Listar trabalhos em grande volume]
+* xref:reference_element_api_listdeletedvolumes.adoc[Listar volumes excluídos]
+* xref:reference_element_api_listqospolicies.adoc[Políticas de QoS List]
+* xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]
+* xref:reference_element_api_listvolumeqoshistograms.adoc[ListVolumeQoSHistogramas]
+* xref:reference_element_api_listvolumes.adoc[Lista de volumes]
+* xref:reference_element_api_listvolumestats.adoc[ListVolumeStats]
+* xref:reference_element_api_listvolumesforaccount.adoc[Listar volumes para conta]
+* xref:reference_element_api_listvolumestatsbyaccount.adoc[ListVolumeStatsByAccount]
+* xref:reference_element_api_listvolumestatsbyvirtualvolume.adoc[ListVolumeStatsByVirtualVolume]
+* xref:reference_element_api_listvolumestatsbyvolume.adoc[ListVolumeStatsByVolume]
+* xref:reference_element_api_listvolumestatsbyvolumeaccessgroup.adoc[ListVolumeStatsByVolumeAccessGroup]
+* xref:reference_element_api_modifybackuptarget.adoc[Modificar destino de backup]
+* xref:reference_element_api_modifyqospolicy.adoc[ModificarPolítica de QoS]
+* xref:reference_element_api_modifyvolume.adoc[Modificar Volume]
+* xref:reference_element_api_modifyvolumes.adoc[Modificar volumes]
+* xref:reference_element_api_purgedeletedvolume.adoc[ExcluirVolume]
+* xref:reference_element_api_purgedeletedvolumes.adoc[Excluir volumes excluídos]
+* xref:reference_element_api_removebackuptarget.adoc[RemoverAlvoDeBackup]
+* xref:reference_element_api_restoredeletedvolume.adoc[RestaurarVolumeExcluído]
+* xref:reference_element_api_setdefaultqos.adoc[Definir QoS padrão]
+* xref:reference_element_api_startbulkvolumeread.adoc[IniciarLeituraEmMassa]
+* xref:reference_element_api_startbulkvolumewrite.adoc[Iniciar gravação em massa de volume]
+* xref:reference_element_api_updatebulkvolumestatus.adoc[AtualizarStatusDoVolumeEmMassa]
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

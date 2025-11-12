@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_disableclusterssh.html 
+sidebar: sidebar 
+keywords: SSH,disable,disabling,cluster,DisableClusterSsh 
+summary: Você pode usar o método DisableClusterSsh para desativar o serviço SSH para todo o cluster de armazenamento.  Ao adicionar nós ao cluster de armazenamento, os novos nós herdarão essa configuração global do cluster. 
+---
+= Desativar ClusterSsh
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `DisableClusterSsh` Método para desativar o serviço SSH para todo o cluster de armazenamento.  Ao adicionar nós ao cluster de armazenamento, os novos nós herdarão essa configuração global do cluster.
+
+
+
+== Parâmetro
+
+Este método não possui parâmetro de entrada.
+
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+resultado
+ a| 
+Um objeto JSON contendo o status do serviço SSH para o cluster de armazenamento, o tempo restante até que o SSH seja desativado e o status do serviço SSH para cada nó.
+ a| 
+objeto JSON
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "DisableClusterSsh",
+  "params": {
+      },
+  "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : {
+    "enabled": true,
+    "timeRemaining": "00:43:21",
+    "nodes": [
+    {
+        "nodeID": 1,
+        "enabled": true
+    },
+    {
+        "nodeID": 2,
+        "enabled": true
+    },
+    {
+        "nodeID": 3,
+        "enabled": false
+    },
+    {
+        "nodeID": 4,
+        "enabled": false
+    } ]
+			}
+	}
+----
+
+
+== Novidade desde a versão
+
+10,3

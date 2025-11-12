@@ -1,0 +1,56 @@
+---
+permalink: storage/reference_replication_volume_pairing_warnings.html 
+sidebar: sidebar 
+keywords: volume warnings, messages, replication, data protection 
+summary: 'A página "Pares de Volumes" na guia "Proteção de Dados" exibe essas mensagens após o emparelhamento de volumes.  Essas mensagens podem ser exibidas nas extremidades de origem e destino do par (a menos que indicado de outra forma) na lista de volumes replicados.' 
+---
+= Avisos de emparelhamento de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página "Pares de Volumes" na guia "Proteção de Dados" exibe essas mensagens após o emparelhamento de volumes.  Essas mensagens podem ser exibidas nas extremidades de origem e destino do par (a menos que indicado de outra forma) na visualização da lista de volumes replicados.
+
+* *Cluster em pausa completo*
++
+Como o cluster de destino está cheio, a replicação da origem e a transferência em massa de dados não podem prosseguir.  A mensagem é exibida apenas na extremidade de origem do par.
+
+* *PausedExceededMaxSnapshotCount*
++
+O volume de destino já possui o número máximo de snapshots e não pode replicar snapshots adicionais.
+
+* *Manual em pausa*
++
+O volume local foi pausado manualmente.  É necessário despausar o processo antes que a replicação seja retomada.
+
+* *Controle remoto manual em pausa*
++
+O controle remoto de volume está em modo de pausa manual.  É necessária intervenção manual para retomar o volume remoto antes que a replicação seja retomada.
+
+* *Pausado/Mal configurado*
++
+Aguardando uma fonte e um destino ativos.  Intervenção manual necessária para retomar a replicação.
+
+* *QoS em pausa*
++
+A qualidade de serviço (QoS) desejada não conseguiu suportar a entrada/saída de dados.  A replicação é retomada automaticamente.  A mensagem é exibida apenas na extremidade de origem do par.
+
+* *Link lento em pausa*
++
+Conexão lenta detectada e replicação interrompida.  A replicação é retomada automaticamente.  A mensagem é exibida apenas na extremidade de origem do par.
+
+* *Incompatibilidade de tamanho de volume em pausa*
++
+O volume de destino não tem o mesmo tamanho que o volume de origem.
+
+* *PausedXCopy*
++
+Um comando SCSI XCOPY está sendo emitido para um volume de origem.  O comando deve ser concluído antes que a replicação possa ser retomada.  A mensagem é exibida apenas na extremidade de origem do par.
+
+* *ParadoConfiguração incorreta*
++
+Foi detectado um erro de configuração permanente.  O volume remoto foi apagado ou desemparelhado.  Não é possível realizar nenhuma ação corretiva; um novo emparelhamento deve ser estabelecido.
+
+

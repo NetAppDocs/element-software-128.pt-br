@@ -1,0 +1,24 @@
+---
+permalink: storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, cluster, create 
+summary: 'A segurança está se tornando cada vez mais crítica para a implementação de soluções em diversos ambientes de clientes.  Os Padrões Federais de Processamento de Informação (FIPS) são padrões para segurança e interoperabilidade de computadores.  A criptografia certificada FIPS 140-2 para dados em repouso é um componente da solução de segurança geral.' 
+---
+= Preparar cluster Element para unidades FIPS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A segurança está se tornando cada vez mais crítica para a implementação de soluções em diversos ambientes de clientes.  Os Padrões Federais de Processamento de Informação (FIPS, na sigla em inglês) são padrões para segurança e interoperabilidade de computadores.  A criptografia certificada FIPS 140-2 para dados em repouso é um componente da solução de segurança geral.
+
+Para se preparar para ativar o recurso de unidades FIPS, você deve evitar misturar nós em que alguns sejam compatíveis com unidades FIPS e outros não.
+
+Um cluster é considerado compatível com o padrão FIPS com base nas seguintes condições:
+
+* Todos os discos rígidos possuem certificação FIPS.
+* Todos os nós são nós de unidade FIPS.
+* A criptografia em repouso (EAR) está ativada.
+* O recurso de unidades FIPS está ativado.  Todas as unidades e nós devem ser compatíveis com FIPS e a criptografia em repouso deve estar ativada para habilitar o recurso de unidade FIPS.
+

@@ -1,0 +1,234 @@
+---
+permalink: api/reference_element_api_session_iscsi.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: 'O objeto de sessão (iSCSI) contém informações detalhadas sobre a sessão iSCSI de cada volume.  Você pode recuperar informações da sessão iSCSI com o método de API ListISCSISessions.' 
+---
+= sessão (iSCSI)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de sessão (iSCSI) contém informações detalhadas sobre a sessão iSCSI de cada volume.  Você pode recuperar informações da sessão iSCSI com o `ListISCSISessions` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+ID da conta
+ a| 
+O ID da conta usada para autenticação CHAP, se houver.
+ a| 
+inteiro
+
+
+
+ a| 
+nome_da_conta
+ a| 
+O nome da conta usada para autenticação CHAP, se houver.
+ a| 
+corda
+
+
+
+ a| 
+autenticação
+ a| 
+Informações de autenticação para esta sessão iSCSI.
+ a| 
+xref:reference_element_api_iscsiauthentication.adoc[Autenticação ISCSI]
+
+
+
+ a| 
+criarTempo
+ a| 
+O horário de criação da sessão iSCSI, no formato UTC+0.
+ a| 
+string de data ISO 8601
+
+
+
+ a| 
+driveID
+ a| 
+O ID da unidade associado ao serviço de transporte que hospeda a sessão.
+ a| 
+inteiro
+
+
+
+ a| 
+IDs de unidade
+ a| 
+Uma lista com os IDs das unidades que reportaram a falha.  Uma lista vazia se não for aplicável.
+ a| 
+matriz de inteiros
+
+
+
+ a| 
+iniciador
+ a| 
+Informações sobre o servidor iniciador desta sessão iSCSI.  Membros:
+
+* Alias: O nome amigável atribuído ao iniciador.
+* Atributos: Os atributos deste iniciador.
+* initiatorID: O ID deste iniciador.
+* initiatorName: O nome deste iniciador.
+* volumeAccessGroups: Uma lista de grupos de acesso a volumes associados a este iniciador.
+
+ a| 
+objeto JSON
+
+
+
+ a| 
+IP do iniciador
+ a| 
+O endereço IP e o número da porta do iniciador do servidor iSCSI.
+ a| 
+corda
+
+
+
+ a| 
+nome do iniciador
+ a| 
+O Nome Qualificado iSCSI (IQN) do iniciador do servidor iSCSI.
+ a| 
+corda
+
+
+
+ a| 
+nomeDaPortaIniciadora
+ a| 
+O initiatorName combinado com o initiatorSessionID identifica a porta do iniciador.
+ a| 
+corda
+
+
+
+ a| 
+ID da sessão do iniciador
+ a| 
+Um ID de 48 bits fornecido pelo iniciador que identifica a sessão iSCSI como pertencente a esse iniciador.
+ a| 
+inteiro
+
+
+
+ a| 
+msSinceLastIscsiPDU
+ a| 
+O tempo, em milissegundos, desde que o último PDU iSCSI foi recebido para esta sessão.
+ a| 
+inteiro
+
+
+
+ a| 
+msDesdeÚltimoComandoSCSI
+ a| 
+O tempo, em milissegundos, desde que o último comando SCSI foi recebido para esta sessão.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do nó
+ a| 
+O nodeID associado ao serviço de transporte que hospeda a sessão.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do serviço
+ a| 
+O ID do serviço de transporte que hospeda a sessão.
+ a| 
+inteiro
+
+
+
+ a| 
+ID da sessão
+ a| 
+O ID da sessão iSCSI.
+ a| 
+inteiro
+
+
+
+ a| 
+IP alvo
+ a| 
+O endereço IP e o número da porta do dispositivo de armazenamento iSCSI.
+ a| 
+corda
+
+
+
+ a| 
+nome do alvo
+ a| 
+O IQN do alvo iSCSI.
+ a| 
+corda
+
+
+
+ a| 
+nomeDaPortaDeDestino
+ a| 
+O targetName, combinado com a tag do grupo do portal de destino, identifica a porta de destino.
+ a| 
+corda
+
+
+
+ a| 
+ID de rede virtual
+ a| 
+O ID da rede virtual associado à sessão.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do volume
+ a| 
+O ID do volume associado à sessão, se houver.
+ a| 
+inteiro
+
+
+
+ a| 
+instânciaDeVolume
+ a| 
+Identifica o objeto de volume associado à sessão iSCSI, se houver.
+ a| 
+inteiro
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listiscsisessions.adoc[ListISCSISessions]

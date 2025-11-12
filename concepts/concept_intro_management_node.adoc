@@ -1,0 +1,18 @@
+---
+permalink: concepts/concept_intro_management_node.html 
+sidebar: sidebar 
+keywords: what is, element mnode, management node, mnode 
+summary: 'O nó de gerenciamento (mNode) é uma máquina virtual que funciona em paralelo com um ou mais clusters de armazenamento baseados no software Element.  É utilizado para atualizar e fornecer serviços de sistema, incluindo monitoramento e telemetria, gerenciar ativos e configurações de cluster, executar testes e utilitários de sistema e habilitar o acesso do Suporte da NetApp para solução de problemas.' 
+---
+= Nó de gerenciamento para o software Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Olink:../mnode/task_mnode_work_overview.html["nó de gerenciamento (mNode)"] É uma máquina virtual que funciona em paralelo com um ou mais clusters de armazenamento baseados no software Element.  É utilizado para atualizar e fornecer serviços de sistema, incluindo monitoramento e telemetria, gerenciar ativos e configurações de cluster, executar testes e utilitários de sistema e habilitar o acesso do Suporte da NetApp para solução de problemas.
+
+O nó de gerenciamento interage com um cluster de armazenamento para executar ações de gerenciamento, mas não é membro do cluster de armazenamento.  Os nós de gerenciamento coletam periodicamente informações sobre o cluster por meio de chamadas de API e reportam essas informações ao Active IQ para monitoramento remoto (se habilitado).  Os nós de gerenciamento também são responsáveis ​​por coordenar as atualizações de software dos nós do cluster.
+
+A partir da versão 11.3 do Element, o nó de gerenciamento funciona como um host de microsserviços, permitindo atualizações mais rápidas de serviços de software selecionados fora das versões principais.  Esses microsserviços oulink:../concepts/concept_intro_management_services_for_afa.html["serviços de gestão"] são atualizados frequentemente como pacotes de serviços.

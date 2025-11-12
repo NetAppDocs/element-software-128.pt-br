@@ -1,0 +1,108 @@
+---
+permalink: storage/task-element-replication-define-rule-policy.html 
+sidebar: sidebar 
+keywords: ontap, cli, define, rule, policy 
+summary: Para políticas personalizadas com o tipo de política “mirror-vault”, você deve definir pelo menos uma regra que determine quais cópias de snapshot serão transferidas durante a inicialização e a atualização.  Você também pode definir regras para políticas padrão com o tipo de política “mirror-vault”. 
+---
+= Defina uma regra para uma política.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para políticas personalizadas com o tipo de política "`mirror-vault`", você deve definir pelo menos uma regra que determine quais cópias de snapshot serão transferidas durante a inicialização e a atualização.  Você também pode definir regras para políticas padrão com o tipo de política "`mirror-vault`".
+
+.Sobre esta tarefa
+Toda política com o tipo "`mirror-vault`" deve ter uma regra que especifique quais cópias de snapshot devem ser replicadas.  A regra "`bimestral`", por exemplo, indica que apenas as cópias de snapshot atribuídas ao rótulo SnapMirror "`bimestral`" devem ser replicadas.  Você atribui o rótulo SnapMirror ao configurar as cópias de instantâneo do Elemento.
+
+Cada tipo de política está associado a uma ou mais regras definidas pelo sistema.  Essas regras são atribuídas automaticamente a uma política quando você especifica o tipo de política.  A tabela abaixo mostra as regras definidas pelo sistema.
+
+|===
+
+
+| Regra definida pelo sistema | Utilizado em tipos de política | Resultado 
+
+
+ a| 
+sm_criado
+ a| 
+espelho-assíncrono, cofre-espelho
+ a| 
+Uma cópia instantânea criada pelo SnapMirror é transferida na inicialização e na atualização.
+
+
+
+ a| 
+diário
+ a| 
+cofre de espelhos
+ a| 
+Novas cópias instantâneas na origem com o rótulo SnapMirror "`daily`" são transferidas na inicialização e na atualização.
+
+
+
+ a| 
+semanalmente
+ a| 
+cofre de espelhos
+ a| 
+Novas cópias instantâneas na origem com o rótulo SnapMirror "`weekly`" são transferidas na inicialização e na atualização.
+
+
+
+ a| 
+mensal
+ a| 
+cofre de espelhos
+ a| 
+Novas cópias instantâneas na origem com o rótulo SnapMirror "`monthly`" são transferidas na inicialização e na atualização.
+
+|===
+Você pode especificar regras adicionais conforme necessário, para políticas padrão ou personalizadas. Por exemplo:
+
+* Para o padrão `MirrorAndVault` Em termos de política, você pode criar uma regra chamada "`bimestral`" para corresponder às cópias de snapshot na origem com o rótulo SnapMirror "`bimestral`".
+* Para uma política personalizada com o tipo de política "`mirror-vault`", você pode criar uma regra chamada "`bi-weekly`" para corresponder às cópias de snapshot na origem com o rótulo SnapMirror "`bi-weekly`".
+
+
+.Etapa
+. Defina uma regra para uma política:
++
+`snapmirror policy add-rule -vserver _SVM_ -policy _policy_for_rule_ -snapmirror-label _snapmirror-label_ -keep _retention_count_`
+
++
+Para obter a sintaxe completa dos comandos, consulte a página do manual.
+
++
+O exemplo a seguir adiciona uma regra com o rótulo SnapMirror. `bi-monthly` para o padrão `MirrorAndVault` política:
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy MirrorAndVault -snapmirror-label bi-monthly -keep 6
+----
++
+O exemplo a seguir adiciona uma regra com o rótulo SnapMirror. `bi-weekly` ao costume `my_snapvault` política:
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy my_snapvault -snapmirror-label bi-weekly -keep 26
+----
++
+O exemplo a seguir adiciona uma regra com o rótulo SnapMirror. `app_consistent` ao costume `Sync` política:
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy Sync -snapmirror-label app_consistent -keep 1
+----
++
+Em seguida, você pode replicar cópias de snapshots do cluster de origem que correspondam a este rótulo do SnapMirror :
+
++
+[listing]
+----
+cluster_src::> snapshot create -vserver vs1 -volume vol1 -snapshot snapshot1 -snapmirror-label app_consistent
+----
+

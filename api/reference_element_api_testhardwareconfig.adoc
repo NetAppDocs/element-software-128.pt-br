@@ -1,0 +1,108 @@
+---
+permalink: api/reference_element_api_testhardwareconfig.html 
+sidebar: sidebar 
+keywords: node,test,testing,hardware,config,configuration,testhardwareconfig 
+summary: Você pode usar o método TestHardwareConfig para realizar testes de hardware em um nó.  As opções de teste incluem a verificação das configurações de hardware, versões de firmware e se todas as unidades estão presentes. 
+---
+= TestHardwareConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `TestHardwareConfig` Método para realizar testes de hardware em um nó.  As opções de teste incluem a verificação das configurações de hardware, versões de firmware e se todas as unidades estão presentes.
+
+
+
+== Parâmetros
+
+
+NOTE: Esses testes não têm como objetivo detectar falhas de hardware.
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+limpar
+ a| 
+Inicia o teste de configuração de hardware com um cache limpo. Valores possíveis:
+
+* true: Exclui o arquivo de resultados de teste em cache e executa os testes novamente.
+* falso: Recupera os resultados de um teste armazenado em cache.
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+Não
+
+
+
+ a| 
+vigor
+ a| 
+O parâmetro de força deve ser incluído neste método para redefinir o nó com sucesso.
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+detalhes
+ a| 
+Detalhes da configuração de hardware.
+ a| 
+objeto JSON
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "TestHardwareConfig",
+   "params": {
+      "force": true
+     },
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Devido à extensão deste exemplo de resposta, ele está documentado em um tópico suplementar.
+
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+xref:reference_element_api_response_example_testhardwareconfig.adoc[TestHardwareConfig]

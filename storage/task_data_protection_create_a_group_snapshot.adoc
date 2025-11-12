@@ -1,0 +1,44 @@
+---
+permalink: storage/task_data_protection_create_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot, create, volumes, schedule, automate group snapshots 
+summary: Você pode criar um instantâneo de um grupo de volumes e também pode criar um agendamento de instantâneos de grupo para automatizar a criação de instantâneos de grupo.  Um único snapshot de grupo pode capturar snapshots de até 32 volumes simultaneamente. 
+---
+= Criando um instantâneo de grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode criar um instantâneo de um grupo de volumes e também pode criar um agendamento de instantâneos de grupo para automatizar a criação de instantâneos de grupo.  Um único snapshot de grupo pode capturar snapshots de até 32 volumes simultaneamente.
+
+.Passos
+. Clique em *Gerenciamento* > *Volumes*.
+. Utilize as caixas de seleção para selecionar vários volumes para um grupo de volumes.
+. Clique em *Ações em massa*.
+. Clique em *Captura de tela do grupo*.
+. Na caixa de diálogo Criar Snapshot de Grupo de Volumes, insira um novo nome para o snapshot do grupo.
+. *Opcional:* Selecione a caixa de seleção *Incluir cada membro do snapshot do grupo na replicação quando emparelhado* para garantir que cada snapshot seja capturado na replicação quando o volume pai for emparelhado.
+. Selecione uma opção de retenção para o instantâneo do grupo:
++
+** Clique em *Manter para sempre* para preservar a captura de tela no sistema indefinidamente.
+** Clique em *Definir período de retenção* e use as caixas de seleção de data para escolher o período de tempo durante o qual o sistema manterá o instantâneo.
+
+
+. Para tirar uma única foto instantânea, siga os passos abaixo:
++
+.. Clique em *Tirar foto do grupo agora*.
+.. Clique em *Criar instantâneo do grupo*.
+
+
+. Para agendar a execução do snapshot em um horário futuro, siga os passos abaixo:
++
+.. Clique em *Criar agendamento de captura de instantâneo em grupo*.
+.. Insira um *Nome para a Nova Programação*.
+.. Selecione um *Tipo de Horário* na lista.
+.. *Opcional:* Selecione a caixa de seleção *Agendamento Recorrente* para repetir a captura de tela agendada periodicamente.
+.. Clique em *Criar agendamento*.
+
+
+

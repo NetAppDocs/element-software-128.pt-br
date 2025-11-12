@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_volumepair.html 
+sidebar: sidebar 
+keywords: object,objects,volumePair 
+summary: O objeto volumePair contém informações sobre um volume que está emparelhado com outro volume em um cluster diferente.  Se o volume não estiver emparelhado, este objeto estará vazio.  Você pode usar os métodos de API ListActivePairedVolumes e ListActiveVolumes para retornar informações sobre volumes emparelhados. 
+---
+= volumePair
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto volumePair contém informações sobre um volume que está emparelhado com outro volume em um cluster diferente.  Se o volume não estiver emparelhado, este objeto estará vazio.  Você pode usar o `ListActivePairedVolumes` e `ListActiveVolumes` Métodos da API para retornar informações sobre volumes emparelhados.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+clusterPairID
+ a| 
+O cluster no qual o volume está emparelhado.
+ a| 
+inteiro
+
+
+
+ a| 
+replicação remota
+ a| 
+Detalhes sobre a replicação de volume.  Membros:
+
+* modo: (string) Um dos seguintes: "Assíncrono", "Síncrono" ou "Somente instantâneos".
+* pauseLimit: (inteiro) Uso interno apenas.
+* remoteServiceID: (número inteiro) O ID do serviço de fatiamento remoto.
+* resumeDetails: (string) Reservado para uso futuro.
+* snapshotReplication (objeto JSON)
++
+** estado: (string) O estado da replicação de snapshot em andamento, se houver alguma em curso.
+** stateDetails: (string) Reservado para uso futuro.
+
+
+* estado: (string) O estado da replicação do volume.
+* stateDetails: (string) Reservado para uso futuro.
+
+ a| 
+objeto JSON
+
+
+
+ a| 
+ID da fatia remota
+ a| 
+O ID da fatia definido pelo cluster no cluster remoto.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do volume remoto
+ a| 
+O ID do volume no cluster remoto com o qual o volume local está emparelhado.
+ a| 
+inteiro
+
+
+
+ a| 
+nomeDoVolumeRemoto
+ a| 
+O nome do volume remoto.
+ a| 
+corda
+
+
+
+ a| 
+volumePairUUID
+ a| 
+Um identificador universalmente único, definido pelo cluster, para este emparelhamento em um formato canônico.
+ a| 
+corda
+
+|===
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_listactivepairedvolumes.adoc[ListarVolumesPareadosAtivos]
+* xref:reference_element_api_listactivevolumes.adoc[ListarVolumesAtivos]
+

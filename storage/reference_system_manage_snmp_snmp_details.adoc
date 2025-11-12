@@ -1,0 +1,39 @@
+---
+permalink: storage/reference_system_manage_snmp_snmp_details.html 
+sidebar: sidebar 
+keywords: snmp, overview, reference, mib, settings, trap 
+summary: Na página SNMP da guia Cluster, você pode visualizar as seguintes informações. 
+---
+= Saiba mais sobre o SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar o Protocolo Simples de Gerenciamento de Rede (SNMP) em seu cluster.
+
+Você pode selecionar um solicitante SNMP, escolher qual versão do SNMP usar, identificar o usuário do Modelo de Segurança Baseado em Usuário (USM) do SNMP e configurar traps para monitorar o cluster SolidFire .  Você também pode visualizar e acessar arquivos de base de informações de gerenciamento.
+
+
+NOTE: Você pode usar endereços IPv4 e IPv6.
+
+
+
+== Detalhes SNMP
+
+Na página SNMP da guia Cluster, você pode visualizar as seguintes informações.
+
+* *MIBs SNMP*
++
+Os arquivos MIB que você pode visualizar ou baixar.
+
+* *Configurações gerais de SNMP*
++
+Você pode ativar ou desativar o SNMP.  Após ativar o SNMP, você poderá escolher qual versão usar.  Se estiver usando a versão 2, você pode adicionar solicitantes e, se estiver usando a versão 3, pode configurar usuários do USM.
+
+* *Configurações de SNMP Trap*
++
+Você pode identificar quais armadilhas deseja capturar.  Você pode definir o host, a porta e a string da comunidade para cada destinatário do trap.
+
+

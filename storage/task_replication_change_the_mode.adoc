@@ -1,0 +1,27 @@
+---
+permalink: storage/task_replication_change_the_mode.html 
+sidebar: sidebar 
+keywords: volume pairings, replication mode, change, volume pair properties 
+summary: Você pode editar as propriedades do par de volumes para alterar o modo de replicação do relacionamento entre os pares de volumes. 
+---
+= Alterar o modo de replicação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode editar as propriedades do par de volumes para alterar o modo de replicação do relacionamento entre os pares de volumes.
+
+. Selecione *Proteção de Dados* > *Pares de Volumes*.
+. Clique no ícone Ações para o par de volumes.
+. Clique em *Editar*.
+. No painel *Editar Par de Volumes*, selecione um novo modo de replicação:
++
+** *Em tempo real (assíncrono)*: As gravações são confirmadas ao cliente após serem confirmadas no cluster de origem.
+** *Em tempo real (síncrono)*: As gravações são confirmadas ao cliente após serem efetuadas nos clusters de origem e de destino.
+** *Somente snapshots*: Apenas os snapshots criados no cluster de origem são replicados.  As gravações ativas do volume de origem não são replicadas.  *Atenção:* Alterar o modo de replicação altera o modo imediatamente.  Certifique-se de ter coordenado essas alterações em ambos os locais.
+
+
+. Clique em *Salvar alterações*.
+

@@ -1,0 +1,33 @@
+---
+permalink: concepts/concept_intro_solidfire_active_iq.html 
+sidebar: sidebar 
+keywords: solidfire, active, iq, activeiq, tool, aiq 
+summary: O Active IQ é uma ferramenta online que fornece visualizações históricas continuamente atualizadas de dados de todo o cluster.  Você pode configurar alertas para eventos, limites ou métricas específicos.  O Active IQ permite monitorar o desempenho e a capacidade do sistema, além de manter-se informado sobre a integridade do cluster. 
+---
+= SolidFire Active IQ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+https://activeiq.solidfire.com["SolidFire Active IQ"^]É uma ferramenta online que fornece visualizações históricas continuamente atualizadas de dados de todo o cluster.  Você pode configurar alertas para eventos, limites ou métricas específicos.  O SolidFire Active IQ permite monitorar o desempenho e a capacidade do sistema, além de manter-se informado sobre a integridade do cluster.
+
+Você pode encontrar as seguintes informações sobre o seu sistema no SolidFire Active IQ:
+
+* Número de nós e estado dos nós: íntegros, offline ou com falha
+* Representação gráfica do uso de CPU, memória e limitação de nós.
+* Detalhes sobre o nó, como número de série, localização do slot no chassi, modelo e versão do software NetApp Element em execução no nó de armazenamento.
+* Informações sobre CPU e armazenamento das máquinas virtuais
+
+
+Para saber mais sobre o SolidFire Active IQ, consulte o https://docs.netapp.com/us-en/solidfire-active-iq/index.html["Documentação do SolidFire Active IQ"^] .
+
+
+
+== Para maiores informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["Site de suporte da NetApp > Ferramentas para Active IQ"^]
+

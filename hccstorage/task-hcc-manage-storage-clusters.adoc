@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-storage-clusters.html 
+summary: Você pode adicionar, remover, alterar, ativar e desativar o modo de manutenção para clusters de armazenamento usando a interface de usuário do NetApp Hybrid Control. 
+keywords: netapp, element, storage cluster, hybrid cloud control, hcc, maintenance mode, enable, disable 
+---
+= Adicione e gerencie clusters de armazenamento usando o NetApp Hybrid Cloud Control.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar clusters de armazenamento ao inventário de ativos do nó de gerenciamento para que eles possam ser gerenciados usando o NetApp Hybrid Cloud Control (HCC).  O primeiro cluster de armazenamento adicionado durante a configuração do sistema é o padrão.link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["cluster de armazenamento autoritativo"] , mas clusters adicionais podem ser adicionados usando a interface de usuário do HCC.
+
+Após a adição de um cluster de armazenamento, você pode monitorar o desempenho do cluster, alterar as credenciais do cluster de armazenamento para o ativo gerenciado ou remover um cluster de armazenamento do inventário de ativos do nó de gerenciamento, caso ele não precise mais ser gerenciado usando o HCC.
+
+.O que você vai precisar
+* *Permissões de administrador do cluster*: Você tem permissões de administrador no cluster.link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["cluster de armazenamento autoritativo"] .  O cluster autoritativo é o primeiro cluster adicionado ao inventário de nós de gerenciamento durante a configuração do sistema.
+* *Software Element*: A versão do seu cluster de armazenamento é a 11.3 ou posterior do software NetApp Element .
+* *Nó de gerenciamento*: Você implantou um nó de gerenciamento executando a versão 11.3 ou posterior.
+* *Serviços de gerenciamento*: Você atualizou seu pacote de serviços de gerenciamento para a versão 2.17 ou posterior.
+
+
+.Opções
+* <<Adicionar um cluster de armazenamento>>
+* <<Confirme o status do cluster de armazenamento.>>
+* <<Editar credenciais do cluster de armazenamento>>
+* <<Remover um cluster de armazenamento>>
+* <<Ativar e desativar o modo de manutenção>>
+
+
+
+
+== Adicionar um cluster de armazenamento
+
+Você pode adicionar um cluster de armazenamento ao inventário de ativos do nó de gerenciamento usando o NetApp Hybrid Cloud Control.  Isso permite gerenciar e monitorar o cluster usando a interface de usuário do HCC.
+
+.Passos
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador autorizado do cluster de armazenamento.
+. No painel de controle, selecione o menu de opções no canto superior direito e selecione *Configurar*.
+. No painel *Clusters de armazenamento*, selecione *Detalhes do cluster de armazenamento*.
+. Selecione *Adicionar cluster de armazenamento*.
+. Insira as seguintes informações:
++
+** endereço IP virtual de gerenciamento de cluster de armazenamento
++
+
+NOTE: Somente clusters de armazenamento remoto que não estejam sendo gerenciados por um nó de gerenciamento podem ser adicionados.
+
+** Nome de usuário e senha do cluster de armazenamento
+
+
+. Selecione *Adicionar*.
++
+
+NOTE: Após adicionar o cluster de armazenamento, o inventário do cluster pode levar até 2 minutos para ser atualizado e exibir a nova adição.  Você pode precisar atualizar a página no seu navegador para ver as alterações.
+
+
+
+
+
+== Confirme o status do cluster de armazenamento.
+
+Você pode monitorar o status da conexão dos ativos de clusters de armazenamento usando a interface de usuário do NetApp Hybrid Cloud Control.
+
+.Passos
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador autorizado do cluster de armazenamento.
+. No painel de controle, selecione o menu de opções no canto superior direito e selecione *Configurar*.
+. Analise o estado dos clusters de armazenamento no inventário.
+. No painel *Clusters de armazenamento*, selecione *Detalhes do cluster de armazenamento* para obter informações adicionais.
+
+
+
+
+== Editar credenciais do cluster de armazenamento
+
+Você pode editar o nome de usuário e a senha do administrador do cluster de armazenamento usando a interface de usuário do NetApp Hybrid Cloud Control.
+
+.Passos
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador autorizado do cluster de armazenamento.
+. No painel de controle, selecione o menu de opções no canto superior direito e selecione *Configurar*.
+. No painel *Clusters de armazenamento*, selecione *Detalhes do cluster de armazenamento*.
+. Selecione o menu *Ações* do cluster e selecione *Editar credenciais do cluster*.
+. Atualize o nome de usuário e a senha do cluster de armazenamento.
+. Selecione *Salvar*.
+
+
+
+
+== Remover um cluster de armazenamento
+
+Remover um cluster de armazenamento do NetApp Hybrid Cloud Control remove o cluster do inventário de nós de gerenciamento.  Após a remoção de um cluster de armazenamento, ele não poderá mais ser gerenciado pelo HCC e você só poderá acessá-lo navegando diretamente até seu endereço IP de gerenciamento.
+
+
+IMPORTANT: Não é possível remover o cluster autoritativo do inventário.  Para determinar o cluster autoritativo, acesse *Gerenciamento de usuários > Usuários*.  O cluster autorizado está listado ao lado do cabeçalho *Usuários*.
+
+.Passos
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador autorizado do cluster de armazenamento.
+. No painel de controle, selecione o menu de opções no canto superior direito e selecione *Configurar*.
+. No painel *Clusters de armazenamento*, selecione *Detalhes do cluster de armazenamento*.
+. Selecione o menu *Ações* do cluster e selecione *Remover Cluster de Armazenamento*.
++
+
+CAUTION: Selecionar *Sim* em seguida remove o cluster da instalação.
+
+. Selecione *Sim*.
+
+
+
+
+== Ativar e desativar o modo de manutenção
+
+Se precisar desativar um nó de armazenamento para manutenção, como atualizações de software ou reparos no host, você pode minimizar o impacto de E/S no restante do cluster de armazenamento da seguinte forma:<<enable_main_mode,permitindo>> Modo de manutenção para esse nó.  Quando você<<disable_main_mode,desabilitar>> No modo de manutenção, o nó é monitorado para garantir que determinados critérios sejam atendidos antes que ele possa sair desse modo.
+
+.O que você vai precisar
+* *Software Element*: A versão do seu cluster de armazenamento é a 12.2 ou posterior do software NetApp Element .
+* *Nó de gerenciamento*: Você implantou um nó de gerenciamento executando a versão 12.2 ou posterior.
+* *Serviços de gerenciamento*: Você atualizou seu pacote de serviços de gerenciamento para a versão 2.19 ou posterior.
+* Você tem acesso para fazer login no nível de administrador.
+
+
+
+
+=== [[enable_main_mode]]Ativar modo de manutenção
+
+Você pode usar o procedimento a seguir para ativar o modo de manutenção em um nó de cluster de armazenamento.
+
+
+NOTE: Apenas um nó pode estar em modo de manutenção por vez.
+
+.Passos
+. Abra o endereço IP do nó de gerenciamento em um navegador da web. Por exemplo:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador do cluster de armazenamento all-flash SolidFire .
++
+
+NOTE: As opções do modo de manutenção estão desativadas no nível somente leitura.
+
+. Na caixa de navegação azul à esquerda, selecione a instalação SolidFire all-flash.
+. No painel de navegação à esquerda, selecione *Nós*.
+. Para visualizar informações sobre o inventário de armazenamento, selecione *Armazenamento*.
+. Ativar o modo de manutenção em um nó de armazenamento:
++
+[NOTE]
+====
+A tabela de nós de armazenamento é atualizada automaticamente a cada dois minutos para ações não iniciadas pelo usuário.  Antes de executar uma ação, para garantir que você tenha o status mais atualizado, você pode atualizar a tabela de nós usando o ícone de atualização localizado no canto superior direito da tabela.
+
+image:hcc_enable_maintenance_mode.PNG["Habilitar modo de manutenção"]
+
+====
++
+.. Em *Ações*, selecione *Ativar Modo de Manutenção*.
++
+Enquanto o *Modo de Manutenção* estiver ativado, as ações desse modo ficarão indisponíveis para o nó selecionado e para todos os outros nós do mesmo cluster.
+
++
+Após a conclusão da *Habilitação do Modo de Manutenção*, a coluna *Status do Nó* exibe um ícone de chave inglesa e o texto "*Modo de Manutenção*" para o nó que está em modo de manutenção.
+
+
+
+
+
+
+
+=== [[disable_main_mode]]Desativar o modo de manutenção
+
+Após um nó ser colocado com sucesso em modo de manutenção, a ação *Desativar Modo de Manutenção* estará disponível para esse nó.  As ações nos outros nós ficarão indisponíveis até que o modo de manutenção seja desativado com sucesso no nó em manutenção.
+
+.Passos
+. Para o nó em modo de manutenção, em *Ações*, selecione *Desativar Modo de Manutenção*.
++
+Enquanto o *Modo de Manutenção* estiver desativado, as ações do modo de manutenção ficarão indisponíveis para o nó selecionado e para todos os outros nós do mesmo cluster.
+
++
+Após a conclusão da *desativação do modo de manutenção*, a coluna *Status do nó* exibirá *Ativo*.
+
++
+
+NOTE: Quando um nó está em modo de manutenção, ele não aceita novos dados.  Consequentemente, a desativação do modo de manutenção pode demorar mais, pois o nó precisa sincronizar seus dados novamente antes de poder sair desse modo.  Quanto mais tempo você permanecer no modo de manutenção, mais tempo poderá levar para desativá-lo.
+
+
+
+
+
+=== Solução de problemas
+
+Se você encontrar erros ao ativar ou desativar o modo de manutenção, uma mensagem de erro será exibida na parte superior da tabela de nós.  Para obter mais informações sobre o erro, você pode selecionar o link *Mostrar detalhes* fornecido no banner para visualizar o que a API retornou.
+
+[discrete]
+== Encontre mais informações
+
+* link:../mnode/task_mnode_manage_storage_cluster_assets.html["Criar e gerenciar ativos de cluster de armazenamento"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

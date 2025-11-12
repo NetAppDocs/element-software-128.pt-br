@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getstoragecontainerefficiency.html 
+sidebar: sidebar 
+keywords: volume,virtual,container,volumes,get,getting,efficiency,vvol,GetStorageContainerEfficiency 
+summary: Você pode usar o método GetStorageContainerEfficiency para obter informações sobre a eficiência de um contêiner de armazenamento de volume virtual. 
+---
+= Obtenha a eficiência do contêiner de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetStorageContainerEfficiency` Método para obter informações de eficiência sobre um contêiner de armazenamento de volume virtual.
+
+
+
+== Parâmetros
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID do contêiner de armazenamento
+ a| 
+O ID do contêiner de armazenamento para o qual se deseja obter informações de eficiência.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+compressão
+ a| 
+A quantidade de espaço economizado pela compressão de dados para todos os volumes virtuais no contêiner de armazenamento.  Expressa-se como uma proporção em que o valor 1 significa que os dados foram armazenados sem compressão.
+ a| 
+flutuador
+
+
+
+ a| 
+desduplicação
+ a| 
+A quantidade de espaço economizada ao não duplicar dados para todos os volumes virtuais no contêiner de armazenamento.  Expressa-se como uma proporção.
+ a| 
+flutuador
+
+
+
+ a| 
+volumesfaltantes
+ a| 
+Os volumes virtuais que não puderam ser consultados para obtenção de dados de eficiência.  A ausência de volumes pode ser causada por um ciclo de coleta de lixo (GC) com menos de uma hora de duração, perda temporária de conectividade de rede ou reinicialização de serviços desde o último ciclo de GC.
+ a| 
+matriz de inteiros
+
+
+
+ a| 
+provisionamento fino
+ a| 
+A proporção entre o espaço utilizado e a quantidade de espaço alocada para armazenamento de dados.  Expressa-se como uma proporção.
+ a| 
+flutuador
+
+
+
+ a| 
+carimbo de data/hora
+ a| 
+Os últimos dados de eficiência foram coletados após a cromatografia gasosa (GC).
+ a| 
+Cadeia de dados ISO 8601
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "GetStorageContainerEfficiency",
+  "params": {
+    "storageContainerID" : "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1"
+  },
+  "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "compression": 1,
+    "deduplication": 1,
+    "missingVolumes": [],
+    "thinProvisioning": 1,
+    "timestamp": "2016-04-12T15:39:49Z"
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

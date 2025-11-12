@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_manage_vol_access_group_add_volumes.html 
+sidebar: sidebar 
+keywords: access group, add volumes to 
+summary: Você pode adicionar volumes a um grupo de acesso a volumes.  Cada volume pode pertencer a mais de um grupo de acesso a volumes; você pode ver os grupos aos quais cada volume pertence na página Volumes ativos. 
+---
+= Adicionar volumes a um grupo de acesso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar volumes a um grupo de acesso a volumes.  Cada volume pode pertencer a mais de um grupo de acesso a volumes; você pode ver os grupos aos quais cada volume pertence na página *Volumes ativos*.
+
+Você também pode usar esse procedimento para adicionar volumes a um grupo de acesso a volumes Fibre Channel.
+
+. Clique em *Gerenciamento* > *Grupos de Acesso*.
+. Clique no ícone Ações do grupo de acesso ao qual deseja adicionar volumes.
+. Clique no botão *Editar*.
+. Em Adicionar Volumes, selecione um volume da lista *Volumes*.
++
+Você pode adicionar mais volumes repetindo esta etapa.
+
+. Clique em *Salvar alterações*.
+

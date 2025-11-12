@@ -1,0 +1,45 @@
+---
+permalink: concepts/concept_intro_product_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Um sistema de armazenamento all-flash SolidFire é composto por componentes de hardware discretos (unidades e nós) que são combinados em um único conjunto de recursos de armazenamento.  Este cluster unificado se apresenta como um sistema de armazenamento único para uso por clientes externos e é gerenciado pelo software NetApp Element .' 
+---
+= Visão geral do produto
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um sistema de armazenamento all-flash SolidFire é composto por componentes de hardware discretos (unidades e nós) que são combinados em um único conjunto de recursos de armazenamento.  Este cluster unificado se apresenta como um sistema de armazenamento único para uso por clientes externos e é gerenciado pelo software NetApp Element .
+
+Utilizando a interface Element, a API ou outras ferramentas de gerenciamento, você pode monitorar a capacidade e o desempenho do armazenamento do cluster SolidFire e gerenciar a atividade de armazenamento em uma infraestrutura multi-inquilino.
+
+
+
+== O SolidFire apresenta funcionalidades.
+
+Um sistema Solidfire oferece os seguintes recursos:
+
+* Oferece armazenamento de alto desempenho para sua infraestrutura de nuvem privada em grande escala.
+* Oferece uma escala flexível que permite atender às necessidades de armazenamento em constante mudança.
+* Utiliza uma interface de software Element para gerenciamento de armazenamento orientada por API.
+* Garante o desempenho através de políticas de Qualidade de Serviço.
+* Inclui balanceamento de carga automático em todos os nós do cluster.
+* Reequilibra os clusters automaticamente quando nós são adicionados ou removidos.
+
+
+
+
+== Implantação do SolidFire
+
+Utilize nós de armazenamento fornecidos pela NetApp e integrados ao software NetApp Element .
+
+link:../concepts/concept_solidfire_concepts_solidfire_architecture_overview.html["Visão geral da arquitetura de armazenamento all-flash SolidFire"]
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

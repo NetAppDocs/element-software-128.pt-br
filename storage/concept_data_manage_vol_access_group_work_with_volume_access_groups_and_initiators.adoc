@@ -1,0 +1,51 @@
+---
+permalink: storage/concept_data_manage_vol_access_group_work_with_volume_access_groups_and_initiators.html 
+sidebar: sidebar 
+keywords: volume access groups, initiators, working with, chap, fc, iscsi 
+summary: Você pode usar iniciadores iSCSI ou iniciadores Fibre Channel para acessar os volumes definidos em grupos de acesso a volumes. 
+---
+= Trabalhar com grupos de acesso em volume e iniciadores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar iniciadores iSCSI ou iniciadores Fibre Channel para acessar os volumes definidos em grupos de acesso a volumes.
+
+Você pode criar grupos de acesso mapeando IQNs de iniciadores iSCSI ou WWPNs de Fibre Channel em uma coleção de volumes.  Cada IQN adicionado a um grupo de acesso pode acessar todos os volumes do grupo sem a necessidade de autenticação CHAP.
+
+Existem dois tipos de métodos de autenticação CHAP:
+
+* Autenticação CHAP em nível de conta: você pode atribuir a autenticação CHAP à conta.
+* Autenticação CHAP em nível de iniciador: você pode atribuir destinos e segredos CHAP exclusivos para iniciadores específicos sem ficar vinculado a um único CHAP em uma única conta.  Essa autenticação CHAP em nível de iniciador substitui as credenciais em nível de conta.
+
+
+Opcionalmente, com o CHAP por iniciador, você pode impor a autorização do iniciador e a autenticação CHAP por iniciador.  Essas opções podem ser definidas individualmente para cada iniciador, e um grupo de acesso pode conter uma combinação de iniciadores com opções diferentes.
+
+Cada WWPN que você adiciona a um grupo de acesso habilita o acesso à rede Fibre Channel aos volumes no grupo de acesso.
+
+
+NOTE: Os grupos de acesso por volume têm as seguintes limitações:
+
+* É permitido um máximo de 64 IQNs ou WWPNs em um grupo de acesso.
+* Um grupo de acesso pode ser composto por, no máximo, 2000 volumes.
+* Um IQN ou WWPN pode pertencer a apenas um grupo de acesso.
+* Um único volume pode pertencer a, no máximo, quatro grupos de acesso.
+
+
+
+
+== Encontre mais informações
+
+* xref:task_data_manage_vol_access_group_create_a_volume_access_group.adoc[Crie um grupo de acesso a volumes.]
+* xref:task_data_manage_vol_access_group_add_volumes.adoc[Adicionar volumes a um grupo de acesso]
+* xref:task_data_manage_vol_access_group_remove_volumes.adoc[Remover volumes de um grupo de acesso]
+* xref:task_data_manage_vol_access_group_create_an_initiator.adoc[Criar um iniciador]
+* xref:task_data_manage_vol_access_group_edit_an_initiator.adoc[Editar um iniciador]
+* xref:task_data_manage_vol_access_group_add_a_single_initiator.adoc[Adicionar um único iniciador a um grupo de acesso a volume]
+* xref:task_data_manage_vol_access_group_add_multiple_initiators.adoc[Adicionar vários iniciadores a um grupo de acesso a volume]
+* xref:task_data_manage_vol_access_group_remove_initiators_from_an_access_group.adoc[Remover iniciadores de um grupo de acesso]
+* xref:task_data_manage_vol_access_group_delete.adoc[Excluir um grupo de acesso]
+* xref:task_data_manage_vol_access_group_delete_an_initiator.adoc[Excluir um iniciador]
+

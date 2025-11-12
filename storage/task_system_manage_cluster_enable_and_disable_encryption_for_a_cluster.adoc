@@ -1,0 +1,78 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html 
+sidebar: sidebar 
+keywords: enable, disable, encryption at rest, cluster, sed, hardware-based, encryption settings, software-based 
+summary: Com os clusters SolidFire , você pode criptografar todos os dados armazenados no cluster usando criptografia baseada em software ou hardware, mesmo em repouso. 
+---
+= Ativar e desativar a criptografia em repouso para um cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Com os clusters SolidFire , você pode criptografar todos os dados em repouso armazenados nas unidades do cluster.  Você pode habilitar a proteção de unidades de criptografia automática (SED) em todo o cluster usando um dos seguintes métodos:link:../concepts/concept_solidfire_concepts_security.html["Criptografia em repouso baseada em hardware ou software"] .
+
+Você pode habilitar a criptografia de hardware em repouso usando a interface do usuário ou a API do Element.  Habilitar a criptografia de hardware em repouso não afeta o desempenho ou a eficiência do cluster.  Você pode habilitar a criptografia de software em repouso usando apenas a API Element.
+
+A criptografia em repouso baseada em hardware não está habilitada por padrão durante a criação do cluster, mas pode ser ativada e desativada na interface do usuário do Element.
+
+
+WARNING: Para clusters de armazenamento all-flash SolidFire , a criptografia de software em repouso deve ser ativada durante a criação do cluster e não pode ser desativada após a sua criação.
+
+.O que você vai precisar
+* Você possui privilégios de administrador de cluster para habilitar ou alterar as configurações de criptografia.
+* Para criptografia em repouso baseada em hardware, você garantiu que o cluster esteja em bom estado antes de alterar as configurações de criptografia.
+* Se você estiver desativando a criptografia, dois nós devem participar de um cluster para acessar a chave que desativa a criptografia em uma unidade.
+
+
+
+
+== Verificar o estado da criptografia em repouso
+
+Para visualizar o estado atual da criptografia em repouso e/ou da criptografia de software em repouso no cluster, utilize olink:../api/reference_element_api_getclusterinfo.html["Obter informações do cluster"^] método.  Você pode usar olink:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["GetSoftwareEncryptionAtRestInfo"^] Método para obter informações sobre o que o cluster usa para criptografar dados em repouso.
+
+
+NOTE: O painel de controle da interface do usuário do software Element em `https://<MVIP>/` Atualmente, só é exibido o status de criptografia em repouso para criptografia baseada em hardware.
+
+.Opções
+* <<Habilitar criptografia baseada em hardware em repouso>>
+* <<Habilitar criptografia baseada em software em repouso>>
+* <<Desative a criptografia baseada em hardware em repouso.>>
+
+
+
+
+== Habilitar criptografia baseada em hardware em repouso
+
+
+NOTE: Para habilitar a criptografia em repouso usando uma configuração de gerenciamento de chaves externa, você deve habilitar a criptografia em repouso por meio dolink:../api/reference_element_api_enableencryptionatrest.html["API"] .  Habilitar o uso do botão existente da interface do usuário do Element fará com que o sistema volte a usar chaves geradas internamente.
+
+. Na interface do Element, selecione *Cluster* > *Configurações*.
+. Selecione *Ativar criptografia em repouso*.
+
+
+
+
+== Habilitar criptografia baseada em software em repouso
+
+
+NOTE: A criptografia de software em repouso não pode ser desativada depois de ativada no cluster.
+
+. Durante a criação do cluster, execute olink:../api/reference_element_api_createcluster.html["método de criação de cluster"] com `enableSoftwareEncryptionAtRest` definido para `true` .
+
+
+
+
+== Desative a criptografia baseada em hardware em repouso.
+
+. Na interface do Element, selecione *Cluster* > *Configurações*.
+. Selecione *Desativar criptografia em repouso*.
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

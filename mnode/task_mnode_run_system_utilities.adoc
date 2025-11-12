@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_run_system_utilities.html 
+summary: Você pode criar ou excluir pacotes de suporte de cluster, redefinir as configurações do nó ou reiniciar a rede. 
+keywords: netapp, Element, management node ui, mnode ui, system utilities 
+---
+= Execute os utilitários do sistema a partir do nó de gerenciamento.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a interface de usuário específica de cada nó para o nó de gerenciamento para criar ou excluir pacotes de suporte de cluster, redefinir as configurações do nó ou reiniciar a rede.
+
+.Passos
+. Abra a interface de usuário de gerenciamento por nó usando as credenciais de administrador do nó de gerenciamento.
+. Selecione *Utilitários do Sistema*.
+. Selecione o botão do utilitário que deseja executar:
++
+.. *Controlar Energia*: Reinicia, desliga e liga/desliga o nó.  Especifique uma das seguintes opções.
++
+
+IMPORTANT: Esta operação causa perda temporária de conectividade de rede.
+
++
+*** *Ação*: As opções incluem `Restart` e `Halt` (desligar).
+*** *Atraso de ativação*: Qualquer tempo adicional antes que o nó volte a ficar online.
+
+
+.. *Criar pacote de suporte de cluster*: Cria o pacote de suporte de cluster para auxiliar as avaliações de diagnóstico do Suporte da NetApp em um ou mais nós de um cluster.  Especifique as seguintes opções:
++
+*** *Nome do pacote*: Nome exclusivo para cada pacote de suporte criado.  Caso nenhum nome seja fornecido, "supportbundle" e o nome do nó serão usados como nome do arquivo.
+*** *Mvip*: O MVIP do cluster.  Os pacotes são coletados de todos os nós do cluster.  Este parâmetro é obrigatório caso o parâmetro Nós não seja especificado.
+*** *Nós*: Os endereços IP dos nós dos quais os pacotes serão coletados.  Use Nodes ou Mvip, mas não ambos, para especificar os nós dos quais coletar os pacotes.  Este parâmetro é obrigatório caso Mvip não seja especificado.
+*** *Nome de usuário*: O nome de usuário administrador do cluster.
+*** *Senha*: A senha de administrador do cluster.
+*** *Permitir Incompleto*: Permite que o script continue a ser executado caso os pacotes não possam ser coletados de um ou mais nós.
+*** *Argumentos extras*: Este parâmetro é fornecido ao `sf_make_support_bundle` roteiro.  Este parâmetro deve ser usado somente a pedido do Suporte da NetApp .
+
+
+.. *Excluir todos os pacotes de suporte*: Exclui todos os pacotes de suporte atuais no nó de gerenciamento.
+.. *Redefinir Nó*: Redefine o nó de gerenciamento para uma nova imagem de instalação.  Isso altera todas as configurações, exceto a configuração de rede, para o estado padrão.  Especifique as seguintes opções:
++
+*** *Build*: O URL para uma imagem de software Element remota para a qual o nó será redefinido.
+*** *Opções*: Especificações para executar as operações de reinicialização.  Os detalhes serão fornecidos pelo Suporte da NetApp , se necessário.
++
+
+IMPORTANT: Esta operação causa perda temporária de conectividade de rede.
+
+
+
+.. *Reiniciar Rede*: Reinicia todos os serviços de rede no nó de gerenciamento.
++
+
+IMPORTANT: Esta operação causa perda temporária de conectividade de rede.
+
+
+
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

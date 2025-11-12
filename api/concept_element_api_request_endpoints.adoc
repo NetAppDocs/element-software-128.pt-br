@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_request_endpoints.html 
+sidebar: sidebar 
+keywords: request,endpoints 
+summary: 'Existem três tipos de endpoints de requisição usados na API (cluster de armazenamento, criação de cluster de armazenamento e por nó).  Você deve sempre usar o endpoint mais recente compatível com a sua versão do software Element.' 
+---
+= Pontos de extremidade de solicitação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Existem três tipos de endpoints de requisição usados na API (cluster de armazenamento, criação de cluster de armazenamento e por nó).  Você deve sempre usar o endpoint mais recente compatível com a sua versão do software Element.
+
+Os três endpoints de requisição na API são designados da seguinte forma:
+
+
+
+== Métodos da API de cluster
+
+O endpoint HTTPS para solicitações de API em todo o cluster de armazenamento é `+https://<mvip>/json-rpc/<api-version>+` , onde:
+
+* `<mvip>`é o endereço IP virtual de gerenciamento do cluster de armazenamento.
+* `<api-version>`é a versão da API que você está usando.
+
+
+
+
+== Criação de clusters e métodos de API de inicialização
+
+O endpoint HTTPS para criar um cluster de armazenamento e acessar solicitações da API de inicialização é `+https://<nodeIP>/json-rpc/<api-version>+` , onde:
+
+* `<nodeIP>`é o endereço IP do nó que você está adicionando ao cluster.
+* `<api-version>`é a versão da API que você está usando.
+
+
+
+
+== Métodos de API por nó
+
+O endpoint HTTPS para solicitações de API de nós de armazenamento individuais é `+https://<nodeIP>:442/json-rpc/<api-version>+` , onde:
+
+* `<nodeIP>`é o endereço IP de gerenciamento do nó de armazenamento; 442 é a porta na qual o servidor HTTPS está em execução.
+* `<api-version>`é a versão da API que você está usando.
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

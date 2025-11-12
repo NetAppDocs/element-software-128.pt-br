@@ -1,0 +1,86 @@
+---
+permalink: storage/task_data_manage_vvol_view_virtual_volume_details.html 
+sidebar: sidebar 
+keywords: virtual volumes, view details vvols, vvols performance activity, vSphere 
+summary: Você pode revisar as informações de volume virtual para todos os volumes virtuais ativos no cluster na interface do usuário do Element.  Você também pode visualizar a atividade de desempenho para cada volume virtual, incluindo entrada, saída, taxa de transferência, latência, profundidade da fila e informações do volume. 
+---
+= Veja os detalhes do volume virtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode revisar as informações de volume virtual para todos os volumes virtuais ativos no cluster na interface do usuário do Element.  Você também pode visualizar a atividade de desempenho para cada volume virtual, incluindo entrada, saída, taxa de transferência, latência, profundidade da fila e informações do volume.
+
+.O que você vai precisar
+* Você deveria ter habilitado a funcionalidade VVols na interface do usuário do Element para o cluster.
+* Você deveria ter criado um contêiner de armazenamento associado.
+* Você deve ter configurado seu cluster vSphere para usar a funcionalidade VVols do software Element.
+* Você deveria ter criado pelo menos uma máquina virtual no vSphere.
+
+
+.Passos
+. Clique em *VVols* > *Volumes Virtuais*.
++
+São exibidas as informações de todos os volumes virtuais ativos.
+
+. Clique no ícone *Ações* do volume virtual que deseja consultar.
+. No menu que aparecer, selecione *Ver detalhes*.
+
+
+
+
+== Detalhes
+
+A página Volumes Virtuais da guia VVols fornece informações sobre cada volume virtual ativo no cluster, como ID do volume, ID do snapshot, ID do volume virtual pai e ID do volume virtual.
+
+* *ID do Volume*: O ID do volume subjacente.
+* *ID do Snapshot*: O ID do snapshot do volume subjacente.  O valor é 0 se o volume virtual não representar um snapshot do SolidFire .
+* *ID do Volume Virtual Pai*: O ID do volume virtual pai.  Se o ID for composto apenas por zeros, o volume virtual é independente e não possui vínculo com um volume pai.
+* *ID do Volume Virtual*: O UUID do volume virtual.
+* *Nome*: O nome atribuído ao volume virtual.
+* *Contêiner de armazenamento*: O contêiner de armazenamento que possui o volume virtual.
+* *Tipo de SO convidado*: Sistema operacional associado ao volume virtual.
+* *Tipo de Volume Virtual*: O tipo de volume virtual é: Configuração, Dados, Memória, Troca (Swap) ou Outro.
+* *Acesso*: As permissões de leitura e gravação atribuídas ao volume virtual.
+* *Tamanho*: O tamanho do volume virtual em GB ou GiB.
+* *Instantâneos*: O número de instantâneos associados.  Clique no número para acessar os detalhes da captura de tela.
+* *IOPS mínimos*: A configuração mínima de QoS de IOPS do volume virtual.
+* *IOPS Máximo*: A configuração máxima de QoS de IOPS do volume virtual.
+* *Burst IOPS*: A configuração máxima de QoS de burst do volume virtual.
+* *VMW_VmID*: As informações nos campos com o prefixo "VMW_" são definidas pela VMware.
+* *Hora de Criação*: O horário em que a tarefa de criação do volume virtual foi concluída.
+
+
+
+
+== Detalhes individuais do volume virtual
+
+A página Volumes Virtuais na guia VVols fornece as seguintes informações sobre o volume virtual quando você seleciona um volume virtual individual e visualiza seus detalhes.
+
+* *VMW_XXX*: As informações nos campos precedidos por "VMW_" são definidas pela VMware.
+* *ID do Volume Virtual Pai*: O ID do volume virtual pai.  Se o ID for composto apenas por zeros, o volume virtual é independente e não possui vínculo com um volume pai.
+* *ID do Volume Virtual*: O UUID do volume virtual.
+* *Tipo de Volume Virtual*: O tipo de volume virtual é: Configuração, Dados, Memória, Troca (Swap) ou Outro.
+* *ID do Volume*: O ID do volume subjacente.
+* *Acesso*: As permissões de leitura e gravação atribuídas ao volume virtual.
+* *Nome da conta*: Nome da conta que contém o volume.
+* *Grupos de Acesso*: Grupos de acesso a volumes associados.
+* *Tamanho total do volume*: Capacidade total provisionada em bytes.
+* *Blocos diferentes de zero*: Número total de blocos de 4 KiB com dados após a conclusão da última operação de coleta de lixo.
+* *Blocos Zero*: Número total de blocos de 4 KiB sem dados após a conclusão da última operação de coleta de lixo.
+* *Instantâneos*: O número de instantâneos associados.  Clique no número para acessar os detalhes da captura de tela.
+* *IOPS mínimos*: A configuração mínima de QoS de IOPS do volume virtual.
+* *IOPS Máximo*: A configuração máxima de QoS de IOPS do volume virtual.
+* *Burst IOPS*: A configuração máxima de QoS de burst do volume virtual.
+* *Habilitar 512*: Como os volumes virtuais sempre usam emulação de tamanho de bloco de 512 bytes, o valor é sempre "sim".
+* *Volumes Emparelhados*: Indica se um volume está emparelhado.
+* *Hora de Criação*: O horário em que a tarefa de criação do volume virtual foi concluída.
+* *Tamanho dos Blocos*: Tamanho dos blocos no volume.
+* *Gravações desalinhadas*: Para volumes 512e, o número de operações de gravação que não estavam em um limite de setor de 4k.  Um número elevado de gravações desalinhadas pode indicar um alinhamento inadequado da partição.
+* *Leituras não alinhadas*: Para volumes 512e, o número de operações de leitura que não estavam em um limite de setor de 4k.  Um número elevado de leituras desalinhadas pode indicar um alinhamento de partição inadequado.
+* *scsiEUIDeviceID*: Identificador de dispositivo SCSI globalmente único para o volume no formato EUI-64 de 16 bytes.
+* *scsiNAADeviceID*: Identificador de dispositivo SCSI globalmente único para o volume no formato NAA IEEE Registered Extended.
+* *Atributos*: Lista de pares nome-valor em formato de objeto JSON.
+

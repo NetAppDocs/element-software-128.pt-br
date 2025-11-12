@@ -1,0 +1,202 @@
+---
+permalink: api/reference_element_api_rollbacktosnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktosnapshot,snapshot,creating,create,roll,back,rollback,roll back,existing 
+summary: Você pode usar o método RollbackToSnapshot para criar um instantâneo existente da imagem do volume ativo.  Este método cria um novo instantâneo a partir de um instantâneo existente. 
+---
+= Reverter para o instantâneo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `RollbackToSnapshot` Método para criar um instantâneo da imagem do volume ativo existente.  Este método cria um novo instantâneo a partir de um instantâneo existente.
+
+O novo instantâneo torna-se ativo e o instantâneo existente é preservado até ser excluído manualmente.  O instantâneo anteriormente ativo será excluído, a menos que você defina o parâmetro saveCurrentState como verdadeiro.
+
+*CLUSTER_FULLNESS*
+
+[NOTE]
+====
+* Você pode criar snapshots se o nível de preenchimento do cluster estiver no estágio 1, 2 ou 3.  Não é possível criar snapshots quando o nível de preenchimento do cluster atinge o estágio 4 ou 5.
+* A reversão de um volume para um snapshot pode falhar quando a sincronização de fatias estiver em andamento.  Tentar novamente `RollbackToSnapshot` após a sincronização ser concluída.
+
+
+====
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID do volume
+ a| 
+ID do volume.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+Atributos JSON
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+nome
+ a| 
+Nome para a captura de tela.  Caso nenhum nome seja fornecido, será utilizado o nome do snapshot para o qual se está revertendo, com o prefixo "- copy" adicionado ao final do nome.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+ID do instantâneo
+ a| 
+Identificação de um snapshot criado anteriormente no volume especificado.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+salvarEstadoAtual
+ a| 
+Especifica se a imagem do volume ativo anterior deve ser salva ou não.  Valores válidos:
+
+* Verdadeiro: A imagem do volume ativo anterior é mantida.
+* falso: A imagem de volume ativa anterior foi excluída.
+
+ a| 
+booleano
+ a| 
+falso
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+soma de verificação
+ a| 
+Uma pequena representação em formato de string dos dados presentes no instantâneo armazenado.
+ a| 
+corda
+
+
+
+ a| 
+ID do instantâneo
+ a| 
+Se saveCurrentState estiver definido como falso, esse valor será nulo.
+
+Se saveCurrentState estiver definido como verdadeiro, o ID exclusivo do snapshot recém-criado será retornado.
+ a| 
+inteiro
+
+
+
+ a| 
+instantâneo
+ a| 
+Se saveCurrentState estiver definido como falso, esse valor será nulo.
+
+Se saveCurrentState estiver definido como verdadeiro, será retornado um objeto contendo informações sobre o snapshot recém-criado.
+ a| 
+xref:reference_element_api_snapshot.adoc[instantâneo]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+ "method": "RollbackToSnapshot",
+ "params": {
+    "volumeID": 1,
+    "snapshotID": 3114,
+    "saveCurrentState": true
+  },
+  "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "checksum": "0x0",
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:27:32Z",
+      "enableRemoteReplication": false,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1-copy",
+      "snapshotID": 1,
+      "snapshotUUID": "30d7e3fe-0570-4d94-a8d5-3cc8097a6bfb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    },
+    "snapshotID": 1
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

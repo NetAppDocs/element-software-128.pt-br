@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_listtests.html 
+sidebar: sidebar 
+keywords: test,tests,list,listing,listtests 
+summary: Você pode usar o método ListTests para listar os testes que estão disponíveis para execução em um nó. 
+---
+= ListTests
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ListTests` Método para listar os testes disponíveis para execução em um nó.
+
+
+
+== Parâmetros
+
+Este método não possui parâmetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+testes
+ a| 
+Lista de testes que podem ser realizados no nó.
+ a| 
+matriz de strings
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "ListTests",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+   "tests": [
+             "TestConnectEnsemble",
+             "TestConnectMvip",
+             "TestConnectSvip",
+             "TestDrives",
+             "TestHardwareConfig",
+             "TestLocateCluster",
+             "TestPing",
+             "TestLocalConnectivity",
+             "TestRemoteConnectivity",
+             "TestNetworkConfig"
+           ]
+      }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

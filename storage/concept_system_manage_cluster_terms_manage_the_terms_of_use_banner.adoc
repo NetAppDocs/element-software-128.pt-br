@@ -1,0 +1,71 @@
+---
+permalink: storage/concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.html 
+sidebar: sidebar 
+keywords: element, terms of use, banner, config, edit, terms of use, disable, enable 
+summary: Você pode ativar, editar ou configurar um banner que contém uma mensagem para o usuário. 
+---
+= Gerenciar o banner dos Termos de Uso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode ativar, editar ou configurar um banner que contém uma mensagem para o usuário.
+
+.Opções
+<<Ative o banner dos Termos de Uso>> <<Editar o banner dos Termos de Uso>> <<Desative o banner dos Termos de Uso>>
+
+
+
+== Ative o banner dos Termos de Uso
+
+Você pode ativar um banner com os Termos de Uso que aparece quando um usuário faz login na interface do Element.  Quando o usuário clica no banner, uma caixa de diálogo de texto aparece contendo a mensagem que você configurou para o cluster.  O banner pode ser fechado a qualquer momento.
+
+Você precisa ter privilégios de administrador de cluster para habilitar a funcionalidade de Termos de Uso.
+
+. Clique em *Usuários* > *Termos de Uso*.
+. No formulário *Termos de Uso*, insira o texto que será exibido na caixa de diálogo Termos de Uso.
++
+
+NOTE: Não ultrapasse 4096 caracteres.
+
+. Clique em *Ativar*.
+
+
+
+
+== Editar o banner dos Termos de Uso
+
+Você pode editar o texto que o usuário vê ao selecionar o banner de login dos Termos de Uso.
+
+.O que você vai precisar
+* Você precisa ter privilégios de administrador de cluster para configurar os Termos de Uso.
+* Certifique-se de que o recurso Termos de Uso esteja ativado.
+
+
+.Passos
+. Clique em *Usuários* > *Termos de Uso*.
+. Na caixa de diálogo *Termos de Uso*, edite o texto que deseja que apareça.
++
+
+NOTE: Não ultrapasse 4096 caracteres.
+
+. Clique em *Salvar alterações*.
+
+
+
+
+== Desative o banner dos Termos de Uso
+
+Você pode desativar o banner dos Termos de Uso.  Com o banner desativado, o usuário não precisa mais aceitar os termos de uso ao utilizar a interface do Element.
+
+.O que você vai precisar
+* Você precisa ter privilégios de administrador de cluster para configurar os Termos de Uso.
+* Certifique-se de que os Termos de Uso estejam ativados.
+
+
+.Passos
+. Clique em *Usuários* > *Termos de Uso*.
+. Clique em *Desativar*.
+

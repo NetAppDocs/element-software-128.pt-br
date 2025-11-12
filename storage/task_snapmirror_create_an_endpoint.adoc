@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_create_an_endpoint.html 
+sidebar: sidebar 
+keywords: element, endpoints, create, snapmirror, ui 
+summary: Você precisa criar um endpoint SnapMirror na interface do usuário do NetApp Element antes de poder criar um relacionamento. 
+---
+= Crie um endpoint SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa criar um endpoint SnapMirror na interface do usuário do NetApp Element antes de poder criar um relacionamento.
+
+Um endpoint SnapMirror é um cluster ONTAP que serve como destino de replicação para um cluster que executa o software Element.  Antes de criar um relacionamento SnapMirror , você primeiro cria um endpoint SnapMirror .
+
+Você pode criar e gerenciar até quatro endpoints SnapMirror em um cluster de armazenamento que execute o software Element.
+
+
+NOTE: Se um endpoint existente foi criado originalmente usando a API e as credenciais não foram salvas, você pode ver o endpoint na interface do usuário do Element e verificar sua existência, mas ele não pode ser gerenciado usando a interface do usuário do Element.  Esse endpoint só pode ser gerenciado usando a API Element.
+
+Para obter detalhes sobre os métodos da API, consulte link:../api/concept_element_api_about_the_api.html["Gerencie o armazenamento com a API Element."].
+
+.O que você vai precisar
+* Você deveria ter habilitado o SnapMirror na interface do usuário do Element para o cluster de armazenamento.
+* Você conhece as credenciais ONTAP para o endpoint.
+
+
+.Passos
+. Clique em *Proteção de Dados* > *Pontos de extremidade SnapMirror *.
+. Clique em *Criar ponto de extremidade*.
+. Na caixa de diálogo *Criar um novo ponto de extremidade*, insira o endereço IP de gerenciamento do cluster do sistema ONTAP .
+. Insira as credenciais de administrador do ONTAP associadas ao endpoint.
+. Veja mais detalhes:
++
+** LIFs: Lista as interfaces lógicas intercluster do ONTAP usadas para comunicação com o Element.
+** Status: Exibe o status atual do endpoint do SnapMirror .  Os valores possíveis são: conectado, desconectado e não gerenciado.
+
+
+. Clique em *Criar ponto de extremidade*.
+

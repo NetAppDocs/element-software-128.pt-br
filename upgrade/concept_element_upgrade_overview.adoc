@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: upgrade/concept_element_upgrade_overview.html 
+summary: Você pode manter seu sistema de armazenamento SolidFire Element atualizado após a implantação, atualizando todos os componentes de armazenamento da NetApp . 
+keywords: netapp, solidfire upgrade, vcp upgrade, element upgrade, vsphere upgrade 
+---
+= Visão geral da sequência de atualização
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode manter seu sistema de armazenamento SolidFire Element atualizado após a implantação, atualizando sequencialmente todos os componentes de armazenamento da NetApp .
+
+Esses componentes incluem serviços de gerenciamento, NetApp Hybrid Cloud Control, software Element, nó de gerenciamento e (dependendo da sua instalação) o plug-in Element para vCenter Server.
+
+[NOTE]
+====
+* A partir de novembro de 2023, não será possível iniciar uma atualização de componente usando o NetApp Hybrid Cloud Control ou a API REST, pois os certificados de chave de assinatura (privada e pública) expiraram em 5 de novembro de 2023.  Você pode contornar esse problema porlink:task_hcc_upgrade_management_node.html["Executando uma atualização in-place do nó de gerenciamento"] Para a versão 12.8, utilize o NetApp Hybrid Cloud Control ou a API REST para atualizar os serviços de gerenciamento, o software Element e o firmware de armazenamento.
++
+Se você estiver implantando um novo nó de gerenciamento com a versão 12.8, poderá usar o NetApp Hybrid Cloud Control ou a API REST para realizar atualizações de componentes na ordem listada em<<sys_upgrade,sequência de atualização do sistema>> .
+
+* Os seguintes nós não são suportados.  Se você tentar atualizar um desses nós para uma versão não compatível do Element, verá um erro informando que o nó não é compatível com o Element 12.x:
++
+** A partir dos nós de armazenamento Element 12.8, SF4805, SF9605, SF19210 e SF38410.
+** A partir do Elemento 12.7, nós de armazenamento SF2405 e SF9608 e nós FC FC0025 e SF-FCN-01.
+
+
+* A partir da versão 12.5 do Element, o NetApp HealthTools deixou de ser compatível com as atualizações de software do Element.  Se você estiver executando o Element 11.0 ou 11.1, primeiro você deve https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_element_software.html#upgrade-element-software-at-connected-sites-using-healthtools["Atualize para o Element 12.3 usando o HealthTools."^] Em seguida, atualize para o Element 12.5 ou posterior usando o NetApp Hybrid Cloud Control.
+
+
+====
+O<<sys_upgrade,sequência de atualização do sistema>> O conteúdo descreve as tarefas necessárias para concluir uma atualização do sistema de armazenamento all-flash SolidFire .  Idealmente, esses procedimentos são realizados como parte de uma sequência de atualização mais ampla e não isoladamente.  Caso seja necessária uma atualização ou upgrade baseado em componentes, consulte os pré-requisitos do procedimento para garantir que quaisquer complexidades adicionais sejam consideradas.
+
+Olink:task_sf_upgrade_all_vsphere.html["sequência de atualização do vSphere"] O conteúdo sobre o plug-in Element para vCenter Server, incluindo as etapas adicionais necessárias antes e depois da atualização para reinstalar o plug-in Element para vCenter Server.
+
+.Antes de começar
+* Você está executando o nó de gerenciamento versão 11.3 ou posterior.  As versões mais recentes do nó de gerenciamento possuem uma arquitetura modular que fornece serviços individuais.
++
+
+TIP: Para verificar a versão, faça login no seu nó de gerenciamento e visualize o número da versão do Elemento no banner de login.  Se você não tiver a versão 11.3, consultelink:task_hcc_upgrade_management_node.html["Atualize seu nó de gerenciamento"] .
+
+* Você atualizou seus serviços de gerenciamento para pelo menos a versão 2.1.326.
++
+As atualizações que utilizam o NetApp Hybrid Cloud Control não estão disponíveis em versões anteriores do pacote de serviços.
+
+* Você garantiu que a hora do sistema em todos os nós esteja sincronizada e que o NTP esteja configurado corretamente para o cluster de armazenamento e os nós.  Cada nó deve ser configurado com um servidor de nomes DNS na interface web de cada nó.(`https://[IP address]:442` ) sem falhas de cluster não resolvidas relacionadas à distorção de tempo.
+* Você reservou tempo suficiente para o seulink:task_hcc_upgrade_element_software.html#element-upgrade-time["Software Element"] elink:task_hcc_upgrade_storage_firmware.html#storage-firmware-upgrade["firmware de armazenamento"] atualizações.  Ao atualizar para o software Element 12.5 ou posterior, o tempo do processo de atualização varia dependendo da versão do software Element e das atualizações de firmware.
+
+
+
+
+== [[sys_upgrade]]Sequência de atualização do sistema
+
+Você pode usar a seguinte sequência para atualizar seu sistema de armazenamento all-flash NetApp SolidFire para a versão Element 12.5 ou posterior.
+
+.Passos
+. link:task_hcc_upgrade_element_prechecks.html["Execute verificações de integridade do armazenamento do Element antes de atualizar o armazenamento"].
+. link:task_hcc_upgrade_management_node.html["(Opcional) Atualize seu nó de gerenciamento"].
++
+
+NOTE: Não é mais necessário atualizar o sistema operacional do nó de gerenciamento para atualizar o software Element no cluster de armazenamento. Se o nó de gerenciamento for da versão 11.3 ou posterior, você pode simplesmente atualizar os serviços de gerenciamento para a versão mais recente para realizar atualizações do Element usando o NetApp Hybrid Cloud Control. Siga o procedimento de atualização do nó de gerenciamento para o seu cenário se precisar atualizar o sistema operacional do nó de gerenciamento por outros motivos, como correção de segurança.
+
+. link:task_hcc_update_management_services.html["Serviços de gerenciamento de atualizações do Hybrid Cloud Control"].
++
+[IMPORTANT]
+====
+** O pacote de serviços de gerenciamento 2.27 inclui o Element Plug-in para vCenter Server 5.5, que é compatível apenas com o nó de gerenciamento 12.8. Ao atualizar para os serviços de gerenciamento 2.27, você deve alterar a sequência de atualização e atualizar o pacote de serviços de gerenciamento _após_ a atualização para o Element 12.8 para ter compatibilidade entre o nó de gerenciamento e os serviços de gerenciamento.
+** Se você estiver atualizando para os serviços de gerenciamento 2.21.61 a 2.26.40, deverá atualizar o pacote de serviços de gerenciamento _antes_ de atualizar para o Element 12.8.
+
+
+====
++
+
+IMPORTANT: Se você estiver atualizando os serviços de gerenciamento para a versão 2.16 ou posterior e estiver executando um nó de gerenciamento 11.3 a 11.8, será necessário aumentar a RAM da VM do nó de gerenciamento antes de atualizar os serviços de gerenciamento.
+
+. link:task_hcc_upgrade_element_software.html["Atualize o software e o firmware de armazenamento do seu Element."].
+. link:task_hcc_upgrade_storage_firmware.html["(Opcional) Atualize apenas o firmware de armazenamento do seu Element."].
++
+
+NOTE: Você pode realizar essa tarefa quando uma nova atualização de firmware de armazenamento estiver disponível fora de uma versão principal.
+
+. link:task_vcp_upgrade_plugin.html["Atualize seu plug-in Element para vCenter Server."].
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

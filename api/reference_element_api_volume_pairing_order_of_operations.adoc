@@ -1,0 +1,37 @@
+---
+permalink: api/reference_element_api_volume_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: volume,pairing,order,operations,volumes,pairing,pair,pairs 
+summary: É necessário criar um par de clusters entre dois clusters correspondentes antes que os volumes possam ser emparelhados. 
+---
+= ordem de operações de emparelhamento de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É necessário criar um par de clusters entre dois clusters correspondentes antes que os volumes possam ser emparelhados.
+
+Utilize o seguinte conjunto de métodos da API para estabelecer uma conexão de cluster:
+
+* xref:reference_element_api_startvolumepairing.adoc[IniciarEmparelhamentoDeVolumes]:
++
+Este método da API cria e retorna uma chave de emparelhamento de volumes que é usada para criar um par de volumes.  A chave contém informações utilizadas para estabelecer a comunicação entre os volumes.
+
+* xref:reference_element_api_completevolumepairing.adoc[Emparelhamento de Volume Completo]:
++
+Este método utiliza a chave de emparelhamento criada com oxref:reference_element_api_startvolumepairing.adoc[IniciarEmparelhamentoDeVolumes] Método da API para criar um par de volumes.  Emita oxref:reference_element_api_completevolumepairing.adoc[Emparelhamento de Volume Completo] Método da API com os parâmetros volumeID e volumePairingKey para o volume de destino.
+
+
+
+Apenas um dos volumes emparelhados pode ser identificado como um volume alvo de replicação.  Use oxref:reference_element_api_modifyvolumepair.adoc[Modificar par de volumes] Método da API para estabelecer a direção da replicação de dados do volume, identificando qual volume é o destino.  Os dados são replicados do volume de origem para o volume de destino.
+
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_startvolumepairing.adoc[IniciarEmparelhamentoDeVolumes]
+* xref:reference_element_api_completevolumepairing.adoc[Emparelhamento de Volume Completo]
+* xref:reference_element_api_modifyvolumepair.adoc[Modificar par de volumes]
+

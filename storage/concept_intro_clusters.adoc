@@ -1,0 +1,23 @@
+---
+permalink: storage/concept_intro_clusters.html 
+sidebar: sidebar 
+keywords: clusters, about clusters, collection of nodes, nodes in a cluster, block storage, logical group, add nodes, access cluster 
+summary: Um cluster é o núcleo de um sistema de armazenamento SolidFire e é composto por uma coleção de nós.  Para que a eficiência de armazenamento do SolidFire seja alcançada, é necessário ter pelo menos quatro nós em um cluster.  Um cluster aparece na rede como um único grupo lógico e pode então ser acessado como armazenamento em blocos. 
+---
+= Aglomerados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um cluster é o núcleo de um sistema de armazenamento SolidFire e é composto por uma coleção de nós.  Para que a eficiência de armazenamento do SolidFire seja alcançada, é necessário ter pelo menos quatro nós em um cluster.  Um cluster aparece na rede como um único grupo lógico e pode então ser acessado como armazenamento em blocos.
+
+A criação de um novo cluster inicializa um nó como proprietário das comunicações do cluster e estabelece as comunicações de rede para cada nó no cluster.  Este processo é realizado apenas uma vez para cada novo cluster.  Você pode criar um cluster usando a interface do usuário do Element ou a API.
+
+Você pode expandir um cluster adicionando nós adicionais.  Ao adicionar um novo nó, não há interrupção do serviço e o cluster utiliza automaticamente o desempenho e a capacidade do novo nó.
+
+Administradores e hosts podem acessar o cluster usando endereços IP virtuais.  Qualquer nó no cluster pode hospedar endereços IP virtuais.  O endereço IP virtual de gerenciamento (MVIP) permite o gerenciamento do cluster por meio de uma conexão 1GbE, enquanto o endereço IP virtual de armazenamento (SVIP) permite o acesso do host ao armazenamento por meio de uma conexão 10GbE.  Esses endereços IP virtuais permitem conexões consistentes, independentemente do tamanho ou da composição de um cluster SolidFire .  Se um nó que hospeda um endereço IP virtual falhar, outro nó no cluster começará a hospedar o endereço IP virtual.
+
+
+NOTE: A partir da versão 11.0 do Element, os nós podem ser configurados com endereços IPv4, IPv6 ou ambos para sua rede de gerenciamento.  Isso se aplica tanto a nós de armazenamento quanto a nós de gerenciamento, exceto para o nó de gerenciamento 11.3 e versões posteriores, que não suportam IPv6.  Ao criar um cluster, apenas um único endereço IPv4 ou IPv6 pode ser usado para o MVIP e o tipo de endereço correspondente deve ser configurado em todos os nós.

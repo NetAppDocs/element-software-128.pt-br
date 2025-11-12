@@ -1,0 +1,245 @@
+---
+permalink: hardware/task_h410s_repl.html 
+sidebar: sidebar 
+keywords: h410s, replacement, node replacement, maintenance 
+summary: Você deve substituir um nó de armazenamento em caso de falha da CPU, problemas com a placa Radian, outros problemas na placa-mãe ou se ele não ligar.  As instruções aplicam-se aos nós de armazenamento H410S. 
+---
+= Substitua um nó H410S
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve substituir um nó de armazenamento em caso de falha da CPU, problemas com a placa Radian, outros problemas na placa-mãe ou se ele não ligar.  As instruções aplicam-se aos nós de armazenamento H410S.
+
+Os alarmes na interface do usuário do software NetApp Element alertam você quando um nó de armazenamento falha.  Você deve usar a interface do usuário do Element para obter o número de série (etiqueta de serviço) do nó com falha.  Você precisa dessas informações para localizar o nó com falha no cluster.
+
+Aqui está a parte traseira de um chassi de dois racks (2U), com quatro nós de armazenamento:
+
+image::hci_stornode_rear.gif[Esta figura mostra o chassi de quatro nós com quatro nós de armazenamento.]
+
+Aqui está a vista frontal de um chassi de quatro nós com nós H410S, mostrando os compartimentos que correspondem a cada nó:
+
+image::hci_stor_node_ssd_bays.gif[Mostra os compartimentos associados a cada nó em um chassi de quatro nós com nós H410S.]
+
+.O que você vai precisar
+* Você verificou que seu nó de armazenamento está com defeito e precisa ser substituído.
+* Você obteve um nó de armazenamento de substituição.
+* Você possui uma pulseira antiestática (ESD) ou adotou outras medidas de proteção antiestática.
+* Você etiquetou cada cabo conectado ao nó de armazenamento.
+
+
+Segue abaixo uma visão geral de alto nível das etapas:
+
+* <<Prepare-se para substituir o nó.>>
+* <<Substitua o nó no chassi.>>
+* <<Adicione o nó ao cluster>>
+
+
+
+
+== Prepare-se para substituir o nó.
+
+Você deve remover corretamente o nó de armazenamento com defeito do cluster na interface do usuário do software NetApp Element antes de instalar o nó de substituição.  Você pode fazer isso sem causar nenhuma interrupção de serviço.  Você deve obter o número de série do nó de armazenamento com defeito na interface do usuário do Element e compará-lo com o número de série na etiqueta na parte traseira do nó.
+
+.Passos
+. Na interface do Element, selecione *Cluster* > *Unidades*.
+. Remova as unidades do nó usando um dos seguintes métodos:
++
+[cols="2*"]
+|===
+| Opção | Passos 
+
+
+ a| 
+Para remover unidades individuais
+ a| 
+.. Clique em *Ações* para a unidade que deseja remover.
+.. Clique em *Remover*.
+
+
+
+
+ a| 
+Para remover várias unidades
+ a| 
+.. Selecione todas as unidades que deseja remover e clique em *Ações em massa*.
+.. Clique em *Remover*.
+
+
+|===
+. Selecione *Cluster* > *Nós*.
+. Anote o número de série (etiqueta de serviço) do nó com defeito.  Você deve comparar esse número com o número de série que está na etiqueta na parte traseira do nó.
+. Após anotar o número de série, remova o nó do cluster da seguinte forma:
++
+.. Selecione o botão *Ações* para o nó que deseja remover.
+.. Selecione *Remover*.
+
+
+
+
+
+
+== Substitua o nó no chassi.
+
+Após remover o nó com defeito do cluster usando a interface de usuário do software NetApp Element , você estará pronto para remover fisicamente o nó do chassi.  Você deve instalar o nó de substituição no mesmo slot do chassi de onde removeu o nó com defeito.
+
+.Passos
+. Utilize proteção antiestática antes de prosseguir.
+. Desembale o novo nó de armazenamento e coloque-o em uma superfície plana perto do chassi.
++
+Guarde o material da embalagem para quando devolver o nó defeituoso à NetApp.
+
+. Identifique cada cabo inserido na parte traseira do nó de armazenamento que você deseja remover.
++
+Após instalar o novo nó de armazenamento, você deve inserir os cabos nas portas originais.
+
++
+Aqui está uma imagem mostrando a parte traseira de um nó de armazenamento:
+
++
+image::../media/hci_isi_storage_cabling.png[Esta figura mostra a cablagem do nó de armazenamento.]
+
++
+[cols="2*"]
+|===
+| Porta | Detalhes 
+
+
+ a| 
+Porto A
+ a| 
+Porta RJ45 de 1/10GbE
+
+
+
+ a| 
+Porto B
+ a| 
+Porta RJ45 de 1/10GbE
+
+
+
+ a| 
+Porta C
+ a| 
+Porta 10/25GbE SFP+ ou SFP28
+
+
+
+ a| 
+Porto D
+ a| 
+Porta 10/25GbE SFP+ ou SFP28
+
+
+
+ a| 
+IPMI
+ a| 
+Porta RJ45 de 1/10GbE
+
+|===
+. Desconecte todos os cabos do nó de armazenamento.
+. Puxe a alavanca de came do lado direito do nó para baixo e, em seguida, puxe o nó para fora usando as duas alavancas de came.
++
+A alavanca que você puxa para baixo tem uma seta que indica a direção em que ela se move.  A outra alavanca da came não se move e serve para ajudar a puxar o nó para fora.
+
++
+image::../media/hci_stor_node_camhandles.gif[Nesta figura]
+
++
+[cols="2*"]
+|===
+| Item | Descrição 
+
+
+ a| 
+1
+ a| 
+Alavanca tipo came para ajudar a puxar o nó para fora.
+
+
+
+ a| 
+2
+ a| 
+Alavanca tipo came que você puxa para baixo antes de retirar o nó.
+
+|===
++
+
+NOTE: Ao retirar o nó do chassi, apoie-o com ambas as mãos.
+
+. Coloque o nó em uma superfície nivelada.
++
+Você deve embalar o nó e devolvê-lo à NetApp.
+
+. Instale o nó de substituição no mesmo slot do chassi.
++
+
+IMPORTANT: Certifique-se de não usar força excessiva ao deslizar o nó para dentro do chassi.
+
+. Transfira os discos rígidos do nó que você removeu e insira-os no novo nó.
+. Reconecte os cabos às portas das quais você os desconectou originalmente.
++
+As etiquetas que estavam nos cabos quando você os desconectou irão te ajudar a se orientar.
+
++
+[NOTE]
+====
+.. Se as aberturas de ventilação na parte traseira do chassi estiverem bloqueadas por cabos ou etiquetas, isso pode levar a falhas prematuras de componentes devido ao superaquecimento.
+.. Não force os cabos nas portas; você pode danificar os cabos, as portas ou ambos.
+
+
+====
++
+
+TIP: Certifique-se de que o nó de substituição esteja cabeado da mesma forma que os outros nós no chassi.
+
+. Pressione o botão na parte frontal do dispositivo para ligá-lo.
+
+
+
+
+== Adicione o nó ao cluster
+
+Ao adicionar um nó ao cluster ou instalar novas unidades em um nó existente, as unidades são registradas automaticamente como disponíveis.  Você precisa adicionar as unidades ao cluster usando a interface do usuário do Element ou a API antes que elas possam participar do cluster.
+
+A versão do software em cada nó de um cluster deve ser compatível.  Ao adicionar um nó a um cluster, o cluster instala a versão do software Element específica para clusters no novo nó, conforme necessário.
+
+.Passos
+. Selecione *Cluster* > *Nós*.
+. Selecione *Pendente* para visualizar a lista de nós pendentes.
+. Faça um dos seguintes:
++
+** Para adicionar nós individuais, selecione o ícone *Ações* do nó que deseja adicionar.
+** Para adicionar vários nós, selecione a caixa de seleção dos nós que deseja adicionar e, em seguida, *Ações em massa*.
++
+
+NOTE: Se o nó que você está adicionando tiver uma versão do software Element diferente da versão em execução no cluster, o cluster atualizará o nó de forma assíncrona para a versão do software Element em execução no nó mestre do cluster.  Após a atualização do nó, ele se adiciona automaticamente ao cluster.  Durante esse processo assíncrono, o nó estará em um `pendingActive` estado.
+
+
+
+. Selecione *Adicionar*.
++
+O nó aparece na lista de nós ativos.
+
+. Na interface do Element, selecione *Cluster* > *Unidades*.
+. Selecione *Disponível* para visualizar a lista de unidades disponíveis.
+. Faça um dos seguintes:
++
+** Para adicionar unidades individuais, selecione o ícone *Ações* da unidade que deseja adicionar e, em seguida, selecione *Adicionar*.
+** Para adicionar várias unidades, selecione as caixas de seleção das unidades que deseja adicionar, selecione *Ações em massa* e, em seguida, selecione *Adicionar*.
+
+
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

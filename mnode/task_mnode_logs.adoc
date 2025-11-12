@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_logs.html 
+summary: Você pode recuperar os registros dos serviços em execução no nó de gerenciamento usando a API REST. 
+keywords: netapp, element, management node, management services, mnode, logs 
+---
+= Obtendo registros dos serviços de gerenciamento
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode recuperar os registros dos serviços em execução no nó de gerenciamento usando a API REST.  Você pode obter registros de todos os serviços públicos ou especificar serviços específicos e usar parâmetros de consulta para definir melhor os resultados retornados.
+
+.O que você vai precisar
+* A versão do seu cluster está executando o software NetApp Element 11.3 ou posterior.
+* Você implantou um nó de gerenciamento executando a versão 11.3 ou posterior.
+
+
+.Passos
+. Abra a interface de usuário da API REST no nó de gerenciamento.
++
+** Começando com os serviços de gestão 2.21.61:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/4/
+----
+** Para serviços de gerenciamento 2.20.69 ou anterior:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+
+
+. Selecione *Autorizar* ou qualquer ícone de cadeado e complete o seguinte:
++
+.. Insira o nome de usuário e a senha do cluster.
+.. Insira o ID do cliente como mnode-client se o valor ainda não estiver preenchido.
+.. Selecione *Autorizar* para iniciar uma sessão.
+.. Fechar a janela.
+
+
+. Selecione *GET /logs*.
+. Selecione *Experimentar*.
+. Especifique os seguintes parâmetros:
++
+** `Lines`Digite o número de linhas que deseja que o registro retorne.  Este parâmetro é um número inteiro que, por padrão, é igual a 1000.
++
+
+TIP: Evite solicitar todo o histórico do conteúdo do log definindo o número de linhas como 0.
+
+** `since`Adiciona um carimbo de data/hora ISO-8601 para o ponto de partida dos registros de serviço.
++
+
+TIP: Use um razoável `since` parâmetro ao coletar registros de períodos de tempo mais amplos.
+
+** `service-name`Digite o nome do serviço.
++
+
+TIP: Use o `GET /services` comando para listar os serviços no nó de gerenciamento.
+
+** `stopped`: Definir para `true` Para recuperar registros de serviços interrompidos.
+
+
+. Selecione *Executar*.
+. No corpo da resposta, selecione *Download* para salvar o registro de saída.
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

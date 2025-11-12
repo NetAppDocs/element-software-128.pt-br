@@ -1,0 +1,59 @@
+---
+permalink: api/concept_element_api_cluster_api_methods.html 
+sidebar: sidebar 
+keywords: cluster,API,methods,method,manage 
+summary: Os métodos da API de cluster de software Element permitem gerenciar a configuração e a topologia do cluster de armazenamento e dos nós que pertencem a ele. 
+---
+= Métodos da API de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os métodos da API de cluster de software Element permitem gerenciar a configuração e a topologia do cluster de armazenamento e dos nós que pertencem a ele.
+
+Alguns métodos da API de cluster operam em nós que fazem parte de um cluster ou que foram configurados para ingressar em um cluster.  Você pode adicionar nós a um novo cluster ou a um cluster existente.  Os nós que estão prontos para serem adicionados a um cluster encontram-se em estado "pendente", o que significa que foram configurados, mas ainda não foram adicionados ao cluster.
+
+* xref:reference_element_api_addnodes.adoc[Adicionar nós]
+* xref:reference_element_api_clearclusterfaults.adoc[Limpar falhas de cluster]
+* xref:reference_element_api_createclusterinterfacepreference.adoc[Preferência de Interface de Cluster Criar]
+* xref:reference_element_api_deleteclusterinterfacepreference.adoc[Preferência de Interface de Cluster Excluir]
+* xref:reference_element_api_disablefeature.adoc[Desativar recurso]
+* xref:reference_element_api_enablefeature.adoc[Ativar recurso]
+* xref:reference_element_api_getclustercapacity.adoc[ObterCapacidadeDoCluster]
+* xref:reference_element_api_getclusterfullthreshold.adoc[ObterClusterFullThreshold]
+* xref:reference_element_api_getclusterhardwareinfo.adoc[GetClusterHardwareInfo]
+* xref:reference_element_api_getclusterinfo.adoc[Obter informações do cluster]
+* xref:reference_element_api_getclusterinterfacepreference.adoc[GetClusterInterfacePreference]
+* xref:reference_element_api_getclustermasternodeid.adoc[ObterID do nó mestre do cluster]
+* xref:reference_element_api_getclusterstats.adoc[ObterEstatísticasDoCluster]
+* xref:reference_element_api_getclusterversioninfo.adoc[GetClusterVersionInfo]
+* xref:reference_element_api_getfeaturestatus.adoc[ObterStatusDoRecurso]
+* xref:reference_element_api_getloginsessioninfo.adoc[Informações da sessão de login]
+* xref:reference_element_api_getnodehardwareinfo.adoc[Informações de hardware do nó]
+* xref:reference_element_api_getnodestats.adoc[ObterEstatísticasDoNó]
+* xref:reference_element_api_listactivenodes.adoc[Listar nós ativos]
+* xref:reference_element_api_listallnodes.adoc[ListarTodosOsNós]
+* xref:reference_element_api_listclusterfaults.adoc[Listar falhas de cluster]
+* xref:reference_element_api_listclusterinterfacepreferences.adoc[ListClusterInterfacePreferences]
+* xref:reference_element_api_listevents.adoc[ListEventos]
+* xref:reference_element_api_listnodestats.adoc[ListNodeStats]
+* xref:reference_element_api_listiscsisessions.adoc[ListISCSISessions]
+* xref:reference_element_api_listservices.adoc[ListServices]
+* xref:reference_element_api_listpendingnodes.adoc[Listar nós pendentes]
+* xref:reference_element_api_listpendingactivenodes.adoc[Listar nós ativos pendentes]
+* xref:reference_element_api_modifyclusterfullthreshold.adoc[Limiar ModificarClusterFull]
+* xref:reference_element_api_modifyclusterinterfacepreference.adoc[ModificarPreferência da Interface do Cluster]
+* xref:reference_element_api_removenodes.adoc[Remover nós]
+* xref:reference_element_api_setloginsessioninfo.adoc[SetLoginSessionInfo]
+* xref:reference_element_api_cluster_shutdown.adoc[Desligar]
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

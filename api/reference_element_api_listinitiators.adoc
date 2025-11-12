@@ -1,0 +1,145 @@
+---
+permalink: api/reference_element_api_listinitiators.html 
+sidebar: sidebar 
+keywords: initiators,initiator,list,listing,listinitiators,iqn,wwpn,iqns,wwpns 
+summary: 'Você pode usar o método ListInitiators para obter a lista de IQNs ou World Wide Port Names (WWPNs) dos iniciadores.' 
+---
+= Iniciadores de lista
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ListInitiators` Método para obter a lista de IQNs ou World Wide Port Names (WWPNs) dos iniciadores.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+iniciadores
+ a| 
+Uma lista de IDs de iniciadores a serem recuperados.  Você pode fornecer este parâmetro ou o parâmetro startInitiatorID, mas não ambos.
+ a| 
+matriz de inteiros
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+startInitiatorID
+ a| 
+O ID do iniciador a partir do qual a listagem deve começar.  Você pode fornecer este parâmetro ou o parâmetro de iniciadores, mas não ambos.
+ a| 
+inteiro
+ a| 
+0
+ a| 
+Não
+
+
+
+ a| 
+limite
+ a| 
+O número máximo de objetos iniciadores a serem retornados.
+ a| 
+inteiro
+ a| 
+(ilimitado)
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+iniciadores
+ a| 
+Lista das informações do iniciador.
+ a| 
+xref:reference_element_api_initiator.adoc[iniciador]variedade
+
+|===
+
+
+== Exceções
+
+Este método pode apresentar a seguinte exceção:
+
+|===
+
+
+| Nome | Descrição 
+
+
+ a| 
+xParâmetroInválido
+ a| 
+Lançada uma exceção se você incluir os parâmetros startInitiatorID e initiators na mesma chamada de método.
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "ListInitiators",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "initiators": [
+      {
+        "alias": "",
+        "attributes": {},
+        "initiatorID": 2,
+        "initiatorName": "iqn.1993-08.org.debian:01:c84ffd71216",
+        "volumeAccessGroups": [
+          1
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

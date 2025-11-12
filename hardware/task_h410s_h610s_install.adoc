@@ -1,0 +1,262 @@
+---
+permalink: hardware/task_h410s_h610s_install.html 
+sidebar: sidebar 
+keywords: h410s, h610s, hardware installation, hardware maintenance 
+summary: Antes de começar a usar seu sistema de armazenamento totalmente em flash, você deve instalar e configurar os nós de armazenamento corretamente. 
+---
+= Instalar nós de armazenamento da série H
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de começar a usar seu sistema de armazenamento totalmente em flash, você deve instalar e configurar os nós de armazenamento corretamente.
+
+
+TIP: Veja olink:../media/hseries_isi.pdf["poster"^] Para uma representação visual das instruções.
+
+* <<Diagramas de fluxo de trabalho>>
+* <<Preparar para instalação>>
+* <<Instale os trilhos>>
+* <<Instale e conecte os nós.>>
+* <<Configurar os nós>>
+* <<Crie um cluster>>
+
+
+
+
+== Diagramas de fluxo de trabalho
+
+Os diagramas de fluxo de trabalho aqui apresentados fornecem uma visão geral de alto nível das etapas de instalação.  Os passos variam ligeiramente dependendo do modelo da série H.
+
+
+
+=== H410S
+
+image::../media/h410s_isi_workflow.png[Fluxo de trabalho de instalação do H410S]
+
+
+
+=== H610S
+
+
+NOTE: Os termos "nó" e "chassi" são usados de forma intercambiável no caso do H610S, porque nó e chassi não são componentes separados, ao contrário do que ocorre em um chassi 2U de quatro nós.
+
+image::../media/h610s_isi_workflow.png[Fluxo de trabalho de instalação do H610S]
+
+
+
+== Preparar para instalação
+
+Como preparação para a instalação, faça um inventário do hardware que lhe foi enviado e entre em contato com o Suporte da NetApp caso algum item esteja faltando.
+
+Certifique-se de que possui os seguintes itens no local de instalação:
+
+* Espaço em rack para o sistema.
+
+
+[cols="2*"]
+|===
+| Tipo de nó | Espaço em rack 
+
+
+| Nós H410S | Duas unidades de rack (2U) 
+
+
+| Nós H610S | Uma unidade de rack (1U) 
+|===
+* Cabos ou transceptores de conexão direta SFP28/SFP+
+* Cabos CAT5e ou superiores com conector RJ45
+* Um switch KVM (teclado, vídeo e mouse) para configurar seu sistema.
+* Pen drive (opcional)
+
+
+
+TIP: O hardware que será enviado para você depende do que você encomendou.  Um novo pedido de 2U com quatro nós inclui o chassi, a moldura, o kit de trilhos deslizantes, as unidades de armazenamento, os nós de armazenamento e os cabos de alimentação (dois por chassi).  Se você encomendar nós de armazenamento H610S, os discos rígidos virão instalados no chassi.
+
+
+CAUTION: Ao instalar o hardware, certifique-se de remover todo o material de embalagem e invólucro da unidade.  Isso evitará que os nós superaqueçam e desliguem.
+
+
+
+== Instale os trilhos
+
+O pedido de hardware que lhe foi enviado inclui um conjunto de trilhos deslizantes.  Você precisará de uma chave de fenda para concluir a instalação do trilho.  Os passos de instalação variam ligeiramente para cada modelo de nó.
+
+
+TIP: Instale os acessórios de fixação de baixo para cima no rack para evitar que o equipamento tombe.  Se o seu rack incluir dispositivos de estabilização, instale-os antes de instalar o hardware.
+
+* <<H410S>>
+* <<H610S>>
+
+
+
+
+=== H410S
+
+Os nós H410S são instalados em chassis da Série H de 2U e quatro nós, que são fornecidos com dois conjuntos de adaptadores.  Se você deseja instalar o chassi em um rack com furos redondos, use os adaptadores apropriados para racks com furos redondos.  Os trilhos para nós H410S são compatíveis com racks de 29 a 33,5 polegadas de profundidade.  Quando o trilho está totalmente retraído, ele tem 28 polegadas de comprimento, e as seções dianteira e traseira do trilho são mantidas juntas por apenas um parafuso.
+
+
+CAUTION: Se você instalar o chassi em um trilho totalmente contraído, as seções dianteira e traseira do trilho podem se separar.
+
+.Passos
+. Alinhe a parte frontal do trilho com os furos na coluna frontal do suporte.
+. Encaixe os ganchos na parte frontal do trilho nos orifícios do poste frontal do suporte e, em seguida, pressione-os para baixo até que os pinos com mola se encaixem nos orifícios do suporte.
+. Fixe o trilho à prateleira com parafusos.  Aqui está uma ilustração do trilho esquerdo sendo fixado na parte frontal do suporte:
++
+image::../media/h410s_rail.gif[Instalação de trilhos para 2U]
+
+. Prolongue a seção traseira do trilho até o poste traseiro do suporte.
+. Alinhe os ganchos na parte traseira do trilho com os orifícios correspondentes no poste traseiro, garantindo que a parte frontal e a parte traseira do trilho estejam no mesmo nível.
+. Monte a parte traseira do trilho no suporte e fixe o trilho com parafusos.
+. Repita todos os passos acima para o outro lado da estante.
+
+
+
+
+=== H610S
+
+Segue uma ilustração da instalação de trilhos para um nó de armazenamento H610S:
+
+image::../media/h610s_rail_isi.gif[Instalação de trilhos para o nó de armazenamento H610S.]
+
+
+TIP: O H610S possui trilhos esquerdo e direito.  Posicione o orifício do parafuso em direção à parte inferior para que o parafuso de aperto manual H610S possa fixar o chassi ao trilho.
+
+
+
+== Instale e conecte os nós.
+
+Você instala o nó de armazenamento H410S em um chassi de 2U com quatro nós.  Para o modelo H610S, instale o chassi/nó diretamente nos trilhos do rack.
+
+
+CAUTION: Remova todo o material de embalagem e o invólucro da unidade.  Isso impede que os nós superaqueçam e desliguem.
+
+* <<H410S>>
+* <<H610S>>
+
+
+
+
+=== H410S
+
+.Passos
+. Instale os nós H410S no chassi.  Aqui está um exemplo da vista traseira de um chassi com quatro nós instalados:
++
+image::../media/sf_isi_chassis_rear.png[Esta figura mostra a parte traseira de um 2U.]
+
++
+
+WARNING: Tenha cuidado ao levantar o hardware e instalá-lo no rack.  Um chassi vazio de duas unidades de rack (2U) e quatro nós pesa 24,7 kg (54,45 lb) e um nó pesa 3,6 kg (8,0 lb).
+
+. Instale os drivers.
++
+image::../media/hci_stor_node_ssd_bays.gif[Esta figura mostra a parte frontal do modelo 2U.]
+
+. Conecte os nós por cabo.
++
+
+IMPORTANT: Se as aberturas de ventilação na parte traseira do chassi estiverem bloqueadas por cabos ou etiquetas, isso pode levar a falhas prematuras de componentes devido ao superaquecimento.
+
++
+image::../media/hci_isi_storage_cabling.png[Esta figura mostra a cablagem de um nó de armazenamento H410S.]
+
++
+** Conecte dois cabos CAT5e ou superiores nas portas A e B para conectividade de gerenciamento.
+** Conecte dois cabos ou transceptores SFP28/SFP+ nas portas C e D para conectividade de armazenamento.
+** (Opcional, recomendado) Conecte um cabo CAT5e na porta IPMI para conectividade de gerenciamento fora de banda.
+
+
+. Conecte os cabos de alimentação às duas unidades de alimentação de cada chassi e ligue-as a uma PDU ou tomada elétrica de 240 V.
+. Ligue os nós.
++
+
+NOTE: O nó demora aproximadamente seis minutos para inicializar.
+
++
+image::../media/hci_poweron_isg.gif[Esta figura mostra os botões de alimentação nos nós do modelo 2U.]
+
+
+
+
+
+=== H610S
+
+.Passos
+. Instale o chassi H610S.  Segue uma ilustração para a instalação do nó/chassi no rack:
++
+image::../media/h610s_chassis_isi.gif[Mostra o nó/chassi H610S sendo instalado no rack.]
+
++
+
+WARNING: Tenha cuidado ao levantar o hardware e instalá-lo no rack.  Um chassi H610S pesa 18,4 kg (40,5 lb).
+
+. Conecte os nós por cabo.
++
+
+IMPORTANT: Se as aberturas de ventilação na parte traseira do chassi estiverem bloqueadas por cabos ou etiquetas, isso pode levar a falhas prematuras de componentes devido ao superaquecimento.
+
++
+image::../media/h600s_isi_noderear.png[Esta figura mostra a cablagem do nó de armazenamento H610S.]
+
++
+** Conecte o nó a uma rede 10/25GbE usando dois cabos SFP28 ou SFP+.
+** Conecte o nó a uma rede 1GbE usando dois conectores RJ45.
+** Conecte o nó a uma rede 1GbE usando um conector RJ-45 na porta IPMI.
+** Conecte os dois cabos de alimentação ao nó.
+
+
+. Ligue os nós.
++
+
+NOTE: O nó demora aproximadamente cinco minutos e meio para inicializar.
+
++
+image::../media/h600s_isi_nodefront.png[Esta figura mostra a parte frontal do chassi do H610S com o botão liga/desliga destacado.]
+
+
+
+
+
+== Configurar os nós
+
+Após instalar e cabear o hardware, você estará pronto para configurar seu novo recurso de armazenamento.
+
+.Passos
+. Conecte um teclado e um monitor ao nó.
+. Na interface de usuário do terminal (TUI) exibida, configure as definições de rede e cluster para o nó utilizando a navegação no ecrã.
++
+
+NOTE: Você deve obter o endereço IP do nó através da interface de usuário de texto (TUI).  Você precisa disso ao adicionar o nó a um cluster.  Após salvar as configurações, o nó fica em estado pendente e pode ser adicionado a um cluster.  Consulte a <inserir link para a seção Configuração>.
+
+. Configure o gerenciamento fora de banda usando o Controlador de Gerenciamento da Placa-Mãe (BMC).  Estas etapas aplicam-se *apenas aos nós H610S*.
++
+.. Utilize um navegador web e acesse o endereço IP padrão do BMC : 192.168.0.120
+.. Faça login usando *root* como nome de usuário e *calvin* como senha.
+.. Na tela de gerenciamento de nós, navegue até *Configurações* > *Configurações de rede* e configure os parâmetros de rede para a porta de gerenciamento fora de banda.
+
+
+
+
+
+TIP: Ver https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_access_BMC_and_change_IP_address_on_H610S["Este artigo da Base de Conhecimento (login necessário)"] .
+
+
+
+== Crie um cluster
+
+Após adicionar o nó de armazenamento à sua instalação e configurar o novo recurso de armazenamento, você estará pronto para criar um novo cluster de armazenamento.
+
+.Passos
+. A partir de um cliente na mesma rede que o nó recém-configurado, acesse a interface do usuário do software NetApp Element inserindo o endereço IP do nó.
+. Insira as informações necessárias na janela **Criar um novo cluster**. Veja olink:../setup/concept_setup_overview.html["visão geral da configuração"^] para mais informações.
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

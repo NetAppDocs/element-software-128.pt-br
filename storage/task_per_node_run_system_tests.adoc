@@ -1,0 +1,67 @@
+---
+permalink: storage/task_per_node_run_system_tests.html 
+sidebar: sidebar 
+keywords: storage nodes, running system tests,s ystem tests, network settings, testing changes 
+summary: Você pode testar as alterações nas configurações de rede depois de confirmá-las na configuração de rede.  Você pode executar os testes para garantir que o nó de armazenamento esteja estável e possa ser colocado online sem problemas. 
+---
+= Execute testes de sistema usando a interface de usuário por nó.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode testar as alterações nas configurações de rede depois de confirmá-las na configuração de rede.  Você pode executar os testes para garantir que o nó de armazenamento esteja estável e possa ser colocado online sem problemas.
+
+Você fez login na interface de usuário específica do nó de armazenamento.
+
+. Clique em *Testes do Sistema*.
+. Clique em *Executar teste* ao lado do teste que deseja executar ou selecione *Executar todos os testes*.
++
+
+NOTE: A execução de todas as operações de teste pode ser demorada e deve ser feita somente sob orientação do Suporte da NetApp .
+
++
+** *Teste de Conjunto Conectado*
++
+Testa e verifica a conectividade com um conjunto de bancos de dados.  Por padrão, o teste usa o conjunto de testes do cluster ao qual o nó está associado.  Alternativamente, você pode fornecer um conjunto diferente para testar a conectividade.
+
+** *Test Connect Mvip*
++
+Executa um ping no endereço IP virtual de gerenciamento (MVIP) especificado e, em seguida, realiza uma chamada de API simples para o MVIP para verificar a conectividade.  Por padrão, o teste usa o MVIP do cluster ao qual o nó está associado.
+
+** *Test Connect Svip*
++
+Envia pings para o endereço IP virtual de armazenamento (SVIP) especificado usando pacotes do Protocolo de Mensagens de Controle da Internet (ICMP) que correspondem ao tamanho da Unidade Máxima de Transmissão (MTU) definida no adaptador de rede.  Em seguida, ele se conecta ao SVIP como um iniciador iSCSI.  Por padrão, o teste usa o SVIP do cluster ao qual o nó está associado.
+
+** *Configuração de hardware de teste*
++
+Testa se todas as configurações de hardware estão corretas, valida se as versões de firmware estão corretas e confirma se todas as unidades estão instaladas e funcionando corretamente.  Isso é o mesmo que testes de fábrica.
+
++
+
+NOTE: Este teste consome muitos recursos e só deve ser executado se solicitado pelo Suporte da NetApp .
+
+** *Testar a conectividade local*
++
+Testa a conectividade com todos os outros nós do cluster, enviando um ping para o endereço IP do cluster (CIP) em cada nó.  Este teste só será exibido em um nó se o nó fizer parte de um cluster ativo.
+
+** *Testar localização de cluster*
++
+Valida se o nó consegue localizar o cluster especificado na configuração do cluster.
+
+** *Teste a configuração da rede*
++
+Verifica se as configurações de rede definidas correspondem às configurações de rede em uso no sistema.  Este teste não se destina a detectar falhas de hardware quando um nó está participando ativamente de um cluster.
+
+** *Teste de ping*
++
+Executa um ping em uma lista específica de hosts ou, caso nenhuma seja especificada, cria dinamicamente uma lista de todos os nós registrados no cluster e executa um ping em cada um deles para verificar a conectividade.
+
+** *Testar a conectividade remota*
++
+Testa a conectividade com todos os nós em clusters remotamente emparelhados, enviando um ping para o endereço IP do cluster (CIP) em cada nó.  Este teste só será exibido em um nó se o nó fizer parte de um cluster ativo.
+
+
+
+

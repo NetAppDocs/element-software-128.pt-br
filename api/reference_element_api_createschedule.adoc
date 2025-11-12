@@ -1,0 +1,539 @@
+---
+permalink: api/reference_element_api_createschedule.html 
+sidebar: sidebar 
+keywords: CreateSchedule,create,creating,schedule,schedules,snapshot,snapshots,scheduling,automatic,volume,volumes 
+summary: Você pode usar o CreateSchedule para agendar um snapshot automático de um volume em um intervalo definido. 
+---
+= CriarAgenda
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar `CreateSchedule` Agendar uma captura automática de um volume em um intervalo definido.
+
+Você pode usar o snapshot criado posteriormente como backup ou reversão para garantir que os dados em um volume ou grupo de volumes estejam consistentes no momento em que o snapshot foi criado.  Se você agendar a captura de um instantâneo para um período que não seja divisível por 5 minutos, a captura será executada no próximo período divisível por 5 minutos.  Por exemplo, se você agendar a captura de um instantâneo para ser executada às 12:42:00 UTC, ela será executada às 12:45:00 UTC.  Não é possível agendar a captura de um instantâneo em intervalos inferiores a 5 minutos.
+
+
+NOTE: Você pode criar snapshots se o nível de preenchimento do cluster estiver no estágio 1, 2 ou 3.  Não é possível criar snapshots quando o nível de preenchimento do cluster atinge o estágio 4 ou 5.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+`attributes`
+ a| 
+Use a string "`frequency`" para indicar a frequência da captura de tela. Valores possíveis:
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+objeto JSON
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+| `hasError` | *Precisa-se de ajuda com a descrição* | booleano | `false` | Não 
+
+
+ a| 
+`hours`
+ a| 
+Número de horas entre capturas de tela recorrentes ou hora em GMT em que a captura de tela ocorrerá no modo Dias da Semana ou Dias do Mês. Os valores válidos são de 0 a 23.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+| `lastRunStatus` | O resultado ou status da última criação de instantâneo agendada. | corda | Nenhum | Não 
+
+
+ a| 
+`name`
+ a| 
+O nome da imagem.  Caso nenhum nome seja inserido, a data e a hora em que a foto do grupo foi tirada serão utilizadas.  O comprimento máximo permitido para o nome é de 244 caracteres.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+`minutes`
+ a| 
+Número de minutos entre capturas de tela recorrentes ou o minuto em GMT em que a captura de tela ocorrerá no modo Dias da Semana ou Dias do Mês.  Os valores válidos são de 5 a 59.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+`paused`
+ a| 
+Indica se a programação deve ser pausada ou não.  Valores válidos:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+`recurring`
+ a| 
+Indica se a programação será recorrente ou não.  Os valores válidos são:
+
+* `true`
+* `false`
+
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+| `runNextInterval`  a| 
+Especifica se o instantâneo deve ou não ser executado na próxima vez que o agendador estiver ativo.  Quando definido como verdadeiro, o snapshot agendado é executado na próxima vez que o agendador estiver ativo e, em seguida, é redefinido para falso.  Os valores válidos são:
+
+* `true`
+* `false`
+
+| booleano | `false` | Não 
+
+
+ a| 
+`scheduleName`
+ a| 
+Nome único para a programação.  O comprimento máximo permitido para o nome da programação é de 244 caracteres.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+`scheduleType`
+ a| 
+Indica o tipo de cronograma a ser criado.  O valor válido é snapshot.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+O nome exclusivo atribuído ao agendamento, o período de retenção do instantâneo criado e o ID do volume a partir do qual o instantâneo foi criado.  Valores válidos:
+
+* `volumeID`: O ID do volume a ser incluído no snapshot.  (inteiro)
+* `volumes`: Uma lista de IDs de volume a serem incluídos no snapshot do grupo.  (matriz de inteiros)
+* `name`: O nome da captura de tela a ser usada.  (corda)
+* `enableRemoteReplication`Indica se o snapshot deve ser incluído na replicação remota.  (booleano)
+* `retention`: O período de tempo em que o instantâneo será mantido, no formato HH:mm:ss.  Se estiver vazio, o instantâneo será mantido para sempre.  (corda)
+* `fifo`O instantâneo é mantido com base no princípio FIFO (primeiro a entrar, primeiro a sair).  (corda)
+* `ensureSerialCreation`Especifique se a criação de um novo snapshot deve ser permitida caso a replicação de um snapshot anterior esteja em andamento.  (booleano)
+
+ a| 
+objeto JSON
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+`snapMirrorLabel`
+ a| 
+O rótulo usado pelo software SnapMirror para especificar a política de retenção de snapshots em um endpoint SnapMirror .
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+`startingDate`
+ a| 
+Horário após o qual a programação será executada.  Caso não seja configurado, o agendamento inicia imediatamente.  Formatado em horário UTC.
+ a| 
+string de data ISO 8601
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+| `toBeDeleted` | Especifica que este agendamento de instantâneo deve ser excluído após a conclusão da criação do instantâneo. | booleano | `false` | Não 
+
+
+ a| 
+`monthdays`
+ a| 
+Os dias do mês em que será tirada uma fotografia. Os valores válidos são de 1 a 31.
+ a| 
+matriz de inteiros
+ a| 
+Nenhum
+ a| 
+Sim (se o agendamento for para dias específicos do mês)
+
+
+
+ a| 
+`weekdays`
+ a| 
+Dia da semana em que a captura de tela deve ser feita.  Valores obrigatórios (se utilizados):
+
+* `Day`: 0 a 6 (de domingo a sábado)
+* `Offset`: para cada semana possível em um mês, de 1 a 6 (Se maior que 1, a correspondência ocorre apenas no N-ésimo dia da semana).  Por exemplo, offset:3 para domingo significa o terceiro domingo do mês, enquanto offset:4 para quarta-feira significa a quarta quarta-feira do mês.  O deslocamento 0 significa que nenhuma ação será tomada.  O deslocamento 1 (padrão) significa que o instantâneo é criado para este dia da semana, independentemente de quando ele cair no mês.
+
+ a| 
+matriz de objetos JSON
+ a| 
+Nenhum
+ a| 
+Sim (se o agendamento for por dias da semana)
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+ID do agendamento
+ a| 
+ID do cronograma criado.
+ a| 
+inteiro
+
+
+
+ a| 
+agendar
+ a| 
+Um objeto contendo informações sobre o cronograma recém-criado.
+ a| 
+xref:reference_element_api_schedule.adoc[agendar]
+
+|===
+
+
+== Exemplo de solicitação 1
+
+O seguinte exemplo de cronograma possui os seguintes parâmetros:
+
+* Não são especificados horários ou minutos de início, portanto a programação começa o mais próximo possível da meia-noite (00:00:00 UTC).
+* Não é recorrente (será executado apenas uma vez).
+* O evento ocorre uma vez, no primeiro domingo ou quarta-feira após 1º de junho de 2015, às 19:17:15 UTC (o que ocorrer primeiro).
+* Inclui apenas um volume (volumeID = 1).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+  "params":{
+    "hours":0,
+    "minutes":0,
+    "paused":false,
+    "recurring":false,
+    "scheduleName":"MCAsnapshot1",
+    "scheduleType":"snapshot",
+    "attributes":{
+      "frequency":"Days Of Week"
+    },
+    "scheduleInfo":{
+      "volumeID":"1",
+      "name":"MCA1"
+    },
+    "monthdays":[],
+    "weekdays":[
+      {
+        "day":0,
+        "offset":1
+      },
+      {
+        "day":3,
+        "offset":1
+      }
+    ],
+    "startingDate":"2015-06-01T19:17:54Z"
+  },
+   "id":1
+}
+}
+}
+----
+
+
+== Exemplo de resposta 1
+
+A solicitação acima retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+      },
+      "hasError": false,
+      "hours": 0,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": false,
+      "runNextInterval": false,
+      "scheduleID": 4,
+      "scheduleInfo": {
+        "name": "MCA1",
+        "volumeID": "1"
+      },
+      "scheduleName": "MCAsnapshot1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-06-01T19:17:54Z",
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 0,
+          "offset": 1
+        },
+        {
+          "day": 3,
+          "offset": 1
+        }
+      ]
+    },
+    "scheduleID": 4
+  }
+}
+----
+
+
+== Exemplo de solicitação 2
+
+O seguinte exemplo de cronograma possui os seguintes parâmetros:
+
+* É recorrente (será executado em cada intervalo programado do mês, no horário especificado).
+* O evento acontece nos dias 1, 10, 15 e 30 de cada mês subsequente à data de início.
+* O evento acontece às 12h15 em todos os dias em que está programado para ocorrer.
+* Inclui apenas um volume (volumeID = 1).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+    "params":{
+      "hours":12,
+      "minutes":15,
+      "paused":false,
+      "recurring":true,
+      "scheduleName":"MCASnapshot1",
+      "scheduleType":"snapshot",
+      "attributes":{
+        "frequency":"Days Of Month"
+      },
+      "scheduleInfo":{
+        "volumeID":"1"
+      },
+      "weekdays":[
+      ],
+      "monthdays":[
+        1,
+        10,
+        15,
+        30
+      ],
+      "startingDate":"2015-04-02T18:03:15Z"
+    },
+    "id":1
+}
+----
+
+
+== Exemplo de resposta 2
+
+A solicitação acima retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Month"
+      },
+      "hasError": false,
+      "hours": 12,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 15,
+      "monthdays": [
+        1,
+        10,
+        15,
+        30
+      ],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 5,
+      "scheduleInfo": {
+        "volumeID": "1"
+      },
+      "scheduleName": "MCASnapshot1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-04-02T18:03:15Z",
+      "toBeDeleted": false,
+      "weekdays": []
+    },
+      "scheduleID": 5
+  }
+}
+----
+
+
+== Exemplo de solicitação 3
+
+O seguinte exemplo de cronograma possui os seguintes parâmetros:
+
+* Começa dentro de 5 minutos do intervalo programado em 2 de abril de 2015.
+* É recorrente (será executado em cada intervalo programado do mês, no horário especificado).
+* O evento ocorre no segundo, terceiro e quarto dia de cada mês subsequente à data de início.
+* O evento acontece às 14h45 em todos os dias em que está programado.
+* Inclui um grupo de volumes (volumes = 1 e 2).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+  "params":{
+    "hours":14,
+    "minutes":45,
+    "paused":false,
+    "recurring":true,
+    "scheduleName":"MCASnapUser1",
+    "scheduleType":"snapshot",
+    "attributes":{
+      "frequency":"Days Of Month"
+    },
+    "scheduleInfo":{
+      "volumes":[1,2]
+    },
+    "weekdays":[],
+    "monthdays":[2,3,4],
+    "startingDate":"2015-04-02T20:38:23Z"
+  },
+  "id":1
+}
+----
+
+
+== Exemplo de resposta 3
+
+A solicitação acima retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Month"
+      },
+      "hasError": false,
+      "hours": 14,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 45,
+      "monthdays": [
+        2,
+        3,
+        4
+      ],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 6,
+      "scheduleInfo": {
+        "volumes": [
+          1,
+          2
+        ]
+      },
+      "scheduleName": "MCASnapUser1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-04-02T20:38:23Z",
+      "toBeDeleted": false,
+      "weekdays": []
+    },
+    "scheduleID": 6
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

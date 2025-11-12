@@ -1,0 +1,131 @@
+---
+permalink: api/reference_element_api_getaccountefficiency.html 
+sidebar: sidebar 
+keywords: accounts,account,efficiency,get,getting,GetAccountEfficiency 
+summary: Você pode usar o GetAccountEfficiency para obter estatísticas de eficiência sobre uma conta de grande volume.  Este método retorna informações de eficiência apenas para a conta que você fornecer como parâmetro. 
+---
+= Obtenha eficiência da conta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar `GetAccountEfficiency` Para obter estatísticas de eficiência sobre uma conta de grande volume.  Este método retorna informações de eficiência apenas para a conta que você fornecer como parâmetro.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID da conta
+ a| 
+Especifica a conta de volume para a qual as estatísticas de eficiência são retornadas.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+compressão
+ a| 
+A quantidade de espaço economizado pela compressão de dados em todos os volumes da conta.  Expressa-se como uma proporção onde o valor "1" significa que os dados foram armazenados sem compressão.
+ a| 
+flutuador
+
+
+
+ a| 
+desduplicação
+ a| 
+A quantidade de espaço economizada ao não duplicar dados para todos os volumes da conta.  Expressa-se como uma proporção.
+ a| 
+flutuador
+
+
+
+ a| 
+volumesfaltantes
+ a| 
+Os volumes que não puderam ser consultados para obtenção de dados de eficiência.  A ausência de volumes pode ser causada por um ciclo de coleta de lixo (GC) com menos de uma hora de duração, perda temporária de conectividade de rede ou reinicialização de serviços desde o último ciclo de GC.
+ a| 
+matriz de inteiros
+
+
+
+ a| 
+provisionamento fino
+ a| 
+A proporção entre o espaço utilizado e a quantidade de espaço alocada para armazenamento de dados.  Expressa-se como uma proporção.
+ a| 
+flutuador
+
+
+
+ a| 
+carimbo de data/hora
+ a| 
+Os últimos dados de eficiência foram coletados após a Coleta de Lixo (GC), no formato UTC+0.
+ a| 
+string de data ISO 8601
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "GetAccountEfficiency",
+   "params": {
+     "accountID": 3
+   },
+   "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.020468042933262,
+       "deduplication": 2.042488619119879,
+       "missingVolumes": [],
+       "thinProvisioning": 1.010087163391013,
+       "timestamp": "2014-03-10T14:06:02Z"
+   }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

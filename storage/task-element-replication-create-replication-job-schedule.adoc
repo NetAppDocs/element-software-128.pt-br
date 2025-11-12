@@ -1,0 +1,43 @@
+---
+permalink: storage/task-element-replication-create-replication-job-schedule.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, replication, job, schedule 
+summary: 'Você pode usar o comando `cron create` para criar um agendamento de tarefa de replicação.  O agendamento da tarefa determina quando o SnapMirror atualiza automaticamente a relação de proteção de dados à qual o agendamento está atribuído.' 
+---
+= Crie um agendamento de tarefas de replicação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quer você esteja replicando dados do Element para o ONTAP ou do ONTAP para o Element, é necessário configurar um agendamento de tarefas, especificar uma política e criar e inicializar o relacionamento.  Você pode usar uma política padrão ou personalizada.
+
+Você pode usar o `job schedule cron create` comando para criar um agendamento de tarefa de replicação.  O agendamento da tarefa determina quando o SnapMirror atualiza automaticamente a relação de proteção de dados à qual o agendamento está atribuído.
+
+.Sobre esta tarefa
+Você define um cronograma de tarefas ao criar uma relação de proteção de dados.  Se você não atribuir um cronograma de trabalho, deverá atualizar o relacionamento manualmente.
+
+.Etapa
+. Criar um cronograma de trabalho:
++
+`job schedule cron create -name _job_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+Para `-month` , `-dayofweek` , e `-hour` , você pode especificar `all` para executar o trabalho mensalmente, diariamente e a cada hora, respectivamente.
+
++
+A partir do ONTAP 9.10.1, você pode incluir o Vserver no seu agendamento de tarefas:
+
++
+`job schedule cron create -name _job_name_ -vserver _Vserver_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+O exemplo a seguir cria uma programação de tarefas chamada `my_weekly` que acontece aos sábados às 3h da manhã:
+
++
+[listing]
+----
+cluster_dst::> job schedule cron create -name my_weekly -dayofweek "Saturday" -hour 3 -minute 0
+----
+

@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_pendingactivenode.html 
+sidebar: sidebar 
+keywords: object,objects,pendingActiveNode 
+summary: O objeto pendingActiveNode contém informações sobre um nó que está atualmente no estado pendingActive, entre os estados pending e active.  Esses são nós que estão sendo restaurados para a imagem de software de fábrica.  Utilize o método de API ListPendingActiveNodes para retornar uma lista com essas informações para todos os nós pendingActive. 
+---
+= nóativo pendente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto pendingActiveNode contém informações sobre um nó que está atualmente no estado pendingActive, entre os estados pending e active.  Esses são nós que estão sendo restaurados para a imagem de software de fábrica.  Use o `ListPendingActiveNodes` Método da API para retornar uma lista com essas informações para todos os nós pendingActive.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+activeNodeKey
+ a| 
+Uma chave única que permite que o nó se junte ao cluster automaticamente após uma instalação bem-sucedida do software.
+ a| 
+corda
+
+
+
+ a| 
+ID do nó atribuído
+ a| 
+O ID do nó atribuído ao nó.
+ a| 
+corda
+
+
+
+ a| 
+manipulador assíncrono
+ a| 
+O identificador do método assíncrono que você pode usar para consultar o status da operação.
+ a| 
+inteiro
+
+
+
+ a| 
+cip
+ a| 
+O endereço IP do cluster atribuído ao nó.
+ a| 
+corda
+
+
+
+ a| 
+mip
+ a| 
+O endereço IP de gerenciamento atribuído ao nó.
+ a| 
+corda
+
+
+
+ a| 
+slot de nó
+ a| 
+Para plataformas HCI, a letra correspondente ao slot do chassi em que este nó está localizado ("A", "B", "C" ou "D").  Para plataformas de armazenamento, esse valor é nulo.
+ a| 
+corda
+
+
+
+ a| 
+ID do nó ativo pendente
+ a| 
+O ID do nó pendente.
+ a| 
+inteiro
+
+
+
+ a| 
+informações da plataforma
+ a| 
+Informações de hardware para o nó.  Membros:
+
+* chassisType: A plataforma de hardware do nó.
+* cpuModel: O modelo da CPU da plataforma de hardware.
+* nodeMemoryGB: A quantidade de memória instalada na plataforma física, em GB.
+* nodeType: O nome do modelo do nó.
+* platformConfigVersion: A versão do software configurada para o hardware deste nó.
+
+ a| 
+objeto JSON
+
+
+
+ a| 
+papel
+ a| 
+O papel do nó no cluster. Valores possíveis:
+
+* Gerenciamento
+* Armazenar
+* Calcular
+* Testemunha
+
+ a| 
+
+
+
+ a| 
+gole
+ a| 
+O endereço IP de armazenamento (iSCSI) atribuído ao nó.
+ a| 
+corda
+
+
+
+ a| 
+versão do software
+ a| 
+A versão atual do software Element em execução no nó.
+ a| 
+corda
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listpendingactivenodes.adoc[Listar nós ativos pendentes]

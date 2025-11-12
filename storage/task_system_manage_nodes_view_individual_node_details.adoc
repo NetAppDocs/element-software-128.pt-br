@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_nodes_view_individual_node_details.html 
+sidebar: sidebar 
+keywords: nodes, view, details, vlan, mip, cip, sip, virtual id 
+summary: Você pode visualizar detalhes de nós individuais, como etiquetas de serviço, detalhes da unidade e gráficos com estatísticas de utilização e da unidade.  A página Nós da aba Cluster fornece a coluna Versão, onde você pode visualizar a versão do software de cada nó. 
+---
+= Ver detalhes do nó
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar detalhes de nós individuais, como etiquetas de serviço, detalhes da unidade e gráficos com estatísticas de utilização e da unidade.  A página Nós da aba Cluster fornece a coluna Versão, onde você pode visualizar a versão do software de cada nó.
+
+.Passos
+. Clique em *Cluster* > *Nós*.
+. Para visualizar os detalhes de um nó específico, clique no ícone *Ações* correspondente ao nó.
+. Clique em *Ver detalhes*.
+. Analise os detalhes do nó:
++
+** *ID do nó*: O ID do nó gerado pelo sistema.
+** *Nome do nó*: O nome do host do nó.
+** *Função do Nó*: A função que o nó desempenha no cluster. Valores possíveis:
++
+*** Mestre do Cluster: O nó que executa tarefas administrativas em todo o cluster e contém o MVIP e o SVIP.
+*** Nó de conjunto: Um nó que participa do cluster.  Existem 3 ou 5 nós de conjunto, dependendo do tamanho do cluster.
+*** Fibre Channel: Um nó no cluster.
+
+
+** *Tipo de Nó*: O tipo de modelo do nó.
+** *Unidades Ativas*: O número de unidades ativas no nó.
+** *Utilização do nó*: A porcentagem de utilização do nó com base no calor do nó.  O valor exibido é o recentPrimaryTotalHeat em porcentagem.  Disponível a partir do Elemento 12.8.
+** *IP de gerenciamento*: O endereço IP de gerenciamento (MIP) atribuído ao nó para tarefas de administração de rede 1GbE ou 10GbE.
+** *IP do cluster*: O endereço IP do cluster (CIP) atribuído ao nó usado para a comunicação entre nós no mesmo cluster.
+** *IP de armazenamento*: O endereço IP de armazenamento (SIP) atribuído ao nó usado para descoberta de rede iSCSI e todo o tráfego de rede de dados.
+** *ID da VLAN de gerenciamento*: O ID virtual para a rede local de gerenciamento.
+** *ID da VLAN de armazenamento*: O ID virtual da rede local de armazenamento.
+** *Versão*: A versão do software em execução em cada nó.
+** *Porta de Replicação*: A porta usada nos nós para replicação remota.
+** *Etiqueta de serviço*: O número de etiqueta de serviço exclusivo atribuído ao nó.
+** *Domínio de Proteção Personalizado*: O domínio de proteção personalizado atribuído ao nó.
+
+
+

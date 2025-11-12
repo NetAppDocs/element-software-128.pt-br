@@ -1,0 +1,55 @@
+---
+permalink: storage/task_replication_assign_replication_source_and_target_to_paired_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, paired volumes, replication source, assign 
+summary: Após o emparelhamento dos volumes, você deve atribuir um volume de origem e seu respectivo volume de destino para replicação.  Uma origem ou destino de replicação pode ser qualquer volume em um par de volumes.  Você também pode usar esse procedimento para redirecionar dados enviados para um volume de origem para um volume de destino remoto, caso o volume de origem fique indisponível. 
+---
+= Atribua uma origem e um destino de replicação aos volumes emparelhados.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após o emparelhamento dos volumes, você deve atribuir um volume de origem e seu respectivo volume de destino para replicação.  Uma origem ou destino de replicação pode ser qualquer volume em um par de volumes.  Você também pode usar esse procedimento para redirecionar dados enviados para um volume de origem para um volume de destino remoto, caso o volume de origem fique indisponível.
+
+.O que você vai precisar
+Você tem acesso aos clusters que contêm os volumes de origem e de destino.
+
+.Passos
+. Prepare o volume de origem:
++
+.. No cluster que contém o volume que você deseja atribuir como origem, selecione *Gerenciamento* > *Volumes*.
+.. Clique no ícone *Ações* do volume que deseja definir como fonte e clique em *Editar*.
+.. Na lista suspensa *Acesso*, selecione *Leitura/Gravação*.
++
+
+IMPORTANT: Se você estiver revertendo a atribuição de origem e destino, essa ação fará com que o par de volumes exiba a seguinte mensagem até que um novo destino de replicação seja atribuído: `PausedMisconfigured`
+
++
+Alterar o nível de acesso interrompe a replicação do volume e faz com que a transmissão de dados seja interrompida.  Certifique-se de ter coordenado essas alterações em ambos os locais.
+
+.. Clique em *Salvar alterações*.
+
+
+. Prepare o volume alvo:
++
+.. No cluster que contém o volume que você deseja atribuir como destino, selecione *Gerenciamento* > *Volumes*.
+.. Clique no ícone Ações do volume que deseja definir como destino e clique em *Editar*.
+.. Na lista suspensa *Acesso*, selecione *Destino de Replicação*.
++
+
+IMPORTANT: Se você atribuir um volume existente como destino da replicação, os dados desse volume serão sobrescritos.  Você deve usar um novo volume de destino que não contenha dados e que tenha as mesmas características do volume de origem, como tamanho, configuração 512e e configuração de QoS.  O volume alvo pode ser maior ou igual em tamanho ao volume de origem, mas não pode ser menor.
+
+.. Clique em *Salvar alterações*.
+
+
+
+
+
+
+== Encontre mais informações
+
+* xref:task_replication_pair_volumes_using_a_volume_id.adoc[Emparelhe volumes usando um ID de volume]
+* xref:task_replication_pair_volumes_using_a_pairing_key.adoc[Emparelhe volumes usando uma chave de emparelhamento.]
+

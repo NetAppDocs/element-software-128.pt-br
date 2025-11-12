@@ -1,0 +1,200 @@
+---
+permalink: api/reference_element_api_hardwareinfo.html 
+sidebar: sidebar 
+keywords: object,objects,hardwareInfo 
+summary: O objeto hardwareInfo contém informações detalhadas sobre o hardware e o estado de cada nó no cluster.  Você pode obter essas informações com o método de API GetHardwareInfo. 
+---
+= informações de hardware
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto hardwareInfo contém informações detalhadas sobre o hardware e o estado de cada nó no cluster.  Você pode recuperar essas informações com o `GetHardwareInfo` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+placaSerial
+ a| 
+O número de série da placa DMI.
+ a| 
+corda
+
+
+
+ a| 
+ônibus
+ a| 
+Informações do barramento de mídia da placa-mãe.
+ a| 
+objeto JSON
+
+
+
+ a| 
+chassisSerial
+ a| 
+O número de série do chassi.
+ a| 
+corda
+
+
+
+ a| 
+hardware de unidade
+ a| 
+Uma lista de informações para cada unidade no nó.
+ a| 
+matriz de objetos JSON
+
+
+
+ a| 
+Portas Fibre Channel
+ a| 
+Lista das portas Fibre Channel no nó.
+ a| 
+matriz de inteiros
+
+
+
+ a| 
+configuração de hardware
+ a| 
+Informações sobre a configuração dos periféricos da placa-mãe.
+ a| 
+objeto JSON
+
+
+
+ a| 
+estado de despejo de falha do kernel
+ a| 
+Configuração de despejo de memória do kernel do sistema operacional.
+ a| 
+corda
+
+
+
+ a| 
+memória
+ a| 
+Informações sobre o firmware e o hardware da memória do sistema.
+ a| 
+objeto JSON
+
+
+
+ a| 
+rede
+ a| 
+Descrição do hardware de cada uma das interfaces de rede do nó.
+ a| 
+objeto JSON
+
+
+
+ a| 
+interfaces de rede
+ a| 
+O estado das interfaces de rede do nó.
+ a| 
+objeto JSON
+
+
+
+ a| 
+slot de nó
+ a| 
+Para plataformas HCI, a letra correspondente ao slot do chassi em que este nó está localizado ("A", "B", "C" ou "D").  Para plataformas de armazenamento, esse valor é nulo.
+ a| 
+corda
+
+
+
+ a| 
+nvram
+ a| 
+Estatísticas da NVRAM para o nó.
+ a| 
+objeto JSON
+
+
+
+ a| 
+origem
+ a| 
+O fornecedor da placa-mãe.
+ a| 
+corda
+
+
+
+ a| 
+plataforma
+ a| 
+Descrição da plataforma do chassi.
+ a| 
+objeto JSON
+
+
+
+ a| 
+serial
+ a| 
+O número de série do produto.
+ a| 
+corda
+
+
+
+ a| 
+armazenar
+ a| 
+Informações do controlador de armazenamento.
+ a| 
+objeto JSON
+
+
+
+ a| 
+memória do sistema
+ a| 
+Informações sobre o uso de memória e o desempenho do sistema operacional.
+ a| 
+objeto JSON
+
+
+
+ a| 
+sistema
+ a| 
+O tipo de chassi do nó.
+ a| 
+objeto JSON
+
+
+
+ a| 
+uuid
+ a| 
+O ID único do nó.
+ a| 
+UUID
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_gethardwareinfo.adoc[GetHardwareInfo]

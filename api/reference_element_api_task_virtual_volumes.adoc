@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_task_virtual_volumes.html 
+sidebar: sidebar 
+keywords: object,objects,task 
+summary: O objeto de tarefa contém informações sobre uma tarefa de volume virtual em execução ou concluída no sistema.  Você pode usar o método ListVirtualVolumeTasks para recuperar essas informações para todas as tarefas de volume virtual. 
+---
+= tarefa (volumes virtuais)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de tarefa contém informações sobre uma tarefa de volume virtual em execução ou concluída no sistema.  Você pode usar o `ListVirtualVolumeTasks` Método para recuperar essas informações para todas as tarefas de volume virtual.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+cancelado
+ a| 
+Indica se a tarefa foi cancelada ou não. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+
+
+
+ a| 
+cloneVirtualVolumeID
+ a| 
+O ID exclusivo do volume virtual que está sendo clonado (para tarefas de clonagem).
+ a| 
+UUID
+
+
+
+ a| 
+parentMetadata
+ a| 
+Um objeto que contém metadados do volume pai para tarefas que clonam ou criam snapshots de um volume virtual.
+ a| 
+objeto JSON
+
+
+
+ a| 
+tamanhoTotalPai
+ a| 
+O espaço total disponível (em bytes) no nó pai para tarefas de clonagem ou criação de instantâneos.
+ a| 
+inteiro
+
+
+
+ a| 
+tamanhoUsadoPessoal
+ a| 
+O espaço utilizado do processo pai (em bytes) para tarefas de clonagem ou criação de instantâneos.
+ a| 
+inteiro
+
+
+
+ a| 
+operação
+ a| 
+O tipo de operação que a tarefa está executando. Valores possíveis:
+
+* Desconhecido: A operação da tarefa é desconhecida.
+* preparar: A tarefa é preparar um volume virtual.
+* snapshot: A tarefa consiste em criar um instantâneo de um volume virtual.
+* rollback: A tarefa consiste em reverter um volume virtual para um snapshot.
+* clonar: A tarefa consiste em criar um clone do volume virtual.
+* fastClone: A tarefa consiste em criar um clone rápido de um volume virtual.
+* copyDiffs: A tarefa consiste em copiar blocos diferentes para um volume virtual.
+
+ a| 
+corda
+
+
+
+ a| 
+status
+ a| 
+O estado atual da tarefa de volume virtual. Valores possíveis:
+
+* Erro: A tarefa falhou e retornou um erro.
+* Em fila: A tarefa está aguardando para ser executada.
+* Em execução: A tarefa está em execução.
+* Sucesso: A tarefa foi concluída com êxito.
+
+ a| 
+corda
+
+
+
+ a| 
+ID do host do volume virtual
+ a| 
+O ID exclusivo do host que iniciou a tarefa.
+ a| 
+UUID
+
+
+
+ a| 
+ID do volume virtual
+ a| 
+O novo ID de volume virtual exclusivo (para tarefas que criam um novo volume virtual).
+ a| 
+UUID
+
+
+
+ a| 
+ID da tarefa de volume virtual
+ a| 
+O ID único da tarefa.
+ a| 
+UUID
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listvirtualvolumetasks.adoc[ListarTarefas do Volume Virtual]

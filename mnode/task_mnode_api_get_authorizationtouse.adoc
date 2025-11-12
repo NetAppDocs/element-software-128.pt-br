@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_api_get_authorizationtouse.html 
+summary: Você precisa se autorizar antes de poder usar as APIs para serviços de gerenciamento na interface de usuário da API REST. 
+keywords: netapp, Element, management node, mnode, api, token 
+---
+= Obtenha autorização para usar APIs REST
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa se autorizar antes de poder usar as APIs para serviços de gerenciamento na interface de usuário da API REST.  Você faz isso obtendo um token de acesso.
+
+Para obter um token, você precisa fornecer as credenciais de administrador do cluster e um ID de cliente.  Cada ficha dura aproximadamente dez minutos.  Após o token expirar, você poderá autorizar novamente para obter um novo token de acesso.
+
+A funcionalidade de autorização é configurada automaticamente durante a instalação e implantação do nó de gerenciamento.  O serviço de tokens é baseado no cluster de armazenamento que você definiu durante a configuração.
+
+.Antes de começar
+* A versão do seu cluster deve estar executando o software NetApp Element 11.3 ou posterior.
+* Você deveria ter implantado um nó de gerenciamento executando a versão 11.3 ou posterior.
+
+
+.Comando API
+[listing]
+----
+TOKEN=`curl -k -X POST https://MVIP/auth/connect/token -F client_id=mnode-client -F grant_type=password -F username=CLUSTER_ADMIN -F password=CLUSTER_PASSWORD|awk -F':' '{print $2}'|awk -F',' '{print $1}'|sed s/\"//g`
+----
+.Etapas da interface do usuário da API REST
+. Acesse a interface de usuário da API REST do serviço inserindo o endereço IP do nó de gerenciamento seguido pelo nome do serviço, por exemplo. `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. Selecione *Autorizar*.
++
+
+NOTE: Alternativamente, você pode selecionar o ícone de cadeado ao lado de qualquer API de serviço.
+
+. Complete o seguinte:
++
+.. Insira o nome de usuário e a senha do cluster.
+.. Insira o ID do cliente como `mnode-client` .
+.. Não insira nenhum valor para o segredo do cliente.
+.. Selecione *Autorizar* para iniciar uma sessão.
+
+
+. Feche a caixa de diálogo *Autorizações disponíveis*.
++
+
+NOTE: Se você tentar executar um comando após o token expirar, um `401 Error: UNAUTHORIZED` A mensagem aparece.  Se você vir esta mensagem, autorize novamente.
+
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

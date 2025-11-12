@@ -1,0 +1,142 @@
+---
+permalink: api/reference_element_api_listaccounts.html 
+sidebar: sidebar 
+keywords: account,accounts,list,listing,all,listaccounts 
+summary: Você pode usar o ListAccounts para obter a lista completa de contas de locatários de armazenamento, com suporte opcional para paginação.  As contas de elementos permitem o acesso a volumes. 
+---
+= Lista de contas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar `ListAccounts` Para obter a lista completa de contas de locatários de armazenamento, com suporte opcional para paginação.  As contas de elementos permitem o acesso a volumes.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+incluirContêineresDeArmazenamento
+ a| 
+Por padrão, os contêineres de armazenamento de volume virtual estão incluídos na resposta.  Para excluir contêineres de armazenamento, defina como falso.
+ a| 
+booleano
+ a| 
+verdadeiro
+ a| 
+Não
+
+
+
+ a| 
+ID da conta inicial
+ a| 
+Iniciando o retorno do ID da conta.  Caso não exista nenhuma conta com esse ID, a próxima conta na ordem de ID será usada como início da lista.  Para navegar pela lista, passe o ID da última conta na resposta anterior + 1.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+limite
+ a| 
+Número máximo de objetos de conta a serem retornados.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+contas
+ a| 
+A lista de contas.
+ a| 
+xref:reference_element_api_account.adoc[conta]variedade
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "ListAccounts",
+   "params": {
+     "startAccountID"  : 0,
+     "limit" : 1000
+   },
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "result" : {
+    "accounts": [
+	{
+        "attributes": {},
+        "username": "jamesw",
+        "targetSecret": "168#5A757ru268)",
+        "volumes": [],
+        "enableChap": false,
+        "status": "active",
+        "accountID": 16,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "168#5A757ru268)"
+    },
+    {
+        "attributes": {},
+        "username": "jimmyd",
+        "targetSecret": "targetsecret",
+        "volumes": [],
+        "enableChap": true,
+        "status": "active",
+        "accountID": 5,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "initiatorsecret"
+    }
+  ]
+}
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

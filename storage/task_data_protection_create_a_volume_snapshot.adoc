@@ -1,0 +1,48 @@
+---
+permalink: storage/task_data_protection_create_a_volume_snapshot.html 
+sidebar: sidebar 
+keywords: volume snapshot, create, active volume, preserve volume 
+summary: Você pode criar um instantâneo de um volume ativo para preservar a imagem do volume em qualquer ponto no tempo.  Você pode criar até 32 snapshots para um único volume. 
+---
+= Criar um instantâneo de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode criar um instantâneo de um volume ativo para preservar a imagem do volume em qualquer ponto no tempo.  Você pode criar até 32 snapshots para um único volume.
+
+. Clique em *Gerenciamento* > *Volumes*.
+. Clique no ícone *Ações* do volume que deseja usar para o instantâneo.
+. No menu que aparecer, selecione *Instantâneo*.
+. Na caixa de diálogo *Criar instantâneo do volume*, insira o nome do novo instantâneo.
+. *Opcional:* Selecione a caixa de seleção *Incluir instantâneo na replicação quando emparelhado* para garantir que o instantâneo seja capturado na replicação quando o volume pai estiver emparelhado.
+. Para definir o período de retenção do instantâneo, selecione uma das seguintes opções:
++
+** Clique em *Manter para sempre* para preservar a captura de tela no sistema indefinidamente.
+** Clique em *Definir período de retenção* e use as caixas de seleção de data para escolher o período de tempo durante o qual o sistema manterá o instantâneo.
+
+
+. Para tirar uma única foto instantânea, siga os passos abaixo:
++
+.. Clique em *Tirar foto agora*.
+.. Clique em **Criar instantâneo**.
+
+
+. Para agendar a execução do snapshot em um horário futuro, siga os passos abaixo:
++
+.. Clique em *Criar Agendamento de Captura de Instantâneos*.
+.. Insira um *Nome para a Nova Programação*.
+.. Selecione um *Tipo de Horário* na lista.
+.. *Opcional:* Selecione a caixa de seleção *Agendamento Recorrente* para repetir a captura de tela agendada periodicamente.
+.. Clique em *Criar agendamento*.
+
+
+
+
+
+
+== Encontre mais informações
+
+xref:task_data_protection_schedule_a_snapshot_task.adoc[Agende uma captura de tela]

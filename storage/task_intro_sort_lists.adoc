@@ -1,0 +1,35 @@
+---
+permalink: storage/task_intro_sort_lists.html 
+sidebar: sidebar 
+keywords: sort lists, sorting on a single column, sorting on multiple columns, sort button, column selections, using sort criteria 
+summary: Na interface de usuário do Element, você pode classificar as informações da lista por um ou mais critérios em determinadas páginas.  Isso ajuda você a organizar as informações necessárias na tela. 
+---
+= Classificar listas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Na interface de usuário do Element, você pode classificar as informações da lista por um ou mais critérios em determinadas páginas.  Isso ajuda você a organizar as informações necessárias na tela.
+
+. Para classificar por uma única coluna, clique no cabeçalho da coluna até que as informações estejam classificadas na ordem desejada.
+. Para classificar usando várias colunas, clique no cabeçalho de cada coluna pela qual deseja classificar até que as informações em cada coluna estejam classificadas na ordem desejada.
++
+O botão Classificar aparece quando você classifica usando várias colunas.
+
+. Para reordenar os critérios de classificação, execute os seguintes passos:
++
+.. Clique em *Ordenar*.
++
+O sistema preenche o campo "Ordenar por" com as colunas selecionadas.
+
+.. Organize as colunas no campo "Ordenar por" na ordem em que deseja que a lista seja classificada.
++
+O sistema classifica as informações da lista.
+
+
+
+. Para remover um único critério de classificação, clique no ícone *Remover* ao lado do nome do critério de classificação.
+. Para remover todos os critérios de classificação, clique em *Limpar tudo*.
+

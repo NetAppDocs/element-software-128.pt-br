@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_setclusterconfig.html 
+sidebar: sidebar 
+keywords: cluster,configuration,set,setting,node,setclusterconfig 
+summary: Você pode usar o método SetClusterConfig para definir a configuração que um nó usa para se comunicar com o cluster ao qual está associado.  Para exibir as configurações atuais da interface do cluster para um nó, execute o método de API GetClusterConfig. 
+---
+= Configurar Cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `SetClusterConfig` Método para definir a configuração que um nó usa para se comunicar com o cluster ao qual está associado.  Para exibir as configurações atuais da interface do cluster para um nó, execute o seguinte comando: `GetClusterConfig` Método da API.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+conjunto
+ a| 
+Atributos de configuração que devem ser alterados durante a chamada deste método.  Somente os campos que você deseja alterar precisam ser adicionados a este método como membros neste parâmetro.
+ a| 
+xref:reference_element_api_cluster.adoc[conjunto]
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+conjunto
+ a| 
+Informações de configuração que o nó usa para se comunicar com o cluster.
+ a| 
+xref:reference_element_api_cluster.adoc[conjunto]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "SetClusterConfig",
+   "params": {
+      "cluster": {
+         "name": "myhost",
+         "mipi": "Bond10G"
+      },
+    "id" : 1
+   }
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "cluster" : {
+         "cipi" : "Bond10G",
+         "cluster" : "QoS",
+         "ensemble" : [
+            "1:10.10.5.42",
+            "2:10.10.5.43",
+            "3:10.10.5.44",
+            "4:10.10.5.46",
+            "5:10.10.5.47"
+         ],
+          "hostname" : "myhost",
+          "mipi" : "Bond10G",
+          "nodeID" : 1,
+          "sipi" : "Bond10G",
+          "state" : "Active"
+      }
+   }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

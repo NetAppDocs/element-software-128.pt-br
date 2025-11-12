@@ -1,0 +1,93 @@
+---
+permalink: storage/reference_per_node_network_settings_details.html 
+sidebar: sidebar 
+keywords: network settings, per-node UI, storage node, ui 
+summary: Você pode alterar as configurações de rede do nó de armazenamento para atribuir ao nó um novo conjunto de atributos de rede. 
+---
+= Detalhes das configurações de rede na interface de usuário de cada nó.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode alterar as configurações de rede do nó de armazenamento para atribuir ao nó um novo conjunto de atributos de rede.
+
+Você pode visualizar as configurações de rede de um nó de armazenamento na página *Configurações de Rede* ao fazer login no nó. (`https://<node_IP>:442/hcc/node/network-settings`). Você pode selecionar as configurações *Bond1G* (gerenciamento) ou *Bond10G* (armazenamento). A lista a seguir descreve as configurações que você pode modificar quando um nó de armazenamento estiver nos estados Disponível, Pendente ou Ativo:
+
+* *Método*
++
+O método utilizado para configurar a interface.  Métodos possíveis:
+
++
+** loopback: Usado para definir a interface de loopback IPv4.
+** Manual: Usado para definir interfaces para as quais nenhuma configuração é feita por padrão.
+** dhcp: Usado para obter um endereço IP via DHCP.
+** Estático: Usado para definir interfaces Ethernet com endereços IPv4 alocados estaticamente.
+
+
+* *Velocidade de conexão*
++
+A velocidade negociada pela NIC virtual.
+
+* *Endereço IPv4*
++
+O endereço IPv4 para a rede eth0.
+
+* *Máscara de sub-rede IPv4*
++
+Subdivisões de endereços da rede IPv4.
+
+* *Endereço de gateway IPv4*
++
+Endereço de rede do roteador para enviar pacotes para fora da rede local.
+
+* *Endereço IPv6*
++
+O endereço IPv6 para a rede eth0.
+
+* *Endereço de gateway IPv6*
++
+Endereço de rede do roteador para enviar pacotes para fora da rede local.
+
+* *MTU*
++
+Tamanho máximo de pacote que um protocolo de rede pode transmitir.  Deve ser maior ou igual a 1500.  Se você adicionar uma segunda placa de rede de armazenamento, o valor deverá ser 9000.
+
+* *Servidores DNS*
++
+Interface de rede utilizada para comunicação em cluster.
+
+* *Domínios de pesquisa*
++
+Procure por endereços MAC adicionais disponíveis para o sistema.
+
+* *Modo Bond*
++
+Pode ser um dos seguintes modos:
+
++
+** AtivoPassivo (padrão)
+** ALVA
+** LACP
+
+
+* *Status*
++
+Valores possíveis:
+
++
+** Em funcionamento
+** Abaixo
+** Acima
+
+
+* *Etiqueta de Rede Virtual*
++
+Etiqueta atribuída quando a rede virtual foi criada.
+
+* *Rotas*
++
+Rotas estáticas para hosts ou redes específicas através da interface associada que as rotas estão configuradas para usar.
+
+

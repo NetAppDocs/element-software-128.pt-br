@@ -1,0 +1,138 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-dashboard.html 
+summary: Você pode visualizar os recursos de armazenamento no painel de controle do NetApp Hybrid Cloud.  Além disso, você pode monitorar a capacidade e o desempenho do armazenamento. 
+keywords: netapp, element, hcc, hybrid cloud control, storage, storage performance, capacity 
+---
+= Monitore os recursos de armazenamento no Painel de Controle da Nuvem Híbrida.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Com o painel de controle da NetApp Hybrid Cloud, você pode visualizar todos os seus recursos de armazenamento rapidamente.  Além disso, você pode monitorar a capacidade e o desempenho do armazenamento.
+
+
+NOTE: Ao iniciar uma nova sessão do NetApp Hybrid Cloud Control pela primeira vez, pode haver um atraso no carregamento da visualização do painel do NetApp Hybrid Cloud Control quando o nó de gerenciamento estiver gerenciando muitos clusters.  O tempo de carregamento varia dependendo do número de clusters que estão sendo gerenciados ativamente pelo nó de gerenciamento.  Em inicializações subsequentes, você notará tempos de carregamento mais rápidos.
+
+* <<Acesse o painel de controle do NetApp HCC>>
+* <<Monitorar recursos de armazenamento>>
+* <<Monitorar capacidade de armazenamento>>
+* <<Monitorar o desempenho do armazenamento>>
+
+
+
+
+== Acesse o painel de controle do NetApp HCC
+
+. Abra o endereço IP do nó de gerenciamento em um navegador da web. Por exemplo:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador do cluster de armazenamento all-flash SolidFire .
+. Veja o painel de controle da nuvem híbrida.
+
+
+image::hcc_dashboard_all.PNG[Painel HCC]
+
+
+
+== Monitorar recursos de armazenamento
+
+Use o painel *Armazenamento* para visualizar todo o seu ambiente de armazenamento.  Você pode monitorar o número de clusters de armazenamento, nós de armazenamento e volumes totais.
+
+Para ver os detalhes, no painel Armazenamento, selecione *Mostrar detalhes*.
+
+image::hcc_dashboard_storage_node_number.PNG[Visão de armazenamento]
+
+
+NOTE: O número total de nós de armazenamento não inclui os nós de testemunha de clusters de armazenamento de dois nós.  Os nós testemunhas estão incluídos na contagem de nós na seção de detalhes desse cluster.
+
+
+TIP: Para visualizar os dados mais recentes do cluster de armazenamento, use a página Clusters de Armazenamento, onde a atualização ocorre com mais frequência do que no Painel de Controle.
+
+
+
+== Monitorar capacidade de armazenamento
+
+Monitorar a capacidade de armazenamento do seu ambiente é fundamental.  Usando o painel Capacidade de armazenamento, você pode determinar os ganhos de eficiência da sua capacidade de armazenamento com ou sem os recursos de compactação, deduplicação e provisionamento dinâmico ativados.
+
+Você pode visualizar o espaço de armazenamento físico total disponível em seu cluster na guia *BRUTO* e informações sobre o armazenamento provisionado na guia *EFETIVO*.
+
+image::hcc_dashboard_storage_capacity_effective.png[Painel de controle do HCC > Painel de capacidade de armazenamento]
+
+.Passos
+. Selecione a aba *RAW* para visualizar o espaço de armazenamento físico total usado e disponível em seu cluster.
++
+Observe as linhas verticais para determinar se a sua capacidade utilizada é inferior ao total ou aos limites de Aviso, Erro ou Crítico.  Passe o cursor sobre as linhas para ver os detalhes.
+
++
+
+NOTE: Você pode definir o limite para o alerta, que por padrão é 3% abaixo do limite de erro.  Os limites de erro e crítico são predefinidos e não podem ser configurados por padrão.  O limite de erro indica que resta menos de um nó com capacidade disponível no cluster.  Para obter instruções sobre como definir o limite, consultelink:../storage/task_system_manage_cluster_set_the_cluster_full_threshold.html["Definindo o limite máximo do cluster"] .
+
++
+
+TIP: Para obter detalhes sobre os limites de cluster relacionados à API Element, consultelink:../api/reference_element_api_getclusterfullthreshold.html["“getClusterFullThreshold”"] na _documentação da API do software Element_.  Para visualizar detalhes sobre a capacidade de blocos e metadados, consultelink:../storage/concept_monitor_understand_cluster_fullness_levels.html["Compreendendo os níveis de plenitude dos aglomerados"] na _documentação do software Element_.
+
+. Selecione a aba *EFETIVO* para ver informações sobre o armazenamento total provisionado para os hosts conectados e para ver as classificações de eficiência.
++
+.. Opcionalmente, marque a opção *Incluir Provisionamento Dinâmico* para visualizar as taxas de eficiência do provisionamento dinâmico no gráfico de barras de Capacidade Efetiva.
+.. *Gráfico de barras da capacidade efetiva*: Observe as linhas verticais para determinar se a sua capacidade utilizada é menor que o total ou menor que os limites de Aviso, Erro ou Crítico.  Semelhante à aba "Raw", você pode passar o cursor sobre as linhas verticais para ver os detalhes.
+.. *Eficiência*: Consulte essas classificações para determinar os ganhos de eficiência da sua capacidade de armazenamento com os recursos de compressão, deduplicação e provisionamento dinâmico ativados.  Por exemplo, se a compressão for exibida como "1,3x", isso significa que a eficiência de armazenamento com a compressão ativada é 1,3 vezes maior do que sem ela.
++
+
+NOTE: A eficiência total é igual a (espaço máximo utilizado * fator de eficiência) / 2, onde fatorDeEficiência = (fatorDeProvisionamentoFino * fatorDeDuplicação * fatorDeCompressão).  Quando o Thin Provisioning está desativado, ele não é incluído no cálculo da Eficiência Total.
+
+.. Se a capacidade de armazenamento efetiva se aproximar de um limite de Erro ou Crítico, considere limpar os dados do seu sistema.
+
+
+. Para análises adicionais e contexto histórico, consulte: https://activeiq.solidfire.com/["Detalhes do NetApp SolidFire Active IQ"^] .
+
+
+
+
+== Monitorar o desempenho do armazenamento
+
+Você pode verificar quantas IOPS ou taxa de transferência pode obter de um cluster sem ultrapassar o desempenho útil desse recurso usando o painel Desempenho de Armazenamento.  O desempenho de armazenamento é o ponto em que se obtém a utilização máxima antes que a latência se torne um problema.
+
+O painel Desempenho de Armazenamento ajuda você a identificar se o desempenho está chegando ao ponto em que pode se degradar caso as cargas de trabalho aumentem.
+
+As informações neste painel são atualizadas a cada 10 segundos e mostram a média de todos os pontos no gráfico.
+
+Para obter detalhes sobre o método da API de Elemento associado, consulte olink:../api/reference_element_api_getclusterstats.html["ObterEstatísticasDoCluster"] método na _documentação da API do software Element_.
+
+.Passos
+. Visualize o painel Desempenho de armazenamento.  Para obter detalhes, passe o cursor sobre os pontos no gráfico.
++
+.. Aba *IOPS*: Veja as operações atuais por segundo.  Procure por tendências ou picos nos dados.  Por exemplo, se você observar que o máximo de IOPS é 160 mil e que 100 mil dessas IOPS são livres ou disponíveis, você pode considerar adicionar mais cargas de trabalho a esse cluster.  Por outro lado, se você perceber que apenas 140 KB estão disponíveis, pode considerar transferir tarefas para outros servidores ou expandir seu sistema.
++
+image::hcc_dashboard_storage_perform_iops.png[Desempenho de armazenamento > guia IOPS]
+
+.. Aba *Taxa de transferência*: Monitore padrões ou picos na taxa de transferência.  Monitore também valores de throughput continuamente altos, o que pode indicar que você está se aproximando do desempenho máximo útil do recurso.
++
+image::hcc_dashboard_storage_perform_throughput.png[Desempenho de armazenamento > guia Taxa de transferência]
+
+.. Aba *Utilização*: Monitore a utilização de IOPS em relação ao total de IOPS disponíveis, somados no nível do cluster.
++
+image::hcc_dashboard_storage_perform_utlization.png[Desempenho do armazenamento > guia Utilização]
+
+
+
+. Para uma análise mais aprofundada, examine o desempenho do armazenamento usando o plug-in NetApp Element para vCenter Server.
++
+https://docs.netapp.com/us-en/vcp/vcp_task_reports_volume_performance.html["Desempenho demonstrado no plug-in NetApp Element para vCenter Server"^].
+
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

@@ -1,0 +1,32 @@
+---
+permalink: storage/task_system_manage_fips_enable_the_fips_drives_feature.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, enable, ear 
+summary: Você pode habilitar o recurso de unidades FIPS usando o método de API EnableFeature do software NetApp Element . 
+---
+= Ative o recurso de unidades FIPS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode habilitar o recurso de unidades FIPS usando o software NetApp Element . `EnableFeature` Método da API.
+
+A criptografia em repouso deve estar habilitada no cluster e todos os nós e unidades devem ser compatíveis com FIPS, conforme indicado quando o GetFipsReport exibir o status Pronto para todos os nós.
+
+.Etapa
+. Utilizando a API do Element, habilite o FIPS em todas as unidades digitando o seguinte:
++
+`EnableFeature params: FipsDrives`
+
+
+
+
+
+== Encontre mais informações
+
+* link:../api/concept_element_api_about_the_api.html["Gerencie o armazenamento com a API Element."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

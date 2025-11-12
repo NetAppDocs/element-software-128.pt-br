@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_getldapconfiguration.html 
+sidebar: sidebar 
+keywords: ldap,config,configuration,get,getting,getldapconfiguration 
+summary: Você pode usar o método GetLdapConfiguration para obter a configuração LDAP atualmente ativa no cluster. 
+---
+= Obter configuração LDAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetLdapConfiguration` Método para obter a configuração LDAP atualmente ativa no cluster.
+
+
+
+== Parâmetros
+
+Este método não possui parâmetros de entrada.
+
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno.
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+Configuração LDAP
+ a| 
+Lista das configurações atuais do LDAP.  Essa chamada de API não retorna o texto simples da senha da conta de pesquisa.  *Nota:* Se a autenticação LDAP estiver desativada, todas as configurações retornadas estarão vazias, com exceção de "authType" e "groupSearchType", que serão definidas como "SearchAndBind" e "ActiveDirectory", respectivamente.
+ a| 
+xref:reference_element_api_ldapconfiguration.adoc[Configuração LDAP]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "GetLdapConfiguration",
+  "params": {},
+  "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "ldapConfiguration": {
+        "authType": "SearchAndBind",
+        "enabled": true,
+        "groupSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+        "groupSearchCustomFilter": "",
+        "groupSearchType": "ActiveDirectory",
+        "searchBindDN": "SFReadOnly@prodtest.solidfire.net",
+        "serverURIs": [
+           "ldaps://111.22.333.444",
+           "ldap://555.66.777.888"
+            ],
+        "userDNTemplate": "",
+        "userSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+        "userSearchFilter": "(&(objectClass=person)(sAMAccountName=%USERNAME%))"
+     }
+   }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

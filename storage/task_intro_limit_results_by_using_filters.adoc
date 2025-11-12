@@ -1,0 +1,27 @@
+---
+permalink: storage/task_intro_limit_results_by_using_filters.html 
+sidebar: sidebar 
+keywords: filter, filtering, sorting information, viewing lists, unfiltered list 
+summary: 'Você pode filtrar as informações da lista nas páginas da interface do usuário do Element.  Ao visualizar listas (como volumes e instantâneos), você pode adicionar um ou mais filtros para concentrar as informações e facilitar o ajuste na página.' 
+---
+= Limite os resultados usando filtros.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode filtrar as informações da lista nas páginas da interface do usuário do Element.  Ao visualizar listas (como volumes e instantâneos), você pode adicionar um ou mais filtros para concentrar as informações e facilitar o ajuste na página.
+
+. Ao visualizar as informações da lista, clique em *Filtrar*.
+. Expanda o campo *Filtrar por*.
+. Selecione uma coluna para filtrar a partir do elemento mais à esquerda no campo.
+. Escolha uma restrição para a coluna.
+. Digite o texto pelo qual deseja filtrar.
+. Clique em *Adicionar*.
++
+O sistema aplica o novo filtro às informações da lista e armazena temporariamente o novo filtro no campo "Filtrar por".
+
+. Para adicionar outro filtro, clique em *Adicionar* e escolha o filtro novamente.
+. Clique em *Limpar tudo* para remover a lista de filtros e exibir as informações da lista sem filtros.
+

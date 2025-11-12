@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_remove_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, remove, multi-drive slice service 
+summary: 'Você pode remover as unidades do serviço de fatiamento de várias unidades (MDSS).  Este procedimento só se aplica se o nó tiver várias unidades de fatiamento.' 
+---
+= Remova as unidades MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode remover as unidades do serviço de fatiamento de várias unidades (MDSS).  Este procedimento só se aplica se o nó tiver várias unidades de fatiamento.
+
+
+NOTE: Se a unidade de partição do sistema e a unidade do slot 2 falharem, o sistema encerrará os serviços de partição e removerá as unidades.  Caso não haja nenhuma falha e você remova as unidades, ambas devem ser removidas ao mesmo tempo.
+
+. Clique em *Cluster* > *Drives*.
+. Na aba *Unidades disponíveis*, clique na caixa de seleção das unidades de partição que estão sendo removidas.
+. Clique em *Ações em massa*.
+. Clique em *Remover*.
+. Confirme a ação.
+

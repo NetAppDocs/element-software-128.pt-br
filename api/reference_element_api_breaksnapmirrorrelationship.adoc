@@ -1,0 +1,81 @@
+---
+permalink: api/reference_element_api_breaksnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,volume,volumes,break,breaking,relationship,ONTAP 
+summary: A interface web do Element usa o método BreakSnapMirrorRelationship para quebrar um relacionamento SnapMirror .  Quando uma relação SnapMirror é quebrada, o volume de destino torna-se de leitura e gravação independente, podendo então divergir da origem.  Você pode restabelecer o relacionamento com o método de API ResyncSnapMirrorRelationship.  Este método requer que o cluster ONTAP esteja disponível. 
+---
+= BreakSnapMirrorRelationship
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A interface web do Element utiliza o `BreakSnapMirrorRelationship` Método para encerrar um relacionamento SnapMirror .  Quando uma relação SnapMirror é quebrada, o volume de destino torna-se de leitura e gravação independente, podendo então divergir da origem.  Você pode restabelecer o relacionamento com o `ResyncSnapMirrorRelationship` Método da API.  Este método requer que o cluster ONTAP esteja disponível.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+O ID do ponto de extremidade do sistema de armazenamento ONTAP remoto que se comunica com o cluster de armazenamento Element.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+
+
+ a| 
+volume de destino
+ a| 
+O volume de destino no relacionamento SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+snapMirrorRelationship
+ a| 
+Um objeto contendo informações sobre o relacionamento SnapMirror interrompido.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelationship]
+
+|===
+
+
+== Novidade desde a versão
+
+10,1
+
+
+
+== Encontre mais informações
+
+xref:reference_element_api_breaksnapmirrorvolume.adoc[QuebraSnapMirrorVolume]

@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getnodestats.html 
+sidebar: sidebar 
+keywords: node,get,getting,stats,getnodestats 
+summary: Você pode usar o método GetNodeStats para recuperar as medições de atividade de alto nível para um único nó. 
+---
+= ObterEstatísticasDoNó
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetNodeStats` Método para recuperar as medições de atividade de alto nível para um único nó.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID do nó
+ a| 
+Especifica o ID do nó para o qual as estatísticas serão retornadas.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+Estatísticas do nó
+ a| 
+Informações sobre a atividade do nó.
+ a| 
+xref:reference_element_api_nodestats.adoc[Estatísticas do nó]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "GetNodeStats",
+   "params": {
+     "nodeID": 5
+   },
+   "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+     "nodeStats": {
+       "cBytesIn": 1579657943924,
+       "cBytesOut": 1683056745816,
+       "count": 119529,
+       "cpu": 0,
+       "cpuTotal": 56289,
+       "mBytesIn": 475476878,
+       "mBytesOut": 269270423,
+       "networkUtilizationCluster": 0,
+       "networkUtilizationStorage": 0,
+       "nodeHeat": {
+         "primaryTotalHeat": 0.00098,
+         "recentPrimaryTotalHeat": 0.00099,
+         "recentTotalHeat": 0.00099,
+         "totalHeat": 0.00098
+       },
+       "readLatencyUSecTotal": 10125300382,
+       "readOps": 15640075,
+       "sBytesIn": 1579657943924,
+       "sBytesOut": 1683056745816,
+       "ssLoadHistogram": {
+         "Bucket0": 4873,
+         "Bucket1To19": 6301620,
+         "Bucket20To39": 396452,
+         "Bucket40To59": 142,
+         "Bucket60To79": 0,
+         "Bucket80To100": 0
+       },
+       "timestamp": "2024-03-04T20:13:22.105428Z",
+       "usedMemory": 106335510528,
+       "writeLatencyUSecTotal": 7314512535,
+       "writeOps": 59154830
+     }
+   }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

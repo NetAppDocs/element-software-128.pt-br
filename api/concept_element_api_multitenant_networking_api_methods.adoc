@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_multitenant_networking_api_methods.html 
+sidebar: sidebar 
+keywords: multitenant,network,networking,api,prerequisites,requirements,virtual,tenant 
+summary: A rede multitenant em clusters de armazenamento Element permite que o tráfego entre vários clientes que estão em redes lógicas separadas seja conectado a um único cluster de armazenamento Element sem roteamento de camada 3. 
+---
+= Métodos de API de rede multitenant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A rede multitenant em clusters de armazenamento Element permite que o tráfego entre vários clientes que estão em redes lógicas separadas seja conectado a um único cluster de armazenamento Element sem roteamento de camada 3.
+
+As conexões com o cluster de armazenamento são segregadas na pilha de rede por meio do uso de VLAN tagging.
+
+
+
+== Pré-requisitos para configurar uma rede virtual multilocatária
+
+* Você deve ter identificado o bloco de endereços IP da rede do cliente a ser atribuído às redes virtuais nos nós de armazenamento.
+* Você deve ter identificado um endereço IP de rede de armazenamento do cliente (SVIP) para ser usado como ponto final para todo o tráfego de armazenamento.
+
+
+
+
+== Ordem de operações da rede virtual
+
+. Utilize o método AddVirtualNetwork para provisionar em massa os endereços IP que você inserir.
++
+Após adicionar uma rede virtual, o cluster executa automaticamente os seguintes passos:
+
++
+** Cada nó de armazenamento cria uma interface de rede virtual.
+** A cada nó de armazenamento é atribuído um endereço VLAN que pode ser roteado usando o SVIP virtual.
+** Os endereços IP da VLAN permanecem em cada nó mesmo em caso de reinicialização do nó.
+
+
+. Após a atribuição da interface de rede virtual e dos endereços VLAN, você pode direcionar o tráfego de rede do cliente para o SVIP virtual.
+
+
+
+
+== Encontre mais informações
+
+* xref:concept_element_api_virtual_network_naming_conventions.adoc[Convenções de nomenclatura de redes virtuais]
+* xref:reference_element_api_addvirtualnetwork.adoc[AdicionarRedeVirtual]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[ModificarRedeVirtual]
+* xref:reference_element_api_listvirtualnetworks.adoc[Lista de redes virtuais]
+* xref:reference_element_api_removevirtualnetwork.adoc[RemoverRedeVirtual]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

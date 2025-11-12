@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_roll_back_volumes_to_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: volumes, rollback, group snapshot, purge 
+summary: Você pode reverter um grupo de volumes para um snapshot do grupo a qualquer momento. 
+---
+= Reverter volumes para um instantâneo de grupo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode reverter um grupo de volumes para um snapshot do grupo a qualquer momento.
+
+Ao reverter um grupo de volumes, todos os volumes do grupo são restaurados ao estado em que se encontravam no momento em que o snapshot do grupo foi criado.  A reversão também restaura os tamanhos dos volumes para o tamanho registrado no instantâneo original.  Se o sistema tiver apagado um volume, todos os snapshots desse volume também serão apagados no momento do apagamento; o sistema não restaura nenhum snapshot de volume apagado.
+
+. Clique em *Proteção de Dados* > *Instantâneos de Grupo*.
+. Clique no ícone Ações do snapshot de grupo que você deseja usar para o rollback do volume.
+. No menu que aparecer, selecione *Reverter volumes para instantâneo de grupo*.
+. *Opcional*: Para salvar o estado atual dos volumes antes de reverter para o snapshot:
++
+.. Na caixa de diálogo *Reverter para o instantâneo*, selecione *Salvar o estado atual dos volumes como um instantâneo de grupo*.
+.. Insira um nome para o novo instantâneo.
+
+
+. Clique em *Reverter instantâneo do grupo*.
+

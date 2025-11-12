@@ -1,0 +1,37 @@
+---
+permalink: storage/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Gerencie o armazenamento com o software Element.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilize o software Element para configurar o armazenamento SolidFire , monitorar a capacidade e o desempenho do cluster e gerenciar a atividade de armazenamento em uma infraestrutura multi-inquilino.
+
+O Element é o sistema operacional de armazenamento que está no coração de um cluster SolidFire .  O software Element funciona de forma independente em todos os nós do cluster e permite que os nós do cluster combinem recursos e se apresentem como um único sistema de armazenamento para clientes externos.  O software Element é responsável por toda a coordenação do cluster, dimensionamento e gerenciamento do sistema como um todo.
+
+A interface do software é construída com base na API Element.
+
+* link:task_post_deploy_access_the_element_software_user_interface.html["Acesse a interface do usuário do software Element."]
+* link:task_post_deploy_configure_system_options.html["Configure as opções do sistema SolidFire após a implantação."]
+* link:../upgrade/concept_element_upgrade_overview.html["Atualizar componentes do sistema de armazenamento"]
+* link:task_intro_use_basic_options_in_the_element_software_ui.html["Utilize as opções básicas na interface do usuário do software Element."]
+* link:concept_system_manage_accounts_overview.html["Gerenciar contas"]
+* link:concept_system_manage_system_management.html["Gerencie seu sistema"]
+* link:concept_data_manage_data_management.html["Gerenciar volumes e volumes virtuais"]
+* link:concept_data_protection.html["Proteja seus dados"]
+* link:concept_system_monitoring_and_troubleshooting.html["Solucione problemas do seu sistema"]
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

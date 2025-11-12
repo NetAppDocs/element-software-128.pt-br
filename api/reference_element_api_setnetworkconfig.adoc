@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_setnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,set,setting,node,setnetworkconfig 
+summary: Você pode usar o método SetNetworkConfig para definir a configuração de rede de um nó.  Para exibir as configurações de rede atuais de um nó, execute o método de API GetNetworkConfig. 
+---
+= ConfigurarRede
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `SetNetworkConfig` Método para configurar a rede de um nó.  Para exibir as configurações de rede atuais de um nó, execute o seguinte comando: `GetNetworkConfig` Método da API.
+
+
+
+== Parâmetro
+
+CUIDADO:
+
+Alterar o modo de agregação de links em um nó pode causar uma perda temporária de conectividade de rede.
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+rede
+ a| 
+Um objeto contendo as configurações de rede do nó a serem modificadas.  Basta adicionar os campos que deseja alterar a este método como atributos neste parâmetro.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[rede (todas as interfaces)]
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+rede
+ a| 
+Configuração de rede nova e atual para o nó.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[rede (todas as interfaces)]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+	"method": "SetNetworkConfig",
+		"params": {
+			"network": {
+				"Bond10G": {
+					"bond-mode": "ALB"
+				},
+				"Bond1G": {
+					"netmask": "255.255.224.0"
+				},
+				"eth0": {
+					"method": "bond"
+				},
+				"lo": {
+					"method": "loopback"
+				}
+			}
+		}
+}
+----
+
+
+== Exemplo de resposta
+
+A resposta deste método é a mesma que a resposta do método GetNetworkConfig.  O método exibe todos os membros de cada objeto e inclui os novos valores de quaisquer membros que tenham sido alterados.
+
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_getnetworkconfig.adoc[GetNetworkConfig]
+* xref:reference_element_api_response_example_getnetworkconfig.adoc[GetNetworkConfig]
+

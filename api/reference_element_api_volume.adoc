@@ -1,0 +1,303 @@
+---
+permalink: api/reference_element_api_volume.html 
+sidebar: sidebar 
+keywords: object,objects,volume 
+summary: O objeto de volume contém informações de configuração sobre volumes não emparelhados ou emparelhados.  Não inclui informações de tempo de execução ou de utilização, nem contém informações sobre volumes virtuais. 
+---
+= volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de volume contém informações de configuração sobre volumes não emparelhados ou emparelhados.  Não inclui informações de tempo de execução ou de utilização, nem contém informações sobre volumes virtuais.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+acesso
+ a| 
+O tipo de acesso permitido para o volume. Valores possíveis:
+
+* `readOnly`Somente operações de leitura são permitidas.
+* `readWrite`Leitura e escrita são permitidas.
+* `locked`Não são permitidas operações de leitura ou escrita.
+* `replicationTarget`: Designado como volume alvo em um par de volumes replicados.
+
+ a| 
+corda
+
+
+
+ a| 
+ID da conta
+ a| 
+O ID da conta que contém o volume.
+ a| 
+inteiro
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+
+
+
+ a| 
+tamanho do bloco
+ a| 
+O tamanho dos blocos no volume.
+ a| 
+inteiro
+
+
+
+ a| 
+criarTempo
+ a| 
+O horário formatado em UTC+0 indica a hora em que o volume foi criado.
+ a| 
+string ISO 8601
+
+
+
+ a| 
+esquema de proteção atual
+ a| 
+O esquema de proteção que está sendo utilizado para este volume.  Se um volume estiver sendo convertido de um regime de proteção para outro, este membro refletirá o regime de proteção para o qual o volume está sendo convertido.
+ a| 
+corda
+
+
+
+ a| 
+deleteTime
+ a| 
+O horário formatado em UTC+0 indica que o volume foi excluído.
+ a| 
+string ISO 8601
+
+
+
+ a| 
+enable512e
+ a| 
+Se definido como verdadeiro, o volume fornece emulação de setor de 512 bytes.
+ a| 
+booleano
+
+
+
+ a| 
+ativarSnapMirrorReplication
+ a| 
+Se o volume pode ou não ser usado para replicação com endpoints do SnapMirror .
+ a| 
+booleano
+
+
+
+| fifoSize | Especifica o número máximo de snapshots do volume a serem mantidos simultaneamente, caso seja utilizado o modo de retenção de snapshots FIFO (First-In-First-Out). | inteiro 
+
+
+ a| 
+iqn
+ a| 
+O nome qualificado iSCSI do volume.
+ a| 
+corda
+
+
+
+ a| 
+últimoAcesso
+ a| 
+A última vez que ocorreu qualquer acesso (incluindo E/S) ao volume (formatada como UTC+0).  Se o último horário de acesso for desconhecido, esse valor será nulo.
+ a| 
+string ISO 8601
+
+
+
+ a| 
+lastAccessTimeIO
+ a| 
+A última vez que ocorreu qualquer operação de E/S no volume (formatada como UTC+0).  Se o último horário de acesso for desconhecido, esse valor será nulo.
+ a| 
+string ISO 8601
+
+
+
+| tamanho mínimo do Fifo | Especifica o número mínimo de slots de snapshot FIFO (First-In-First-Out) reservados simultaneamente pelo volume, caso o modo de retenção de snapshot FIFO esteja sendo utilizado. | inteiro 
+
+
+ a| 
+nome
+ a| 
+O nome do volume conforme fornecido no momento da criação.
+ a| 
+corda
+
+
+
+ a| 
+esquema de proteção anterior
+ a| 
+Se um volume estiver sendo convertido de um esquema de proteção para outro, este membro refletirá o esquema de proteção do qual o volume está sendo convertido.  Este membro não muda até que uma conversão seja iniciada.  Se um volume nunca foi convertido, esse membro é nulo.
+ a| 
+corda
+
+
+
+ a| 
+purgarTempo
+ a| 
+O horário formatado em UTC+0 indica o momento em que o volume foi removido do sistema.
+ a| 
+string ISO 8601
+
+
+
+ a| 
+qos
+ a| 
+Configurações de qualidade de serviço para este volume.
+ a| 
+xref:reference_element_api_qos.adoc[Qualidade de Serviço]
+
+
+
+ a| 
+qosPolicyID
+ a| 
+O ID da política de QoS associada ao volume.  O valor é nulo se o volume não estiver associado a uma política.
+ a| 
+inteiro
+
+
+
+ a| 
+scsiEUIDeviceID
+ a| 
+Identificador de dispositivo SCSI globalmente único para o volume, em formato EUI-64 de 16 bytes.
+ a| 
+corda
+
+
+
+ a| 
+scsiNAADeviceID
+ a| 
+Identificador de dispositivo SCSI globalmente único para o volume no formato NAA IEEE Registered Extended.
+ a| 
+corda
+
+
+
+ a| 
+contagem de fatias
+ a| 
+O número de fatias no volume.  Esse valor é sempre "1".
+ a| 
+inteiro
+
+
+
+ a| 
+status
+ a| 
+O estado atual do volume. Valores possíveis:
+
+* init: Um volume que está sendo inicializado e ainda não está pronto para conexões.
+* Ativo: Um volume ativo pronto para conexões.
+* Excluído: Um volume que foi marcado para exclusão, mas ainda não foi removido permanentemente.
+
+ a| 
+corda
+
+
+
+ a| 
+tamanho total
+ a| 
+O total de bytes de capacidade provisionada.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do volume virtual
+ a| 
+O ID de volume virtual exclusivo associado ao volume, se houver.
+ a| 
+UUID
+
+
+
+ a| 
+gruposDeAcessoAoVolume
+ a| 
+Lista de IDs dos grupos de acesso a volumes aos quais um volume pertence.  Esse valor é uma lista vazia se um volume não pertencer a nenhum grupo de acesso a volumes.
+ a| 
+matriz de inteiros
+
+
+
+ a| 
+UUID do grupo de consistência de volume
+ a| 
+O ID universalmente único do grupo de consistência de volume ao qual o volume pertence.
+ a| 
+UUID
+
+
+
+ a| 
+ID do volume
+ a| 
+O ID de volume exclusivo para o volume.
+ a| 
+inteiro
+
+
+
+ a| 
+volumePairs
+ a| 
+Informações sobre um volume emparelhado.  Visível apenas se um volume estiver emparelhado.  Este valor é uma lista vazia se o volume não estiver emparelhado.
+ a| 
+xref:reference_element_api_volumepair.adoc[volumePair]variedade
+
+
+
+ a| 
+volumeUUID
+ a| 
+O identificador universalmente único do volume.
+ a| 
+UUID
+
+|===
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_listactivevolumes.adoc[ListarVolumesAtivos]
+* xref:reference_element_api_listdeletedvolumes.adoc[Listar volumes excluídos]
+* xref:reference_element_api_listvolumes.adoc[Lista de volumes]
+* xref:reference_element_api_listvolumesforaccount.adoc[Listar volumes para conta]
+* xref:reference_element_api_qos.adoc[Qualidade de Serviço]
+

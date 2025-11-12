@@ -1,0 +1,69 @@
+---
+permalink: storage/concept_system_manage_drives_managing_drives.html 
+sidebar: sidebar 
+keywords: drives, manage, cluster, element ui, remove drives 
+summary: Cada nó contém uma ou mais unidades físicas que são usadas para armazenar uma parte dos dados do cluster.  O cluster utiliza a capacidade e o desempenho da unidade depois que esta for adicionada com sucesso ao cluster.  Você pode usar a interface do usuário do Element para gerenciar unidades. 
+---
+= Gerenciar unidades
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cada nó contém uma ou mais unidades físicas que são usadas para armazenar uma parte dos dados do cluster.  O cluster utiliza a capacidade e o desempenho da unidade depois que esta for adicionada com sucesso ao cluster.  Você pode usar a interface do usuário do Element para gerenciar unidades.
+
+
+
+== Detalhes das unidades
+
+A página Unidades na guia Cluster fornece uma lista das unidades ativas no cluster.  Você pode filtrar a página selecionando entre as abas Ativos, Disponíveis, Removendo, Excluindo e Com Falha.
+
+Ao inicializar um cluster pela primeira vez, a lista de unidades ativas estará vazia.  Você pode adicionar unidades que não estejam atribuídas a um cluster e que sejam listadas na guia Disponível após a criação de um novo cluster SolidFire .
+
+Os seguintes elementos aparecem na lista de unidades ativas.
+
+* *ID da unidade*
++
+O número sequencial atribuído à unidade.
+
+* *ID do nó*
++
+O número do nó é atribuído quando o nó é adicionado ao cluster.
+
+* *Nome do nó*
++
+O nome do nó que abriga a unidade.
+
+* *Vaga*
++
+O número do slot onde a unidade está fisicamente localizada.
+
+* *Capacidade*
++
+O tamanho do disco rígido, em GB.
+
+* *Serial*
++
+O número de série da unidade.
+
+* *Desperdício restante*
++
+Indicador de nível de desgaste.
+
++
+O sistema de armazenamento informa a quantidade aproximada de desgaste disponível em cada unidade de estado sólido (SSD) para gravação e apagamento de dados.  Um disco rígido que consumiu 5% de seus ciclos de gravação e apagamento para os quais foi projetado apresenta 95% de desgaste restante.  O sistema não atualiza automaticamente as informações sobre o desgaste do disco; você pode atualizar a página ou fechá-la e recarregá-la para atualizar as informações.
+
+* *Tipo*
++
+O tipo de acionamento.  O tipo pode ser bloco ou metadados.
+
+
+
+
+
+== Para maiores informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

@@ -1,0 +1,173 @@
+---
+permalink: api/reference_element_api_getbootstrapconfig.html 
+sidebar: sidebar 
+keywords: cluster,getting,bootstrap,information,node,GetBootstrapConfig 
+summary: Você pode usar o método GetBootstrapConfig para obter informações sobre o cluster e os nós a partir do arquivo de configuração de inicialização.  Utilize este método da API em um nó individual antes que ele seja adicionado a um cluster.  As informações retornadas por esse método são usadas na interface de configuração do cluster quando você cria um cluster. 
+---
+= Obter configuração do Bootstrap
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetBootstrapConfig` Método para obter informações sobre o cluster e os nós a partir do arquivo de configuração de inicialização.  Utilize este método da API em um nó individual antes que ele seja adicionado a um cluster.  As informações retornadas por esse método são usadas na interface de configuração do cluster quando você cria um cluster.
+
+
+
+== Parâmetros
+
+Este método não possui parâmetros de entrada.
+
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+nome do cluster
+ a| 
+Nome do cluster.
+ a| 
+corda
+
+
+
+ a| 
+mvip
+ a| 
+Endereço MVIP do cluster.  Vazio se o nó não fizer parte de um cluster.
+ a| 
+corda
+
+
+
+ a| 
+nomeDoNó
+ a| 
+Nome do nó.
+ a| 
+corda
+
+
+
+ a| 
+nós
+ a| 
+Lista de informações sobre cada nó que está aguardando ativamente para ingressar no cluster. Valores possíveis:
+
+* chassisType: (string) Plataforma de hardware do nó.
+* cip: (string) Endereço IP do cluster do nó.
+* compatível: (booleano) Indica se o nó é compatível com o nó no qual a chamada da API foi executada.
+* hostname: (string) Nome do host do nó.
+* mip: (string) O endereço IP de gerenciamento IPv4 do nó.
+* mipV6: (string) O endereço IP de gerenciamento IPv6 do nó.
+* nodeType: (string) Nome do modelo do nó.
+* versão: (string)Versão do software atualmente instalado no nó.
+
+ a| 
+matriz de objetos JSON
+
+
+
+ a| 
+svip
+ a| 
+Endereço SVIP do cluster.  Nulo se o nó não fizer parte de um cluster.
+ a| 
+corda
+
+
+
+ a| 
+versão
+ a| 
+Versão do software Element atualmente instalada no nó que foi chamado por este método da API.
+ a| 
+corda
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "GetBootstrapConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+	"id":1,
+	"result":{
+		"clusterName":"testname",
+		"nodeName":"testnode",
+		"svip": "10.117.1.5",
+		"mvip": "10.117.1.6",
+		"nodes":[
+			{
+				"chassisType":"R630",
+				"cip":"10.117.115.16",
+				"compatible":true,
+				"hostname":"NLABP1132",
+				"mip":"10.117.114.16",
+				"mipV6":"fd20:8b1e:b256:45a::16",
+				"nodeType":"SF2405",
+				"role":"Storage",
+				"version":"11.0"
+			},
+			{
+				"chassisType":"R630",
+				"cip":"10.117.115.17",
+				"compatible":true,
+				"hostname":"NLABP1133",
+				"mip":"10.117.114.17",
+				"mipV6":"fd20:8b1e:b256:45a::17",
+				"nodeType":"SF2405",
+				"role":"Storage",
+				"version":"11.0"
+			},
+			{
+				"chassisType":"R630",
+				"cip":"10.117.115.18",
+				"compatible":true,
+				"hostname":"NLABP1134",
+				"mip":"10.117.114.18",
+				"mipV6":"fd20:8b1e:b256:45a::18",
+				"nodeType":"SF2405",
+				"role":"Storage",
+				"version":"11.0"
+			}
+		],
+		"version":"11.0"
+	}
+}
+----
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+xref:reference_element_api_createcluster.adoc[CriarCluster]

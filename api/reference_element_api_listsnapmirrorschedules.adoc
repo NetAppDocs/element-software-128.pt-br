@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrorschedules.html 
+sidebar: sidebar 
+keywords: snapmirror,schedule,schedules,list,listing,listsnapmirrorschedules,ontap 
+summary: A interface web do software Element utiliza o método ListSnapMirrorSchedules para obter uma lista de agendamentos disponíveis em um cluster ONTAP remoto. 
+---
+= ListSnapMirrorAgendamentos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A interface web do software Element utiliza o `ListSnapMirrorSchedules` Método para obter uma lista de agendamentos disponíveis em um cluster ONTAP remoto.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Se fornecido, o sistema lista os agendamentos do endpoint com o ID de endpoint SnapMirror especificado.  Caso não seja fornecido, o sistema listará os agendamentos de todos os endpoints SnapMirror conhecidos.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+snapMirrorAgendamentos
+ a| 
+Lista dos agendamentos do SnapMirror no cluster ONTAP remoto.
+ a| 
+xref:reference_element_api_snapmirrorjobschedulecroninfo.adoc[snapMirrorJobScheduleCronInfo]variedade
+
+|===
+
+
+== Novidade desde a versão
+
+10,1

@@ -1,0 +1,43 @@
+---
+permalink: setup/concept_setup_overview.html 
+sidebar: sidebar 
+keywords: element, solidfire, install, setup, node, cluster 
+summary: Antes de começar, talvez você queira entender a sequência de instalação e configuração do software NetApp Element . 
+---
+= Saiba mais sobre como configurar o armazenamento.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Neste ponto, você já deve ter instalado o hardware.  O hardware também inclui o software Element.
+
+Em seguida, você precisará configurar o sistema de armazenamento para o seu ambiente.  Você pode configurar um cluster com nós de armazenamento ou nós Fibre Channel e gerenciá-lo usando o software Element depois de instalar e conectar os nós em uma unidade de rack e ligá-los.
+
+image::../media/sf_and_element_workflow_for_setup_shorter_workflow.png[Diagrama de fluxo de trabalho de configuração]
+
+.Passos para configurar o armazenamento
+. Selecione uma das seguintes opções:
++
+** link:../setup/concept_setup_configure_a_storage_node.html["Configure o cluster com nós de armazenamento."]
++
+Você pode configurar um cluster com nós de armazenamento e gerenciá-lo usando o software Element depois de instalar e conectar os nós em uma unidade de rack e ligá-los. Em seguida, você poderá instalar e configurar componentes adicionais em seu sistema de armazenamento.
+
+** link:../setup/concept_setup_fc_configure_a_fibre_channel_node.html["Configure um cluster com nós Fibre Channel."]
++
+Você pode configurar um cluster com nós Fibre Channel e gerenciá-lo usando o software Element depois de instalar e conectar os nós em uma unidade de rack e ligá-los. Em seguida, você poderá instalar e configurar componentes adicionais em seu sistema de armazenamento.
+
+
+
+. link:../setup/task_setup_determine_which_solidfire_components_to_install.html["Determine quais componentes do SolidFire instalar."]
+. link:../setup/task_setup_gh_redirect_set_up_a_management_node.html["Configure um nó de gerenciamento e habilite a telemetria Active IQ ."]
+
+
+
+
+== Encontre mais informações
+
+* link:../setup/concept_setup_whats_next.html["Descubra os próximos passos para usar o armazenamento."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+

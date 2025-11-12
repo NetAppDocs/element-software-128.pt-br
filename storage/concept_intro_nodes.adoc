@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_intro_nodes.html 
+sidebar: sidebar 
+keywords: sf-series nodes, nodes, block storage, storage nodes, fibre channel nodes, fc, FC 
+summary: 'Os nós são os componentes de hardware individuais que são agrupados em um cluster para serem acessados ​​como armazenamento em bloco.  Existem dois tipos de nós em um sistema de armazenamento SolidFire : nós de armazenamento e nós Fibre Channel.' 
+---
+= Nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os nós são os componentes de hardware individuais que são agrupados em um cluster para serem acessados ​​como armazenamento em bloco.  Existem dois tipos de nós em um sistema de armazenamento SolidFire : nós de armazenamento e nós Fibre Channel.

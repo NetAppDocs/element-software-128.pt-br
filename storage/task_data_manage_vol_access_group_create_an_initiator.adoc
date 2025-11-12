@@ -1,0 +1,53 @@
+---
+permalink: storage/task_data_manage_vol_access_group_create_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator, create, fc, iscsi, aliases, chap 
+summary: Você pode criar iniciadores iSCSI ou Fibre Channel e, opcionalmente, atribuir-lhes aliases. 
+---
+= Criar um iniciador
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode criar iniciadores iSCSI ou Fibre Channel e, opcionalmente, atribuir-lhes aliases.
+
+Você também pode atribuir atributos CHAP baseados no iniciador usando uma chamada de API.  Para adicionar um nome de conta CHAP e credenciais por iniciador, você deve usar o `CreateInitiator` Chamada de API para remover e adicionar acesso e atributos CHAP.  O acesso do iniciador pode ser restrito a uma ou mais VLANs especificando um ou mais IDs de rede virtuais por meio do `CreateInitiators` e `ModifyInitiators` Chamadas de API.  Caso nenhuma rede virtual seja especificada, o iniciador poderá acessar todas as redes.
+
+Para obter detalhes, consulte as informações de referência da API. link:../api/concept_element_api_about_the_api.html["Gerencie o armazenamento com a API Element."]
+
+.Passos
+. Clique em *Gestão* > *Iniciadores*.
+. Clique em *Criar Iniciador*.
+. Execute os passos para criar um único iniciador ou múltiplos iniciadores:
++
+[cols="25,75"]
+|===
+| Opção | Passos 
+
+
+ a| 
+Criar um único iniciador
+ a| 
+.. Clique em *Criar um Iniciador Único*.
+.. Insira o IQN ou WWPN do iniciador no campo *IQN/WWPN*.
+.. Insira um nome amigável para o iniciador no campo *Alias*.
+.. Clique em *Criar Iniciador*.
+
+
+
+
+ a| 
+Criar múltiplos iniciadores
+ a| 
+.. Clique em *Criar iniciadores em massa*.
+.. Insira uma lista de IQNs ou WWPNs na caixa de texto.
+.. Clique em *Adicionar Iniciadores*.
+.. Escolha um iniciador na lista resultante e clique no ícone Adicionar correspondente na coluna *Alias* para adicionar um alias para o iniciador.
+.. Clique na marca de seleção para confirmar o novo apelido.
+.. Clique em *Criar Iniciadores*.
+
+
+|===
+

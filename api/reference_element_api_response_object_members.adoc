@@ -1,0 +1,54 @@
+---
+permalink: api/reference_element_api_response_object_members.html 
+sidebar: sidebar 
+keywords: response,object,member 
+summary: 'O corpo de resposta de cada API do software Element possui as seguintes partes básicas:' 
+---
+= Membros do objeto de resposta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O corpo de resposta de cada API do software Element possui as seguintes partes básicas:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+resultado
+ a| 
+O objeto retornado pelo método.  O sistema retorna um objeto com membros nomeados correspondentes ao valor de retorno documentado para o método.  Este membro não está presente se ocorreu um erro.
+ a| 
+objeto JSON
+
+
+
+ a| 
+erro
+ a| 
+O objeto retornado quando ocorre um erro.  Este membro só está presente se ocorrer um erro.
+ a| 
+Objeto
+
+
+
+ a| 
+eu ia
+ a| 
+Um identificador usado para associar a solicitação à resposta, conforme fornecido na solicitação.
+ a| 
+string ou inteiro
+
+
+
+ a| 
+parâmetros não utilizados
+ a| 
+Uma mensagem de aviso indicando que pelo menos um parâmetro incorreto foi passado para o método da API e não foi utilizado.
+ a| 
+Objeto
+
+|===

@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_listdrivehardware.html 
+sidebar: sidebar 
+keywords: drive,hardware,list,listing,listdrivehardware,drives 
+summary: Você pode usar o método ListDriveHardware para listar todas as unidades conectadas a um nó.  Quando usado em nós individuais, esse método retorna informações sobre o hardware da unidade.  Quando usado no nó mestre do cluster MVIP, este método retorna informações para todas as unidades em todos os nós. 
+---
+= Lista de hardware de unidade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ListDriveHardware` Método para listar todas as unidades conectadas a um nó.  Quando usado em nós individuais, esse método retorna informações sobre o hardware da unidade.  Quando usado no nó mestre do cluster MVIP, este método retorna informações para todas as unidades em todos os nós.
+
+
+
+== Parâmetros
+
+
+NOTE: A linha "securitySupported": true da resposta do método não implica que as unidades sejam capazes de criptografia; apenas que o status de segurança pode ser consultado.  Se você tiver um tipo de nó com um número de modelo que termina em "-NE", os comandos para ativar os recursos de segurança nessas unidades falharão.
+
+Este método possui o seguinte parâmetro:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+vigor
+ a| 
+Defina como verdadeiro para executar este método em todos os nós.
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+hardware de unidade
+ a| 
+Informações de hardware da unidade retornadas para o nó.
+ a| 
+matriz de objetos JSON
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+"method": "ListDriveHardware",
+"params": {},
+"id" : 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveHardware": [
+      {
+        "canonicalName": "sda",
+        "connected": true,
+        "dev": 2048,
+        "devPath": "/dev/slot0",
+        "driveEncryptionCapability": "fips",
+        "driveType": "Slice",
+        "lifeRemainingPercent": 98,
+        "lifetimeReadBytes": 0,
+        "lifetimeWriteBytes": 14012129542144,
+        "name": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "path": "/dev/sda",
+        "pathLink": "/dev/slot0",
+        "powerOnHours": 15489,
+        "product": "SAMSUNG MZ7GE240HMGR-00003",
+        "reallocatedSectors": 0,
+        "reserveCapacityPercent": 100,
+        "scsiCompatId": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "scsiState": "Running",
+        "securityAtMaximum": false,
+        "securityEnabled": true,
+        "securityFrozen": false,
+        "securityLocked": false,
+        "securitySupported": true,
+        "serial": "S1M9NWAG501251",
+        "size": 240057409536,
+        "slot": 0,
+        "uncorrectableErrors": 0,
+        "uuid": "789aa05d-e49b-ff4f-f821-f60eed8e43bd",
+        "vendor": "Samsung",
+        "version": "EXT1303Q"
+      }
+   ]
+}
+----
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+xref:reference_element_api_enableencryptionatrest.adoc[Habilitar criptografia em repouso]

@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_account.html 
+sidebar: sidebar 
+keywords: account,object,accounts 
+summary: 'O objeto de conta contém informações sobre uma conta.  Este objeto inclui apenas informações "configuradas" sobre a conta, não incluindo informações de tempo de execução ou de uso.' 
+---
+= conta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O `account` O objeto contém informações sobre uma conta.  Este objeto inclui apenas informações "configuradas" sobre a conta, não incluindo informações de tempo de execução ou de uso.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+`accountID`
+ a| 
+O ID exclusivo da conta.
+ a| 
+inteiro
+
+
+
+ a| 
+`attributes`
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+
+
+
+ a| 
+`enableChap`
+ a| 
+Especifica se as credenciais da conta CHAP podem ser usadas por um iniciador para acessar volumes.
+ a| 
+booleano
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+O segredo CHAP do iniciador.
+ a| 
+corda
+
+
+
+ a| 
+`status`
+ a| 
+O estado atual da conta. Valores possíveis:
+
+* Ativo: Uma conta ativa.
+* bloqueado: Uma conta bloqueada.
+* Removido: Uma conta que foi excluída e removida permanentemente.
+
+ a| 
+corda
+
+
+
+ a| 
+`storageContainerID`
+ a| 
+O ID exclusivo do contêiner de armazenamento de volume virtual associado a esta conta.
+ a| 
+UUID
+
+
+
+ a| 
+`targetSecret`
+ a| 
+O alvo é o segredo CHAP.
+ a| 
+corda
+
+
+
+ a| 
+`username`
+ a| 
+O nome de usuário da conta.
+ a| 
+corda
+
+
+
+ a| 
+`volumes`
+ a| 
+Lista dos IDs de volume dos volumes pertencentes a esta conta.
+ a| 
+matriz de inteiros
+
+|===
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_addaccount.adoc[Adicionar conta]
+* xref:reference_element_api_getaccountbyid.adoc[ObterContaPorID]
+* xref:reference_element_api_getaccountbyname.adoc[ObterContaPorNome]
+* xref:reference_element_api_listaccounts.adoc[Lista de contas]
+

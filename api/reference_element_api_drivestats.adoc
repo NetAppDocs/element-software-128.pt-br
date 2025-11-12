@@ -1,0 +1,254 @@
+---
+permalink: api/reference_element_api_drivestats.html 
+sidebar: sidebar 
+keywords: object,objects,driveStats 
+summary: O objeto driveStats contém medições de atividade de alto nível para uma única unidade.  Você pode obter informações de medição com o método de API GetDriveStats. 
+---
+= Estatísticas do drive
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto driveStats contém medições de atividade de alto nível para uma única unidade.  Você pode recuperar informações de medição com o método da API. `GetDriveStats` .
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+sessões ativas
+ a| 
+Número de sessões iSCSI que estão usando esta unidade no momento (presente apenas para unidades de metadados).
+ a| 
+inteiro
+
+
+
+ a| 
+driveID
+ a| 
+Identificação única da unidade no cluster.
+ a| 
+inteiro
+
+
+
+ a| 
+failedDieCount
+ a| 
+Número de componentes de hardware da unidade com falha.
+ a| 
+inteiro
+
+
+
+ a| 
+iosEmProgresso
+ a| 
+O número de operações de E/S em andamento nesta unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+porcentagem de vida restante
+ a| 
+Indicador de desgaste da mídia de acionamento.
+ a| 
+inteiro
+
+
+
+ a| 
+tempo de vidaReadBytes
+ a| 
+Total de bytes lidos desta unidade durante toda a sua vida útil.
+ a| 
+inteiro
+
+
+
+ a| 
+tempo de vidaEscritaBytes
+ a| 
+Total de bytes gravados nesta unidade durante sua vida útil.
+ a| 
+inteiro
+
+
+
+ a| 
+horas de funcionamento
+ a| 
+Número de horas em que este disco rígido esteve ligado.
+ a| 
+inteiro
+
+
+
+ a| 
+lê
+ a| 
+Número de chamadas read() por segundo para esta unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+lerBytes
+ a| 
+Total de bytes lidos da unidade devido às operações do cliente.
+ a| 
+inteiro
+
+
+
+ a| 
+leiturasCombinadas
+ a| 
+O número de chamadas read() para setores adjacentes que poderiam ser combinadas em uma leitura maior.
+ a| 
+inteiro
+
+
+
+ a| 
+lerMsec
+ a| 
+O número de milissegundos gastos na leitura.
+ a| 
+inteiro
+
+
+
+ a| 
+readOps
+ a| 
+Total de operações de leitura na unidade devido às operações do cliente.
+ a| 
+inteiro
+
+
+
+ a| 
+setores realocados
+ a| 
+Número de setores defeituosos substituídos nesta unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+Percentual de capacidade de reserva
+ a| 
+A capacidade de reserva disponível da unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+carimbo de data/hora
+ a| 
+A hora atual no formato UTC+0.
+ a| 
+string de data ISO 8601
+
+
+
+ a| 
+capacidade total
+ a| 
+Capacidade total da unidade, em bytes.
+ a| 
+inteiro
+
+
+
+ a| 
+erros incorrigíveis
+ a| 
+O valor de Erros Incorrigíveis Reportados do sistema de monitoramento SMART (Tecnologia de Automonitoramento, Análise e Relatório) na unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+capacidade usada
+ a| 
+Capacidade utilizada da unidade, em bytes.
+ a| 
+inteiro
+
+
+
+ a| 
+memória usada
+ a| 
+Quantidade de memória atualmente utilizada pelo nó que hospeda esta unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+escreve
+ a| 
+O número de chamadas write() por segundo para esta unidade.
+ a| 
+inteiro
+
+
+
+ a| 
+escreverBytes
+ a| 
+Total de bytes gravados na unidade devido à atividade do cliente.
+ a| 
+inteiro
+
+
+
+ a| 
+escreveCombinado
+ a| 
+O número de chamadas write() para setores adjacentes que poderiam ser combinadas em uma escrita maior.
+ a| 
+inteiro
+
+
+
+ a| 
+writeMsec
+ a| 
+O número de milissegundos gastos na escrita.
+ a| 
+inteiro
+
+
+
+ a| 
+writeOps
+ a| 
+Total de operações de gravação na unidade devido à atividade do cliente.
+ a| 
+inteiro
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_getdrivestats.adoc[GetDriveStats]

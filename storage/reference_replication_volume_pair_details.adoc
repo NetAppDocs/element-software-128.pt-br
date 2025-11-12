@@ -1,0 +1,71 @@
+---
+permalink: storage/reference_replication_volume_pair_details.html 
+sidebar: sidebar 
+keywords: volume pairs, replication, data protection 
+summary: 'A página "Pares de Volumes" na aba "Proteção de Dados" fornece informações sobre volumes que foram emparelhados ou estão em processo de emparelhamento.  O sistema exibe mensagens de emparelhamento e progresso na coluna Status do Volume.' 
+---
+= Detalhes do par de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A página "Pares de Volumes" na aba "Proteção de Dados" fornece informações sobre volumes que foram emparelhados ou estão em processo de emparelhamento.  O sistema exibe mensagens de emparelhamento e progresso na coluna Status do Volume.
+
+* *EU IA*
++
+ID gerado pelo sistema para o volume.
+
+* *Nome*
++
+O nome dado ao volume quando foi criado.  Os nomes dos volumes podem ter até 223 caracteres e conter az, 0-9 e hífen (-).
+
+* *Conta*
++
+Nome da conta atribuída ao volume.
+
+* *Status do Volume*
++
+Estado de replicação do volume
+
+* *Status do Instantâneo*
++
+Estado do volume de instantâneo.
+
+* *Modo*
++
+O cliente escreve o método de replicação.  Os valores possíveis são os seguintes:
+
++
+** Assíncrono
+** Somente instantâneo
+** Sincronizar
+
+
+* *Direção*
++
+A direção dos dados de volume:
+
++
+** Ícone de volume de origem (image:../media/source_icon_for_volume_pairs.png["Indica que os dados estão sendo gravados em um destino fora do cluster."] ) indica que os dados estão sendo gravados em um destino fora do cluster.
+** Ícone de volume alvo (image:../media/target_icon_for_volume_pairs.png["Ícone que indica que dados estão sendo gravados no volume local a partir de uma fonte externa."] ) indica que os dados estão sendo gravados no volume local a partir de uma fonte externa.
+
+
+* *Atraso Assíncrono*
++
+Tempo decorrido desde a última sincronização do volume com o cluster remoto.  Se o volume não estiver emparelhado, o valor será nulo.
+
+* *Cluster Remoto*
++
+Nome do cluster remoto no qual o volume reside.
+
+* *ID do Volume Remoto*
++
+ID do volume no cluster remoto.
+
+* *Nome do Volume Remoto*
++
+Nome atribuído ao volume remoto quando ele foi criado.
+
+

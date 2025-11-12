@@ -1,0 +1,187 @@
+---
+permalink: api/reference_element_api_fault.html 
+sidebar: sidebar 
+keywords: object,objects,fault 
+summary: O objeto de falha contém informações sobre as falhas detectadas no cluster.  O método ListClusterFaults retorna informações sobre falhas no cluster. 
+---
+= falta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto de falha contém informações sobre as falhas detectadas no cluster.  O `ListClusterFaults` O método retorna informações sobre falhas no cluster.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+blocosAtualizar
+ a| 
+A falha impede a atualização. Valores possíveis:
+
+* Verdadeiro: A falha impede uma atualização.
+* falso: A falha não impede uma atualização.
+
+ a| 
+booleano
+
+
+
+ a| 
+clusterFaultID
+ a| 
+O ID exclusivo associado a cada falha do cluster.
+ a| 
+inteiro
+
+
+
+ a| 
+código
+ a| 
+O código de falha correspondente à falha específica que foi detectada.  Para obter mais detalhes, consulte Códigos de Falha do Cluster.
+ a| 
+corda
+
+
+
+ a| 
+dados
+ a| 
+Informações adicionais específicas sobre a falha.
+ a| 
+objeto JSON
+
+
+
+ a| 
+data
+ a| 
+A hora atual no formato UTC+0.
+ a| 
+string ISO 8601
+
+
+
+ a| 
+detalhes
+ a| 
+Descrição da falha com detalhes adicionais.
+ a| 
+corda
+
+
+
+ a| 
+driveID
+ a| 
+O primeiro ID de unidade na lista de IDs de unidade.  Se a lista de IDs de unidades estiver vazia (o que significa que nenhuma falha relacionada a unidades foi retornada), esse valor será 0.
+ a| 
+inteiro
+
+
+
+ a| 
+IDs de unidade
+ a| 
+Uma lista dos valores de ID das unidades às quais essa falha se refere.  Inclui soluções para problemas relacionados a acionamentos.  Caso não haja nenhum valor, trata-se de uma matriz vazia.
+ a| 
+matriz de inteiros
+
+
+
+ a| 
+ID da falha de hardware do nó
+ a| 
+O identificador atribuído a uma falha de hardware no cluster.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do nó
+ a| 
+O ID do nó ao qual esta falha se refere.  Incluído para falhas de nó e de acionamento; caso contrário, definido como 0.
+ a| 
+inteiro
+
+
+
+ a| 
+resolvido
+ a| 
+O estado em que a falha foi resolvida. Valores possíveis:
+
+* Verdadeiro: A falha não é mais detectada.
+* falso: A falha ainda está presente.
+
+ a| 
+booleano
+
+
+
+ a| 
+data de resolução
+ a| 
+A data e a hora em que a falha foi resolvida.
+ a| 
+string ISO 8601
+
+
+
+ a| 
+ID do serviço
+ a| 
+O serviço associado à falha.  Esse valor é "0" (zero) se a falha não estiver associada a um serviço.
+ a| 
+inteiro
+
+
+
+ a| 
+gravidade
+ a| 
+A gravidade da falha. Valores possíveis:
+
+* Aviso: Problema menor.  O cluster está funcionando e as atualizações são permitidas neste nível de severidade.
+* Erro: Uma falha que geralmente não deve afetar o serviço (exceto possível degradação de desempenho ou perda de alta disponibilidade).  Algumas funcionalidades podem estar desativadas.
+* Crítico: Uma falha grave que está afetando o serviço.  O sistema não consegue atender às solicitações da API ou às operações de entrada/saída do cliente e corre o risco de perda de dados.
+* Boa prática: Falhas desencadeadas por configuração de sistema subótima.
+
+ a| 
+corda
+
+
+
+ a| 
+tipo
+ a| 
+O tipo de falha. Valores possíveis:
+
+* nó: Uma falha que afeta um nó inteiro.
+* acionamento: Uma falha que afeta um acionamento individual.
+* cluster: Uma falha que afeta todo o cluster.
+* serviço: Uma falha que afeta um serviço no cluster.
+* Volume: Uma falha que afeta um volume individual.
+
+ a| 
+corda
+
+|===
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_listclusterfaults.adoc[Listar falhas de cluster]
+* link:../storage/reference_monitor_cluster_fault_codes.html["Códigos de falha do painel de instrumentos"]
+

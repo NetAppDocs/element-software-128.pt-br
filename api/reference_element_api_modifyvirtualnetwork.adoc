@@ -1,0 +1,212 @@
+---
+permalink: api/reference_element_api_modifyvirtualnetwork.html 
+sidebar: sidebar 
+keywords: virtual,network,modify,modifying,change,changing,edit,editing,modifyvirtualnetwork 
+summary: Você pode usar o método ModifyVirtualNetwork para alterar os atributos de uma rede virtual existente. 
+---
+= ModificarRedeVirtual
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ModifyVirtualNetwork` Método para alterar os atributos de uma rede virtual existente.
+
+Este método permite adicionar ou remover blocos de endereços, alterar a máscara de rede ou modificar o nome ou a descrição da rede virtual.  Você também pode usá-lo para ativar ou desativar namespaces, bem como adicionar ou remover um gateway, caso os namespaces estejam ativados na rede virtual.
+
+
+NOTE: Este método requer o virtualNetworkID ou o virtualNetworkTag como parâmetro, mas não ambos.
+
+CUIDADO:
+
+Habilitar ou desabilitar a funcionalidade de VLANs de armazenamento roteáveis para uma rede virtual existente, alterando o parâmetro de namespace, interrompe todo o tráfego tratado pela rede virtual.  O ideal é alterar o parâmetro de namespace durante uma janela de manutenção programada.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+
+
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID de rede virtual
+ a| 
+Identificador único da rede virtual a ser modificada.  Este é o ID da rede virtual atribuído pelo cluster.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+virtualNetworkTag
+ a| 
+A etiqueta de rede que identifica a rede virtual a ser modificada.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+blocos de endereço
+ a| 
+O novo bloco de endereços a ser configurado para esta rede virtual.  Isso pode incluir a adição de novos blocos de endereço ao objeto existente ou a omissão de blocos de endereço não utilizados que precisam ser removidos.  Alternativamente, você pode aumentar ou reduzir o tamanho dos blocos de endereços existentes.  Você só pode aumentar o tamanho dos blocos de endereço iniciais para um objeto de Rede Virtual; você nunca poderá diminuí-lo.  Membros obrigatórios para este objeto:
+
+* Início: O início do intervalo de endereços IP.  (corda)
+* tamanho: O número de endereços IP a serem incluídos no bloco.  (inteiro)
+
+ a| 
+objeto JSON
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+portal
+ a| 
+O endereço IP de um gateway da rede virtual.  Este parâmetro só é válido se o parâmetro de namespace estiver definido como verdadeiro.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+nome
+ a| 
+O novo nome da rede virtual.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+espaço de nomes
+ a| 
+Quando definido como verdadeiro, habilita a funcionalidade de VLANs de armazenamento roteáveis, recriando a rede virtual e configurando um namespace para contê-la.  Quando definido como falso, desativa a funcionalidade VRF para a rede virtual.  Alterar esse valor interrompe o tráfego que passa por essa rede virtual.
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+máscara de rede
+ a| 
+Nova máscara de rede para esta rede virtual.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+svip
+ a| 
+O endereço IP virtual de armazenamento para esta rede virtual.  O SVIP de uma rede virtual não pode ser alterado.  Você precisa criar uma nova rede virtual para usar um endereço SVIP diferente.
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método não possui valores de retorno.
+
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "ModifyVirtualNetwork",
+  "params": {
+    "virtualNetworkID": 2,
+    "name": "ESX-VLAN-3112",
+    "addressBlocks": [
+     {
+      "start": "10.1.112.1",
+      "size": 20
+     },
+     {
+      "start": "10.1.112.100",
+      "size": 20
+     }
+   ],
+    "netmask": "255.255.255.0",
+    "gateway": "10.0.1.254",
+    "svip": "10.1.112.200",
+    "attributes": {}
+  },
+  "id":1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

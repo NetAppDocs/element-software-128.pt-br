@@ -1,0 +1,51 @@
+---
+permalink: storage/task_data_manage_volumes_purge_a_volume.html 
+sidebar: sidebar 
+keywords: volumes, purge a volume 
+summary: Quando um volume é apagado, ele é removido permanentemente do sistema.  Todos os dados do volume foram perdidos. 
+---
+= Eliminar um volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando um volume é apagado, ele é removido permanentemente do sistema.  Todos os dados do volume foram perdidos.
+
+O sistema elimina automaticamente os volumes excluídos oito horas após a exclusão.  No entanto, se desejar excluir um volume antes do horário agendado, você pode fazê-lo.
+
+
+NOTE: Se você excluir um grande número de volumes de uma só vez, ou se cada volume excluído tiver muitos snapshots associados, o processo de exclusão poderá falhar e retornar o erro "xDBConnectionLoss", que aparecerá no log da API na interface web do Element.  Caso isso aconteça, tente a limpeza novamente com menos volumes.
+
+. Selecione *Gestão* > *Volumes*.
+. Clique no botão *Excluído*.
+. Execute os passos para apagar um único volume ou vários volumes.
++
+|===
+
+
+| Opção | Passos 
+
+
+ a| 
+Excluir um único volume
+ a| 
+.. Clique no ícone Ações do volume que deseja apagar.
+.. Clique em *Limpar*.
+.. Confirme a ação.
+
+
+
+
+ a| 
+Eliminar vários volumes
+ a| 
+.. Selecione os volumes que deseja apagar.
+.. Clique em *Ações em massa*.
+.. No menu que aparecer, selecione *Limpar*.
+.. Confirme a ação.
+
+
+|===
+

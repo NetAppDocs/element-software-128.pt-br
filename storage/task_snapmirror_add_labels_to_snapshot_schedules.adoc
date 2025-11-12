@@ -1,0 +1,55 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshot_schedules.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, schedules, policies 
+summary: Você pode adicionar rótulos do SnapMirror aos agendamentos de snapshots para garantir que uma política do SnapMirror seja aplicada.  Você pode visualizar os rótulos disponíveis em uma caixa de diálogo de relacionamento SnapMirror existente ou no Gerenciador de Sistemas NetApp ONTAP. 
+---
+= Adicione rótulos do SnapMirror aos agendamentos de snapshots
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar rótulos do SnapMirror aos agendamentos de snapshots para garantir que uma política do SnapMirror seja aplicada.  Você pode visualizar os rótulos disponíveis em uma caixa de diálogo de relacionamento SnapMirror existente ou no Gerenciador de Sistemas NetApp ONTAP.
+
+.O que você vai precisar
+* O SnapMirror deve estar habilitado no nível do cluster.
+* O rótulo que você deseja adicionar já existe no ONTAP.
+
+
+.Passos
+. Clique em *Proteção de Dados* > *Agendamentos*.
+. Adicione um rótulo SnapMirror a um agendamento de uma das seguintes maneiras:
++
+[cols="25,75"]
+|===
+| Opção | Passos 
+
+
+ a| 
+Criar um novo cronograma
+ a| 
+.. Selecione *Criar agendamento*.
+.. Insira todos os outros detalhes relevantes.
+.. Selecione *Criar agendamento*.
+
+
+
+
+ a| 
+Modificação do cronograma existente
+ a| 
+.. Clique no ícone *Ações* da programação à qual deseja adicionar um rótulo e selecione *Editar*.
+.. Na caixa de diálogo que aparecer, insira o texto no campo * Rótulo do SnapMirror *.
+.. Selecione *Salvar alterações*.
+
+
+|===
+
+
+
+
+== Encontre mais informações
+
+xref:task_data_protection_create_a_snapshot_schedule.adoc[Criar um cronograma instantâneo]

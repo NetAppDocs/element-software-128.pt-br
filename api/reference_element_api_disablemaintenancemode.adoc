@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_disablemaintenancemode.html 
+sidebar: sidebar 
+keywords: disable,maintenance,mode 
+summary: Você pode usar o método DisableMaintenanceMode para retirar um nó de armazenamento do modo de manutenção.  Você só deve desativar o modo de manutenção depois de concluir a manutenção e o nó estiver online. 
+---
+= DesativarModoDeManutenção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `DisableMaintenanceMode` Método para retirar um nó de armazenamento do modo de manutenção.  Você só deve desativar o modo de manutenção depois de concluir a manutenção e o nó estiver online.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+nós
+ a| 
+Lista de IDs de nós de armazenamento a serem retirados do modo de manutenção.
+ a| 
+matriz de inteiros
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+manipulador assíncrono
+ a| 
+Você pode usar o método GetAsyncResult para recuperar esse asyncHandle e determinar quando a transição para o modo de manutenção estiver concluída.
+ a| 
+inteiro
+
+
+
+ a| 
+modoatual
+ a| 
+O estado atual do nó em modo de manutenção. Valores possíveis:
+
+* Desativado: Nenhuma manutenção foi solicitada.
+* Falha na recuperação: O nó não conseguiu se recuperar do modo de manutenção.
+* Inesperado: O nó foi encontrado offline, mas estava no modo Desativado.
+* Recuperando da manutenção: O nó está em processo de recuperação do modo de manutenção.
+* PreparandoParaManutenção: Estão sendo tomadas medidas para preparar um nó para a realização de manutenção.
+* ProntoParaManutenção: O nó está pronto para que a manutenção seja realizada.
+
+ a| 
+Modo de manutenção (string)
+
+
+
+ a| 
+modo solicitado
+ a| 
+O estado do modo de manutenção solicitado para o nó. Valores possíveis:
+
+* Desativado: Nenhuma manutenção foi solicitada.
+* Falha na recuperação: O nó não conseguiu se recuperar do modo de manutenção.
+* Inesperado: O nó foi encontrado offline, mas estava no modo Desativado.
+* Recuperando da manutenção: O nó está em processo de recuperação do modo de manutenção.
+* PreparandoParaManutenção: Estão sendo tomadas medidas para preparar um nó para a realização de manutenção.
+* ProntoParaManutenção: O nó está pronto para que a manutenção seja realizada.
+
+ a| 
+Modo de manutenção (string)
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "DisableMaintenanceMode",
+  "params": {
+    "nodes": [6]
+  },
+"id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "Disabled",
+        "asyncHandle": 1,
+        "currentMode": "Enabled"
+    }
+}
+----
+
+
+== Novidade desde a versão
+
+12,2
+
+
+
+== Encontre mais informações
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["Conceitos do modo de manutenção de armazenamento NetApp HCI"^]

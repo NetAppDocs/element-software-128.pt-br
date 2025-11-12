@@ -1,0 +1,48 @@
+---
+permalink: storage/task_snapmirror_performing_failback_when_source_volume_no_longer_exists.html 
+sidebar: sidebar 
+keywords: element, ui, failback, perform, source, volume, snapmirror, dr, disaster, recovery 
+summary: Você pode ressincronizar o volume de origem original e reverter o processo usando a interface do usuário do NetApp Element .  Esta seção se aplica a cenários em que o volume de origem original foi perdido, mas o cluster original permanece intacto.  Para obter instruções sobre como restaurar para um novo cluster, consulte a documentação no site de suporte da NetApp . 
+---
+= Execute um failback quando o volume de origem não existir mais.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode ressincronizar o volume de origem original e reverter o processo usando a interface do usuário do NetApp Element .  Esta seção se aplica a cenários em que o volume de origem original foi perdido, mas o cluster original permanece intacto.  Para obter instruções sobre como restaurar para um novo cluster, consulte a documentação no site de suporte da NetApp .
+
+.O que você vai precisar
+* Existe uma relação de replicação interrompida entre os volumes Element e ONTAP .
+* O volume do Elemento está irremediavelmente perdido.
+* O nome do volume original aparece como NÃO ENCONTRADO.
+
+
+.Passos
+. Na interface do usuário do Element, localize o relacionamento que você quebrou para realizar o failover.
++
+*Boa prática:* Anote a política do SnapMirror e os detalhes do relacionamento original que foi interrompido.  Essas informações serão necessárias para recriar o relacionamento.
+
+. Clique no ícone *Ações* e clique em *Reverter Sincronização*.
+. Confirme a ação.
++
+
+NOTE: A operação de ressincronização reversa cria uma nova relação na qual os papéis do volume de origem original e do volume de destino são invertidos (isso resulta em duas relações, pois a relação original persiste).  Como o volume original não existe mais, o sistema cria um novo volume Element com o mesmo nome e tamanho do volume de origem original.  Ao novo volume é atribuída uma política de QoS padrão chamada sm-recovery e ele é associado a uma conta padrão também chamada sm-recovery.  Você precisará editar manualmente a conta e a política de QoS para todos os volumes criados pelo SnapMirror, a fim de substituir os volumes de origem originais que foram destruídos.
+
++
+Os dados do snapshot mais recente são transferidos para o novo volume como parte da operação de ressincronização reversa.  Você pode continuar acessando e gravando dados no volume ativo no destino, mas precisará desconectar todos os hosts do volume ativo e executar uma atualização do SnapMirror antes de restabelecer o relacionamento primário original em uma etapa posterior.  Após concluir a resincronização reversa e garantir que não haja sessões ativas conectadas ao volume no destino e que os dados mais recentes estejam no volume primário original, siga os passos abaixo para concluir o failback e reativar o volume primário original:
+
+. Clique no ícone *Ações* da relação inversa que foi criada durante a operação de ressincronização reversa e clique em *Interromper*.
+. Clique no ícone *Ações* da relação original, na qual o volume de origem não existe, e clique em *Excluir*.
+. Clique no ícone *Ações* da relação inversa, que você quebrou na etapa 4, e clique em *Ressincronizar*.
+. Isso inverte a origem e o destino, resultando em uma relação com a mesma origem e o mesmo destino de volume da relação original.
+. Clique no ícone *Ações* e em *Editar* para atualizar essa relação com a política de QoS original e as configurações de agendamento que você anotou.
+. Agora você pode excluir com segurança a relação inversa que você ressincronizou na etapa 6.
+
+
+
+
+== Encontre mais informações
+
+xref:concept_snapmirror_failback_scenarios.adoc[Cenários de failback do SnapMirror]

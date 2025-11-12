@@ -1,0 +1,29 @@
+---
+permalink: hardware/task_rtfi_deployment_and_install_options.html 
+sidebar: sidebar 
+keywords: rtfi, return, factory, image, deploy, deployment, install, installation, media 
+summary: Baixe a imagem ISO do RTFI específica para a sua versão do software Element no site de suporte da NetApp e implante-a usando uma mídia inicializável e instalável. 
+---
+= Opções de implantação e instalação do RTFI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O processo Return To Factory Image (RTFI) utiliza uma mídia inicializável e instalável com um sistema operacional Linux minimalista e totalmente independente para implantar o software Element em um nó.  Você pode baixar a imagem ISO RTFI específica para a sua versão do software Element em https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Site de suporte da NetApp"^] .
+
+Após baixar a imagem ISO do RTFI, você pode implantá-la de acordo com um dos seguintes métodos comumente usados:
+
+* *Pen drive USB físico*: Você pode gravar uma imagem ISO inicializável do software Element em um pen drive USB.  Para obter instruções, consulte o artigo da Base de Conhecimento. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["Como criar uma chave RTFI para reinstalar a imagem de um nó de armazenamento SolidFire"^] .  Insira a chave USB com a ISO no nó e inicialize a partir da chave USB.
+* *Mídia virtual usando a porta de gerenciamento do controlador de gerenciamento da placa-mãe (BMC)*: Você pode usar o BMC para se conectar dinamicamente à ISO localizada no sistema cliente.  A imagem ISO é disponibilizada ao sistema operacional host como uma unidade virtual (CD ou DVD).  Para obter mais informações, consulte o artigo da Base de Conhecimento. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_RTFI_a_node_via_BMC["Como solicitar a leitura das informações (RTFI) de um nó via BMC"^] .
+* *Inicialização de rede usando um Ambiente de Execução de Pré-inicialização (PXE), Protocolo de Transferência de Arquivos Trivial (TFTP) ou FTP*: Em vez de descompactar manualmente uma imagem ISO, você pode usar `autofs` Extrair automaticamente uma imagem quando o processo RTFI a solicitar.  Esse mecanismo de implantação requer mais configuração inicial, mas permite a automação correta e a escalabilidade da instalação.
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

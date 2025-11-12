@@ -1,0 +1,232 @@
+---
+permalink: api/reference_element_api_node.html 
+sidebar: sidebar 
+keywords: object,objects,node 
+summary: O objeto nó contém informações sobre cada nó no cluster.  Você pode recuperar essas informações usando os métodos ListActiveNodes e ListAllNodes. 
+---
+= nó
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto nó contém informações sobre cada nó no cluster.  Você pode obter essas informações usando o `ListActiveNodes` e `ListAllNodes` métodos.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+ID de serviço associado
+ a| 
+O ID do serviço Fibre Channel para o nó.  "0" se o nó não for um nó Fibre Channel.
+ a| 
+inteiro
+
+
+
+ a| 
+ID do serviço mestre associado
+ a| 
+ID do serviço principal para o nó.
+ a| 
+inteiro
+
+
+
+ a| 
+atributos
+ a| 
+Lista de pares nome-valor em formato de objeto JSON.
+ a| 
+objeto JSON
+
+
+
+ a| 
+nomeDoChassis
+ a| 
+Identifica um chassi de forma única; idêntico para todos os nós em um único chassi.
+ a| 
+corda
+
+
+
+ a| 
+cip
+ a| 
+O endereço IP do cluster atribuído ao nó.
+ a| 
+corda
+
+
+
+ a| 
+cipi
+ a| 
+Interface de rede utilizada para comunicação em cluster.
+ a| 
+corda
+
+
+
+ a| 
+nomeDoDomínioProteçãoPersonalizado
+ a| 
+Identifica exclusivamente um domínio de proteção personalizado.  Esse nome é idêntico para todos os nós de armazenamento em todos os chassis de um determinado domínio de proteção personalizado.
+ a| 
+corda
+
+
+
+ a| 
+fibreChannelTargetPortGroup
+ a| 
+O grupo-alvo associado a este nó.  "nulo" se o nó não for um nó Fibre Channel.
+ a| 
+inteiro
+
+
+
+ a| 
+modo de manutenção
+ a| 
+Indica em qual modo um nó se encontra durante a manutenção.
+ a| 
+n / D
+
+
+
+ a| 
+mip
+ a| 
+O endereço IP usado para o gerenciamento do nó.
+ a| 
+corda
+
+
+
+ a| 
+mipi
+ a| 
+Interface de rede utilizada para gerenciamento de nós.
+ a| 
+corda
+
+
+
+ a| 
+nome
+ a| 
+Nome do host do nó.
+ a| 
+corda
+
+
+
+ a| 
+ID do nó
+ a| 
+NodeID para este nó.
+ a| 
+inteiro
+
+
+
+ a| 
+slot de nó
+ a| 
+Para plataformas HCI, a letra correspondente ao slot do chassi em que este nó está localizado ("A", "B", "C" ou "D").  Para plataformas de armazenamento, esse valor é nulo.
+ a| 
+corda
+
+
+
+ a| 
+informações da plataforma
+ a| 
+Informações de hardware para o nó.  Membros:
+
+* chassisType: A plataforma de hardware do nó.
+* cpuModel: O modelo da CPU da plataforma de hardware.
+* nodeMemoryGB: A quantidade de memória instalada na plataforma física, em GB.
+* nodeType: O nome do modelo do nó.
+* platformConfigVersion: A versão do software configurada para o hardware deste nó.
+
+ a| 
+objeto JSON
+
+
+
+ a| 
+papel
+ a| 
+O papel do nó no cluster. Valores possíveis:
+
+* Gerenciamento
+* Armazenar
+* Calcular
+* Testemunha
+
+ a| 
+
+
+
+ a| 
+gole
+ a| 
+O endereço IP de armazenamento atribuído ao nó.
+ a| 
+corda
+
+
+
+ a| 
+sipi
+ a| 
+A interface de rede utilizada para o tráfego de armazenamento.
+ a| 
+corda
+
+
+
+ a| 
+versão do software
+ a| 
+Retorna a versão atual do software Element em execução no nó.
+ a| 
+corda
+
+
+
+ a| 
+uuid
+ a| 
+O identificador universalmente único associado a este nó.
+ a| 
+corda
+
+
+
+ a| 
+Redes virtuais
+ a| 
+Objeto contendo endereços IP e IDs de redes virtuais.
+ a| 
+xref:reference_element_api_virtualnetwork.adoc[Rede virtual]variedade
+
+|===
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_listactivenodes.adoc[Listar nós ativos]
+* xref:reference_element_api_listallnodes.adoc[ListarTodosOsNós]
+

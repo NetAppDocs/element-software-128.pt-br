@@ -1,0 +1,430 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_storage_firmware.html 
+summary: Como parte de uma atualização do sistema NetApp SolidFire , você atualiza o firmware associado aos seus nós de armazenamento. 
+keywords: netapp, element, hcc, firmware, storage firmware 
+---
+= Atualizar firmware de armazenamento
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do Element 12.0 e da versão 2.14 dos serviços de gerenciamento, você pode realizar atualizações somente de firmware em seus nós de armazenamento usando a interface do usuário do NetApp Hybrid Cloud Control e a API REST.  Este procedimento não atualiza o software Element e permite que você atualize o firmware de armazenamento fora de uma versão principal do Element.
+
+.O que você vai precisar
+* *Privilégios de administrador*: Você tem permissões de administrador do cluster de armazenamento para realizar a atualização.
+* *Sincronização de horário do sistema*: Você garantiu que o horário do sistema em todos os nós esteja sincronizado e que o NTP esteja configurado corretamente para o cluster de armazenamento e os nós.  Cada nó deve ser configurado com um servidor de nomes DNS na interface web de cada nó.(`https://[IP address]:442` ) sem falhas de cluster não resolvidas relacionadas à distorção de tempo.
+* *Portas do sistema*: Se você estiver usando o NetApp Hybrid Cloud Control para atualizações, você garantiu que as portas necessárias estejam abertas. Verlink:../storage/reference_prereq_network_port_requirements.html["Portas de rede"] para mais informações.
+* *Nó de gerenciamento*: Para a interface de usuário e API do NetApp Hybrid Cloud Control, o nó de gerenciamento em seu ambiente está executando a versão 11.3.
+* *Serviços de gestão*: Você atualizou seu pacote de serviços de gestão para a versão mais recente.
+
+
+
+IMPORTANT: Para nós de armazenamento H610S executando a versão 12.0 do software Element, você deve aplicar o patch D SUST-909 antes de atualizar para o pacote de firmware de armazenamento 2.27.  Contate o suporte da NetApp para obter o patch D antes de atualizar. Verlink:http://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.27.html["Notas de lançamento do pacote de firmware de armazenamento 2.27"^] .
+
+
+IMPORTANT: Você precisa atualizar para o pacote de serviços de gerenciamento mais recente antes de atualizar o firmware em seus nós de armazenamento.  Se você estiver atualizando seu software Element para a versão 12.2 ou posterior, precisará dos serviços de gerenciamento 2.14.60 ou posterior para prosseguir.
+
+* *Saúde do cluster*: Você executou verificações de saúde. Verlink:task_hcc_upgrade_element_prechecks.html["Execute verificações de integridade do armazenamento Element antes de atualizar o armazenamento."] .
+* *Controlador de gerenciamento da placa-mãe (BMC) atualizado para nós H610S*: Você atualizou a versão do BMC para seus nós H610S. Verlink:https://docs.netapp.com/us-en/hci/docs/rn_H610S_BMC_3.84.07.html["Notas de lançamento e instruções de atualização"^] .
+
+
+
+NOTE: Para obter uma matriz completa de firmware e firmware de driver para seu hardware, consultelink:../hardware/fw_storage_nodes.html["Versões de firmware de armazenamento compatíveis com nós de armazenamento SolidFire"] .
+
+[[storage-firmware-upgrade]]
+* *Tempo limite para o processo de atualização*: Você reservou tempo suficiente para realizar a atualização.  Ao atualizar para o software Element versão 12.5 ou posterior, o tempo do processo de atualização varia dependendo da sua versão atual do software Element e das atualizações de firmware.
++
+[cols="20,20,20,20,20"]
+|===
+| Nó de armazenamento | Versão atual do software Element | Tempo aproximado de instalação de software e firmware por nó^1^ | Tempo aproximado de sincronização de dados por nó^2^ | Tempo total aproximado de atualização por nó 
+
+
+| Todos os nós SolidFire e NetApp da série H com firmware atualizado^3^ | 12.x | 15 minutos | 10 a 15 minutos | 20 a 30 minutos 
+
+
+| H610S e H410S | 12.x e 11.8 | 60 minutos | 30 a 60 minutos | 90 a 120 minutos 
+
+
+| H610S | 11.7 e anteriores | 90 minutos | 40 a 70 minutos | 130 a 160 minutos Você também deve https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["Executar um desligamento completo do nó e desconexão de energia"^] para cada nó H610S. 
+|===
++
+^1^Para obter uma matriz completa de firmware e firmware de driver para seu hardware, consultelink:../hardware/fw_storage_nodes.html["Versões de firmware de armazenamento compatíveis com nós de armazenamento SolidFire"] .
+
++
+^2^Se você combinar um cluster com uma carga pesada de IOPS de gravação com um tempo de atualização de firmware mais longo, o tempo de sincronização de dados aumentará.
+
++
+^3^ Os seguintes nós não são suportados.  Se você tentar atualizar um desses nós para uma versão não compatível do Element, verá um erro informando que o nó não é compatível com o Element 12.x:
+
++
+** A partir dos nós de armazenamento Element 12.8, SF4805, SF9605, SF19210 e SF38410.
+** A partir do Elemento 12.7, nós de armazenamento SF2405 e SF9608 e nós FC FC0025 e SF-FCN-01.
+
+
+* *Contrato de Licença de Usuário Final (EULA)*: A partir da versão 2.20.69 dos serviços de gerenciamento, você deve aceitar e salvar o EULA antes de usar a interface do usuário ou a API do NetApp Hybrid Cloud Control para atualizar o firmware do armazenamento:
++
+.. Abra o endereço IP do nó de gerenciamento em um navegador da web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador do cluster de armazenamento.
+.. Selecione *Atualizar* próximo ao canto superior direito da interface.
+.. O Contrato de Licença de Usuário Final (EULA) aparece na tela.  Deslize a tela para baixo, selecione *Aceito esta atualização e todas as futuras* e selecione *Salvar*.
+
+
+
+
+.Opções de atualização
+Escolha uma das seguintes opções de atualização de firmware de armazenamento:
+
+* <<Use a interface de usuário do NetApp Hybrid Cloud Control para atualizar o firmware do armazenamento.>>
+* <<Use a API NetApp Hybrid Cloud Control para atualizar o firmware do armazenamento.>>
+
+
+
+
+== Use a interface de usuário do NetApp Hybrid Cloud Control para atualizar o firmware do armazenamento.
+
+Você pode usar a interface de usuário do NetApp Hybrid Cloud Control para atualizar o firmware dos nós de armazenamento em seu cluster.
+
+.O que você vai precisar
+* Se o seu nó de gerenciamento não estiver conectado à internet, você terá https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab/download/62654/Storage_Firmware_Bundle["Baixei o pacote de firmware de armazenamento."^] .
+
+
+
+CAUTION: Para obter informações sobre possíveis problemas durante a atualização de clusters de armazenamento usando o NetApp Hybrid Cloud Control e suas soluções alternativas, consulte o seguinte: https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Potential_issues_and_workarounds_when_running_storage_upgrades_using_NetApp_Hybrid_Cloud_Control["Artigo da Base de Conhecimento"^] .
+
+
+TIP: O processo de atualização leva aproximadamente 30 minutos por nó de armazenamento.  Se você estiver atualizando um cluster de armazenamento Element para um firmware de armazenamento mais recente que a versão 2.76, os nós de armazenamento individuais só serão reinicializados durante a atualização se um novo firmware tiver sido gravado no nó.
+
+.Passos
+. Abra o endereço IP do nó de gerenciamento em um navegador da web:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Faça login no NetApp Hybrid Cloud Control fornecendo as credenciais de administrador do cluster de armazenamento.
+. Selecione *Atualizar* próximo ao canto superior direito da interface.
+. Na página *Upgrades*, selecione *Storage*.
++
+[NOTE]
+====
+A aba *Armazenamento* lista os clusters de armazenamento que fazem parte da sua instalação.  Se um cluster estiver inacessível pelo NetApp Hybrid Cloud Control, ele não será exibido na página *Atualizações*.  Se você tiver clusters executando o Element 12.0 ou posterior, verá a versão atual do pacote de firmware listada para esses clusters.  Se os nós em um único cluster tiverem versões de firmware diferentes ou durante o processo de atualização, você verá *Múltiplos* na coluna *Versão atual do pacote de firmware*.  Você pode selecionar *Vários* para navegar até a página *Nós* e comparar as versões de firmware.  Se todos os seus clusters estiverem executando versões do Element anteriores à 12.0, você não verá nenhuma informação sobre os números de versão do pacote de firmware.
+
+Se o cluster estiver atualizado e/ou não houver pacotes de atualização disponíveis, as guias *Elemento* e *Somente Firmware* não serão exibidas.  Essas abas também não são exibidas quando uma atualização está em andamento.  Se a aba *Elemento* estiver visível, mas não a aba *Somente Firmware*, significa que não há pacotes de firmware disponíveis.
+
+====
+. Selecione a seta suspensa ao lado do cluster que você está atualizando.
+. Selecione *Procurar* para carregar o pacote de atualização que você baixou.
+. Aguarde a conclusão do upload.  Uma barra de progresso mostra o status do upload.
++
+
+CAUTION: O arquivo enviado será perdido se você sair da janela do navegador.
+
++
+Uma mensagem é exibida na tela após o arquivo ser carregado e validado com sucesso.  A validação pode demorar alguns minutos.  Se você fechar a janela do navegador neste momento, o arquivo carregado será preservado.
+
+. Selecione *Somente Firmware* e escolha uma das versões de atualização disponíveis.
+. Selecione *Iniciar atualização*.
++
+
+TIP: O *Status da Atualização* muda durante a atualização para refletir o andamento do processo.  Ele também muda em resposta a ações que você realiza, como pausar a atualização ou se a atualização retornar um erro. Ver<<Alterações no status da atualização>> .
+
++
+
+NOTE: Enquanto a atualização estiver em andamento, você pode sair da página e voltar mais tarde para continuar monitorando o progresso.  A página não atualiza dinamicamente o status e a versão atual se a linha do cluster estiver recolhida.  A linha do cluster precisa ser expandida para atualizar a tabela, ou você pode atualizar a página.
+
+
+
+Você poderá baixar os registros após a conclusão da atualização.
+
+
+
+=== Alterações no status da atualização
+
+Aqui estão os diferentes estados que a coluna *Status da Atualização* na interface do usuário mostra antes, durante e depois do processo de atualização:
+
+[cols="2*"]
+|===
+| Atualizar estado | Descrição 
+
+
+| Atualizado | O cluster foi atualizado para a versão mais recente do Element disponível ou o firmware foi atualizado para a versão mais recente. 
+
+
+| Não foi possível detectar | Este status é exibido quando a API do serviço de armazenamento retorna um status de atualização que não está na lista enumerada de possíveis status de atualização. 
+
+
+| Versões disponíveis | Novas versões do firmware do Element e/ou do sistema de armazenamento estão disponíveis para atualização. 
+
+
+| Em andamento | A atualização está em andamento.  Uma barra de progresso mostra o status da atualização.  As mensagens na tela também mostram falhas no nível do nó e exibem o ID de cada nó no cluster à medida que a atualização progride.  Você pode monitorar o status de cada nó usando a interface do usuário do Element ou o plug-in NetApp Element para a interface do usuário do vCenter Server. 
+
+
+| Atualização em pausa | Você pode optar por pausar a atualização.  Dependendo do estado do processo de atualização, a operação de pausa pode ser bem-sucedida ou falhar.  Você verá uma mensagem na interface do usuário solicitando a confirmação da operação de pausa.  Para garantir que o cluster esteja em um local seguro antes de pausar uma atualização, a operação pode levar até duas horas para ser completamente interrompida.  Para retomar a atualização, selecione *Retomar*. 
+
+
+| Em pausa | Você pausou a atualização.  Selecione *Retomar* para continuar o processo. 
+
+
+| Erro | Ocorreu um erro durante a atualização.  Você pode baixar o registro de erros e enviá-lo para o suporte da NetApp .  Após resolver o erro, você pode retornar à página e selecionar *Retomar*.  Ao retomar a atualização, a barra de progresso retrocede por alguns minutos enquanto o sistema executa a verificação de integridade e verifica o estado atual da atualização. 
+|===
+
+
+== O que acontece se uma atualização falhar usando o NetApp Hybrid Cloud Control?
+
+Se uma unidade ou nó falhar durante uma atualização, a interface do usuário do Element exibirá falhas no cluster.  O processo de atualização não prossegue para o próximo nó e aguarda a resolução das falhas do cluster.  A barra de progresso na interface do usuário mostra que a atualização está aguardando a resolução das falhas do cluster.  Nesta fase, selecionar *Pausar* na interface do usuário não funcionará, pois a atualização aguarda que o cluster esteja íntegro.  Você precisará contatar o suporte da NetApp para obter ajuda na investigação da falha.
+
+O NetApp Hybrid Cloud Control possui um período de espera predefinido de três horas, durante o qual um dos seguintes cenários pode ocorrer:
+
+* As falhas do cluster são resolvidas dentro do período de três horas e a atualização é retomada.  Você não precisa tomar nenhuma providência nessa situação.
+* O problema persiste após três horas, e o status da atualização mostra *Erro* com uma faixa vermelha.  Você pode retomar a atualização selecionando *Retomar* após o problema ser resolvido.
+* O suporte da NetApp determinou que a atualização precisa ser temporariamente interrompida para que medidas corretivas sejam tomadas antes do prazo de três horas.  A equipe de suporte usará a API para abortar a atualização.
+
+
+
+CAUTION: Interromper a atualização do cluster enquanto um nó está sendo atualizado pode resultar na remoção abrupta dos discos do nó.  Caso as unidades sejam removidas de forma inadequada, a adição delas novamente durante uma atualização exigirá intervenção manual do Suporte da NetApp .  O nó pode estar demorando mais para realizar atualizações de firmware ou atividades de sincronização pós-atualização.  Caso o processo de atualização pareça estar parado, entre em contato com o Suporte da NetApp para obter assistência.
+
+
+
+== Use a API NetApp Hybrid Cloud Control para atualizar o firmware do armazenamento.
+
+Você pode usar APIs para atualizar os nós de armazenamento em um cluster para a versão mais recente do software Element.  Você pode usar uma ferramenta de automação de sua escolha para executar as APIs.  O fluxo de trabalho da API documentado aqui usa a interface de usuário da API REST disponível no nó de gerenciamento como exemplo.
+
+.Passos
+. Faça o download do pacote de atualização de firmware de armazenamento para um dispositivo acessível ao nó de gerenciamento; acesse o software Element. https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["página de downloads"^] e faça o download da imagem de firmware de armazenamento mais recente.
+. Faça o upload do pacote de atualização de firmware de armazenamento para o nó de gerenciamento:
++
+.. Abra a interface de usuário da API REST do nó de gerenciamento no nó de gerenciamento:
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+.. Selecione *Autorizar* e complete o seguinte:
++
+... Insira o nome de usuário e a senha do cluster.
+... Insira o ID do cliente como `mnode-client` .
+... Selecione *Autorizar* para iniciar uma sessão.
+... Feche a janela de autorização.
+
+
+.. Na interface de usuário da API REST, selecione *POST /packages*.
+.. Selecione *Experimentar*.
+.. Selecione *Procurar* e escolha o pacote de atualização.
+.. Selecione *Executar* para iniciar o upload.
+.. Na resposta, copie e salve o ID do pacote.(`"id"` ) para uso em uma etapa posterior.
+
+
+. Verifique o status do upload.
++
+.. Na interface de usuário da API REST, selecione *GET​ /packages​/{id}​/status*.
+.. Selecione *Experimentar*.
+.. Insira o ID do pacote de firmware que você copiou na etapa anterior em *id*.
+.. Selecione *Executar* para iniciar a solicitação de status.
++
+A resposta indica `state` como `SUCCESS` quando estiver concluído.
+
+
+
+. Localize o ID do ativo de instalação:
++
+.. Abra a interface de usuário da API REST do nó de gerenciamento no nó de gerenciamento:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Selecione *Autorizar* e complete o seguinte:
++
+... Insira o nome de usuário e a senha do cluster.
+... Insira o ID do cliente como `mnode-client` .
+... Selecione *Autorizar* para iniciar uma sessão.
+... Feche a janela de autorização.
+
+
+.. Na interface de usuário da API REST, selecione *GET /installations*.
+.. Selecione *Experimentar*.
+.. Selecione *Executar*.
+.. Na resposta, copie o ID do ativo de instalação.(`id` ).
++
+[listing, subs="+quotes"]
+----
+*"id": "abcd01e2-xx00-4ccf-11ee-11f111xx9a0b",*
+"management": {
+  "errors": [],
+  "inventory": {
+    "authoritativeClusterMvip": "10.111.111.111",
+    "bundleVersion": "2.14.19",
+    "managementIp": "10.111.111.111",
+    "version": "1.4.12"
+----
+.. Na interface de usuário da API REST, selecione *GET /installations/{id}*.
+.. Selecione *Experimentar*.
+.. Cole o ID do recurso de instalação no campo *id*.
+.. Selecione *Executar*.
+.. A partir da resposta, copie e salve o ID do cluster de armazenamento.(`"id"` ) do cluster que você pretende atualizar para uso em uma etapa posterior.
++
+[listing, subs="+quotes"]
+----
+"storage": {
+  "errors": [],
+  "inventory": {
+    "clusters": [
+      {
+        "clusterUuid": "a1bd1111-4f1e-46zz-ab6f-0a1111b1111x",
+        *"id": "a1bd1111-4f1e-46zz-ab6f-a1a1a111b012",*
+----
+
+
+. Execute a atualização do firmware de armazenamento:
++
+.. Abra a interface de usuário da API REST de armazenamento no nó de gerenciamento:
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. Selecione *Autorizar* e complete o seguinte:
++
+... Insira o nome de usuário e a senha do cluster.
+... Insira o ID do cliente como `mnode-client` .
+... Selecione *Autorizar* para iniciar uma sessão.
+... Fechar a janela.
+
+
+.. Selecione *POST /upgrades*.
+.. Selecione *Experimentar*.
+.. Insira o ID do pacote de atualização no campo de parâmetros.
+.. Insira o ID do cluster de armazenamento no campo de parâmetro.
+.. Selecione *Executar* para iniciar a atualização.
++
+A resposta deve indicar o estado como `initializing` :
+
++
+[listing, subs="+quotes"]
+----
+{
+  "_links": {
+    "collection": "https://localhost:442/storage/upgrades",
+    "self": "https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1",
+    "log": https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1/log
+  },
+  "storageId": "114f14a4-1a1a-11e9-9088-6c0b84e200b4",
+  "upgradeId": "334f14a4-1a1a-11e9-1055-6c0b84e2001b4",
+  "packageId": "774f14a4-1a1a-11e9-8888-6c0b84e200b4",
+  "config": {},
+  *"state": "initializing",*
+  "status": {
+    "availableActions": [
+      "string"
+    ],
+    "message": "string",
+    "nodeDetails": [
+      {
+        "message": "string",
+        "step": "NodePreStart",
+        "nodeID": 0,
+        "numAttempt": 0
+      }
+    ],
+    "percent": 0,
+    "step": "ClusterPreStart",
+    "timestamp": "2020-04-21T22:10:57.057Z",
+    "failedHealthChecks": [
+      {
+        "checkID": 0,
+        "name": "string",
+        "displayName": "string",
+        "passed": true,
+        "kb": "string",
+        "description": "string",
+        "remedy": "string",
+        "severity": "string",
+        "data": {},
+        "nodeID": 0
+      }
+    ]
+  },
+  "taskId": "123f14a4-1a1a-11e9-7777-6c0b84e123b2",
+  "dateCompleted": "2020-04-21T22:10:57.057Z",
+  "dateCreated": "2020-04-21T22:10:57.057Z"
+}
+----
+.. Copie o ID da atualização.(`"upgradeId"` ) que faz parte da resposta.
+
+
+. Verifique o progresso e os resultados da atualização:
++
+.. Selecione *GET /upgrades/{upgradeId}*.
+.. Selecione *Experimentar*.
+.. Insira o ID da atualização da etapa anterior em *upgradeId*.
+.. Selecione *Executar*.
+.. Se ocorrerem problemas ou se houver requisitos especiais durante a atualização, faça um dos seguintes procedimentos:
++
+[cols="2*"]
+|===
+| Opção | Passos 
+
+
+| Você precisa corrigir problemas de integridade do cluster devido a `failedHealthChecks` mensagem no corpo da resposta.  a| 
+... Acesse o artigo específico da Base de Conhecimento listado para cada problema ou execute a solução especificada.
+... Se uma Base de Conhecimento (KB) for especificada, conclua o processo descrito no artigo da KB correspondente.
+... Depois de resolver os problemas do cluster, autentique-se novamente, se necessário, e selecione *PUT ​/upgrades/{upgradeId}*.
+... Selecione *Experimentar*.
+... Insira o ID da atualização da etapa anterior em *upgradeId*.
+... Digitar `"action":"resume"` no corpo da requisição.
++
+[listing]
+----
+{
+  "action": "resume"
+}
+----
+... Selecione *Executar*.
+
+
+
+
+| Você precisa pausar a atualização porque a janela de manutenção está se fechando ou por outro motivo.  a| 
+... Autentique-se novamente, se necessário, e selecione *PUT /upgrades/{upgradeId}*.
+... Selecione *Experimentar*.
+... Insira o ID da atualização da etapa anterior em *upgradeId*.
+... Digitar `"action":"pause"` no corpo da requisição.
++
+[listing]
+----
+{
+  "action": "pause"
+}
+----
+... Selecione *Executar*.
+
+
+|===
+.. Execute a API *GET /upgrades/{upgradeId}* várias vezes, conforme necessário, até que o processo seja concluído.
++
+Durante a atualização, o `status` indica `running` se nenhum erro for encontrado.  À medida que cada nó é atualizado, o `step` alterações de valor para `NodeFinished` .
+
++
+A atualização foi concluída com sucesso quando o `percent` valor é `100` e o `state` indica `finished` .
+
+
+
+
+
+[discrete]
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/us-en/vcp/index.html["Plug-in NetApp Element para vCenter Server"^]
+

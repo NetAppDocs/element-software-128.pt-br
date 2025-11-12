@@ -1,0 +1,98 @@
+---
+permalink: storage/task_system_manage_rekey_software_ear_master_key.html 
+sidebar: sidebar 
+keywords: element, rekey, encryption at rest, rekey master, replace key 
+summary: Você pode usar a API Element para redefinir a chave de uma chave existente.  Este processo cria uma nova chave mestra de substituição para o seu servidor externo de gerenciamento de chaves. 
+---
+= Recodificar criptografia de software em repouso chave mestra
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a API Element para redefinir a chave de uma chave existente.  Este processo cria uma nova chave mestra de substituição para o seu servidor externo de gerenciamento de chaves.  As chaves mestras são sempre substituídas por novas chaves mestras e nunca duplicadas ou sobrescritas.
+
+Você poderá precisar trocar as teclas como parte de um dos seguintes procedimentos:
+
+* Criar uma nova chave como parte de uma mudança do gerenciamento de chaves interno para o gerenciamento de chaves externo.
+* Crie uma nova chave como reação a um evento relacionado à segurança ou como proteção contra ele.
+
+
+
+NOTE: Esse processo é assíncrono e retorna uma resposta antes que a operação de recriptografia seja concluída.  Você pode usar olink:../api/reference_element_api_getasyncresult.html["ObterResultadoAssíncrono"] Método para consultar o sistema e verificar quando o processo foi concluído.
+
+.O que você vai precisar
+* Você habilitou a criptografia de software em repouso usando olink:../api/reference_element_api_createcluster.html["CriarCluster"] método em um novo cluster que não contém volumes e não possui operações de E/S.  Use o link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html[`GetSoftwareEncryptionatRestInfo` ] para confirmar que o estado é `enabled` antes de prosseguir.
+* Você temlink:../storage/task_system_manage_key_set_up_external_key_management.html["estabelecer uma relação de confiança"] entre o cluster SolidFire e um servidor de chaves externo (EKS).  Execute olink:../api/reference_element_api_testkeyserverkmip.html["TestKeyProviderKmip"] Método para verificar se a conexão com o provedor de chaves foi estabelecida.
+
+
+.Passos
+. Execute olink:../api/reference_element_api_listkeyserverskmip.html["ListKeyProvidersKmip"] comando e copie o ID do provedor de chave(`keyProviderID` ).
+. Execute olink:../api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html["RekeySoftwareEncryptionAtRestMasterKey"] com o `keyManagementType` parâmetro como `external` e `keyProviderID` como o número de identificação do provedor de chaves da etapa anterior:
++
+[listing]
+----
+{
+ "method": "rekeysoftwareencryptionatrestmasterkey",
+ "params": {
+   "keyManagementType": "external",
+   "keyProviderID": "<ID number>"
+ }
+}
+----
+. Copie o `asyncHandle` valor do `RekeySoftwareEncryptionAtRestMasterKey` resposta ao comando.
+. Execute olink:../api/reference_element_api_getasyncresult.html["ObterResultadoAssíncrono"] comando com o `asyncHandle` Utilize o valor da etapa anterior para confirmar a alteração na configuração.  A partir da resposta do comando, você deverá ver que a configuração da chave mestra antiga foi atualizada com as novas informações da chave.  Copie o novo ID do provedor de chaves para usar em uma etapa posterior.
++
+[listing]
+----
+{
+   "id": null,
+   "result": {
+     "createTime": "2021-01-01T22:29:18Z",
+     "lastUpdateTime": "2021-01-01T22:45:51Z",
+     "result": {
+       "keyToDecommission": {
+         "keyID": "<value>",
+         "keyManagementType": "internal"
+     },
+     "newKey": {
+       "keyID": "<value>",
+       "keyManagementType": "external",
+       "keyProviderID": <value>
+     },
+     "operation": "Rekeying Master Key. Master Key management being transferred from Internal Key Management to External Key Management with keyProviderID=<value>",
+     "state": "Ready"
+   },
+   "resultType": "RekeySoftwareEncryptionAtRestMasterKey",
+   "status": "complete"
+}
+----
+. Execute o `GetSoftwareEncryptionatRestInfo` comando para confirmar novos detalhes importantes, incluindo o `keyProviderID` , foram atualizados.
++
+[listing]
+----
+{
+   "id": null,
+   "result": {
+     "masterKeyInfo": {
+       "keyCreatedTime": "2021-01-01T22:29:18Z",
+       "keyID": "<updated value>",
+       "keyManagementType": "external",
+       "keyProviderID": <value>
+     },
+     "rekeyMasterKeyAsyncResultID": <value>
+     "status": "enabled",
+     "version": 1
+   },
+}
+----
+
+
+[discrete]
+== Encontre mais informações
+
+* link:../api/concept_element_api_about_the_api.html["Gerencie o armazenamento com a API Element."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

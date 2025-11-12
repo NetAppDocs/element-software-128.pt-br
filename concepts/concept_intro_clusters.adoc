@@ -1,0 +1,83 @@
+---
+permalink: concepts/concept_intro_clusters.html 
+sidebar: sidebar 
+keywords: element, solidfire, cluster, what is, authoritative  cluster, rule of thirds, stranded capacity, storage efficiency, storage cluster quorum 
+summary: Um cluster é o núcleo de um sistema de armazenamento SolidFire e é composto por uma coleção de nós.  Para que a eficiência de armazenamento do SolidFire seja alcançada, é necessário ter pelo menos quatro nós em um cluster.  Um cluster aparece na rede como um único grupo lógico e pode então ser acessado como armazenamento em blocos. 
+---
+= Aglomerados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um cluster é o núcleo de um sistema de armazenamento SolidFire e é composto por uma coleção de nós.  Para que a eficiência de armazenamento do SolidFire seja alcançada, é necessário ter pelo menos quatro nós em um cluster.  Um cluster aparece na rede como um único grupo lógico e pode então ser acessado como armazenamento em blocos.
+
+A criação de um novo cluster inicializa um nó como proprietário das comunicações do cluster e estabelece as comunicações de rede para cada nó no cluster.  Este processo é realizado apenas uma vez para cada novo cluster.  Você pode criar um cluster usando a interface do usuário do Element ou a API.
+
+Você pode expandir um cluster adicionando nós adicionais.  Ao adicionar um novo nó, não há interrupção do serviço e o cluster utiliza automaticamente o desempenho e a capacidade do novo nó.
+
+Administradores e hosts podem acessar o cluster usando endereços IP virtuais.  Qualquer nó no cluster pode hospedar endereços IP virtuais.  O endereço IP virtual de gerenciamento (MVIP) permite o gerenciamento do cluster por meio de uma conexão 1GbE, enquanto o endereço IP virtual de armazenamento (SVIP) permite o acesso do host ao armazenamento por meio de uma conexão 10GbE.  Esses endereços IP virtuais permitem conexões consistentes, independentemente do tamanho ou da composição de um cluster SolidFire .  Se um nó que hospeda um endereço IP virtual falhar, outro nó no cluster começará a hospedar o endereço IP virtual.
+
+
+NOTE: A partir da versão 11.0 do Element, os nós podem ser configurados com endereços IPv4, IPv6 ou ambos para sua rede de gerenciamento.  Isso se aplica tanto a nós de armazenamento quanto a nós de gerenciamento, exceto para o nó de gerenciamento 11.3 e versões posteriores, que não suportam IPv6.  Ao criar um cluster, apenas um único endereço IPv4 ou IPv6 pode ser usado para o MVIP e o tipo de endereço correspondente deve ser configurado em todos os nós.
+
+.Mais sobre clusters
+* <<Clusters de armazenamento autoritativos>>
+* <<Regra dos terços>>
+* <<Capacidade ociosa>>
+* <<Eficiência de armazenamento>>
+* <<Quórum do cluster de armazenamento>>
+
+
+
+
+== Clusters de armazenamento autoritativos
+
+O cluster de armazenamento autorizado é o cluster de armazenamento que o NetApp Hybrid Cloud Control usa para autenticar usuários.
+
+Se o seu nó de gerenciamento tiver apenas um cluster de armazenamento, então ele será o cluster autoritativo.  Se o seu nó de gerenciamento tiver dois ou mais clusters de armazenamento, um desses clusters será designado como o cluster autoritativo e somente os usuários desse cluster poderão fazer login no NetApp Hybrid Cloud Control.  Para descobrir qual cluster é o cluster autoritativo, você pode usar o `GET /mnode/about` API.  Na resposta, o endereço IP no `token_url` O campo é o endereço IP virtual de gerenciamento (MVIP) do cluster de armazenamento autoritativo.  Se você tentar fazer login no NetApp Hybrid Cloud Control como um usuário que não está no cluster autoritativo, a tentativa de login falhará.
+
+Muitos recursos do NetApp Hybrid Cloud Control são projetados para funcionar com vários clusters de armazenamento, mas a autenticação e a autorização têm limitações.  A limitação relacionada à autenticação e autorização é que o usuário do cluster autoritativo pode executar ações em outros clusters vinculados ao NetApp Hybrid Cloud Control, mesmo que não seja um usuário nesses outros clusters de armazenamento.
+
+Antes de prosseguir com o gerenciamento de vários clusters de armazenamento, você deve garantir que os usuários definidos nos clusters autorizados estejam definidos em todos os outros clusters de armazenamento com as mesmas permissões.  Você pode gerenciar usuários a partir dolink:../storage/concept_system_manage_manage_cluster_administrator_users.html["Interface de usuário do software Element"] .
+
+Verlink:../mnode/task_mnode_manage_storage_cluster_assets.html["Criar e gerenciar ativos de cluster de armazenamento"] Para obter mais informações sobre como trabalhar com ativos de cluster de armazenamento de nós de gerenciamento.
+
+
+
+== Regra dos terços
+
+Ao combinar tipos de nós de armazenamento em um cluster de armazenamento NetApp SolidFire , nenhum nó de armazenamento individual pode conter mais de 33% da capacidade total do cluster.
+
+
+
+== Capacidade ociosa
+
+Se um nó recém-adicionado representar mais de 50% da capacidade total do cluster, parte da capacidade desse nó será tornada inutilizável ("isolada"), para que ele esteja em conformidade com a regra de capacidade.  Essa situação permanece inalterada até que mais capacidade de armazenamento seja adicionada.  Se um nó muito grande for adicionado e também desobedecer à regra de capacidade, o nó anteriormente isolado deixará de estar isolado, enquanto o nó recém-adicionado ficará isolado.  A capacidade deve sempre ser adicionada em pares para evitar que isso aconteça.  Quando um nó fica inativo, uma falha de cluster apropriada é lançada.
+
+
+
+== Eficiência de armazenamento
+
+Os clusters de armazenamento NetApp SolidFire utilizam deduplicação, compressão e provisionamento dinâmico para reduzir a quantidade de armazenamento físico necessária para armazenar um volume.
+
+* *Compressão*
++
+A compressão reduz a quantidade de armazenamento físico necessária para um volume, combinando blocos de dados em grupos de compressão, cada um dos quais é armazenado como um único bloco.
+
+* *Desduplicação*
++
+A deduplicação reduz a quantidade de armazenamento físico necessária para um volume, descartando blocos de dados duplicados.
+
+* *Provisionamento dinâmico*
++
+Um volume ou LUN com provisionamento dinâmico é aquele para o qual o armazenamento não é reservado antecipadamente.  Em vez disso, o armazenamento é alocado dinamicamente, conforme a necessidade.  O espaço livre é liberado para o sistema de armazenamento quando os dados no volume ou LUN são excluídos.
+
+
+
+
+
+== Quórum do cluster de armazenamento
+
+O software Element cria um cluster de armazenamento a partir de nós selecionados, que mantém um banco de dados replicado da configuração do cluster.  Para manter o quórum e garantir a resiliência do cluster, é necessário que pelo menos três nós participem do conjunto de clusters.

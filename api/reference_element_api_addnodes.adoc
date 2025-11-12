@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_addnodes.html 
+sidebar: sidebar 
+keywords: addnodes,node,add,adding,nodes,cluster 
+summary: Você pode usar o método AddNodes para adicionar um ou mais novos nós a um cluster. 
+---
+= Adicionar nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `AddNodes` Método para adicionar um ou mais novos nós a um cluster.
+
+Quando um nó não configurado é iniciado pela primeira vez, você é solicitado a configurá-lo.  Após configurar o nó, ele é registrado como um "nó pendente" no cluster.  Os clusters de armazenamento que executam o software Element criam automaticamente uma imagem de um nó para a versão presente no cluster.  Ao adicionar um nó pendente, a resposta do método inclui um valor asyncHandle que você pode usar com o `GetAsyncResult` Método para consultar o status do processo automático de geração de imagens.
+
+O processo de adicionar um nó Fibre Channel é o mesmo que adicionar nós de armazenamento Element iSCSI a um cluster.  Os nós Fibre Channel são registrados no sistema com um NodeID.  Quando se tornam acessíveis, são colocados no estado de "nó pendente".  O `ListAllNodes` O método retornará o pendingNodeID para nós iSCSI, bem como quaisquer nós Fibre Channel disponíveis para serem adicionados ao cluster.
+
+Ao adicionar um nó a um cluster configurado para rede virtual, o sistema requer um número suficiente de endereços IP de armazenamento virtual para alocar um IP virtual ao novo nó.  Se não houver endereços IP virtuais disponíveis para o novo nó, o `AddNode` A operação falhou.  Use o `ModifyVirtualNetwork` Método para adicionar mais endereços IP de armazenamento à sua rede virtual.
+
+Depois de adicionar um nó, todas as unidades presentes nele ficam disponíveis e você pode adicioná-las usando o `AddDrives` Método para aumentar a capacidade de armazenamento do cluster.
+
+
+NOTE: Pode levar alguns segundos após a adição de um novo nó para que ele inicie e registre seus discos como disponíveis.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+Instalação automática
+ a| 
+Caso seja verdade, será realizada uma restauração às configurações de fábrica (RTFI) no nó após a adição.  O comportamento padrão é realizar a leitura da informação (RTFI).  Se o `cEnableAutoInstall` Se a constante de cluster for falsa, ela terá prioridade sobre este parâmetro.  Se uma atualização estiver em andamento, o processo RTFI não ocorrerá, independentemente do valor deste parâmetro.
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+nós pendentes
+ a| 
+Aguardando IDs de nós pendentes para os nós a serem adicionados.  Você pode listar todos os nós pendentes usando o método ListPendingNodes.
+ a| 
+matriz de inteiros
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+Instalação automática
+ a| 
+Se os nós adicionados estão sendo ou não retornados à imagem de fábrica.
+ a| 
+booleano
+
+
+
+ a| 
+nós
+ a| 
+Uma matriz de objetos que mapeia o "pendingNodeID" anterior para o "nodeID".  Ao adicionar um nó pendente que esteja executando uma versão de software incompatível, essa matriz inclui um valor asyncHandle que você pode usar com o método GetAsyncResult para consultar o status do processo de criação automática de imagens.
+ a| 
+matriz de objetos JSON
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "AddNodes",
+   "params": {
+     "autoInstall" : true,
+     "pendingNodes" : [1]
+   },
+   "id":1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  id: null,
+  result: {
+    autoInstall: true,
+    nodes: [
+      {
+        activeNodeKey: "giAm2ep1hA",
+        assignedNodeID: 6,
+        asyncHandle: 3,
+        cip: "10.10.5.106",
+        mip: "192.168.133.106",
+        pendingNodeID: 2,
+        platformInfo: {
+          chassisType: "R620",
+          cpuModel: "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+          nodeMemoryGB: 72,
+          nodeType: "SF3010"
+        },
+        sip: "10.10.5.106",
+        softwareVersion: "9.0.0.1077"
+      }
+    ]
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6
+
+
+
+== Encontre mais informações
+
+* xref:reference_element_api_adddrives.adoc[AdicionarUnidades]
+* xref:reference_element_api_getasyncresult.adoc[ObterResultadoAssíncrono]
+* xref:reference_element_api_listallnodes.adoc[ListarTodosOsNós]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[ModificarRedeVirtual]
+

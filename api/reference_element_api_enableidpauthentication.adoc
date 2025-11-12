@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_enableidpauthentication.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,enable 
+summary: Você pode usar o método EnableIdpAuthentication para habilitar o suporte à autenticação usando IdPs de terceiros para o cluster.  Após a ativação da autenticação IdP, os administradores LDAP e de cluster não poderão mais acessar o cluster por meio das interfaces de usuário compatíveis, e todas as sessões autenticadas ativas serão invalidadas/desconectadas.  Somente usuários autenticados por IdPs de terceiros podem acessar o cluster por meio das interfaces de usuário compatíveis. 
+---
+= Habilitar autenticação Idp
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `EnableIdpAuthentication` Método para habilitar o suporte à autenticação usando IdPs de terceiros para o cluster.  Após a ativação da autenticação IdP, os administradores LDAP e de cluster não poderão mais acessar o cluster por meio das interfaces de usuário compatíveis, e todas as sessões autenticadas ativas serão invalidadas/desconectadas.  Somente usuários autenticados por IdPs de terceiros podem acessar o cluster por meio das interfaces de usuário compatíveis.
+
+
+
+== Parâmetros
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID de configuração do idp
+ a| 
+UUID para a configuração do IdP de terceiros.  Se existir apenas uma configuração de IdP, a configuração padrão será essa.  Se você tiver apenas uma única IdpConfiguration, não precisa fornecer o parâmetro idpConfigurationID.
+ a| 
+UUID
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método não possui valores de retorno.
+
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "EnableIdpAuthentication",
+  "params": {
+    "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+  }
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+"result": {}
+}
+----
+
+
+== Novidade desde a versão
+
+12,0

@@ -1,0 +1,42 @@
+---
+permalink: storage/task_data_protection_back_up_volume_snapshot_to_solidfire.html 
+sidebar: sidebar 
+keywords: volume snapshot, backup, solidfire cluster 
+summary: Você pode fazer backup de snapshots de volume residentes em um cluster SolidFire para um cluster SolidFire remoto. 
+---
+= Faça backup de um snapshot de volume em um cluster SolidFire .
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode fazer backup de snapshots de volume residentes em um cluster SolidFire para um cluster SolidFire remoto.
+
+Certifique-se de que os clusters de origem e destino estejam emparelhados.
+
+Ao fazer backup ou restaurar de um cluster para outro, o sistema gera uma chave que será usada como autenticação entre os clusters.  Essa chave de gravação em massa de volume permite que o cluster de origem se autentique com o cluster de destino, proporcionando um nível de segurança ao gravar no volume de destino.  Como parte do processo de backup ou restauração, você precisa gerar uma chave de gravação em massa do volume de destino antes de iniciar a operação.
+
+. No cluster de destino, clique em *Gerenciamento* > *Volumes*.
+. Clique no ícone *Ações* do volume de destino.
+. No menu que aparecer, clique em *Restaurar de*.
+. Na caixa de diálogo *Restauração Integrada*, em *Restaurar de*, selecione * SolidFire*.
+. Selecione um formato de dados em *Formato de dados*:
++
+** *Nativo*: Um formato comprimido que pode ser lido apenas por sistemas de armazenamento SolidFire .
+** *Não comprimido*: Um formato não comprimido compatível com outros sistemas.
+
+
+. Clique em *Gerar chave*.
+. Copie a chave da caixa *Bulk Volume Write Key* para a sua área de transferência.
+. No cluster de origem, clique em *Proteção de Dados* > *Instantâneos*.
+. Clique no ícone Ações para o instantâneo que deseja usar para o backup.
+. No menu que aparecer, clique em *Fazer backup para*.
+. Na caixa de diálogo **Backup Integrado**, em *Fazer backup para*, selecione * SolidFire*.
+. Selecione o mesmo formato de dados que você selecionou anteriormente no campo *Formato de dados*.
+. Insira o endereço IP virtual de gerenciamento do cluster do volume de destino no campo *MVIP do Cluster Remoto*.
+. Insira o nome de usuário do cluster remoto no campo *Nome de usuário do cluster remoto*.
+. Insira a senha do cluster remoto no campo *Senha do Cluster Remoto*.
+. No campo *Chave de gravação em massa do volume*, cole a chave que você gerou anteriormente no cluster de destino.
+. Clique em *Iniciar Leitura*.
+

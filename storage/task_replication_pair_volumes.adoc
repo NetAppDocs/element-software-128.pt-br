@@ -1,0 +1,29 @@
+---
+permalink: storage/task_replication_pair_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, cluster, cluster pair 
+summary: Após estabelecer uma conexão entre clusters em um par de clusters, você pode emparelhar um volume em um cluster com um volume no outro cluster do par.  Quando uma relação de pareamento de volumes é estabelecida, você deve identificar qual volume é o alvo da replicação. 
+---
+= Volumes de pares
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Após estabelecer uma conexão entre clusters em um par de clusters, você pode emparelhar um volume em um cluster com um volume no outro cluster do par.  Quando uma relação de pareamento de volumes é estabelecida, você deve identificar qual volume é o alvo da replicação.
+
+É possível emparelhar dois volumes para replicação em tempo real que estejam armazenados em clusters de armazenamento diferentes em um par de clusters conectados.  Após emparelhar dois clusters, você pode configurar volumes ativos em um cluster para serem replicados continuamente para um segundo cluster, fornecendo proteção contínua de dados (CDP).  Você também pode atribuir qualquer um dos volumes como origem ou destino da replicação.
+
+As combinações de volume são sempre de um para um.  Depois que um volume faz parte de um emparelhamento com um volume em outro cluster, você não poderá emparelhá-lo novamente com nenhum outro volume.
+
+.O que você vai precisar
+* Você estabeleceu uma conexão entre clusters em um par de clusters.
+* Você possui privilégios de administrador de cluster em um ou ambos os clusters que estão sendo emparelhados.
+
+
+.Passos
+. xref:task_replication_create_a_target_volume_with_read_write_access.adoc[Crie um volume de destino com acesso de leitura ou gravação.]
+. xref:task_replication_pair_volumes_using_volume_id_or_pairing_key.adoc[Emparelhe volumes usando um ID de volume ou uma chave de emparelhamento.]
+. xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Atribua uma origem e um destino de replicação aos volumes emparelhados.]
+

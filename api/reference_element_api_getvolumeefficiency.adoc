@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,stats,measurements,efficiency,GetVolumeEfficiency 
+summary: Você pode usar o método GetVolumeEfficiency para obter informações sobre um volume.  Apenas o volume fornecido como parâmetro neste método da API é usado para calcular a capacidade. 
+---
+= Obtenha eficiência de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `GetVolumeEfficiency` Método para obter informações sobre um volume.  Apenas o volume fornecido como parâmetro neste método da API é usado para calcular a capacidade.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID do volume
+ a| 
+Especifica o volume para o qual a capacidade é calculada.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+compressão
+ a| 
+A quantidade de espaço economizada ao compactar os dados em um único volume.  Expressa-se como uma proporção, onde 1 significa que os dados foram armazenados sem serem comprimidos.
+ a| 
+flutuador
+
+
+
+ a| 
+desduplicação
+ a| 
+A quantidade de espaço economizada em um único volume ao não duplicar dados.  Expressa-se como uma proporção.
+ a| 
+flutuador
+
+
+
+ a| 
+volumesfaltantes
+ a| 
+Os volumes que não puderam ser consultados para obtenção de dados de eficiência.  A ausência de volumes pode ser causada pela coleta de lixo (GC) ter menos de uma hora, perda temporária de rede ou reinicialização de serviços desde o último ciclo de GC.
+ a| 
+matriz de inteiros
+
+
+
+ a| 
+provisionamento fino
+ a| 
+A proporção entre o espaço utilizado e a quantidade de espaço alocada para armazenamento de dados.  Expressa-se como uma proporção.
+ a| 
+flutuador
+
+
+
+ a| 
+carimbo de data/hora
+ a| 
+Os últimos dados de eficiência foram coletados após a cromatografia gasosa (GC).
+ a| 
+Cadeia de dados ISO 8601
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+   "method": "GetVolumeEfficiency",
+   "params": {
+      "volumeID": 606
+   },
+   "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.001591240821456,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T16:06:33Z"
+   }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

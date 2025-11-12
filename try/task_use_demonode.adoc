@@ -1,0 +1,136 @@
+---
+permalink: try/task_use_demonode.html 
+sidebar: sidebar 
+keywords: element demo node, virtual machine, element software, element api, vmware deployment 
+summary: O Element Demo Node é uma versão em máquina virtual VMware do software Element, que oferece uma maneira fácil de demonstrar muitos dos principais recursos de armazenamento dos produtos NetApp HCI e SolidFire . 
+---
+= Experimente os recursos de armazenamento usando o nó de demonstração Element.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["Nó de demonstração de elemento"^]É uma versão de máquina virtual (VM) do software Element da VMware, que oferece uma maneira fácil de demonstrar muitos dos principais recursos de armazenamento dos produtos NetApp HCI e SolidFire .  O nó de demonstração permite que os desenvolvedores programem usando a API Element sem a necessidade de hardware físico.  Ele é disponibilizado como um arquivo OVA para facilitar a implantação no VMware.
+
+
+
+== Funcionalidades suportadas:
+
+O Element Demo Node destina-se apenas ao uso como ferramenta de demonstração e desenvolvimento.  Esteja ciente das seguintes limitações funcionais antes de usar o nó de demonstração:
+
+* O Element Demo Node não suporta agrupamento (clustering).  Ele funciona apenas como um cluster de nó único.
+* Não suporta atualizações do Element.  Para testar uma versão mais recente do Element, você deve instalar uma nova máquina virtual de demonstração do Node.
+* Não se destina a demonstrar o desempenho de armazenamento.  O desempenho observado no nó de demonstração não é, de forma alguma, indicativo do desempenho nos clusters físicos.
+* Não é possível adicionar nós de demonstração a clusters NetApp HCI ou SolidFire .
+* As VLANs VRF não são suportadas (VLANs com tags padrão são suportadas).
+* O serviço de fatiamento de múltiplas unidades (MDSS) não é suportado.
+* O Element Demo Node é compatível apenas com armazenamentos de dados VMFS.  Os VVols não são suportados.
+* A funcionalidade de configuração e monitoramento baseada em hardware não funciona com o nó de demonstração.
+* Suporta um máximo de 10 snapshots por volume.
+* Suporta um máximo de 20 contas por nó/cluster.
+* Suporta um máximo de 100 volumes por conta.
+* Suporta um máximo de 200 vVols por conta.
+* Suporta um tamanho máximo de volume de 100 GiB.
+* Suporta um limite de cluster sustentado de 3000 IOPS.
+
+
+
+NOTE: Todas as demais limitações do software Element se aplicam.  Consulte as notas de versão mais recentes do software Element para obter detalhes.
+
+
+
+== Requisitos do VM
+
+* Capacidade total de 240 GB (O tamanho e o número de discos virtuais da VM não podem ser alterados).  Qualquer armazenamento adicional apresentado pelo hipervisor é ignorado pelo sistema operacional convidado.
+* Disco raiz de 60 GB
+* Provisionamento espesso/zerado imediatamente (uma unidade de metadados de 30 GB ou três unidades de bloco de 50 GB) ou provisionamento fino/zerado imediatamente (*recomendado*) (uma unidade de metadados de 30 GB ou três unidades de bloco de 50 GB)
+* Duas vCPUs (totalmente reservadas)
+* 16 GB de RAM (totalmente reservados)
+* HBA único para todos os discos, LSI Logic paralelo
+* Duas vNICs, ambas vmxnet3 (uma de gerenciamento, uma de armazenamento)
+
+
+
+
+== Requisitos do host
+
+* ESXi 6.0 ou 6.5 para a VM do Element Demo Node 11.7
+* ESXi 6.5 para Element Demo Node 12.0 e VMs 12.2
+* ESXi 6.7 e 7.0 para VMs do Element Demo Node 12.3 e 12.5
+* Arquitetura Intel® de 64 bits com múltiplos núcleos
+
+
+
+
+== Baixar nó de demonstração do elemento
+
+O software Element Demo Node é um conjunto de arquivos VMware que foram empacotados em um arquivo .ova.
+
+
+
+== Instalar o nó de demonstração do Element no VMware ESXi
+
+A instalação do Element Demo Node no VMware ESXi envolve as seguintes tarefas:
+
+* <<Configurar interfaces de rede>>
+* <<Registre o nó de demonstração em um servidor ESXi.>>
+* <<Inicie o nó de demonstração em um servidor ESXi.>>
+
+
+
+
+=== Configurar interfaces de rede
+
+O nó de demonstração do Element requer duas redes de máquinas virtuais separadas.  Uma é para tráfego de armazenamento e a outra para tráfego de gerenciamento.  Você deve configurar a rede de armazenamento para suportar quadros jumbo.
+
+
+
+=== Registre o nó de demonstração em um servidor ESXi.
+
+Para registrar o Element Demo Node em um servidor ESXi, você deve implantar o arquivo .ova do nó de demonstração usando o vSphere Client.
+
+.Passos
+. Faça login no vSphere Client e selecione o host ESXi no painel de inventário.
+. Selecione *Arquivo* > *Implantar modelo OVF*.
++
+O Assistente de Implantação de Modelo OVF foi iniciado.
+
+. Na página *Selecionar modelo*, localize o arquivo OVA que você baixou e selecione *Abrir*.
+. Selecione *Avançar*.
+. Na página *Nome e Local*, especifique um nome e um local para o modelo implantado e selecione *Avançar*.
+. Na página *Selecionar um recurso*, navegue até o local onde deseja executar o modelo e selecione *Avançar*.
+. Verifique os detalhes e selecione *Avançar*.
+. Na página Selecionar armazenamento, selecione onde deseja armazenar os arquivos da máquina virtual e, em seguida, selecione *Avançar*.
+. Na página *Selecionar redes*, mapeie a rede usada no arquivo OVA para as duas redes de máquinas virtuais separadas em seu inventário e selecione *Avançar*.
+. Na página *Pronto para concluir*, verifique os detalhes da máquina virtual que você está criando e selecione *Concluir*.
+
+
+
+NOTE: A implantação do nó de demonstração pode levar alguns minutos para ser concluída.
+
+
+
+=== Inicie o nó de demonstração em um servidor ESXi.
+
+Você deve iniciar a máquina virtual do nó de demonstração para acessar o Element através do console do VMware ESXi.
+
+.Passos
+. No vSphere Client, selecione a VM do nó de demonstração que você criou.
+. Selecione a aba *Resumo* para visualizar os detalhes desta máquina virtual.
+. Selecione *Ligar* para iniciar a máquina virtual.
+. Selecione *Iniciar Console Web*.
+. Utilize a interface de usuário TUI para configurar o nó de demonstração. Para mais informações, consulte link:../setup/concept_setup_configure_a_storage_node.html["Configure um nó de armazenamento"^].
+
+
+
+
+== Como obter suporte
+
+O Element Demo Node está disponível mediante o cumprimento de um voluntariado.  Para obter suporte, publique suas perguntas no https://community.netapp.com/t5/Simulator-Discussions/bd-p/simulator-discussions["Fórum de demonstração de elementos"^] .
+
+
+
+== Encontre mais informações
+
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["Página de download do Element Demo Node (login necessário)"^]

@@ -1,0 +1,152 @@
+---
+permalink: api/reference_element_api_listclusterfaults.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,fault,faults,listclusterfaults,error,errors 
+summary: Você pode usar o método ListClusterFaults para listar informações sobre quaisquer falhas detectadas no cluster.  Com esse método, você pode listar tanto as falhas atuais quanto as falhas que já foram resolvidas.  O sistema armazena em cache as falhas a cada 30 segundos. 
+---
+= Listar falhas de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ListClusterFaults` Método para listar informações sobre quaisquer falhas detectadas no cluster.  Com esse método, você pode listar tanto as falhas atuais quanto as falhas que já foram resolvidas.  O sistema armazena em cache as falhas a cada 30 segundos.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+Melhores práticas
+ a| 
+Incluir falhas desencadeadas por configurações de sistema subótimas. Valores possíveis:
+
+* verdadeiro
+* falso
+
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+tipos de falha
+ a| 
+Determina os tipos de falhas retornadas. Valores possíveis:
+
+* Atual: Lista de falhas ativas e não resolvidas.
+* Resolvido: Liste as falhas que foram detectadas e resolvidas anteriormente.
+* Todos: Liste as falhas atuais e as já resolvidas.  Você pode ver o status da falha no membro "`resolved`" do objeto de falha.
+
+ a| 
+corda
+ a| 
+todos
+ a| 
+Não
+
+|===
+
+
+== Valor de retorno
+
+Este método tem o seguinte valor de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+defeitos
+ a| 
+Um objeto que descreve as falhas de cluster solicitadas.
+ a| 
+xref:reference_element_api_fault.adoc[falta]
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "ListClusterFaults",
+    "params": {
+      "faultTypes": "current",
+      "bestPractices": true
+    },
+    "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "faults": [
+      {
+        "blocksUpgrade": false,
+        "clusterFaultID": 3,
+        "code": "driveAvailable",
+        "data": null,
+        "date": "2024-04-03T22:22:56.660275Z",
+        "details": "Node ID 1 has 6 available drive(s).",
+        "driveID": 0,
+        "driveIDs": [],
+        "externalSource": "",
+        "networkInterface": "",
+        "nodeHardwareFaultID": 0,
+        "nodeID": 1,
+        "resolved": true,
+        "resolvedDate": "2024-04-03T22:24:54.598693Z",
+        "serviceID": 0,
+        "severity": "warning",
+        "type": "drive"
+      },
+      {
+        "clusterFaultID": 9,
+        "code": "disconnectedClusterPair",
+        "data": null,
+        "date": "2016-04-26T20:40:08.736597Z",
+        "details": "One of the clusters in a pair may have become misconfigured or disconnected.  Remove the local pairing and retry pairing the clusters. Disconnected Cluster Pairs: []. Misconfigured Cluster Pairs: [3]",
+        "driveID": 0,
+        "driveIDs": [],
+        "nodeHardwareFaultID": 0,
+        "nodeID": 0,
+        "resolved": false,
+        "resolvedDate": "",
+        "serviceID": 0,
+        "severity": "warning",
+        "type": "cluster"
+      }
+    ]
+  }
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

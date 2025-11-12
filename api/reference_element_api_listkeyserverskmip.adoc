@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_listkeyserverskmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,key,server,listing,list,listkeyserverskmip 
+summary: 'Você pode usar o método ListKeyServersKmip para listar todos os servidores de chaves do Protocolo de Interoperabilidade de Gerenciamento de Chaves (KMIP) que foram criados.  Você pode filtrar os resultados especificando parâmetros adicionais.' 
+---
+= ListKeyServersKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `ListKeyServersKmip` Método para listar todos os servidores de chaves do Protocolo de Interoperabilidade de Gerenciamento de Chaves (KMIP) que foram criados.  Você pode filtrar os resultados especificando parâmetros adicionais.
+
+
+
+== Parâmetros
+
+Este método possui os seguintes parâmetros de entrada:
+
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+ID do provedor de chave
+ a| 
+Quando especificado, o método retorna apenas os servidores de chaves KMIP que estão atribuídos ao provedor de chaves KMIP especificado.  Caso sejam omitidos, os servidores de chaves KMIP retornados não serão filtrados com base em sua atribuição ao provedor de chaves KMIP especificado.
+ a| 
+inteiro
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+kmipProvedorAtribuídoEstáAtivo
+ a| 
+Os filtros retornaram objetos do servidor de chaves KMIP com base em se eles estavam ativos ou não. Valores possíveis:
+
+* true: Retorna apenas os servidores de chaves KMIP que estão ativos (fornecendo chaves que estão em uso no momento).
+* false: Retorna apenas os servidores de chaves KMIP que estão inativos (não fornecem nenhuma chave e podem ser excluídos).
+
+
+Se omitidos, os servidores de chaves KMIP retornados não são filtrados com base em seu status de atividade.
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+
+
+ a| 
+kmipTemProvedorAtribuído
+ a| 
+Os filtros retornaram servidores de chaves KMIP com base na existência ou não de um provedor de chaves KMIP atribuído a eles. Valores possíveis:
+
+* true: Retorna apenas os servidores de chaves KMIP que possuem um provedor de chaves KMIP atribuído.
+* falso: Retorna apenas servidores de chaves KMIP que não possuem um provedor de chaves KMIP atribuído.
+
+
+Se omitidos, os servidores de chaves KMIP retornados não são filtrados com base no fato de terem ou não um provedor de chaves KMIP atribuído.
+ a| 
+booleano
+ a| 
+Nenhum
+ a| 
+Não
+
+|===
+
+
+== Valores de retorno
+
+Este método tem os seguintes valores de retorno:
+
+|===
+
+
+| Nome | Descrição | Tipo 
+
+
+ a| 
+Servidores de chave kmip
+ a| 
+A lista completa dos servidores de chaves KMIP que foram criados.
+ a| 
+link:reference_element_api_keyserverkmip.html["Servidor de chaves Kmip"]variedade
+
+|===
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "ListKeyServersKmip",
+  "params": {},
+"id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+    "kmipKeyServers": [
+        {
+            "kmipKeyServerName": "keyserverName",
+            "kmipClientCertificate": "dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+            "keyServerID": 15,
+            "kmipAssignedProviderIsActive": true,
+            "kmipKeyServerPort": 5696,
+            "kmipCaCertificate": "MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+            "kmipKeyServerHostnames": [
+                "server1.hostname.com", "server2.hostname.com"
+            ],
+            "keyProviderID": 1
+        }
+    ]
+}
+----
+
+
+== Novidade desde a versão
+
+11,7

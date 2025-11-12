@@ -1,0 +1,27 @@
+---
+permalink: storage/concept_system_manage_solidfire_storage_cluster_administrator_account_types.html 
+sidebar: sidebar 
+keywords: user types, account, cluster, access active nodes, per-node UI 
+summary: 'Existem dois tipos de contas de administrador que podem existir em um cluster de armazenamento executando o software NetApp Element : a conta de administrador primário do cluster e uma conta de administrador do cluster.' 
+---
+= tipos de conta de administrador de cluster de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Existem dois tipos de contas de administrador que podem existir em um cluster de armazenamento executando o software NetApp Element : a conta de administrador primário do cluster e uma conta de administrador do cluster.
+
+* *Conta de administrador do cluster principal*
++
+Essa conta de administrador é criada quando o cluster é criado.  Esta conta é a conta administrativa principal com o nível mais alto de acesso ao cluster.  Essa conta é análoga a um usuário root em um sistema Linux.  Você pode alterar a senha desta conta de administrador.
+
+* *Conta de administrador do cluster*
++
+Você pode conceder a uma conta de administrador de cluster um conjunto limitado de acesso administrativo para executar tarefas específicas dentro do cluster.  As credenciais atribuídas a cada conta de administrador de cluster são usadas para autenticar solicitações de API e da interface do usuário do Element dentro do sistema de armazenamento.
+
+
+
+
+NOTE: É necessária uma conta de administrador de cluster local (não LDAP) para acessar os nós ativos em um cluster por meio da interface de usuário de cada nó.  Não são necessárias credenciais de conta para acessar um nó que ainda não faz parte de um cluster.

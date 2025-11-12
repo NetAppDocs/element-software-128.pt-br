@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_protocolendpoint.html 
+sidebar: sidebar 
+keywords: object,objects,protocolEndpoint 
+summary: O objeto protocolEndpoint contém os atributos de um ponto de extremidade de protocolo.  Você pode recuperar essas informações para todos os endpoints de protocolo no cluster usando o método de API ListProtocolEndpoints. 
+---
+= protocoloEndpoint
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto protocolEndpoint contém os atributos de um ponto de extremidade de protocolo.  Você pode recuperar essas informações para todos os endpoints de protocolo no cluster usando o `ListProtocolEndpoints` Método da API.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+ID do provedor primário
+ a| 
+O ID do objeto provedor do ponto de extremidade do protocolo primário para o ponto de extremidade do protocolo.
+ a| 
+inteiro
+
+
+
+ a| 
+protocolEndpointID
+ a| 
+O ID único do ponto de extremidade do protocolo.
+ a| 
+UUID
+
+
+
+ a| 
+estado do ponto final do protocolo
+ a| 
+O status do ponto final do protocolo. Valores possíveis:
+
+* Ativo: O ponto de extremidade do protocolo está em uso.
+* Início: O ponto final do protocolo está sendo iniciado.
+* Falha: O ponto de extremidade do protocolo falhou.
+* Reservado: O ponto final do protocolo está reservado.
+
+ a| 
+corda
+
+
+
+ a| 
+tipoDeFornecedor
+ a| 
+O tipo de provedor do ponto de extremidade do protocolo. Valores possíveis:
+
+* Primário
+* Secundário
+
+ a| 
+corda
+
+
+
+ a| 
+scsiNAADeviceID
+ a| 
+O identificador de dispositivo SCSI globalmente único para o ponto de extremidade do protocolo no formato NAA IEEE Registered Extended Format.
+ a| 
+corda
+
+
+
+ a| 
+ID do provedor secundário
+ a| 
+O ID do objeto provedor de ponto de extremidade de protocolo secundário para o ponto de extremidade do protocolo.
+ a| 
+inteiro
+
+|===
+
+
+== Encontre mais informações
+
+xref:reference_element_api_listprotocolendpoints.adoc[ListProtocolEndpoints]

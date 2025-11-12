@@ -1,0 +1,24 @@
+---
+permalink: storage/task_monitor_iscsi_sessions.html 
+sidebar: sidebar 
+keywords: iscsi sessions, monitor 
+summary: Você pode visualizar as sessões iSCSI que estão conectadas ao cluster.  Você pode filtrar as informações para incluir apenas as sessões desejadas. 
+---
+= Visualizar sessões iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode visualizar as sessões iSCSI que estão conectadas ao cluster.  Você pode filtrar as informações para incluir apenas as sessões desejadas.
+
+. Na interface do usuário do Element, selecione *Relatórios* > *Sessões iSCSI*.
+. Para visualizar os campos de critérios de filtro, clique em *Filtrar*.
+
+
+
+
+== Encontre mais informações
+
+xref:reference_monitor_iscsi_session_details.adoc[Detalhes da sessão iSCSI]

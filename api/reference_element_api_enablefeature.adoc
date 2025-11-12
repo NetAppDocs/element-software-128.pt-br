@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_enablefeature.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableFeature,vvols,virtual volumes,FIPS,140-2,SnapMirror 
+summary: Você pode usar o método EnableFeature para habilitar recursos de cluster, como VVols, que estão desabilitados por padrão. 
+---
+= Ativar recurso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o `EnableFeature` Método para habilitar recursos de cluster, como VVols, que estão desabilitados por padrão.
+
+
+
+== Parâmetro
+
+Este método possui o seguinte parâmetro de entrada.
+
+
+NOTE: Para sistemas que executam o software Element 11.x, habilitar volumes virtuais antes ou depois de configurar o monitoramento de domínio de proteção faz com que o recurso de domínios de proteção de cluster funcione apenas no nível do nó.
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Nome | Descrição | Tipo | Valor padrão | Obrigatório 
+
+
+ a| 
+recurso
+ a| 
+Ative o recurso de cluster. Valores possíveis:
+
+* `fips`Ativar criptografia com certificação FIPS 140-2 para comunicações HTTPS.
+* `FipsDrives`Ativar suporte para unidades FIPS 140-2 no cluster de armazenamento.
+* `SnapMirror`Ative o recurso de cluster de replicação do SnapMirror .
+* `VolumeLoadBalanceOnActualIOPS`: Ative o balanceamento de fatias com base em IOPS reais em vez de IOPS mínimos.  Disponível a partir do Elemento 12.8.
+* `vvols`Ative o recurso de cluster VVols do software Element.
+
+ a| 
+corda
+ a| 
+Nenhum
+ a| 
+Sim
+
+|===
+
+
+== Valor de retorno
+
+Este método não possui valores de retorno.
+
+
+
+== Exemplo de solicitação
+
+As solicitações para esse método são semelhantes ao seguinte exemplo:
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "vvols"
+    },
+    "id": 1
+}
+----
+
+
+== Exemplo de resposta
+
+Este método retorna uma resposta semelhante ao exemplo a seguir:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== Novidade desde a versão
+
+9,6

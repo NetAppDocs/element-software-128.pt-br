@@ -1,0 +1,67 @@
+---
+permalink: storage/concept_troubleshoot_basic_mdss_drive_troubleshooting.html 
+sidebar: sidebar 
+keywords: mdss drives, troubleshoot, multi-drive slice service 
+summary: 'É possível recuperar unidades de metadados (ou partições) adicionando-as novamente ao cluster caso uma ou ambas as unidades de metadados falhem.  Você pode executar a operação de recuperação na interface do usuário do NetApp Element se o recurso MDSS já estiver habilitado no nó.' 
+---
+= Solução de problemas básicos de unidades MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É possível recuperar unidades de metadados (ou partições) adicionando-as novamente ao cluster caso uma ou ambas as unidades de metadados falhem.  Você pode executar a operação de recuperação na interface do usuário do NetApp Element se o recurso MDSS já estiver habilitado no nó.
+
+Se uma ou ambas as unidades de metadados em um nó apresentarem falha, o serviço de fatiamento será desligado e os dados de ambas as unidades serão copiados para unidades diferentes no nó.
+
+Os cenários a seguir descrevem possíveis situações de falha e fornecem recomendações básicas para corrigir o problema:
+
+
+
+== falha na unidade de partição do sistema
+
+* Nesse cenário, o slot 2 é verificado e retorna ao estado disponível.
+* A unidade de partição do sistema precisa ser repovoada antes que o serviço de partição possa ser reativado.
+* Você deve substituir a unidade de partição do sistema. Quando a unidade de partição do sistema estiver disponível, instale-a juntamente com a unidade do slot 2.
+
+
+
+NOTE: Não é possível adicionar a unidade no slot 2 individualmente como uma unidade de metadados.  Você deve adicionar ambas as unidades de volta ao nó ao mesmo tempo.
+
+
+
+== Slot 2 falha
+
+* Nesse cenário, a unidade de partição do sistema é verificada e retorna a um estado disponível.
+* Você deve substituir o slot 2 por um disco sobressalente. Quando o slot 2 estiver disponível, adicione o disco de partição do sistema e o disco do slot 2 simultaneamente.
+
+
+
+
+== Falha na unidade de partição do sistema e no slot 2
+
+* Você deve substituir tanto a unidade de partição do sistema quanto a unidade do slot 2 por uma unidade sobressalente.  Quando ambas as unidades estiverem disponíveis, adicione a unidade de partição do sistema e a unidade do slot 2 ao mesmo tempo.
+
+
+
+
+== Ordem das operações
+
+* Substitua a unidade de hardware com defeito por uma unidade sobressalente (substitua ambas as unidades se ambas apresentarem defeito).
+* Adicione as unidades de volta ao cluster quando elas tiverem sido repovoadas e estiverem disponíveis.
+
+
+
+
+== Verificar operações
+
+* Verifique se as unidades no slot 0 (ou interno) e no slot 2 estão identificadas como unidades de metadados na lista de Unidades Ativas.
+* Verifique se todo o balanceamento de fatias foi concluído (não há mais mensagens de movimentação de fatias no registro de eventos por pelo menos 30 minutos).
+
+
+
+
+== Para maiores informações
+
+xref:task_troubleshoot_add_mdss_drives.adoc[Adicionar unidades MDSS]

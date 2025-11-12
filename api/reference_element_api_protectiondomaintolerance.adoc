@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_protectiondomaintolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainTolerance 
+summary: O objeto protectionDomainTolerance contém informações sobre a capacidade do cluster de armazenamento de continuar lendo e gravando dados em caso de uma ou mais falhas, todas dentro de um único domínio de proteção do seu tipo de domínio de proteção associado. 
+---
+= proteçãoDomínioTolerância
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O objeto protectionDomainTolerance contém informações sobre a capacidade do cluster de armazenamento de continuar lendo e gravando dados em caso de uma ou mais falhas, todas dentro de um único domínio de proteção do seu tipo de domínio de proteção associado.
+
+
+
+== Membros do objeto
+
+Este objeto contém os seguintes membros:
+
+|===
+| Nome | Descrição | Tipo 
+
+
+ a| 
+Tolerâncias do esquema de proteção
+ a| 
+Uma lista de objetos (um para cada esquema de proteção) contendo informações sobre tolerância a falhas para o tipo de domínio de proteção associado.
+ a| 
+xref:reference_element_api_protectionschemetolerance.adoc[Tolerância do esquema de proteção]variedade
+
+
+
+ a| 
+falhas sustentáveis para o conjunto
+ a| 
+O número de falhas simultâneas que podem ocorrer dentro do domínio de proteção associado sem que se perca o quórum do conjunto.
+ a| 
+inteiro
+
+|===

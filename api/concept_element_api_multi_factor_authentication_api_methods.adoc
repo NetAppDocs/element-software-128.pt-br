@@ -1,0 +1,36 @@
+---
+permalink: api/concept_element_api_multi_factor_authentication_api_methods.html 
+sidebar: sidebar 
+keywords: multi-factor,MFA,idp,authentication,methods 
+summary: 'Você pode usar a autenticação multifator (MFA) para gerenciar sessões de usuário usando um provedor de identidade (IdP) de terceiros por meio da linguagem de marcação de asserção de segurança (SAML).' 
+---
+= Métodos de API de autenticação multifator
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a autenticação multifator (MFA) para gerenciar sessões de usuário usando um provedor de identidade (IdP) de terceiros por meio da linguagem de marcação de asserção de segurança (SAML).
+
+* xref:reference_element_api_addidpclusteradmin.adoc[Adicionar administrador de cluster Idp]
+* xref:reference_element_api_createidpconfiguration.adoc[Criar configuração Idp]
+* xref:reference_element_api_deleteauthsession.adoc[ExcluirSessãoAutenticação]
+* xref:reference_element_api_deleteauthsessionsbyclusteradmin.adoc[ExcluirSessõesAutenticaçãoPorAdministradorDeCluster]
+* xref:reference_element_api_deleteauthsessionsbyusername.adoc[ExcluirSessõesAutenticaçãoPorNomeDeUsuário]
+* xref:reference_element_api_deleteidpconfiguration.adoc[Excluir configuração Idp]
+* xref:reference_element_api_disableidpauthentication.adoc[Desativar autenticação Idp]
+* xref:reference_element_api_enableidpauthentication.adoc[Habilitar autenticação Idp]
+* xref:reference_element_api_getidpauthenticationstate.adoc[GetIdpAuthenticationState]
+* xref:reference_element_api_listactiveauthsessions.adoc[Listar Sessões de Autenticação Ativas]
+* xref:reference_element_api_listidpconfigurations.adoc[ListIdpConfigurations]
+* xref:reference_element_api_updateidpconfiguration.adoc[Atualizar configuração Idp]
+
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

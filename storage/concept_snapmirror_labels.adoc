@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_snapmirror_labels.html 
+sidebar: sidebar 
+keywords: labels, snapmirror, retention rules 
+summary: Uma etiqueta SnapMirror serve como um marcador para a transferência de um instantâneo específico, de acordo com as regras de retenção do relacionamento. 
+---
+= Etiquetas SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Uma etiqueta SnapMirror serve como um marcador para a transferência de um instantâneo específico, de acordo com as regras de retenção do relacionamento.
+
+Aplicar um rótulo a um snapshot o marca como um destino para replicação do SnapMirror .  A função do relacionamento é aplicar as regras na transferência de dados, selecionando o snapshot rotulado correspondente, copiando-o para o volume de destino e garantindo que o número correto de cópias seja mantido.  Refere-se à política para determinar a quantidade de registros mantidos e o período de retenção.  A política pode ter qualquer número de regras e cada regra possui um rótulo único.  Este rótulo serve como elo entre o instantâneo e a regra de retenção.
+
+É o rótulo do SnapMirror que indica qual regra é aplicada ao instantâneo selecionado, ao instantâneo de grupo ou ao agendamento.

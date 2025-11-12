@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_snapshots_overview.html 
+sidebar: sidebar 
+keywords: snapshot,overview 
+summary: Um instantâneo de volume é uma cópia de um volume em um determinado momento.  Você pode usar snapshots para restaurar um volume ao estado em que ele se encontrava no momento em que o snapshot foi criado. 
+---
+= Visão geral dos instantâneos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um instantâneo de volume é uma cópia de um volume em um determinado momento.  Você pode usar snapshots para restaurar um volume ao estado em que ele se encontrava no momento em que o snapshot foi criado.
+
+Você pode agrupar snapshots de volume para que volumes relacionados possam ser copiados ou revertidos de maneira consistente.  Um instantâneo de grupo captura uma imagem pontual de todos os arquivos de fatias de volume.  Em seguida, você pode usar a imagem para reverter um grupo de volumes para um estado específico no tempo e garantir que todos os dados sejam consistentes em todos os volumes do grupo.
+
+Você pode agendar a criação de snapshots de volume para ocorrer automaticamente em intervalos definidos.  Você pode definir intervalos por tempo, dias da semana ou dias do mês.  Você também pode usar snapshots agendados para garantir que os snapshots sejam copiados para armazenamento remoto para fins de arquivamento.
+
+
+
+== Encontre mais informações
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
+

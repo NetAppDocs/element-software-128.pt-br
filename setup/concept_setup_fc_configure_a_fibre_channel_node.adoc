@@ -1,0 +1,38 @@
+---
+permalink: setup/concept_setup_fc_configure_a_fibre_channel_node.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Os nós Fibre Channel permitem conectar o cluster a uma rede Fibre Channel.  Os nós Fibre Channel são adicionados em pares e operam em modo ativo-ativo (todos os nós processam ativamente o tráfego do cluster).  Clusters que executam o software Element versão 9.0 e posterior suportam até quatro nós; clusters que executam versões anteriores suportam no máximo dois nós.' 
+---
+= Configure um nó Fibre Channel.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os nós Fibre Channel permitem conectar o cluster a uma rede Fibre Channel.  Os nós Fibre Channel são adicionados em pares e operam em modo ativo-ativo (todos os nós processam ativamente o tráfego do cluster).  Clusters que executam o software Element versão 9.0 e posterior suportam até quatro nós; clusters que executam versões anteriores suportam no máximo dois nós.
+
+Você deve garantir que as seguintes condições sejam atendidas antes de configurar um nó Fibre Channel:
+
+* Pelo menos dois nós Fibre Channel estão conectados a switches Fibre Channel.
+* Todas as portas Fibre Channel do SolidFire devem ser conectadas à sua malha Fibre Channel.  As quatro conexões de rede SolidFire Bond10G devem ser conectadas em um único grupo de agregação LACP no nível do switch.  Isso permitirá o melhor desempenho geral dos sistemas Fibre Channel.
+* Analise e valide todas as práticas recomendadas para clusters Fibre Channel incluídas neste artigo da Base de Conhecimento da NetApp .
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/SolidFire_FC_cluster_best_practice["Melhores práticas para clusters SolidFire FC"]
+
+
+
+As etapas de configuração de rede e cluster são as mesmas para nós Fibre Channel e nós de armazenamento.
+
+Ao criar um novo cluster com nós Fibre Channel e nós de armazenamento SolidFire , os endereços WWPN (Worldwide Port Name) dos nós ficam disponíveis na interface do usuário do Element.  Você pode usar os endereços WWPN para zonear o switch Fibre Channel.
+
+Os WWPNs são registrados no sistema quando você cria um novo cluster com nós.  Na interface do usuário do Element, você pode encontrar os endereços WWPN na coluna WWPN da guia Portas FC, à qual você acessa a partir da guia Cluster.
+
+
+
+== Encontre mais informações
+
+xref:task_setup_fc_add_fibre_channel_nodes_to_a_cluster.adoc[Adicionar nós Fibre Channel a um cluster]
+
+xref:task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.adoc[Crie um novo cluster com nós Fibre Channel.]
