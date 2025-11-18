@@ -14,7 +14,7 @@ summary: Você pode usar o método DisableEncryptionAtRest para remover a cripto
 Você pode usar o `DisableEncryptionAtRest` método para remover a criptografia que foi aplicada anteriormente ao cluster usando o `EnableEncryptionAtRest` método.  Este método de desativação é assíncrono e retorna uma resposta antes que a criptografia seja desativada.  Você pode usar o `GetClusterInfo` Método para consultar o sistema e verificar quando o processo foi concluído.
 
 
-TIP: Para visualizar o estado atual da criptografia em repouso e/ou da criptografia de software em repouso no cluster, utilize olink:api/reference_element_api_getclusterinfo.html["método para obter informações do cluster"] . Você pode usar o `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["Método para obter informações que o cluster usa para criptografar dados em repouso."].
+TIP: Para visualizar o estado atual da criptografia em repouso e/ou da criptografia de software em repouso no cluster, utilize olink:../api/reference_element_api_getclusterinfo.html["método para obter informações do cluster"] . Você pode usar o `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["Método para obter informações que o cluster usa para criptografar dados em repouso."].
 
 
 NOTE: Não é possível usar esse método para desativar a criptografia de software em repouso.  Para desativar a criptografia de software em repouso, você precisalink:reference_element_api_createcluster.html["criar um novo cluster"] Com a criptografia de software em repouso desativada.
@@ -67,7 +67,7 @@ Este método retorna uma resposta semelhante ao exemplo a seguir:
 [discrete]
 == Encontre mais informações
 
-* link:api/reference_element_api_getclusterinfo.html["Obter informações do cluster"]
+* link:../api/reference_element_api_getclusterinfo.html["Obter informações do cluster"]
 * https://docs.netapp.com/us-en/element-software/index.html["Documentação do SolidFire e do Element Software"]
 * https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentação para versões anteriores dos produtos NetApp SolidFire e Element."^]
 
